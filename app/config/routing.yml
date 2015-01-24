@@ -1,0 +1,5 @@
+imperiv_site:
+    resource: "@ImperivSiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
