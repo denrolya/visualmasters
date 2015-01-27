@@ -1,0 +1,52 @@
+/*=================================
+=            Navigator            =
+=================================*/
+.navigator{
+  position: absolute;
+  top: 0;
+  height: 23px; width: 100%;
+  border-bottom: 3px solid #999;
+  background: rgba(255,255,255,0.4);	
+  font-family: sans-serif;
+  letter-spacing: 1px;  
+  margin: 0 auto;
+}
+
+.navigator>li {
+  top: 0;
+  display: inline;
+  list-style: none;
+  margin-left: 10px;
+  position: absolute;
+}
+
+.navigator>li:first-child { left: 10%; }
+
+.navigator>li:nth-of-type(2) { left: 20%; }
+
+.navigator>li:nth-of-type(3) { left: 31%; }
+
+.navigator>li:nth-of-type(4) { left: 45%; }
+
+.navigator>li:nth-of-type(5) { left: 59%; }
+
+.navigator>li:last-child { right: 10%; }
+
+.navigator>#penult { left: 70%; }
+
+.navigator li a, .navigator span {
+	font-size: 15px;
+	text-decoration: none;
+  color: #333;
+  transition: 0.4s;
+}
+
+.navigator li a:hover, .navigator span:hover {
+  cursor: pointer;
+	color: #999;
+  border-bottom: 3px solid orange;
+}
+
+.navigator li .selected {
+	color: orange;
+}

@@ -1,1 +1,73 @@
-Hello {{ name }}!
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{% stylesheets
+        "@ImperivGalleryBundle/Resources/public/css/jquery.maximage.min.css"
+        "@ImperivGalleryBundle/Resources/public/css/gallery.css"
+	    filter="yui_css"
+    %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+	<div id="controls">
+	    <a href="#" id="arrow_left">
+	    	{% image '@ImperivGalleryBundle/Resources/public/images/arrow_left.png' %}
+				<img src="{{ asset_url }}" alt="Slide Left" />
+			{% endimage %}
+	    </a>
+	    <a href="#" id="arrow_right">
+	    	{% image '@ImperivGalleryBundle/Resources/public/images/arrow_right.png' %}
+				<img src="{{ asset_url }}" alt="Slide Right" />
+			{% endimage %}
+	    </a>
+	</div>
+
+	<div id="maximage">
+		<div class="first-item">
+			<img src="http://habrastorage.org/getpro/geektimes/post_images/4ca/2fb/3b9/4ca2fb3b9baaf402abfe7e5404930524.jpg" alt="" />
+			<div class="in-slide-content"></div>
+		</div>
+
+		<img src="http://habrastorage.org/files/5cd/277/9f0/5cd2779f02374d77804e4dc9ba32e05f.PNG" alt=""/>
+	</div>
+{% endblock content %}
+
+{% block javascripts %}
+	{% javascripts
+		"@ImperivGalleryBundle/Resources/public/js/jquery_1.11.1.js"
+        "@ImperivGalleryBundle/Resources/public/js/jquery.cycle.all.min.js"
+        "@ImperivGalleryBundle/Resources/public/js/jquery.easing.1.3.js"
+        "@ImperivGalleryBundle/Resources/public/js/jquery.maximage.min.js"
+        filter="yui_js"
+    %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+
+	<script type="text/javascript" charset="utf-8">
+		$(function(){
+		    $('#maximage').maximage({
+		        cycleOptions: {
+		            fx:'fade',
+                	speed: 1000,
+		            timeout: 8000,
+		            prev: '#arrow_left',
+		            next: '#arrow_right',
+		            pause: 1
+		        },
+		        onFirstImageLoaded: function(){
+		            jQuery('#cycle-loader').hide();
+		            jQuery('#maximage').fadeIn('fast');
+		        }
+		    });
+		});
+
+		// Left/Right arrow keys to navigate
+		$(document).keydown(function(event) {
+	        if (event.keyCode == 37) { $('#arrow_left').click(); event.preventDefault(); }
+	        if (event.keyCode == 39) { $('#arrow_right').click(); event.preventDefault(); }
+	    });
+	</script>
+{% endblock javascripts%}

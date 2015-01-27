@@ -1,0 +1,26 @@
+/*===============================
+=            Gallery            =
+===============================*/
+#arrow_left, #arrow_right {
+  position: absolute;
+  bottom:30px; right:30px;
+  width:20px;
+  z-index:1000;
+  transition: 0.2s;
+}
+
+#arrow_left {
+  right: 80px;
+}
+
+#arrow_left:hover, #arrow_right:hover {
+  bottom:28px;
+}
+
+#arrow_left:active, #arrow_right:active {
+  bottom:26px;
+}
+
+#arrow_left>img, #arrow_right>img {
+  width: 25px;
+}
