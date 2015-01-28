@@ -4,11 +4,13 @@ namespace Imperiv\Bundle\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Page
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Imperiv\Bundle\GalleryBundle\Entity\PageRepository")
+ * @ORM\Entity()
  */
 class GalleryPage
 {
@@ -48,7 +50,23 @@ class GalleryPage
      * @ORM\Column(name="meta_description", type="text")
      */
     private $metaDescription;
+    
+    /**
+     * @var integer
+     * 
+     * @ORM\Column(name="slides_timeout", type="integer")
+     */
+    private $slidesTimeout;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Imperiv\Bundle\GalleryBundle\Entity\Slide", mappedBy="parentGallery")
+     */
+    protected $slides;
+
+    public function __construct()
+    {
+        $this->slides = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -150,5 +168,61 @@ class GalleryPage
     public function getMetaDescription()
     {
         return $this->metaDescription;
+    }
+
+    /**
+     * Add slides
+     *
+     * @param \Imperiv\Bundle\GalleryBundle\Entity\Slide $slides
+     * @return GalleryPage
+     */
+    public function addSlide(\Imperiv\Bundle\GalleryBundle\Entity\Slide $slides)
+    {
+        $this->slides[] = $slides;
+
+        return $this;
+    }
+
+    /**
+     * Remove slides
+     *
+     * @param \Imperiv\Bundle\GalleryBundle\Entity\Slide $slides
+     */
+    public function removeSlide(\Imperiv\Bundle\GalleryBundle\Entity\Slide $slides)
+    {
+        $this->slides->removeElement($slides);
+    }
+
+    /**
+     * Get slides
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSlides()
+    {
+        return $this->slides;
+    }
+
+    /**
+     * Set slidesTimeout
+     *
+     * @param integer $slidesTimeout
+     * @return GalleryPage
+     */
+    public function setSlidesTimeout($slidesTimeout)
+    {
+        $this->slidesTimeout = $slidesTimeout;
+
+        return $this;
+    }
+
+    /**
+     * Get slidesTimeout
+     *
+     * @return integer 
+     */
+    public function getSlidesTimeout()
+    {
+        return $this->slidesTimeout;
     }
 }

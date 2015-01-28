@@ -1,0 +1,79 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ gallery.metaTitle }}
+{% endblock title %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        "@ImperivGalleryBundle/Resources/public/css/jquery.maximage.min.css"
+        "@ImperivGalleryBundle/Resources/public/css/gallery.css"
+            filter="yui_css"
+    %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+    <div id="gallery_controls">
+        <div id="arrow_left">
+            {% image '@ImperivGalleryBundle/Resources/public/images/arrow_left.png' %}
+                <img src="{{ asset_url }}" alt="Slide Left" />
+            {% endimage %}
+        </div>
+        <div id="arrow_right">
+            {% image '@ImperivGalleryBundle/Resources/public/images/arrow_right.png' %}
+                <img src="{{ asset_url }}" alt="Slide Right" />
+            {% endimage %}
+        </div>
+    </div>
+
+    <div id="maximage">
+        {% for slide in gallery.slides %}
+            <div class="item">
+                <img src="{{ slide.imageContent }}" alt="alt" />
+                <div class="in-slide-content">
+                    {{ slide.textContent }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        "@ImperivGalleryBundle/Resources/public/js/jquery.cycle.all.min.js"
+        "@ImperivGalleryBundle/Resources/public/js/jquery.easing.1.3.js"
+        "@ImperivGalleryBundle/Resources/public/js/jquery.maximage.min.js"
+        filter="yui_js"
+    %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript" charset="utf-8">
+        $(function(){
+            $('#maximage').maximage({
+                cycleOptions: {
+                    fx:'fade',
+                    speed: 1000,
+                    timeout: {{ gallery.slidesTimeout }},
+                    prev: '#arrow_left',
+                    next: '#arrow_right',
+                    pause: 1
+                },
+                onFirstImageLoaded: function(){
+{#                    jQuery('#cycle-loader').hide();#}
+                    jQuery('#maximage').fadeIn('fast');
+                }
+            });
+        });
+
+        // Left/Right arrow keys to navigate
+        $(document).keydown(function(event) {
+            if (event.keyCode == 37) { $('#arrow_left').click(); event.preventDefault(); }
+            if (event.keyCode == 39) { $('#arrow_right').click(); event.preventDefault(); }
+        });
+    </script>
+{% endblock javascripts%}

@@ -75,6 +75,12 @@ class Slide
      */
     private $displayOrder;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Imperiv\Bundle\GalleryBundle\Entity\GalleryPage", inversedBy="slides", cascade={"persist"})
+     * @ORM\JoinColumn(name="gallery_page", referencedColumnName="id")
+     */
+    private $parentGallery;
+
 
     /**
      * Get id
@@ -248,4 +254,27 @@ class Slide
     }
 
 
+
+    /**
+     * Set parentGallery
+     *
+     * @param \Imperiv\Bundle\GalleryBundle\Entity\GalleryPage $parentGallery
+     * @return Slide
+     */
+    public function setParentGallery(\Imperiv\Bundle\GalleryBundle\Entity\GalleryPage $parentGallery = null)
+    {
+        $this->parentGallery = $parentGallery;
+
+        return $this;
+    }
+
+    /**
+     * Get parentGallery
+     *
+     * @return \Imperiv\Bundle\GalleryBundle\Entity\GalleryPage 
+     */
+    public function getParentGallery()
+    {
+        return $this->parentGallery;
+    }
 }

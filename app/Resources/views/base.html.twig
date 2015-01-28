@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}3D Design Studio{% endblock title %}</title>
+        <title>{% block title %}No-title Page{% endblock title %}</title>
 
         {% block stylesheets %}
             {% stylesheets
@@ -21,21 +21,21 @@
         <header>
             <ul class="navigator">
                 <li>
-                    <a href="{{ path('gallery_index', {'name':'Jack White'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>
+                    <a href="{{ path('index_page') }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>
                         Home
                     </a>
                 </li>
                 <li>
-                    <a href="#">3D Design</a>
+                    <a href="{{ path('gallery_page', {'name' : 'design'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>3D Design</a>
                 </li>
                 <li>
-                    <a href="#">Graphic Art</a>
+                    <a href="{{ path('gallery_page', {'name' : 'art'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>Graphic Art</a>
                 </li>
                 <li>
                     <a href="#">Video Editing</a>
                 </li>
                 <li>
-                    <a href="#">Models</a>
+                    <a href="{{ path('gallery_page', {'name' : 'models'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>Models</a>
                 </li>
                 <li>
                     <a href="#" id="explore" >Explore more</a>
