@@ -14,25 +14,16 @@ class DefaultController extends Controller
     const HOMEPAGE_NAME = "home";
     
     /**
-     * @Route("/", name="index_page")
-     */
-    public function indexAction()
-    {
-        $response = $this->forward('ImperivGalleryBundle:Default:gallery', [
-            'name'  => self::HOMEPAGE_NAME,
-        ]);
-
-        return $response;
-    }
     /**
-     * @Route("/gallery/{name}", name="gallery_page")
+     * @Route("/", name="index_page", defaults={"gallery_name":"home"})
+     * @Route("/{gallery_name}", name="gallery_page", requirements={"gallery_name":"home|design|art|models"})
      * @Template()
      */
-    public function galleryAction($name)
+    public function galleryAction($gallery_name)
     {
     	$em = $this->getDoctrine()->getManager();
         
-        $galleryPage = $em->getRepository('ImperivGalleryBundle:GalleryPage')->findOneByPageName($name);
+        $galleryPage = $em->getRepository('ImperivGalleryBundle:GalleryPage')->findOneByPageName($gallery_name);
                 
         if (!$galleryPage) {
             throw $this->createNotFoundException("Page doesn't exist!");

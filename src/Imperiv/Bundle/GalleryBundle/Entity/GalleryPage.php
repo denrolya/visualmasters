@@ -225,4 +225,9 @@ class GalleryPage
     {
         return $this->slidesTimeout;
     }
+    
+    public function __toString()
+    {
+        return $this->pageName;
+    }
 }

@@ -26,16 +26,16 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path('gallery_page', {'name' : 'design'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>3D Design</a>
+                    <a href="{{ path('gallery_page', {'gallery_name' : 'design'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>3D Design</a>
                 </li>
                 <li>
-                    <a href="{{ path('gallery_page', {'name' : 'art'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>Graphic Art</a>
+                    <a href="{{ path('gallery_page', {'gallery_name' : 'art'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>Graphic Art</a>
                 </li>
                 <li>
                     <a href="#">Video Editing</a>
                 </li>
                 <li>
-                    <a href="{{ path('gallery_page', {'name' : 'models'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>Models</a>
+                    <a href="{{ path('gallery_page', {'gallery_name' : 'models'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>Models</a>
                 </li>
                 <li>
                     <a href="#" id="explore" >Explore more</a>
