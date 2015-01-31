@@ -11,12 +11,18 @@ class GalleryPageAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-//        $formMapper;
+        $formMapper->add('pageName')
+                ->add('slidesTimeout', 'text', ['required' => false])
+                ->add('metaTitle')
+                ->add('metaKeywords', 'text', ['required' => false])
+                ->add('metaDescription', 'text', ['required' => false]);
     }
     
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-//        $datagridMapper;
+        $datagridMapper->add('pageName')
+                ->add('metaTitle')
+                ->add('slidesTimeout');
     }
     
     protected function configureListFields(ListMapper $listMapper)

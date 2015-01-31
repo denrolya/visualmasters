@@ -11,12 +11,20 @@ class SlideAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-//        $formMapper;
+        $formMapper->add('imageContent')
+            ->add('textContent')
+            ->add('displayOrder')
+            ->add('parentGallery', 'entity', ['class' => 'Imperiv\Bundle\GalleryBundle\Entity\GalleryPage'])
+            ->add('transparentZoneOpacity', 'text', ['required' => false])
+            ->add('transparentZoneWidth', 'text', ['required' => false])
+            ->add('transparentZoneColor', 'text', ['required' => false])
+            ->add('transparentZonePosition', 'text', ['required' => false]);
     }
     
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-//        $datagridMapper;
+        $datagridMapper->add('parentGallery')
+                ->add('displayOrder');
     }
     
     protected function configureListFields(ListMapper $listMapper)

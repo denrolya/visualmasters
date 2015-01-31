@@ -14,6 +14,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class GalleryPage
 {
+    
+    const DEFAUlT_TIMEOUT = 18000;
+    
     /**
      * @var integer
      *
@@ -209,7 +212,7 @@ class GalleryPage
      * @param integer $slidesTimeout
      * @return GalleryPage
      */
-    public function setSlidesTimeout($slidesTimeout)
+    public function setSlidesTimeout($slidesTimeout = self::DEFAUlT_TIMEOUT)
     {
         $this->slidesTimeout = $slidesTimeout;
 
