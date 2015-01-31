@@ -8,7 +8,7 @@ services:
             - Imperiv\Bundle\GalleryBundle\Entity\GalleryPage
             - ~
             
-    sonata.admin.slides:
+    sonata.admin.slide:
         class: Imperiv\Bundle\GalleryBundle\Admin\SlideAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Galleries", label: "Slides" }
