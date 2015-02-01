@@ -18,7 +18,7 @@ class SlideAdmin extends Admin
             ->add('parentGallery', 'entity', ['class' => 'Imperiv\Bundle\GalleryBundle\Entity\GalleryPage'])
         ->end();
         
-        if ($this->getSubject()->getTextContent() === NULL) {
+        if ($this->getSubject()->getTextContent() !== NULL) {
             $formMapper->with('Transparent Zone')
                 ->add('transparentZoneOpacity', 'number', ['label' => 'Opacity', 'required' => false])
                 ->add('transparentZoneWidth', 'integer', ['label' => 'Width', 'required' => false])

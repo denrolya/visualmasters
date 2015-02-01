@@ -33,9 +33,11 @@
         {% for slide in gallery.slides %}
             <div class="item">
                 <img src="{{ slide.imageContent }}" alt="alt" />
-                <div class="in-slide-content">
-                    {{ slide.textContent }}
-                </div>
+                {% if (slide.textContent is not null) %}
+                    <div class="in-slide-content">
+                        {{ slide.textContent }}
+                    </div>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
