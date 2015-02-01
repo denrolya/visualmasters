@@ -11,14 +11,21 @@ class SlideAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('imageContent')
-            ->add('textContent')
+        $formMapper->with('Slide')
+            ->add('imageContent')
+            ->add('textContent', 'textarea', ['required' => false])
             ->add('displayOrder')
             ->add('parentGallery', 'entity', ['class' => 'Imperiv\Bundle\GalleryBundle\Entity\GalleryPage'])
-            ->add('transparentZoneOpacity', 'text', ['required' => false])
-            ->add('transparentZoneWidth', 'text', ['required' => false])
-            ->add('transparentZoneColor', 'text', ['required' => false])
-            ->add('transparentZonePosition', 'text', ['required' => false]);
+        ->end();
+        
+        if ($this->getSubject()->getTextContent() === NULL) {
+            $formMapper->with('Transparent Zone')
+                ->add('transparentZoneOpacity', 'number', ['label' => 'Opacity', 'required' => false])
+                ->add('transparentZoneWidth', 'integer', ['label' => 'Width', 'required' => false])
+                ->add('transparentZoneColor', 'text', ['label' => 'Color', 'required' => false])
+                ->add('transparentZonePosition', 'integer', ['label' => 'Position', 'required' => false])
+            ->end();
+        }
     }
     
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

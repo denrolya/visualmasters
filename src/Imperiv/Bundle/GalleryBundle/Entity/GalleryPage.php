@@ -43,26 +43,26 @@ class GalleryPage
     /**
      * @var string
      *
-     * @ORM\Column(name="meta_keywords", type="text")
+     * @ORM\Column(name="meta_keywords", type="text", nullable=true)
      */
     private $metaKeywords;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="meta_description", type="text")
+     * @ORM\Column(name="meta_description", type="text", nullable=true)
      */
     private $metaDescription;
     
     /**
      * @var integer
      * 
-     * @ORM\Column(name="slides_timeout", type="integer")
+     * @ORM\Column(name="slides_timeout", type="integer", options={"default":8000})
      */
     private $slidesTimeout;
 
     /**
-     * @ORM\OneToMany(targetEntity="Imperiv\Bundle\GalleryBundle\Entity\Slide", mappedBy="parentGallery")
+     * @ORM\OneToMany(targetEntity="Imperiv\Bundle\GalleryBundle\Entity\Slide", mappedBy="parentGallery", orphanRemoval=true)
      */
     protected $slides;
 

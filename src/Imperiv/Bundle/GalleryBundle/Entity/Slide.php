@@ -36,42 +36,42 @@ class Slide
     /**
      * @var string
      *
-     * @ORM\Column(name="text_content", type="text")
+     * @ORM\Column(name="text_content", type="text", nullable=true)
      */
     private $textContent;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="transparent_zone_opacity", type="float")
+     * @ORM\Column(name="transparent_zone_opacity", type="float", nullable=true)
      */
     private $transparentZoneOpacity;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="transparent_zone_width", type="integer")
+     * @ORM\Column(name="transparent_zone_width", type="integer", nullable=true)
      */
     private $transparentZoneWidth;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="transparent_zone_position", type="integer")
+     * @ORM\Column(name="transparent_zone_position", type="integer", nullable=true)
      */
     private $transparentZonePosition;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="transparent_zone_color", type="string", length=6)
+     * @ORM\Column(name="transparent_zone_color", type="string", length=6, nullable=true)
      */
     private $transparentZoneColor;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="display_order", type="string", length=6)
+     * @ORM\Column(name="display_order", type="string", length=6, nullable=true)
      */
     private $displayOrder;
 

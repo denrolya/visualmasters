@@ -14,19 +14,16 @@ framework:
     validation:      { enable_annotations: true }
     templating:
         engines: ['twig']
-        #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:         ~
     fragments:       ~
     http_method_override: true
 
-# Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
-# Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
@@ -41,7 +38,6 @@ assetic:
         yui_js:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.8.jar"
 
-# Doctrine Configuration
 doctrine:
     dbal:
         driver:   "%database_driver%"
@@ -53,12 +49,6 @@ doctrine:
         charset:  UTF8
         types:
             json: Sonata\Doctrine\Types\JsonType
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -69,7 +59,6 @@ doctrine:
                     ApplicationSonataMediaBundle: ~
                     SonataMediaBundle: ~
 
-# Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
@@ -92,12 +81,10 @@ sonata_admin:
 sonata_block:
     default_contexts: [cms]
     blocks:
-        # Enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]
-        sonata.user.block.menu:    # used to display the menu in profile pages
-        sonata.user.block.account: # used to display menu option (login option)
-        # Your other blocks  
+        sonata.user.block.menu:
+        sonata.user.block.account:
         
 sonata_media:
     default_context: default

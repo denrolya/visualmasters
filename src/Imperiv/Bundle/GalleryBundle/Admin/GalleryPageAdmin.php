@@ -7,12 +7,14 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper,
     Sonata\AdminBundle\Datagrid\DatagridMapper;
 
+use Imperiv\Bundle\GalleryBundle\Entity\GalleryPage;
+
 class GalleryPageAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('pageName')
-                ->add('slidesTimeout', 'text', ['required' => false])
+                ->add('slidesTimeout', 'text', ['data' => GalleryPage::DEFAUlT_TIMEOUT])
                 ->add('metaTitle')
                 ->add('metaKeywords', 'text', ['required' => false])
                 ->add('metaDescription', 'text', ['required' => false]);
@@ -27,8 +29,7 @@ class GalleryPageAdmin extends Admin
     
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper
-            ->add('pageName')
+        $listMapper->addIdentifier('pageName')
             ->add('metaTitle')
             ->add('slidesTimeout')
             ->add('metaKeywords')
