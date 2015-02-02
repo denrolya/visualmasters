@@ -92,14 +92,11 @@ sonata_media:
     contexts:
         default:
             providers:
-                - sonata.media.provider.dailymotion
-                - sonata.media.provider.youtube
                 - sonata.media.provider.image
-                - sonata.media.provider.file
 
             formats:
-                small: { width: 100 , quality: 70}
-                big:   { width: 500 , quality: 70}
+                small: { width: 100 , quality: 100}
+                big:   { width: 1366 , quality: 100}
 
     cdn:
         server:

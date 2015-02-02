@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Slide
  *
- * @ORM\Table()
+ * @ORM\Table(name="slides")
  * @ORM\Entity(repositoryClass="Imperiv\Bundle\GalleryBundle\Entity\SlideRepository")
  */
 class Slide
@@ -25,11 +25,11 @@ class Slide
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
-     * @var string
-     *
-     * @ORM\Column(name="image_content", type="string", length=255)
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="image_content", referencedColumnName="id")
      */
     private $imageContent;
 
@@ -95,10 +95,10 @@ class Slide
     /**
      * Set imageContent
      *
-     * @param string $imageContent
+     * @param \Application\Sonata\MediaBundle\Entity\Media $imageContent
      * @return Slide
      */
-    public function setImageContent($imageContent)
+    public function setImageContent(\Application\Sonata\MediaBundle\Entity\Media $imageContent)
     {
         $this->imageContent = $imageContent;
 
@@ -108,7 +108,7 @@ class Slide
     /**
      * Get imageContent
      *
-     * @return string 
+     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
     public function getImageContent()
     {

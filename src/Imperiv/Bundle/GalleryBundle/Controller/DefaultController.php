@@ -24,6 +24,8 @@ class DefaultController extends Controller
     	$em = $this->getDoctrine()->getManager();
         
         $galleryPage = $em->getRepository('ImperivGalleryBundle:GalleryPage')->findOneByPageName($gallery_name);
+        
+//        var_dump($galleryPage->getSlides()[0]); die;
                 
         if (!$galleryPage) {
             throw $this->createNotFoundException("Page doesn't exist!");

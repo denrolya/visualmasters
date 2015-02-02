@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Page
  *
- * @ORM\Table()
+ * @ORM\Table(name="galleries")
  * @ORM\Entity()
  */
 class GalleryPage
