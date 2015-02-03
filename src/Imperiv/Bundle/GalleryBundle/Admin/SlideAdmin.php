@@ -15,9 +15,9 @@ class SlideAdmin extends Admin
     {
         $formMapper->with('Slide')
             ->add('imageContent', 'sonata_type_model_list', [], ['link_parameters' => ['context' => 'default', 'provider' => 'sonata.media.provider.image']])
-            ->add('textContent', 'textarea', ['required' => false])
-            ->add('displayOrder')
             ->add('parentGallery', 'entity', ['class' => 'Imperiv\Bundle\GalleryBundle\Entity\GalleryPage'])
+            ->add('displayOrder')
+            ->add('textContent', 'textarea', ['required' => false, 'attr' => ['class' => 'tinymce']])
         ->end();
         
         if ($this->getSubject()->getTextContent() !== NULL) {

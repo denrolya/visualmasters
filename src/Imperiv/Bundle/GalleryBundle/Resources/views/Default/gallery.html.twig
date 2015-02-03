@@ -7,8 +7,8 @@
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets
-        "@ImperivGalleryBundle/Resources/public/css/jquery.maximage.min.css"
-        "@ImperivGalleryBundle/Resources/public/css/gallery.css"
+        "bundles/imperivgallery/css/jquery.maximage.min.css"
+        "bundles/imperivgallery/css/gallery.css"
             filter="yui_css"
     %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
@@ -18,12 +18,12 @@
 {% block content %}
     <div id="gallery_controls">
         <div id="arrow_left">
-            {% image '@ImperivGalleryBundle/Resources/public/images/arrow_left.png' %}
+            {% image 'bundles/imperivgallery/images/arrow_left.png' %}
                 <img src="{{ asset_url }}" alt="Slide Left" />
             {% endimage %}
         </div>
         <div id="arrow_right">
-            {% image '@ImperivGalleryBundle/Resources/public/images/arrow_right.png' %}
+            {% image 'bundles/imperivgallery/images/arrow_right.png' %}
                 <img src="{{ asset_url }}" alt="Slide Right" />
             {% endimage %}
         </div>
@@ -34,8 +34,15 @@
             <div class="item">
                 {% media slide.imageContent, 'big' %}
                 {% if (slide.textContent is not null) %}
-                    <div class="in-slide-content">
-                        {{ slide.textContent }}
+                    <div class="transp-zone" style="
+                         background: #{{ slide.transparentZoneColor }};
+                         left: {{ slide.transparentZonePosition }}%;
+                         width: {{ slide.transparentZoneWidth }}px;
+                         opacity: {{ slide.transparentZoneOpacity }};
+                    ">
+                        <div class="transp-zone-content">
+                            {{ slide.textContent | raw }}
+                        </div>
                     </div>
                 {% endif %}
             </div>
@@ -46,9 +53,9 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-        "@ImperivGalleryBundle/Resources/public/js/jquery.cycle.all.min.js"
-        "@ImperivGalleryBundle/Resources/public/js/jquery.easing.1.3.js"
-        "@ImperivGalleryBundle/Resources/public/js/jquery.maximage.min.js"
+        "bundles/imperivgallery/js/jquery.cycle.all.min.js"
+        "bundles/imperivgallery/js/jquery.easing.1.3.js"
+        "bundles/imperivgallery/js/jquery.maximage.min.js"
         filter="yui_js"
     %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
