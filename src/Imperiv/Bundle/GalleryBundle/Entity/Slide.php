@@ -13,10 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Slide
 {
     const REPOSITORY_CLASS = "ImperivGalleryBundle:Slide";
-    const DEFAULT_TRANSP_ZONE_OPACITY = 0.7;
-    const DEFAULT_TRANSP_ZONE_WIDTH = 280;
-    const DEFAULT_TRANSP_ZONE_POSITION = 20;
-    const DEFAULT_TRANSP_ZONE_COLOR = "000000";
     /**
      * @var integer
      *
@@ -43,35 +39,35 @@ class Slide
     /**
      * @var float
      *
-     * @ORM\Column(name="transparent_zone_opacity", type="float", nullable=true)
+     * @ORM\Column(name="transparent_zone_opacity", type="float", options={"default" = 0,8})
      */
     private $transparentZoneOpacity;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="transparent_zone_width", type="integer", nullable=true)
+     * @ORM\Column(name="transparent_zone_width", type="integer", options={"default" = 280})
      */
     private $transparentZoneWidth;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="transparent_zone_position", type="integer", nullable=true)
+     * @ORM\Column(name="transparent_zone_position", type="integer", options={"default" = 20})
      */
     private $transparentZonePosition;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="transparent_zone_color", type="string", length=6, nullable=true)
+     * @ORM\Column(name="transparent_zone_color", type="string", length=6, options={"default" = 000000})
      */
     private $transparentZoneColor;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="display_order", type="string", length=6, nullable=true)
+     * @ORM\Column(name="display_order", type="string", length=6)
      */
     private $displayOrder;
 
@@ -144,7 +140,7 @@ class Slide
      * @param float $transparentZoneOpacity
      * @return Slide
      */
-    public function setTransparentZoneOpacity($transparentZoneOpacity = self::DEFAULT_TRANSP_ZONE_OPACITY)
+    public function setTransparentZoneOpacity($transparentZoneOpacity)
     {
         $this->transparentZoneOpacity = $transparentZoneOpacity;
 
@@ -167,7 +163,7 @@ class Slide
      * @param integer $transparentZoneWidth
      * @return Slide
      */
-    public function setTransparentZoneWidth($transparentZoneWidth = self::DEFAULT_TRANSP_ZONE_WIDTH)
+    public function setTransparentZoneWidth($transparentZoneWidth)
     {
         $this->transparentZoneWidth = $transparentZoneWidth;
 
@@ -190,7 +186,7 @@ class Slide
      * @param integer $transparentZonePosition
      * @return Slide
      */
-    public function setTransparentZonePosition($transparentZonePosition = self::DEFAULT_TRANSP_ZONE_POSITION)
+    public function setTransparentZonePosition($transparentZonePosition)
     {
         $this->transparentZonePosition = $transparentZonePosition;
 
@@ -213,7 +209,7 @@ class Slide
      * @param string $transparentZoneColor
      * @return Slide
      */
-    public function setTransparentZoneColor($transparentZoneColor = self::DEFAULT_TRANSP_ZONE_COLOR)
+    public function setTransparentZoneColor($transparentZoneColor)
     {
         $this->transparentZoneColor = $transparentZoneColor;
 
