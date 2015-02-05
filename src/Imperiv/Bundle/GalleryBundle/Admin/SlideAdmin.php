@@ -35,7 +35,8 @@ class SlideAdmin extends Admin
                 ->add('transparentZoneColor', 'text', [
                     'label' => 'Color',
                     'required' => false,
-                    'data' => Slide::DEFAULT_TRANSP_ZONE_COLOR
+                    'data' => Slide::DEFAULT_TRANSP_ZONE_COLOR,
+                    'attr' => ['class' => 'colorpicker']
                     ])
                 ->add('transparentZonePosition', 'integer', [
                     'label' => 'Position',
@@ -65,5 +66,18 @@ class SlideAdmin extends Admin
             ->add('transparentZoneColor')
             ->add('transparentZonePosition')
         ;
+    }
+    
+    public function prePersist($object) {
+        parent::prePersist($object);
+        
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
+        
+        if ($object->getDisplayOrder() === NULL) {
+            $lastSlideInGallery = $em->getRepository(Slide::REPOSITORY_CLASS)
+                    ->findLastSlideInGallery($object->getParentGallery());
+            
+            $object->setDisplayOrder($lastSlideInGallery->getDisplayOrder() + 1);
+        }
     }
 }

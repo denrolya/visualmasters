@@ -48,3 +48,11 @@
   display: table-cell; 
   vertical-align: middle;
 }
+
+.transp-zone:nth-child(1) { left: 10% }
+.transp-zone:nth-child(2) { left: 20% }
+.transp-zone:nth-child(3) { left: 31% }
+.transp-zone:nth-child(4) { left: 45% }
+.transp-zone:nth-child(5) { left: 59% }
+.transp-zone:nth-child(6) { left: 70% }
+.transp-zone:nth-child(7) { right: 10% }

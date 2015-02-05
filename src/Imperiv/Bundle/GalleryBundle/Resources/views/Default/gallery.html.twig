@@ -36,9 +36,17 @@
                 {% if (slide.textContent is not null) %}
                     <div class="transp-zone" style="
                          background: #{{ slide.transparentZoneColor }};
-                         left: {{ slide.transparentZonePosition }}%;
-                         width: {{ slide.transparentZoneWidth }}px;
                          opacity: {{ slide.transparentZoneOpacity }};
+                         width: {{ slide.transparentZoneWidth }}px;
+                         {% if loop.last %}
+                            margin-right: -{{ (slide.transparentZoneWidth/2)-40 }}px;
+                        {% else %}
+                            margin-left: -{{ (slide.transparentZoneWidth/2)-40 }}px;
+                        {% endif %}
+                        
+                        {% if slide.transparentZonePosition != null %}
+                            left: {{ slide.transparentZonePosition }}%;
+                        {% endif %}
                     ">
                         <div class="transp-zone-content">
                             {{ slide.textContent | raw }}

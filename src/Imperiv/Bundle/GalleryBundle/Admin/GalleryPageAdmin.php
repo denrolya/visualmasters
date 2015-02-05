@@ -33,7 +33,6 @@ class GalleryPageAdmin extends Admin
             ->add('metaTitle')
             ->add('slidesTimeout')
             ->add('metaKeywords')
-            ->add('metaDescription')
-        ;
+            ->add('metaDescription');
     }
 }

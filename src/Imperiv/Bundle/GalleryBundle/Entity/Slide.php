@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Slide
 {
-
+    const REPOSITORY_CLASS = "ImperivGalleryBundle:Slide";
     const DEFAULT_TRANSP_ZONE_OPACITY = 0.7;
     const DEFAULT_TRANSP_ZONE_WIDTH = 280;
     const DEFAULT_TRANSP_ZONE_POSITION = 20;
