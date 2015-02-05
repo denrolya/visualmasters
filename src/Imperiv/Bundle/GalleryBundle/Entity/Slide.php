@@ -44,28 +44,28 @@ class Slide
     /**
      * @var float
      *
-     * @ORM\Column(name="transparent_zone_opacity", type="float", nullable=true)
+     * @ORM\Column(name="transparent_zone_opacity", type="float")
      */
     private $transparentZoneOpacity;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="transparent_zone_width", type="integer", nullable=true)
+     * @ORM\Column(name="transparent_zone_width", type="integer")
      */
     private $transparentZoneWidth;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="transparent_zone_position", type="integer", nullable=true)
+     * @ORM\Column(name="transparent_zone_position", type="integer")
      */
     private $transparentZonePosition;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="transparent_zone_color", type="string", length=6, nullable=true)
+     * @ORM\Column(name="transparent_zone_color", type="string")
      */
     private $transparentZoneColor;
 
