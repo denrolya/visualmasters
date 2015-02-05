@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Slide
 {
     const REPOSITORY_CLASS = "ImperivGalleryBundle:Slide";
+    const DEFAULT_TRANSP_ZONE_OPACITY = 0.7;
+    const DEFAULT_TRANSP_ZONE_WIDTH = 280;
+    const DEFAULT_TRANSP_ZONE_POSITION = 20;
+    const DEFAULT_TRANSP_ZONE_COLOR = "000000";
+    
     /**
      * @var integer
      *
@@ -39,28 +44,28 @@ class Slide
     /**
      * @var float
      *
-     * @ORM\Column(name="transparent_zone_opacity", type="float", options={"default" = 0,8})
+     * @ORM\Column(name="transparent_zone_opacity", type="float", nullable=true)
      */
     private $transparentZoneOpacity;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="transparent_zone_width", type="integer", options={"default" = 280})
+     * @ORM\Column(name="transparent_zone_width", type="integer", nullable=true)
      */
     private $transparentZoneWidth;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="transparent_zone_position", type="integer", options={"default" = 20})
+     * @ORM\Column(name="transparent_zone_position", type="integer", nullable=true)
      */
     private $transparentZonePosition;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="transparent_zone_color", type="string", length=6, options={"default" = 000000})
+     * @ORM\Column(name="transparent_zone_color", type="string", length=6, nullable=true)
      */
     private $transparentZoneColor;
 

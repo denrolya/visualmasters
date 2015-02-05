@@ -4,9 +4,9 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets 
+    {% stylesheets
         "bundles/imperivgallery/css/colpick.css"
-        filter="yui_css" 
+        filter="yui_css"
     %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
     {% endstylesheets %}
@@ -14,14 +14,9 @@
 
 {% block javascripts %}
     {{ parent() }}
-       
-    {% javascripts
-        "bundles/imperivsite/js/tinymce/tinymce.min.js"
-        "bundles/imperivgallery/js/colpick.js"
-        filter="yui_js"
-    %}
-        <script src="{{ asset_url }}" type="text/javascript"></script>
-    {% endjavascripts %}
+    <script src="{{ asset("bundles/imperivgallery/js/colpick.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("bundles/imperivsite/js/tinymce/tinymce.min.js") }}" type="text/javascript"></script>
+        
     <script type="text/javascript">
         $(function() {
             tinymce.init({

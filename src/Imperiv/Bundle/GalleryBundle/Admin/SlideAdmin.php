@@ -16,7 +16,7 @@ class SlideAdmin extends Admin
         $formMapper->with('Slide')
             ->add('imageContent', 'sonata_type_model_list', [], ['link_parameters' => ['context' => 'default', 'provider' => 'sonata.media.provider.image']])
             ->add('parentGallery', 'entity', ['class' => 'Imperiv\Bundle\GalleryBundle\Entity\GalleryPage'])
-            ->add('displayOrder')
+            ->add('displayOrder', 'text', ['required' => false])
             ->add('textContent', 'textarea', ['required' => false, 'attr' => ['class' => 'tinymce']])
         ->end();
         
@@ -24,24 +24,20 @@ class SlideAdmin extends Admin
             $formMapper->with('Transparent Zone')
                 ->add('transparentZoneOpacity', 'number', [
                     'label' => 'Opacity',
-                    'required' => false,
-                    'data' => Slide::DEFAULT_TRANSP_ZONE_OPACITY
+                    'required' => false
                     ])
                 ->add('transparentZoneWidth', 'integer', [
                     'label' => 'Width',
-                    'required' => false,
-                    'data' => Slide::DEFAULT_TRANSP_ZONE_WIDTH
+                    'required' => false
                     ])
                 ->add('transparentZoneColor', 'text', [
                     'label' => 'Color',
                     'required' => false,
-                    'data' => Slide::DEFAULT_TRANSP_ZONE_COLOR,
                     'attr' => ['class' => 'colorpicker']
                     ])
                 ->add('transparentZonePosition', 'integer', [
                     'label' => 'Position',
-                    'required' => false,
-                    'data' => Slide::DEFAULT_TRANSP_ZONE_POSITION
+                    'required' => false
                     ])
             ->end();
         }
@@ -79,5 +75,10 @@ class SlideAdmin extends Admin
             
             $object->setDisplayOrder($lastSlideInGallery->getDisplayOrder() + 1);
         }
+        
+        $object->setTransparentZoneOpacity(Slide::DEFAULT_TRANSP_ZONE_OPACITY)
+                ->setTransparentZoneWidth(Slide::DEFAULT_TRANSP_ZONE_WIDTH)
+                ->setTransparentZoneColor(Slide::DEFAULT_TRANSP_ZONE_COLOR)
+                ->setTransparentZonePosition(Slide::DEFAULT_TRANSP_ZONE_POSITION);
     }
 }
