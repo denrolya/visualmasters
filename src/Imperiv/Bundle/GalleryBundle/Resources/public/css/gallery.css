@@ -42,11 +42,23 @@
   margin:20px 0 20px 0;
   padding:20px; 
   height: 100%;
+  z-index: 99;
+  transition: 0.2s;
 }
 
 .transp-zone>.transp-zone-content {
   display: table-cell; 
   vertical-align: middle;
+}
+
+.transp-zone:hover {
+    background: red;
+}
+
+.transp-zone-close {
+    position: absolute;
+    top: 3%; right: 5%;
+    cursor: pointer;
 }
 
 .transp-zone:nth-child(1) { left: 10% }

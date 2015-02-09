@@ -75,6 +75,13 @@ class Slide
      * @ORM\Column(name="display_order", type="string", length=6)
      */
     private $displayOrder;
+    
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="transparent_zone_closable", type="boolean", options={"default"=0})
+     */
+    private $transparentZoneClosable;
 
     /**
      * @ORM\ManyToOne(targetEntity="Imperiv\Bundle\GalleryBundle\Entity\GalleryPage", inversedBy="slides", cascade={"persist"})
@@ -277,5 +284,28 @@ class Slide
     public function getParentGallery()
     {
         return $this->parentGallery;
+    }
+
+    /**
+     * Set transparentZone
+     *
+     * @param boolean $transparentZone
+     * @return Slide
+     */
+    public function setTransparentZoneClosable($transparentZoneClosable)
+    {
+        $this->transparentZoneClosable = $transparentZoneClosable;
+
+        return $this;
+    }
+
+    /**
+     * Get transparentZone
+     *
+     * @return boolean 
+     */
+    public function getTransparentZoneClosable()
+    {
+        return $this->transparentZoneClosable;
     }
 }

@@ -6,9 +6,9 @@
 
         {% block stylesheets %}
             {% stylesheets
-                "@ImperivSiteBundle/Resources/public/css/bootstrap.min.css"
-                "@ImperivSiteBundle/Resources/public/css/main.css"
-                filter="yui_css"
+                "bundles/imperivsite/css/bootstrap.css"
+                "bundles/imperivsite/css/main.css"
+                filter="yui_css, cssrewrite"
             %}
                 <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
             {% endstylesheets %}

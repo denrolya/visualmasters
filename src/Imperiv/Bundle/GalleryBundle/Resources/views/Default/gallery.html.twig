@@ -49,6 +49,9 @@
                         {% endif %}
                     ">
                         <div class="transp-zone-content">
+                            {% if slide.transparentZoneClosable %}
+                                <span class="transp-zone-close glyphicon glyphicon-remove invisible"></span>
+                            {% endif %}
                             {{ slide.textContent | raw }}
                         </div>
                     </div>
@@ -92,4 +95,5 @@
             if (event.keyCode == 39) { $('#arrow_right').click(); event.preventDefault(); }
         });
     </script>
+    <script type="text/javascript" src="{{ asset("bundles/imperivgallery/js/gallery.js") }}"></script>
 {% endblock javascripts%}
