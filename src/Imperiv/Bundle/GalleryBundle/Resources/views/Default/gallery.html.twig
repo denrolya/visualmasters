@@ -96,9 +96,9 @@
         // Left/Right arrow keys to navigate
         $(document).keydown(function(event) {
             if (event.keyCode == 37) { $('#arrow_left').click(); event.preventDefault(); }
-            if (event.keyCode == 38) { $('.transp-zone-hide:not(.invisible)').click(); event.preventDefault(); }
+            if (event.keyCode == 38) { $('.current-slide .transp-zone-hide:not(.invisible)').click(); event.preventDefault(); }
             if (event.keyCode == 39) { $('#arrow_right').click(); event.preventDefault(); }
-            if (event.keyCode == 40) { $('.transp-zone-reveal:not(.invisible)').click(); event.preventDefault(); }
+            if (event.keyCode == 40) { $('.current-slide .transp-zone-reveal:not(.invisible)').click(); event.preventDefault(); }
         });
     </script>
     <script type="text/javascript" src="{{ asset("bundles/imperivgallery/js/gallery.js") }}"></script>
