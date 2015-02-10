@@ -309,4 +309,8 @@ class Slide
     {
         return $this->transparentZoneClosable;
     }
+    
+    public function __toString() {
+        return "Slide #" . (string)$this->getId();
+    }
 }

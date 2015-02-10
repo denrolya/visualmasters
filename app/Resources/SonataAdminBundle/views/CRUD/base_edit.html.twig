@@ -44,9 +44,9 @@
 
 {% block title %}
     {% if admin.id(object) is not null %}
-        {{ "title_edit"|trans({'%name%': admin.toString(object)|truncate(15) }, 'CCSonataAdminBundle') }}
+        {{ "Edit"|trans({'%name%': admin.toString(object)|truncate(15) }, 'CCSonataAdminBundle') }}
     {% else %}
-        {{ "title_create"|trans({}, 'SonataAdminBundle') }}
+        {{ "Create"|trans({}, 'SonataAdminBundle') }}
     {% endif %}
 {% endblock%}
 
