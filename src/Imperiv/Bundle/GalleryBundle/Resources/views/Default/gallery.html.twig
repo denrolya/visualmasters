@@ -49,11 +49,14 @@
                         {% endif %}
                     ">
                         <div class="transp-zone-content">
-                            {% if slide.transparentZoneClosable %}
-                                <span class="transp-zone-close glyphicon glyphicon-remove invisible"></span>
-                            {% endif %}
                             {{ slide.textContent | raw }}
                         </div>
+                        {% if slide.transparentZoneClosable %}
+                            <div class="transp-zone-controls">
+                                <span class="transp-zone-hide  glyphicon glyphicon-chevron-up"></span>
+                                <span class="transp-zone-reveal glyphicon glyphicon-chevron-down invisible"></span>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endif %}
             </div>

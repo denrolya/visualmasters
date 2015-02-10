@@ -51,15 +51,16 @@
   vertical-align: middle;
 }
 
-.transp-zone:hover {
-    background: red;
+.transp-zone-hide, .transp-zone-reveal {
+    position: absolute;
+    cursor: pointer;
+    left: 0%;
+    width:100%; height: 20px;
+    text-align: center;
 }
 
-.transp-zone-close {
-    position: absolute;
-    top: 3%; right: 5%;
-    cursor: pointer;
-}
+.transp-zone-hide { top: 90%; }
+.transp-zone-reveal { top: 37%; }
 
 .transp-zone:nth-child(1) { left: 10% }
 .transp-zone:nth-child(2) { left: 20% }
