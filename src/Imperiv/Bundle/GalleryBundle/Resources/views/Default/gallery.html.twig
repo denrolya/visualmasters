@@ -30,7 +30,7 @@
     </div>
 
     <div id="maximage">
-        {% for slide in gallery.slides %}
+        {% for slide in slides %}
             <div class="item">
                 {% media slide.imageContent, 'big' %}
                 {% if (slide.textContent is not null) %}
@@ -67,9 +67,9 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-        "bundles/imperivgallery/js/jquery.cycle.all.min.js"
+        "bundles/imperivgallery/js/jquery.cycle.all.js"
         "bundles/imperivgallery/js/jquery.easing.1.3.js"
-        "bundles/imperivgallery/js/jquery.maximage.min.js"
+        "bundles/imperivgallery/js/jquery.maximage.js"
         filter="yui_js"
     %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
@@ -85,10 +85,9 @@
                     prev: '#arrow_left',
                     next: '#arrow_right',
                     pause: 1,
-                    activePagerClass: "activeSlide",
                 },
                 onFirstImageLoaded: function(){
-                    jQuery('#maximage').fadeIn('fast');
+                    $('#maximage').fadeIn('fast');
                 }
             });
         });

@@ -17,6 +17,7 @@ class Slide
     const DEFAULT_TRANSP_ZONE_WIDTH = 280;
     const DEFAULT_TRANSP_ZONE_POSITION = 20;
     const DEFAULT_TRANSP_ZONE_COLOR = "000000";
+    const DEFAULT_TRANSP_ZONE_CLOSABLE = false;
     
     /**
      * @var integer

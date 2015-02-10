@@ -85,13 +85,14 @@ class SlideAdmin extends Admin
         $object->setTransparentZoneOpacity(Slide::DEFAULT_TRANSP_ZONE_OPACITY)
                ->setTransparentZoneWidth(Slide::DEFAULT_TRANSP_ZONE_WIDTH)
                ->setTransparentZoneColor(Slide::DEFAULT_TRANSP_ZONE_COLOR)
-               ->setTransparentZonePosition(Slide::DEFAULT_TRANSP_ZONE_POSITION);
+               ->setTransparentZonePosition(Slide::DEFAULT_TRANSP_ZONE_POSITION)
+               ->setTransparentZoneClosable(Slide::DEFAULT_TRANSP_ZONE_CLOSABLE);
         
         if ($object->getDisplayOrder() === NULL) {
-            $lastSlideInGallery = $em->getRepository(Slide::REPOSITORY_CLASS)
-                    ->findLastSlideInGallery($object->getParentGallery());
+            $displayOrder = $em->getRepository(Slide::REPOSITORY_CLASS)
+                    ->getNextSlidesIdInProvidedGallery($object->getParentGallery()->getId());
             
-            $object->setDisplayOrder($lastSlideInGallery->getDisplayOrder() + 1);
+            $object->setDisplayOrder($displayOrder);
         }
     }
 }
