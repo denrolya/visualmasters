@@ -1,5 +1,7 @@
 {% extends "::base.html.twig" %}
 
+{% set onIndexPage = app.request.get('_route') != 'index_page' %}
+
 {% block title %}
     {{ gallery.metaTitle }}
 {% endblock title %}
@@ -16,6 +18,8 @@
 {% endblock stylesheets %}
 
 {% block content %}
+    
+    {#-------------- Gallery controls --------------#}
     <div id="gallery_controls">
         <div id="arrow_left">
             {% image 'bundles/imperivgallery/images/arrow_left.png' %}
@@ -27,12 +31,20 @@
                 <img src="{{ asset_url }}" alt="Slide Right" />
             {% endimage %}
         </div>
+        
+        {% if onIndexPage %}
+            <div id="cycle-nav"><ul></ul></div>
+            <div class="toggle">Play/Pause</div>
+        {% endif %}
     </div>
+    {#-------------- Gallery controls --------------#}
 
     <div id="maximage">
         {% for slide in slides %}
             <div class="item">
                 {% media slide.imageContent, 'big' %}
+                
+                {#-------------- In-slide content --------------#}
                 {% if (slide.textContent is not null) %}
                     <div class="transp-zone" style="
                          background: #{{ slide.transparentZoneColor }};
@@ -59,6 +71,8 @@
                         {% endif %}
                     </div>
                 {% endif %}
+                {#-------------- In-slide content --------------#}
+                
             </div>
         {% endfor %}
     </div>
@@ -76,15 +90,23 @@
     {% endjavascripts %}
 
     <script type="text/javascript" charset="utf-8">
+        var slidesTimeout = {{ gallery.slidesTimeout }}
         $(function(){
             $('#maximage').maximage({
                 cycleOptions: {
                     fx:'fade',
                     speed: 1000,
-                    timeout: {{ gallery.slidesTimeout }},
+                    timeout: slidesTimeout,
                     prev: '#arrow_left',
                     next: '#arrow_right',
                     pause: 1,
+                    {% if onIndexPage %}
+                        pager: '#cycle-nav ul',
+                        pagerAnchorBuilder: function(idx, slide) {
+                            var imgsrc = jQuery.Slides[idx].url;
+                            return '<li><a href="#" rel="nofollow"><img src=' + imgsrc + ' /></a></li>';
+                        }
+                    {% endif %}
                 },
                 onFirstImageLoaded: function(){
                     $('#maximage').fadeIn('fast');

@@ -69,3 +69,57 @@
 .transp-zone:nth-child(5) { left: 59% }
 .transp-zone:nth-child(6) { left: 70% }
 .transp-zone:nth-child(7) { right: 10% }
+
+/*=========================================
+=            Slides thumbnails            =
+=========================================*/
+#cycle-nav {
+  float:left;
+  position: absolute;
+  bottom: 22px; right: 120px;
+}
+
+#cycle-nav ul {
+    list-style-type: none;
+}
+
+#cycle-nav ul li {
+    transition: .4s;
+    border: 2px solid #ffc;
+    float: left;
+    margin: 4px;
+    padding: 2px;
+    height: 55px;
+    opacity: 0.4;
+}
+
+#cycle-nav ul li:hover {
+  opacity: 0.6;
+  border: 2px solid #fff;
+}
+
+#cycle-nav ul li a {
+    float:left;
+    margin:2px;
+    width: 80px; height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+#cycle-nav ul li a img{
+    width: 80px;
+    flex-shrink:0;
+    min-width:100%;
+    min-height:100%
+}
+
+/*#cycle-nav ul li a img {
+    text-indent: 9999999;
+}*/
+
+#cycle-nav ul li.activeSlide {
+    border:2px solid #3a8ead;
+    opacity: 0.8;
+}

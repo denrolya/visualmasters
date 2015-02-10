@@ -89,10 +89,18 @@ class SlideAdmin extends Admin
                ->setTransparentZoneClosable(Slide::DEFAULT_TRANSP_ZONE_CLOSABLE);
         
         if ($object->getDisplayOrder() === NULL) {
-            $displayOrder = $em->getRepository(Slide::REPOSITORY_CLASS)
-                    ->getNextSlidesIdInProvidedGallery($object->getParentGallery()->getId());
+            $firstSlideIsSet = $em->getRepository(Slide::REPOSITORY_CLASS)->findOneBy([
+                'parentGallery' => $object->getParentGallery(), 
+                'displayOrder' => 1]) === NULL;
             
-            $object->setDisplayOrder($displayOrder);
+            if (!$firstSlideIsSet) {
+                $displayOrder = $em->getRepository(Slide::REPOSITORY_CLASS)
+                        ->findNextSlidesIdInProvidedGallery($object->getParentGallery());
+
+                $object->setDisplayOrder($displayOrder);
+            } else {
+                $object->setDisplayOrder(1);
+            }
         }
     }
 }

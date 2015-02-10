@@ -4,11 +4,6 @@ namespace Imperiv\Bundle\GalleryBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
-use Imperiv\Bundle\GalleryBundle\Entity\GalleryPage,
-    Imperiv\Bundle\GalleryBundle\Entity\Slide;
-
-use Doctrine\ORM\Query\ResultSetMappingBuilder;
-
 /**
  * SlideRepository
  */
@@ -28,7 +23,7 @@ class SlideRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
     
-    public function findNextSlidesIdInProvidedGallery($galleryPageId)
+    public function findNextSlidesIdInProvidedGallery(GalleryPage $galleryPage)
     {
         $em = $this->getEntityManager();
         $sql = "SELECT MIN(`s1`.`display_order`) + 1 AS `do` FROM `slides` AS `s1` "
@@ -36,10 +31,10 @@ class SlideRepository extends EntityRepository
                 . "WHERE `s2`.`display_order` is NULL AND `s1`.`gallery_page` = :galleryPage";
         $connection = $em->getConnection();
         $statement = $connection->prepare($sql);
-        $statement->bindValue('galleryPage', $galleryPageId);
+        $statement->bindValue('galleryPage', $galleryPage->getId());
         $statement->execute();
         $result = $statement->fetchAll()[0]['do'];
         
-        return $result;
+        return $result === NULL ? 2 : $result;
     }    
 }
