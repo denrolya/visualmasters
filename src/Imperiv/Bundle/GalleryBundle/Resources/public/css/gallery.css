@@ -1,13 +1,13 @@
-/*===============================
-=            Gallery            =
-===============================*/
+/*========================================
+=            Gallery controls            =
+========================================*/
 #arrow_left, #arrow_right {
   position: absolute;
+  cursor: pointer;
   bottom:30px; right:30px;
   width:20px;
   z-index:1000;
   transition: 0.2s;
-  cursor: pointer;
 }
 
 #arrow_left {
@@ -32,11 +32,11 @@
 
 #toggle_slideshow {
     position: absolute;
+    cursor: pointer;
     bottom: 13px; right: 61px;
     transition: 0.2s;
     font-size: 50px;
-    cursor: pointer;
-    color: white;
+    color: #D3D3D3;
 }
 
 #toggle_slideshow:hover {
@@ -45,31 +45,6 @@
 
 #toggle_slideshow:active {
     bottom: 9px;
-}
-
-.transp-zone {
-  position: absolute; top: 3px;
-  display: table;
-  overflow: hidden;
-  color:#F8F8FF;
-  font-size:14px;
-  text-align: justify;
-  font-family: Arial;
-  line-height: 20px;
-  -webkit-font-smoothing:antialiased;
-  -webkit-box-shadow: 0px 0px 6px 0px rgba(50, 50, 50, 0.72);
-  -moz-box-shadow:    0px 0px 6px 0px rgba(50, 50, 50, 0.72);
-  box-shadow:         0px 0px 6px 0px rgba(50, 50, 50, 0.72);
-  margin:20px 0 20px 0;
-  padding:20px; 
-  height: 100%;
-  z-index: 99;
-  transition: 0.2s;
-}
-
-.transp-zone>.transp-zone-content {
-  display: table-cell; 
-  vertical-align: middle;
 }
 
 .transp-zone-hide, .transp-zone-reveal {
@@ -82,14 +57,6 @@
 
 .transp-zone-hide { top: 90%; }
 .transp-zone-reveal { top: 37%; }
-
-.transp-zone:nth-child(1) { left: 10% }
-.transp-zone:nth-child(2) { left: 20% }
-.transp-zone:nth-child(3) { left: 31% }
-.transp-zone:nth-child(4) { left: 45% }
-.transp-zone:nth-child(5) { left: 59% }
-.transp-zone:nth-child(6) { left: 70% }
-.transp-zone:nth-child(7) { right: 10% }
 
 /*=========================================
 =            Slides thumbnails            =
@@ -140,3 +107,36 @@
     border:2px solid #3a8ead;
     opacity: 0.8;
 }
+
+.transp-zone {
+  position: absolute; top: 3px;
+  display: table;
+  overflow: hidden;
+  color:#F8F8FF;
+  font-size:14px;
+  text-align: justify;
+  font-family: Arial;
+  line-height: 20px;
+  -webkit-font-smoothing:antialiased;
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(50, 50, 50, 0.72);
+  -moz-box-shadow:    0px 0px 6px 0px rgba(50, 50, 50, 0.72);
+  box-shadow:         0px 0px 6px 0px rgba(50, 50, 50, 0.72);
+  margin:20px 0 20px 0;
+  padding:20px; 
+  height: 100%;
+  z-index: 99;
+  transition: 0.2s;
+}
+
+.transp-zone>.transp-zone-content {
+  display: table-cell; 
+  vertical-align: middle;
+}
+
+.transp-zone:nth-child(1) { left: 10% }
+.transp-zone:nth-child(2) { left: 20% }
+.transp-zone:nth-child(3) { left: 31% }
+.transp-zone:nth-child(4) { left: 45% }
+.transp-zone:nth-child(5) { left: 59% }
+.transp-zone:nth-child(6) { left: 70% }
+.transp-zone:nth-child(7) { right: 10% }
