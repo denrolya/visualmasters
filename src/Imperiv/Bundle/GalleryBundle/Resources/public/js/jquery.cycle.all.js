@@ -832,6 +832,8 @@
     }
     $.fn.cycle.commonReset = function(curr, next, opts, w, h, rev) {
         $(opts.elements).not(curr).hide();
+        $(curr).removeClass('current-slide');
+        $(next).addClass('current-slide');
         if (typeof opts.cssBefore.opacity == "undefined") {
             opts.cssBefore.opacity = 1;
         }
@@ -882,8 +884,6 @@
         fade: function($cont, $slides, opts) {
             $slides.not(":eq(" + opts.currSlide + ")").css("opacity", 0);
             opts.before.push(function(curr, next, opts) {
-                $(curr).removeClass('current-slide');
-                $(next).addClass('current-slide');
                 $.fn.cycle.commonReset(curr, next, opts);
                 opts.cssBefore.opacity = 0;
             });

@@ -1,6 +1,6 @@
 {% extends "::base.html.twig" %}
 
-{% set onIndexPage = app.request.get('_route') != 'index_page' %}
+{% set onIndexPage = app.request.get('_route') == 'index_page' %}
 
 {% block title %}
     {{ gallery.metaTitle }}
@@ -21,7 +21,7 @@
     
     {#-------------- Gallery controls --------------#}
     <div id="gallery_controls">
-        <div id="arrow_left">
+        <div id="arrow_left" {{ not onIndexPage ? 'class="toggle-follows"' }}>
             {% image 'bundles/imperivgallery/images/arrow_left.png' %}
                 <img src="{{ asset_url }}" alt="Slide Left" />
             {% endimage %}
@@ -32,9 +32,9 @@
             {% endimage %}
         </div>
         
-        {% if onIndexPage %}
-            <div id="cycle-nav"><ul></ul></div>
-            <div class="toggle">Play/Pause</div>
+        {% if not onIndexPage %}
+            <div id="nav_slideshow"><ul></ul></div>
+            <div id="toggle_slideshow"><span class="glyphicon glyphicon-pause"></span></div>
         {% endif %}
     </div>
     {#-------------- Gallery controls --------------#}
@@ -90,37 +90,8 @@
     {% endjavascripts %}
 
     <script type="text/javascript" charset="utf-8">
-        var slidesTimeout = {{ gallery.slidesTimeout }}
-        $(function(){
-            $('#maximage').maximage({
-                cycleOptions: {
-                    fx:'fade',
-                    speed: 1000,
-                    timeout: slidesTimeout,
-                    prev: '#arrow_left',
-                    next: '#arrow_right',
-                    pause: 1,
-                    {% if onIndexPage %}
-                        pager: '#cycle-nav ul',
-                        pagerAnchorBuilder: function(idx, slide) {
-                            var imgsrc = jQuery.Slides[idx].url;
-                            return '<li><a href="#" rel="nofollow"><img src=' + imgsrc + ' /></a></li>';
-                        }
-                    {% endif %}
-                },
-                onFirstImageLoaded: function(){
-                    $('#maximage').fadeIn('fast');
-                }
-            });
-        });
-
-        // Left/Right arrow keys to navigate
-        $(document).keydown(function(event) {
-            if (event.keyCode == 37) { $('#arrow_left').click(); event.preventDefault(); }
-            if (event.keyCode == 38) { $('.current-slide .transp-zone-hide:not(.invisible)').click(); event.preventDefault(); }
-            if (event.keyCode == 39) { $('#arrow_right').click(); event.preventDefault(); }
-            if (event.keyCode == 40) { $('.current-slide .transp-zone-reveal:not(.invisible)').click(); event.preventDefault(); }
-        });
+        var slidesTimeout = {{ gallery.slidesTimeout }},
+            onIndexPage = {{ onIndexPage|number_format }};
     </script>
     <script type="text/javascript" src="{{ asset("bundles/imperivgallery/js/gallery.js") }}"></script>
 {% endblock javascripts%}
