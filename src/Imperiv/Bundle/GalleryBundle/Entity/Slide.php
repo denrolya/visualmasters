@@ -43,34 +43,6 @@ class Slide
     private $textContent;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="transparent_zone_opacity", type="float")
-     */
-    private $transparentZoneOpacity;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="transparent_zone_width", type="integer")
-     */
-    private $transparentZoneWidth;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="transparent_zone_position", type="integer")
-     */
-    private $transparentZonePosition;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="transparent_zone_color", type="string")
-     */
-    private $transparentZoneColor;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="display_order", type="string", length=6)
@@ -78,18 +50,17 @@ class Slide
     private $displayOrder;
     
     /**
-     * @var boolean
-     * 
-     * @ORM\Column(name="transparent_zone_closable", type="boolean", options={"default"=0})
-     */
-    private $transparentZoneClosable;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Imperiv\Bundle\GalleryBundle\Entity\GalleryPage", inversedBy="slides", cascade={"persist"})
      * @ORM\JoinColumn(name="gallery_page", referencedColumnName="id")
      */
     private $parentGallery;
-
+    
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="transparent_zone_params", type="string", length=255)
+     */
+    private $transparentZoneParameters;
 
     /**
      * Get id
@@ -148,98 +119,6 @@ class Slide
     }
 
     /**
-     * Set transparentZoneOpacity
-     *
-     * @param float $transparentZoneOpacity
-     * @return Slide
-     */
-    public function setTransparentZoneOpacity($transparentZoneOpacity)
-    {
-        $this->transparentZoneOpacity = $transparentZoneOpacity;
-
-        return $this;
-    }
-
-    /**
-     * Get transparentZoneOpacity
-     *
-     * @return float 
-     */
-    public function getTransparentZoneOpacity()
-    {
-        return $this->transparentZoneOpacity;
-    }
-
-    /**
-     * Set transparentZoneWidth
-     *
-     * @param integer $transparentZoneWidth
-     * @return Slide
-     */
-    public function setTransparentZoneWidth($transparentZoneWidth)
-    {
-        $this->transparentZoneWidth = $transparentZoneWidth;
-
-        return $this;
-    }
-
-    /**
-     * Get transparentZoneWidth
-     *
-     * @return integer 
-     */
-    public function getTransparentZoneWidth()
-    {
-        return $this->transparentZoneWidth;
-    }
-
-    /**
-     * Set transparentZonePosition
-     *
-     * @param integer $transparentZonePosition
-     * @return Slide
-     */
-    public function setTransparentZonePosition($transparentZonePosition)
-    {
-        $this->transparentZonePosition = $transparentZonePosition;
-
-        return $this;
-    }
-
-    /**
-     * Get transparentZonePosition
-     *
-     * @return integer 
-     */
-    public function getTransparentZonePosition()
-    {
-        return $this->transparentZonePosition;
-    }
-
-    /**
-     * Set transparentZoneColor
-     *
-     * @param string $transparentZoneColor
-     * @return Slide
-     */
-    public function setTransparentZoneColor($transparentZoneColor)
-    {
-        $this->transparentZoneColor = $transparentZoneColor;
-
-        return $this;
-    }
-
-    /**
-     * Get transparentZoneColor
-     *
-     * @return string 
-     */
-    public function getTransparentZoneColor()
-    {
-        return $this->transparentZoneColor;
-    }
-
-    /**
      * Set displayOrder
      *
      * @param integer $displayOrder
@@ -261,8 +140,6 @@ class Slide
     {
         return $this->displayOrder;
     }
-
-
 
     /**
      * Set parentGallery
@@ -286,28 +163,28 @@ class Slide
     {
         return $this->parentGallery;
     }
-
+    
     /**
-     * Set transparentZone
+     * Set transparentZoneParameters
      *
-     * @param boolean $transparentZone
+     * @param string $transparentZoneParameters
      * @return Slide
      */
-    public function setTransparentZoneClosable($transparentZoneClosable)
+    public function setTransparentZoneParameters($transparentZoneParameters)
     {
-        $this->transparentZoneClosable = $transparentZoneClosable;
+        $this->transparentZoneParameters = $transparentZoneParameters;
 
         return $this;
     }
 
     /**
-     * Get transparentZone
+     * Get transparentZoneParameters
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getTransparentZoneClosable()
+    public function getTransparentZoneParameters()
     {
-        return $this->transparentZoneClosable;
+        return $this->transparentZoneParameters;
     }
     
     public function __toString() {

@@ -29,27 +29,46 @@ class SlideAdmin extends Admin
         ->end();
         
         if ($this->getSubject()->getTextContent() !== NULL) {
+            $transparentZoneParameters = unserialize($this->getSubject()->getTransparentZoneParameters());
             $formMapper->with('Transparent Zone')
-                ->add('transparentZoneOpacity', 'number', [
+                ->add('orientation', 'choice', [
+                    'choices' => [
+                        1 => 'Horizontal',
+                        2 => 'Vertical'
+                    ],
+                    'data' => $transparentZoneParameters['orientation'],
+                    'mapped' => false
+                    ])
+            ->add('size', 'integer', [
+                    'label' => 'Height/Width',
+                    'required' => false,
+                    'data' => $transparentZoneParameters['size'],
+                    'mapped' => false
+                    ])
+            ->add('opacity', 'number', [
                     'label' => 'Opacity',
-                    'required' => false
+                    'required' => false,
+                    'data' => $transparentZoneParameters['opacity'],
+                    'mapped' => false
                     ])
-                ->add('transparentZoneWidth', 'integer', [
-                    'label' => 'Width',
-                    'required' => false
-                    ])
-                ->add('transparentZoneColor', 'text', [
+                ->add('color', 'text', [
                     'label' => 'Color',
                     'required' => false,
-                    'attr' => ['class' => 'colorpicker']
+                    'attr' => ['class' => 'colorpicker'],
+                    'data' => $transparentZoneParameters['color'],
+                    'mapped' => false
                     ])
-                ->add('transparentZonePosition', 'integer', [
+                ->add('position', 'integer', [
                     'label' => 'Position',
-                    'required' => false
+                    'required' => false,
+                    'data' => $transparentZoneParameters['position'],
+                    'mapped' => false
                     ])
-                ->add('transparentZoneClosable', 'checkbox', [
+                ->add('closable', 'checkbox', [
                     'label' => 'Closable',
-                    'required' => false
+                    'required' => false,
+                    'data' => $transparentZoneParameters['closable'],
+                    'mapped' => false
                     ])
             ->end();
         }
@@ -69,10 +88,6 @@ class SlideAdmin extends Admin
             ->add('displayOrder')
             ->addIdentifier('imageContent')
             ->add('textContent')
-            ->add('transparentZoneOpacity')
-            ->add('transparentZoneWidth')
-            ->add('transparentZoneColor')
-            ->add('transparentZonePosition')
         ;
     }
     
@@ -81,17 +96,37 @@ class SlideAdmin extends Admin
         
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
         
+        $defaultParams = [
+            'opacity' => Slide::DEFAULT_TRANSP_ZONE_OPACITY,
+            'orientation' => 1,
+            'size' => Slide::DEFAULT_TRANSP_ZONE_WIDTH,
+            'color' => Slide::DEFAULT_TRANSP_ZONE_COLOR,
+            'position' => Slide::DEFAULT_TRANSP_ZONE_POSITION,
+            'closable' => Slide::DEFAULT_TRANSP_ZONE_CLOSABLE
+        ];
+        
+        $object->setTransparentZoneParameters(serialize($defaultParams));
+        
         // Set default transparent zone parameters
-        $object->setTransparentZoneOpacity(Slide::DEFAULT_TRANSP_ZONE_OPACITY)
-               ->setTransparentZoneWidth(Slide::DEFAULT_TRANSP_ZONE_WIDTH)
-               ->setTransparentZoneColor(Slide::DEFAULT_TRANSP_ZONE_COLOR)
-               ->setTransparentZonePosition(Slide::DEFAULT_TRANSP_ZONE_POSITION)
-               ->setTransparentZoneClosable(Slide::DEFAULT_TRANSP_ZONE_CLOSABLE);
         
         if ($object->getDisplayOrder() === NULL) {
             $displayOrder = $em->getRepository(Slide::REPOSITORY_CLASS)
                     ->findNextSlidesIdInProvidedGallery($object->getParentGallery());
 
-            $object->setDisplayOrder($displayOrder);}
+            $object->setDisplayOrder($displayOrder);
+        }
+    }
+    
+    public function preUpdate($object)
+    {
+        $transparentZoneParameters = [];
+
+        $transparentZoneProperties = ['orientation', 'size', 'opacity', 'color', 'position', 'closable'];
+
+        foreach ($transparentZoneProperties as $property) {
+            $transparentZoneParameters[$property] = $this->getForm()->get($property)->getData();
+        }
+
+        $object->setTransparentZoneParameters(serialize($transparentZoneParameters));
     }
 }

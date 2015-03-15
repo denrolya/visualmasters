@@ -46,24 +46,25 @@
                 
                 {#-------------- In-slide content --------------#}
                 {% if (slide.textContent is not null) %}
+                    {% set transparentZoneParameters = slide.transparentZoneParameters|unserialize %}
                     <div class="transp-zone" style="
-                         background: #{{ slide.transparentZoneColor }};
-                         opacity: {{ slide.transparentZoneOpacity }};
-                         width: {{ slide.transparentZoneWidth }}px;
+                         background: #{{ transparentZoneParameters.color }};
+                         opacity: {{ transparentZoneParameters.opacity }};
+                         width: {{ transparentZoneParameters.size }}px;
                          {% if loop.last %}
-                            margin-right: -{{ (slide.transparentZoneWidth/2)-40 }}px;
+                            margin-right: -{{ (transparentZoneParameters.size/2)-40 }}px;
                         {% else %}
-                            margin-left: -{{ (slide.transparentZoneWidth/2)-40 }}px;
+                            margin-left: -{{ (transparentZoneParameters.size/2)-40 }}px;
                         {% endif %}
                         
-                        {% if slide.transparentZonePosition != null %}
-                            left: {{ slide.transparentZonePosition }}%;
+                        {% if transparentZoneParameters.position != null %}
+                            left: {{ transparentZoneParameters.position }}%;
                         {% endif %}
                     ">
                         <div class="transp-zone-content">
                             {{ slide.textContent | raw }}
                         </div>
-                        {% if slide.transparentZoneClosable %}
+                        {% if transparentZoneParameters.closable %}
                             <div class="transp-zone-controls">
                                 <span class="transp-zone-hide  glyphicon glyphicon-chevron-up"></span>
                                 <span class="transp-zone-reveal glyphicon glyphicon-chevron-down invisible"></span>

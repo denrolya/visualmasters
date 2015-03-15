@@ -13,7 +13,7 @@ $(document).ready(function() {
     if (!onIndexPage) {
         maximageCycleOptions.pager = '#nav_slideshow ul';
         maximageCycleOptions.pagerAnchorBuilder = function(idx, slide) {
-            var imgsrc = jQuery.Slides[idx].url;
+            var imgsrc = jQuery.Slides[idx].url.replace("big", "small");
             return '<li><a href="#" rel="nofollow"><img src=' + imgsrc + ' /></a></li>';
         };
     }
