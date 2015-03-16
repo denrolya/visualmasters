@@ -47,20 +47,19 @@
                 {#-------------- In-slide content --------------#}
                 {% if (slide.textContent is not null) %}
                     {% set transparentZoneParameters = slide.transparentZoneParameters|unserialize %}
-                    <div class="transp-zone" style="
-                         background: #{{ transparentZoneParameters.color }};
-                         opacity: {{ transparentZoneParameters.opacity }};
-                         width: {{ transparentZoneParameters.size }}px;
-                         {% if loop.last %}
-                            margin-right: -{{ (transparentZoneParameters.size/2)-40 }}px;
-                        {% else %}
-                            margin-left: -{{ (transparentZoneParameters.size/2)-40 }}px;
-                        {% endif %}
-                        
-                        {% if transparentZoneParameters.position != null %}
-                            left: {{ transparentZoneParameters.position }}%;
-                        {% endif %}
-                    ">
+                    {% set isTransparentZoneVertical = transparentZoneParameters.orientation == 1 %}
+                    {% set transparentZoneStyle = "background: #" ~ transparentZoneParameters.color ~ "; opacity: " ~ transparentZoneParameters.opacity ~ "; " %}
+                    {% if isTransparentZoneVertical %}
+                        {% set transparentZoneStyle =  transparentZoneStyle ~ "width: " ~ transparentZoneParameters.size ~ "px;" ~
+                            (loop.last ? "margin-right: -" : "margin-left: -") ~ ((transparentZoneParameters.size/2)-40) ~ "px;" ~
+                            "left: " ~ transparentZoneParameters.size ~ "px;" %}
+                    {% else %}
+                        {% set transparentZoneStyle =  transparentZoneStyle ~ "height: " ~ transparentZoneParameters.size ~ "px;" ~
+                            "top: " ~ transparentZoneParameters.size ~ "px;" %}
+                    {% endif %}
+                    {% set transparentZoneStyle = transparentZoneStyle ~ (isTransparentZoneVertical ?  : "top: " ) ~ transparentZoneParameters.position ~ "%;" %}
+                    <div class="transp-zone {{ isTransparentZoneVertical ? "transp-zone-vertical" : "transp-zone-horizontal" }}"
+                         style="{{ transparentZoneStyle }}">
                         <div class="transp-zone-content">
                             {{ slide.textContent | raw }}
                         </div>

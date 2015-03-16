@@ -3,7 +3,7 @@ var playSpan = "<span class=\"glyphicon glyphicon-play\"></span>",
     
 $(document).ready(function() {
     maximageCycleOptions = {
-        fx: 'scrollHorz',
+        fx: 'fade',
         speed: 4000,
         timeout: slidesTimeout,
         prev: '#arrow_left',
@@ -20,7 +20,7 @@ $(document).ready(function() {
 
     $('#maximage').maximage({
         cycleOptions: maximageCycleOptions,
-        cssTransitions: false,
+//        cssTransitions: false,
         onFirstImageLoaded: function(){
             $('#maximage').fadeIn('fast');
         }

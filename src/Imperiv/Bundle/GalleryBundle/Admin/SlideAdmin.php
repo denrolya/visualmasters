@@ -33,8 +33,8 @@ class SlideAdmin extends Admin
             $formMapper->with('Transparent Zone')
                 ->add('orientation', 'choice', [
                     'choices' => [
-                        1 => 'Horizontal',
-                        2 => 'Vertical'
+                        1 => 'Vertical',
+                        2 => 'Horizontal',
                     ],
                     'data' => $transparentZoneParameters['orientation'],
                     'mapped' => false
