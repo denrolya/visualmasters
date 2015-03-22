@@ -86,7 +86,7 @@ class SlideAdmin extends Admin
             ->addIdentifier('id')
             ->addIdentifier('parentGallery')
             ->add('displayOrder')
-            ->addIdentifier('imageContent')
+            ->addIdentifier('imageContent', NULL, ['template' => 'ImperivGalleryBundle:Admin:fields/image_preview.html.twig'])
             ->add('textContent')
         ;
     }

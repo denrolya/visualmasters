@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+#    - { resource: sonata_classification.yml }
 
 framework:
     #esi:             ~
@@ -58,6 +59,8 @@ doctrine:
                 mappings:
                     ApplicationSonataMediaBundle: ~
                     SonataMediaBundle: ~
+                    ApplicationSonataClassificationBundle: ~
+                    SonataClassificationBundle: ~
 
 swiftmailer:
     transport: "%mailer_transport%"

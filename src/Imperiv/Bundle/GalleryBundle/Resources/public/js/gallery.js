@@ -5,7 +5,7 @@ $(document).ready(function() {
     maximageCycleOptions = {
         fx: 'fade',
         speed: 4000,
-        timeout: slidesTimeout,
+        timeout: slidesTimeout*10000,
         prev: '#arrow_left',
         next: '#arrow_right',
     };
@@ -26,28 +26,56 @@ $(document).ready(function() {
         }
     });
         
-    $(".transp-zone-hide").on('click', function(event) {
+    $(".transp-zone-vertical .transp-zone-hide").on('click', function(event) {
         transpZone = $(this).parent().parent();
         transpZoneContent = transpZone.children(".transp-zone-content");
         transpZoneControls = $(this).parent();
-        console.log(transpZoneContent);
         transpZoneControls.children(".transp-zone-hide").toggleClass("invisible");
+        transpZoneContent.toggleClass("invisible");
         transpZone.animate( { height:"20px" }, { queue:false, duration:500 , complete: function() {
             transpZoneControls.children(".transp-zone-reveal").toggleClass("invisible");
-            transpZoneContent.toggleClass("invisible");
         }});
+
     });
     
-    $(".transp-zone-reveal").on('click', function(event) {
+    $(".transp-zone-vertical .transp-zone-reveal").on('click', function(event) {
         transpZone = $(this).parent().parent();
         transpZoneContent = transpZone.children(".transp-zone-content");
         transpZoneControls = $(this).parent();
-        console.log(transpZoneContent);
         transpZoneControls.children(".transp-zone-reveal").toggleClass("invisible");
         transpZone.animate( { height:"100%" }, { queue:false, duration:500 , complete: function() {
             transpZoneControls.children(".transp-zone-hide").toggleClass("invisible");
             transpZoneContent.toggleClass("invisible");
         }});
+    });
+    
+    $(".transp-zone-horizontal .transp-zone-hide").on('click', function(event) {
+        transpZone = $(this).parent().parent();
+        transpZoneContent = transpZone.children(".transp-zone-content");
+        transpZoneControls = $(this).parent();
+        transpZoneControls.children(".transp-zone-hide").toggleClass("invisible");
+        transpZoneContent.toggleClass("invisible");
+        transpZone.animate( { height:"20px" }, { queue:false, duration:500 , complete: function() {
+            transpZoneControls.children(".transp-zone-reveal").toggleClass("invisible");
+        }});
+        transpZone.css("display","block");
+        transpZone.animate({ top: "3px" }, 500);
+    });
+    
+    $(".transp-zone-horizontal .transp-zone-reveal").on('click', function(event) {
+        transpZone = $(this).parent().parent();
+        transpZoneContent = transpZone.children(".transp-zone-content");
+        transpZoneControls = $(this).parent();
+        transpZonePosition = transpZone.attr('data-position');
+        transpZoneSize = transpZone.attr('data-size');
+        
+        transpZoneControls.children(".transp-zone-reveal").toggleClass("invisible");
+        transpZoneContent.toggleClass("invisible");
+        transpZone.animate( { height: transpZoneSize + "px" }, { queue:false, duration:500 , complete: function() {
+            transpZoneControls.children(".transp-zone-hide").toggleClass("invisible");
+        }});
+        transpZone.css("display","table");
+        transpZone.animate({ top: transpZonePosition + "%" }, 500);
     });
     
     $("#toggle_slideshow").on('click', function(event) {
