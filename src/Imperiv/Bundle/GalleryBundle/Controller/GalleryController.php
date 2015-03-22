@@ -6,10 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Imperiv\Bundle\GalleryBundle\Entity\GalleryPage,
-    Imperiv\Bundle\GalleryBundle\Entity\Slide;
-
-class DefaultController extends Controller
+class GalleryController extends Controller
 {
     const HOMEPAGE_NAME = "home";
     
