@@ -13,26 +13,32 @@ class GalleryPageAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('pageName')
+        $formMapper
+                ->add('pageName')
                 ->add('slidesTimeout', 'text', ['data' => GalleryPage::DEFAUlT_TIMEOUT])
-                ->add('metaTitle')
+                ->add('metaTitle', null, ['label' => 'Title'])
                 ->add('metaKeywords', 'text', ['required' => false])
                 ->add('metaDescription', 'text', ['required' => false]);
     }
     
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('pageName')
+        $datagridMapper
+                ->add('pageName')
                 ->add('metaTitle')
                 ->add('slidesTimeout');
     }
     
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('pageName')
-            ->add('metaTitle')
-            ->add('slidesTimeout')
-            ->add('metaKeywords')
-            ->add('metaDescription');
+        $listMapper
+                ->addIdentifier('metaTitle', null, ['label' => 'Title'])
+                ->addIdentifier('pageName', null, [
+                    'label' => 'Link',
+                    'template' => 'ImperivGalleryBundle:Admin:fields/page_link.html.twig'
+                ])
+                ->add('slidesTimeout')
+                ->add('metaKeywords')
+                ->add('metaDescription');
     }
 }

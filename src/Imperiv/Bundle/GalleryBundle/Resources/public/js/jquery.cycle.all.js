@@ -56,6 +56,7 @@
             var els = $slides.get();
             if (els.length < 2) {
                 log("terminating; too few slides: " + els.length);
+                $slides.addClass('current-slide');
                 return;
             }
             var opts2 = buildOptions($cont, $slides, els, opts, o);

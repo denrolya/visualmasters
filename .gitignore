@@ -9,6 +9,7 @@
 /build/
 /bin/
 /composer.phar
+/vendor/
 
 /.phpintel/
 /todo

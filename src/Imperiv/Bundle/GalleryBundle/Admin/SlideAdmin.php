@@ -76,18 +76,18 @@ class SlideAdmin extends Admin
     
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('parentGallery')
-                ->add('displayOrder');
+        $datagridMapper
+                ->add('parentGallery')
+                ->add('displayOrder')
+                ->add('textContent');
     }
     
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->addIdentifier('parentGallery')
             ->add('displayOrder')
-            ->addIdentifier('imageContent', NULL, ['template' => 'ImperivGalleryBundle:Admin:fields/image_preview.html.twig'])
-            ->add('textContent')
+            ->addIdentifier('content', null, ['template' => 'ImperivGalleryBundle:Admin:fields/image_preview.html.twig'])
+            ->addIdentifier('parentGallery')
         ;
     }
     

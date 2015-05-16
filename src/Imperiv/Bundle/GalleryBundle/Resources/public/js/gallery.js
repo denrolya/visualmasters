@@ -58,7 +58,6 @@ $(document).ready(function() {
         transpZone.animate( { height:"20px" }, { queue:false, duration:500 , complete: function() {
             transpZoneControls.children(".transp-zone-reveal").toggleClass("invisible");
         }});
-        transpZone.css("display","block");
         transpZone.animate({ top: "3px" }, 500);
     });
     

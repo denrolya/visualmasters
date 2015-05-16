@@ -72,8 +72,8 @@ swiftmailer:
 sonata_admin:
     title: Imperiumdesign
 #    title_logo: bundles/acmedemo/img/fancy_acme_logo.png
-#    templates:
-#        layout:  ::standard_layout.html.twig
+    templates:
+        short_object_description: ::Admin/Helper/short-object-description.html.twig
     dashboard:
         groups:
             Galleries:
