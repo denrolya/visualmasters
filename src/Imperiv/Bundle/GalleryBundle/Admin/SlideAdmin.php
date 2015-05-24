@@ -85,9 +85,9 @@ class SlideAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->addIdentifier('parentGallery')
             ->add('displayOrder')
             ->addIdentifier('content', null, ['template' => 'ImperivGalleryBundle:Admin:fields/image_preview.html.twig'])
-            ->addIdentifier('parentGallery')
         ;
     }
     
