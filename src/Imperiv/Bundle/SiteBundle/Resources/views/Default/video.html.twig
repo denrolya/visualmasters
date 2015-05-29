@@ -1,0 +1,7 @@
+{% extends "::base.html.twig" %}
+
+{% block content %}
+    {% for video in videos %}
+        {% thumbnail video.video, 'small' %}
+    {% endfor %}
+{% endblock content %}
