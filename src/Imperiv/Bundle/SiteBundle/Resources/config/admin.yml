@@ -1,0 +1,9 @@
+services:
+    sonata.admin.video:
+        class: Imperiv\Bundle\SiteBundle\Admin\VideoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Galleries", label: "Videos" }
+        arguments:
+            - ~
+            - Imperiv\Bundle\SiteBundle\Entity\Video
+            - ~

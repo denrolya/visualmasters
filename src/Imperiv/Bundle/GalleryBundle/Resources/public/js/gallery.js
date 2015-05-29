@@ -25,6 +25,8 @@ $(document).ready(function() {
             $('#maximage').fadeIn('fast');
         }
     });
+
+    jQuery("video,object").maximage('maxcover');
         
     $(".transp-zone-vertical .transp-zone-hide").on('click', function(event) {
         transpZone = $(this).parent().parent();

@@ -16,7 +16,8 @@ class SlideAdmin extends Admin
         $formMapper->with('Slide')
             ->add('imageContent', 'sonata_type_model_list', [], ['link_parameters' => [
                     'context' => 'default',
-                    'provider' => 'sonata.media.provider.image'
+                    'provider' => 'sonata.media.provider.image',
+                    'required' => false
                     ]
                 ]
             )

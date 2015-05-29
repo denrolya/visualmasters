@@ -43,7 +43,7 @@
         {% for slide in slides %}
             <div class="item">
                 {% media slide.imageContent, 'big' %}
-                
+
                 {#-------------- In-slide content --------------#}
                 {% if (slide.textContent is not null) %}
                     {% set transparentZoneParameters = slide.transparentZoneParameters|unserialize %}
@@ -58,7 +58,7 @@
                             "top: " ~ transparentZoneParameters.size ~ "px;" %}
                     {% endif %}
                     {% set transparentZoneStyle = transparentZoneStyle ~ (isTransparentZoneVertical ?  : "top: " ) ~ transparentZoneParameters.position ~ "%;" %}
-                    
+
                     <div class="transp-zone {{ isTransparentZoneVertical ? "transp-zone-vertical" : "transp-zone-horizontal" }}"
                          style="{{ transparentZoneStyle }}" data-size="{{ transparentZoneParameters.size }}" data-position="{{ transparentZoneParameters.position }}">
                         <div class="transp-zone-content">
@@ -73,7 +73,7 @@
                     </div>
                 {% endif %}
                 {#-------------- In-slide content --------------#}
-                
+
             </div>
         {% endfor %}
     </div>
