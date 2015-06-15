@@ -1,7 +1,55 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}
+    Video editing
+{% endblock title %}
+
 {% block content %}
-    {% for video in videos %}
-        {% thumbnail video.video, 'small' %}
-    {% endfor %}
+    <style>
+        .embed-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .embed-container iframe, .embed-container object, .embed-container embed {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        img {
+            width: 100%;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="col-md-9">
+            <table class="table ">
+                <tr>
+                    {% for video in videos %}
+                        <td class="embed-container">
+                            <a href="" data-lightbox="{{ video.video.name }}">
+                                {% thumbnail video.video, 'big' with {'width': 'asdf'} %}
+                            </a>
+                        </td>
+                        {% if loop.index%3 == 0 %}
+                            </tr><tr>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <h3>Hello world</h3>
+        </div>
+    </div>
 {% endblock content %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts "bundles/imperivgallery/js/lightbox.js" filter="yui_js" %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock javascripts%}
