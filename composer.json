@@ -27,7 +27,8 @@
         "sonata-project/user-bundle" : "dev-master",
         "sonata-project/datagrid-bundle" : "dev-master",
         "sonata-project/easy-extends-bundle" : "dev-master",
-        "sonata-project/block-bundle" : "dev-master"
+        "sonata-project/block-bundle" : "dev-master",
+        "sonata-project/intl-bundle": "2.2.x-dev"
     },
     "scripts": {
         "post-install-cmd": [
