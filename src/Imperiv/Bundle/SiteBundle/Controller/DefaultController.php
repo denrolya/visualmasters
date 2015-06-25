@@ -16,4 +16,15 @@ class DefaultController extends Controller
     {
         return array('name' => $name);
     }
+
+    /**
+     * @Route("/video", name="video_page")
+     * @Template()
+     */
+    public function videoAction()
+    {
+        $videos = $this->getDoctrine()->getRepository("ImperivSiteBundle:Video")->findAll();
+
+        return ['videos' => $videos];
+    }
 }

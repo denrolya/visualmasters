@@ -24,6 +24,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+      resources:
+        - 'SonataMediaBundle:Form:media_widgets.html.twig'
 
 assetic:
     debug:          "%kernel.debug%"
@@ -74,12 +77,13 @@ sonata_admin:
 #    title_logo: bundles/acmedemo/img/fancy_acme_logo.png
     templates:
         short_object_description: ::Admin/Helper/short-object-description.html.twig
-    dashboard:
-        groups:
-            Galleries:
-                items: 
-                    - sonata.admin.gallery_page
-                    - sonata.admin.slide
+#    dashboard:
+#        groups:
+#            Galleries:
+#                items:
+#                    - sonata.admin.gallery_page
+#                    - sonata.admin.slide
+#                    - sonata.admin.video
 
 sonata_block:
     default_contexts: [cms]
@@ -96,6 +100,7 @@ sonata_media:
         default:
             providers:
                 - sonata.media.provider.image
+                - sonata.media.provider.vimeo
 
             formats:
                 small: { width: 100 , quality: 100}
