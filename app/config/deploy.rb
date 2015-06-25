@@ -1,32 +1,26 @@
-set :application, "imperiumdesign"
-set :domain,      "#{application}.co.uk"
-set :deploy_to,   "/var/www/#{domain}"
-set :app_path,    "app"
+set :application,                       "imperiumdesign"
+set :domain,                            "46.101.57.96"
+set :user,                              "drolya"
+set :deploy_to,                         "/var/www/#{application}.co.uk"
+set :app_path,                          "app"
 
-set :repository,  "#{domain}:/var/repos/#{application}.git"
-set :scm,         :git
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `subversion`, `mercurial`, `perforce`, or `none`
+set :clear_controllers,                 false
 
-set :model_manager, "doctrine"
-# Or: `propel`
+set :deploy_via,                        :remote_cache
 
-role :web,        domain                         # Your HTTP server, Apache/etc
-role :app,        domain, :primary => true       # This may be the same as your `Web` server
+set :model_manager,                     "doctrine"
 
-set  :keep_releases,  3
+set :repository,                        "git@github.com:rdenes93/imperiumdesign.git"
+set :scm,                               :git
+set :branch,                            "develop"
+set :core_branch,                       "develop"
 
-# Be more verbose by uncommenting the following line
-# logger.level = Logger::MAX_LEVEL
+role :web,                              domain                         # Your HTTP server, Apache/etc
+role :app,                              domain, :primary => true       # This may be the same as your `Web` server
 
-set   :application,   "My App"
-set   :deploy_to,     "/var/www/my-app.com"
-set   :domain,        "my-app.com"
+set :keep_releases,                     5
 
-set   :scm,           :git
-set   :repository,    "ssh-gitrepo-domain.com:/path/to/repo.git"
+set :clear_controllers,                 false
 
-role  :web,           domain
-role  :app,           domain, :primary => true
-
-set   :use_sudo,      false
-set   :keep_releases, 3
+logger.level = Logger::MAX_LEVEL
+default_run_options[:pty] = true
