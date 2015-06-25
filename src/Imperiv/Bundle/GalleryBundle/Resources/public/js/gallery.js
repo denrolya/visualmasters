@@ -36,6 +36,7 @@ $(document).ready(function() {
         transpZoneContent.toggleClass("invisible");
         transpZone.animate( { height:"20px" }, { queue:false, duration:500 , complete: function() {
             transpZoneControls.children(".transp-zone-reveal").toggleClass("invisible");
+            transpZoneContent.css("display", "none");
         }});
 
     });
@@ -48,6 +49,7 @@ $(document).ready(function() {
         transpZone.animate( { height:"100%" }, { queue:false, duration:500 , complete: function() {
             transpZoneControls.children(".transp-zone-hide").toggleClass("invisible");
             transpZoneContent.toggleClass("invisible");
+            transpZoneContent.css("display", "block");
         }});
     });
     
@@ -59,6 +61,7 @@ $(document).ready(function() {
         transpZoneContent.toggleClass("invisible");
         transpZone.animate( { height:"20px" }, { queue:false, duration:500 , complete: function() {
             transpZoneControls.children(".transp-zone-reveal").toggleClass("invisible");
+            transpZoneContent.css("display", "none");
         }});
         transpZone.animate({ top: "3px" }, 500);
     });
@@ -74,6 +77,7 @@ $(document).ready(function() {
         transpZoneContent.toggleClass("invisible");
         transpZone.animate( { height: transpZoneSize + "px" }, { queue:false, duration:500 , complete: function() {
             transpZoneControls.children(".transp-zone-hide").toggleClass("invisible");
+            transpZoneContent.css("display", "block");
         }});
         transpZone.css("display","table");
         transpZone.animate({ top: transpZonePosition + "%" }, 500);
