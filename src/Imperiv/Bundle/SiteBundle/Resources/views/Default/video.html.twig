@@ -45,11 +45,3 @@
         </div>
     </div>
 {% endblock content %}
-
-
-{% block javascripts %}
-    {{ parent() }}
-    {% javascripts "bundles/imperivgallery/js/lightbox.js" filter="yui_js" %}
-        <script src="{{ asset_url }}" type="text/javascript"></script>
-    {% endjavascripts %}
-{% endblock javascripts%}
