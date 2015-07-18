@@ -4,6 +4,7 @@
     {{ parent() }}
     {% stylesheets
         "bundles/imperivsite/css/style.css"
+        "bundles/imperivsite/css/magnific-popup.css"
     filter="yui_css, cssrewrite"%}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
@@ -38,15 +39,15 @@
                 <tr>
                     {% for video in videos %}
                         <td class="effect-{{ random(4) }} video embed-container">
+                            <a class="image-link" href="//vimeo.com/{{ video.video.providerReference }}">
                             <figure>
-                                {#<a href=""  data-lightbox="{{ video.video.name }}">#}
                                     {% thumbnail video.video, 'big' %}
-                                {#</a>#}
                                 <figcaption>
                                     <h3>{{ video.video.name }}</h3>
-                                    <a href="#" class="close-caption hidden">x</a>
+                                    {#<a href="#" class="close-caption hidden">X</a>#}
                                 </figcaption>
                             </figure>
+                                </a>
                         </td>
                         {% if loop.index%3 == 0 %}
                             </tr><tr>
@@ -55,16 +56,22 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-3">
-            {#<button id="button">Hello world</button>#}
-        </div>
+        <div class="col-md-3"></div>
     </div>
+
 {% endblock content %}
 
 {% block javascripts %}
+    {{ parent() }}
     {% javascripts
         "bundles/imperivsite/js/touch.js"
+        "bundles/imperivsite/js/jquery.magnific-popup.js"
     filter="yui_js" %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
+    <script>
+        $(document).ready(function() {
+            $('.image-link').magnificPopup({type:'iframe', pattern: 'vimeo'});
+        });
+    </script>
 {% endblock javascripts %}
