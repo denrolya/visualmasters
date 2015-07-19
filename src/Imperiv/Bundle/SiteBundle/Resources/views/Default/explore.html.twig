@@ -4,22 +4,210 @@
     Explore more
 {% endblock title %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .tabNav {
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            width: 100%;
+            margin: auto;
+            margin-bottom: 0px;
+            background: grey;
+            height: 23px;
+            position: absolute;
+            top: 23px;
+        }
+
+        .tabNav li {
+            top: 0;
+            display: inline;
+            list-style: none;
+        }
+
+        .tabNav>li {
+            margin-left: 10px;
+            position: absolute;
+        }
+
+        .tabNav li:first-child {
+            left: 10%;
+        }
+
+        .tabNav>li:nth-of-type(2) {
+            left: 20%;
+        }
+
+        .tabNav>li:nth-of-type(3)3 {
+            left: 31%;
+        }
+
+        .tabNav>li:nth-of-type(4)4 {
+            left: 45%;
+        }
+
+        .tabNav>li:nth-of-type(5)5 {
+            left: 59%;
+        }
+
+        .tabNav>li:last-child {
+            right: 10%;
+        }
+
+        .tabNav li a {
+            font-family: arial;
+            font-weight: bold;
+            font-size: 17px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .tabNav li a {
+            font-size: 15px;
+        }
+        .tabs {
+            min-height: 100%;
+            min-width: 100%;
+            background: url('../img/subtle.png');
+            color: #555;
+        }
+
+        .tabNav li a {
+            color: #aaa;
+        }
+
+        .tabNav li a:hover {
+            color: #fff;
+        }
+
+        .tabNav li .selected {
+            color: #fff;
+        }
+
+        .tabs h1 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 1.5em;
+            line-height: 1.5em;
+            letter-spacing: -0.05em;
+            margin-bottom: 20px;
+            padding: .1em 0;
+            color: #444;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .tabs h1:before,
+        .tabs h1:after {
+            content: "";
+            position: relative;
+            display: inline-block;
+            width: 50%;
+            height: 1px;
+            vertical-align: middle;
+            background: #f0f0f0;
+        }
+
+        .tabs h1:before {
+            left: -.5em;
+            margin: 0 0 0 -50%;
+        }
+
+        .tabs h1:after {
+            left: .5em;
+            margin: 0 -50% 0 0;
+        }
+
+        .w {
+            display: block;
+            min-width: 750px;
+            width: 65%;
+            margin: 0 auto;
+            padding: 40px 0 0px 0;
+            color: #554;
+            min-height: 100%;
+        }
+
+        .content:before, .content:after{
+            position: absolute;
+            width: 40%;
+            height: 10px;
+            content: ' ';
+            left: 12px;
+            bottom: 12px;
+            background: transparent;
+        }
+
+        .content:after{
+            left: auto;
+            right: 12px;
+            -webkit-transform: skew(5deg) rotate(5deg);
+            -moz-transform: skew(5deg) rotate(5deg);
+            -ms-transform: skew(5deg) rotate(5deg);
+            -o-transform: skew(5deg) rotate(5deg);
+            transform: skew(5deg) rotate(5deg);
+        }
+
+
+        .content {
+            background: url('../img/cream_dust.png');
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            padding: 25px 20px;
+            font-size: 13px;
+            -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+            -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+        }
+    </style>
+{% endblock stylesheets %}
+
 {% block content %}
-    <h1>Explore more</h1>
-    <div>
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
+    <div class="tabs">
+        <ul class="tabNav">
             {% for category in categories %}
-                <li role="presentation" class="{{ loop.index == 1 ? "active" }}"><a href="#tab-{{ category.id }}" aria-controls="tab-{{ category.id }}" role="tab" data-toggle="tab">{{ category.name }}</a></li>
+                <li role="presentation" class="{{ loop.index == 1 ? "active" }}">
+                    <a href="#tab-{{ category.id }}" aria-controls="tab-{{ category.id }}" role="tab" data-toggle="tab">{{ category.name }}</a>
+                </li>
             {% endfor %}
         </ul>
+    </div>
+
+    <div class="tab-content">
+        {% for category in categories %}
+        <div style="display: block;" id="tab-{{ category.id }}" role="tabpanel" class="tab-pane {{ loop.index == 1 ? "active" }}">
+            <div class="w">
+                <div class="content">
+                    <h1>{{ category.name }}</h1>
+                    <article>
+                        {{ category.description|raw }}
+                    </article>
+
+                    <div class="centered"><a data-hash="#1" class="btn btn-primary">Order Now</a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {#<div>#}
+        <!-- Nav tabs -->
+        {#<ul class="nav nav-tabs" role="tablist">#}
+            {#{% for category in categories %}#}
+                {#<li role="presentation" class="{{ loop.index == 1 ? "active" }}">#}
+                    {#<a href="#tab-{{ category.id }}" aria-controls="tab-{{ category.id }}" role="tab" data-toggle="tab">{{ category.name }}</a>#}
+                {#</li>#}
+            {#{% endfor %}#}
+        {#</ul>#}
 
         <!-- Tab panes -->
-        <div class="tab-content">
-            {% for category in categories %}
-                <div role="tabpanel" class="tab-pane {{ loop.index == 1 ? "active" }}" id="tab-{{ category.id }}">{{ category.description|raw }}</div>
-            {% endfor %}
-        </div>
+        {#<div class="tab-content">#}
+            {#{% for category in categories %}#}
+                {#<div role="tabpanel" class="tab-pane {{ loop.index == 1 ? "active" }}" id="tab-{{ category.id }}">{{ category.description|raw }}</div>#}
+            {#{% endfor %}#}
+        {#</div>#}
 
-    </div>
+    {#</div>#}
 {% endblock content %}
