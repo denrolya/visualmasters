@@ -36,24 +36,26 @@
     <div class="container-fluid">
         <div class="col-md-9">
             <table class="table">
+                <tbody>
                 <tr>
                     {% for video in videos %}
                         <td class="effect-{{ random(4) }} video embed-container">
                             <a class="image-link" href="//vimeo.com/{{ video.video.providerReference }}">
-                            <figure>
+                                <figure>
                                     {% thumbnail video.video, 'big' %}
-                                <figcaption>
-                                    <h3>{{ video.video.name }}</h3>
-                                    {#<a href="#" class="close-caption hidden">X</a>#}
-                                </figcaption>
-                            </figure>
-                                </a>
+                                    <figcaption>
+                                        <h3>{{ video.video.name }}</h3>
+                                    </figcaption>
+                                </figure>
+                            </a>
                         </td>
+
                         {% if loop.index%3 == 0 %}
                             </tr><tr>
                         {% endif %}
                     {% endfor %}
                 </tr>
+                </tbody>
             </table>
         </div>
         <div class="col-md-3"></div>

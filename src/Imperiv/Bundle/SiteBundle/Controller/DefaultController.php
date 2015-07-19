@@ -9,15 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hell/{name}")
-     * @Template()
-     */
-    public function indexAction($name)
-    {
-        return array('name' => $name);
-    }
-
-    /**
      * @Route("/video", name="video_page")
      * @Template()
      */
@@ -26,5 +17,14 @@ class DefaultController extends Controller
         $videos = $this->getDoctrine()->getRepository("ImperivSiteBundle:Video")->findAll();
 
         return ['videos' => $videos];
+    }
+
+    /**
+     * @Route("/explore", name="explore_more_page")
+     * @Template()
+     */
+    public function exploreAction()
+    {
+        return [];
     }
 }

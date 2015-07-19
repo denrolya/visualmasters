@@ -38,7 +38,7 @@
                     <a href="{{ path('gallery_page', {'gallery_name' : 'models'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>Models</a>
                 </li>
                 <li>
-                    <a href="#" id="explore" >Explore more</a>
+                    <a href="{{ path('explore_more_page') }}" id="explore" >Explore more</a>
                 </li>
             </ul>
         </header>

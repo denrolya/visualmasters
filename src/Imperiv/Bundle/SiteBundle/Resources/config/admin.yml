@@ -7,3 +7,12 @@ services:
             - ~
             - Imperiv\Bundle\SiteBundle\Entity\Video
             - ~
+
+    sonata.admin.category:
+            class: Imperiv\Bundle\SiteBundle\Admin\CategoryAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Galleries", label: "Categories" }
+            arguments:
+                - ~
+                - Imperiv\Bundle\SiteBundle\Entity\Category
+                - ~
