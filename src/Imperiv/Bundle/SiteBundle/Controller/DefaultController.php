@@ -16,7 +16,7 @@ class DefaultController extends Controller
     {
         $videos = $this->getDoctrine()->getRepository("ImperivSiteBundle:Video")->findAll();
 
-        return ['videos' => $videos];
+        return compact('videos');
     }
 
     /**
@@ -25,6 +25,8 @@ class DefaultController extends Controller
      */
     public function exploreAction()
     {
-        return [];
+        $categories = $this->getDoctrine()->getRepository("ImperivSiteBundle:Category")->findAll();
+
+        return compact('categories');
     }
 }

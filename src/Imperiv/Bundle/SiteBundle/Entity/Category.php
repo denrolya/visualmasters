@@ -25,13 +25,20 @@ class Category
     /**
      * @var string
      *
+     * @ORM\Column(name="name", type="string", length=150)
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
      * @ORM\OneToOne(targetEntity="\Imperiv\Bundle\GalleryBundle\Entity\GalleryPage")
-     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", nullable=true)
      */
     private $gallery;
 
@@ -43,6 +50,29 @@ class Category
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Category
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

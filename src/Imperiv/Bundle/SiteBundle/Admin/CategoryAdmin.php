@@ -11,7 +11,9 @@ class CategoryAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('description', 'textarea', [
+        $formMapper
+            ->add('name')
+            ->add('description', 'textarea', [
             'attr' => ['class' => 'tinymce'],
             'required' => false
             ])

@@ -6,4 +6,20 @@
 
 {% block content %}
     <h1>Explore more</h1>
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            {% for category in categories %}
+                <li role="presentation" class="{{ loop.index == 1 ? "active" }}"><a href="#tab-{{ category.id }}" aria-controls="tab-{{ category.id }}" role="tab" data-toggle="tab">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            {% for category in categories %}
+                <div role="tabpanel" class="tab-pane {{ loop.index == 1 ? "active" }}" id="tab-{{ category.id }}">{{ category.description|raw }}</div>
+            {% endfor %}
+        </div>
+
+    </div>
 {% endblock content %}
