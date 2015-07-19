@@ -56,24 +56,16 @@
 
         .tabNav li a {
             font-family: arial;
-            font-weight: bold;
-            font-size: 17px;
+            font-size: 15px;
+            color: #aaa;
             text-decoration: none;
-            color: #333;
         }
 
-        .tabNav li a {
-            font-size: 15px;
-        }
         .tabs {
             min-height: 100%;
             min-width: 100%;
-            background: url('../img/subtle.png');
+            /*background-image: url('http://fc07.deviantart.net/fs70/f/2013/174/3/e/recycled_texture_background_by_sandeep_m-d6aeau9.jpg');*/
             color: #555;
-        }
-
-        .tabNav li a {
-            color: #aaa;
         }
 
         .tabNav li a:hover {
@@ -119,7 +111,7 @@
             margin: 0 -50% 0 0;
         }
 
-        .w {
+        .text-wrapper {
             display: block;
             min-width: 750px;
             width: 65%;
@@ -129,7 +121,7 @@
             min-height: 100%;
         }
 
-        .content:before, .content:after{
+        .text-content:before, .text-content:after{
             position: absolute;
             width: 40%;
             height: 10px;
@@ -139,7 +131,7 @@
             background: transparent;
         }
 
-        .content:after{
+        .text-content:after{
             left: auto;
             right: 12px;
             -webkit-transform: skew(5deg) rotate(5deg);
@@ -148,9 +140,7 @@
             -o-transform: skew(5deg) rotate(5deg);
             transform: skew(5deg) rotate(5deg);
         }
-
-
-        .content {
+        .text-content {
             background: url('../img/cream_dust.png');
             display: block;
             width: 100%;
@@ -173,23 +163,26 @@
                 </li>
             {% endfor %}
         </ul>
-    </div>
 
-    <div class="tab-content">
-        {% for category in categories %}
-        <div style="display: block;" id="tab-{{ category.id }}" role="tabpanel" class="tab-pane {{ loop.index == 1 ? "active" }}">
-            <div class="w">
-                <div class="content">
-                    <h1>{{ category.name }}</h1>
-                    <article>
-                        {{ category.description|raw }}
-                    </article>
+        <div class="tab-content">
+            {% for category in categories %}
+                <div  id="tab-{{ category.id }}" role="tabpanel" class="tab-pane {{ loop.index == 1 ? "active" }}">
+                    <div class="text-wrapper">
+                        <div class="text-content">
+                            <h1>{{ category.name }}</h1>
 
-                    <div class="centered"><a data-hash="#1" class="btn btn-primary">Order Now</a></div>
+                            <article>
+                                {{ category.description|raw }}
+                            </article>
+
+                            <div class="text-center">
+                                <a data-hash="#1" class="btn btn-primary">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 
     {#<div>#}
