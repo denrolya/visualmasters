@@ -27,7 +27,7 @@ class CategoryAdmin extends Admin
     
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('gallery.metaTitle')
+        $listMapper->addIdentifier('name')
         ;
     }
 }
