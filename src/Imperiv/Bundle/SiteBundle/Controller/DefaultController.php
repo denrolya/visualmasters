@@ -5,9 +5,11 @@ namespace Imperiv\Bundle\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Imperiv\Bundle\SiteBundle\Form\Type\DesignOrderType;
+use Imperiv\Bundle\SiteBundle\Form\Type\VideoOrderType;
 
 class DefaultController extends Controller
-{
+    {
     /**
      * @Route("/video", name="video_page")
      * @Template()
@@ -27,6 +29,8 @@ class DefaultController extends Controller
     {
         $categories = $this->getDoctrine()->getRepository("ImperivSiteBundle:Category")->findAll();
 
-        return compact('categories');
+        $justForm = $this->createForm(new VideoOrderType());
+
+        return ['categories' => $categories, 'form' => $justForm->createView()];
     }
 }
