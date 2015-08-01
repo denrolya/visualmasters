@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
+            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new Imperiv\Bundle\SiteBundle\ImperivSiteBundle(),
             new Imperiv\Bundle\GalleryBundle\ImperivGalleryBundle(),
         );

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3888d7538bdca3960cfba94040231ee3",
+    "hash": "fcdd5a4da5e706791cc0103bae40c1ee",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -2082,7 +2082,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/ee435fb4b12451ec6bc53ddec38c39974a822bce",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/b5d0b9cb8b6536c95bdf898a147220c5c2bb5544",
                 "reference": "ee435fb4b12451ec6bc53ddec38c39974a822bce",
                 "shasum": ""
             },
@@ -2168,7 +2168,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/2ab7d419daee7b53f9ca9216c1a6165ca909cadc",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/01b65b414f79d6c0f5de156cff38003447b5a8ad",
                 "reference": "2ab7d419daee7b53f9ca9216c1a6165ca909cadc",
                 "shasum": ""
             },
@@ -2360,7 +2360,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/329ca0bb9cc413a649b3ab4d73077c4da74f1c13",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/747d4660a71f4f3133a08d118da0761c43187fab",
                 "reference": "329ca0bb9cc413a649b3ab4d73077c4da74f1c13",
                 "shasum": ""
             },
@@ -2780,7 +2780,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/d1ce9cf2f4945a6a3a947202bb5dcdbbde3b4a35",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/b0d6748f36474fe6e2f2923507b77bdae4c38a8e",
                 "reference": "d1ce9cf2f4945a6a3a947202bb5dcdbbde3b4a35",
                 "shasum": ""
             },
@@ -2843,7 +2843,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/0c6103251c8e41b0b72f4f885533d8d54a5b3ef2",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/3f3bb802e09687bdff9b5a2d80f1e47daed39fc3",
                 "reference": "0c6103251c8e41b0b72f4f885533d8d54a5b3ef2",
                 "shasum": ""
             },
@@ -3011,7 +3011,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/098fb0063301503754346495599ac67106f47118",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/0779677f667a3377ef2a9722c5d126d23fb18604",
                 "reference": "098fb0063301503754346495599ac67106f47118",
                 "shasum": ""
             },

@@ -3,6 +3,7 @@
 namespace Imperiv\Bundle\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Imperiv\Bundle\GalleryBundle\Entity\GalleryPage;
 
 /**
@@ -41,6 +42,16 @@ class Category
      * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", nullable=true)
      */
     private $gallery;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BaseOrder", mappedBy="category")
+     */
+    private $orders;
+
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -119,5 +130,38 @@ class Category
     public function getGallery()
     {
         return $this->gallery;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \Imperiv\Bundle\SiteBundle\Entity\BaseOrder $orders
+     * @return Category
+     */
+    public function addOrder(\Imperiv\Bundle\SiteBundle\Entity\BaseOrder $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \Imperiv\Bundle\SiteBundle\Entity\BaseOrder $orders
+     */
+    public function removeOrder(\Imperiv\Bundle\SiteBundle\Entity\BaseOrder $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

@@ -70,6 +70,12 @@ class BaseOrder
     private $comments;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="orders")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     **/
+    private $product;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -215,5 +221,28 @@ class BaseOrder
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set product
+     *
+     * @param Category $product
+     * @return BaseOrder
+     */
+    public function setProduct(Category $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return Category
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

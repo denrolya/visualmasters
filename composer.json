@@ -28,7 +28,8 @@
         "sonata-project/datagrid-bundle" : "dev-master",
         "sonata-project/easy-extends-bundle" : "dev-master",
         "sonata-project/block-bundle" : "dev-master",
-        "sonata-project/intl-bundle": "2.2.x-dev"
+        "sonata-project/intl-bundle": "2.2.x-dev",
+        "cocur/slugify": "^1.2"
     },
     "scripts": {
         "post-install-cmd": [
