@@ -2,7 +2,7 @@ services:
     sonata.admin.video:
         class: Imperiv\Bundle\SiteBundle\Admin\VideoAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Galleries", label: "Videos" }
+            - { name: sonata.admin, manager_type: orm, label: "Videos" }
         arguments:
             - ~
             - Imperiv\Bundle\SiteBundle\Entity\Video
@@ -11,7 +11,7 @@ services:
     sonata.admin.category:
             class: Imperiv\Bundle\SiteBundle\Admin\CategoryAdmin
             tags:
-                - { name: sonata.admin, manager_type: orm, group: "Galleries", label: "Categories" }
+                - { name: sonata.admin, manager_type: orm, label: "Category pages" }
             arguments:
                 - ~
                 - Imperiv\Bundle\SiteBundle\Entity\Category

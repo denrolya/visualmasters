@@ -2,7 +2,7 @@ services:
     sonata.admin.gallery_page:
         class: Imperiv\Bundle\GalleryBundle\Admin\GalleryPageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Galleries", label: "Pages" }
+            - { name: sonata.admin, manager_type: orm, label: "Gallery pages" }
         arguments:
             - ~
             - Imperiv\Bundle\GalleryBundle\Entity\GalleryPage
@@ -11,7 +11,7 @@ services:
     sonata.admin.slide:
         class: Imperiv\Bundle\GalleryBundle\Admin\SlideAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Galleries", label: "Slides" }
+            - { name: sonata.admin, manager_type: orm, label: "Gallery page slides" }
         arguments:
             - ~
             - Imperiv\Bundle\GalleryBundle\Entity\Slide

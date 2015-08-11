@@ -49,7 +49,7 @@ $(document).ready(function() {
         transpZone.animate( { height:"100%" }, { queue:false, duration:500 , complete: function() {
             transpZoneControls.children(".transp-zone-hide").toggleClass("invisible");
             transpZoneContent.toggleClass("invisible");
-            transpZoneContent.css("display", "block");
+            transpZoneContent.css("display", "table-cell").css('vertical-align', 'middle');
         }});
     });
     
@@ -77,7 +77,7 @@ $(document).ready(function() {
         transpZoneContent.toggleClass("invisible");
         transpZone.animate( { height: transpZoneSize + "px" }, { queue:false, duration:500 , complete: function() {
             transpZoneControls.children(".transp-zone-hide").toggleClass("invisible");
-            transpZoneContent.css("display", "block");
+            transpZoneContent.css("display", "table-cell").css('vertical-align', 'middle');
         }});
         transpZone.css("display","table");
         transpZone.animate({ top: transpZonePosition + "%" }, 500);

@@ -52,12 +52,12 @@
                     {% if isTransparentZoneVertical %}
                         {% set transparentZoneStyle =  transparentZoneStyle ~ "width: " ~ transparentZoneParameters.size ~ "px;" ~
                             (loop.last ? "margin-right: -" : "margin-left: -") ~ ((transparentZoneParameters.size/2)-40) ~ "px;" ~
-                            "left: " ~ transparentZoneParameters.size ~ "px;" %}
+                            "left: " ~ transparentZoneParameters.position ~ "%;" %}
                     {% else %}
                         {% set transparentZoneStyle =  transparentZoneStyle ~ "height: " ~ transparentZoneParameters.size ~ "px;" ~
-                            "top: " ~ transparentZoneParameters.size ~ "px;" %}
+                            "top: " ~ transparentZoneParameters.position ~ "%;" %}
                     {% endif %}
-                    {% set transparentZoneStyle = transparentZoneStyle ~ (isTransparentZoneVertical ?  : "top: " ) ~ transparentZoneParameters.position ~ "%;" %}
+                    {#{% set transparentZoneStyle = transparentZoneStyle ~ (isTransparentZoneVertical ?  : "top: " ) ~ transparentZoneParameters.position ~ "%;" %}#}
 
                     <div class="transp-zone {{ isTransparentZoneVertical ? "transp-zone-vertical" : "transp-zone-horizontal" }}"
                          style="{{ transparentZoneStyle }}" data-size="{{ transparentZoneParameters.size }}" data-position="{{ transparentZoneParameters.position }}">

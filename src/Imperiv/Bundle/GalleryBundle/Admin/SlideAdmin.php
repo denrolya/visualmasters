@@ -28,7 +28,7 @@ class SlideAdmin extends Admin
                 'attr' => ['class' => 'tinymce']
             ])
         ->end();
-        
+
         if ($this->getSubject()->getTextContent() !== NULL) {
             $transparentZoneParameters = unserialize($this->getSubject()->getTransparentZoneParameters());
             $formMapper->with('Transparent Zone')
@@ -120,14 +120,17 @@ class SlideAdmin extends Admin
     
     public function preUpdate($object)
     {
-        $transparentZoneParameters = [];
+        if ($this->getForm()->has('orientation')) {
+            $transparentZoneParameters = [];
 
-        $transparentZoneProperties = ['orientation', 'size', 'opacity', 'color', 'position', 'closable'];
+            $transparentZoneProperties = ['orientation', 'size', 'opacity', 'color', 'position', 'closable'];
 
-        foreach ($transparentZoneProperties as $property) {
-            $transparentZoneParameters[$property] = $this->getForm()->get($property)->getData();
+            foreach ($transparentZoneProperties as $property) {
+                $transparentZoneParameters[$property] = $this->getForm()->get($property)->getData();
+            }
+
+            $object->setTransparentZoneParameters(serialize($transparentZoneParameters));
         }
 
-        $object->setTransparentZoneParameters(serialize($transparentZoneParameters));
     }
 }
