@@ -5,8 +5,9 @@ namespace Imperiv\Bundle\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Imperiv\Bundle\SiteBundle\Form\Type\DesignOrderType;
-use Imperiv\Bundle\SiteBundle\Form\Type\VideoOrderType;
+use Imperiv\Bundle\SiteBundle\Form\Type\DesignOrderType,
+    Imperiv\Bundle\SiteBundle\Form\Type\VideoOrderType,
+    Imperiv\Bundle\SiteBundle\Form\Type\InteriorOrderType;
 
 class DefaultController extends Controller
     {
@@ -31,7 +32,8 @@ class DefaultController extends Controller
 
         $forms = [
             $this->createForm(new VideoOrderType())->createView(),
-            $this->createForm(new DesignOrderType())->createView()
+            $this->createForm(new DesignOrderType())->createView(),
+            $this->createForm(new InteriorOrderType())->createView()
         ];
 
         return ['categories' => $categories, 'forms' => $forms];

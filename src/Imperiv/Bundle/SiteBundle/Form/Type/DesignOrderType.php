@@ -21,7 +21,8 @@ class DesignOrderType extends AbstractType
                     "Application interfaces design" => "Application interfaces design",
                     "Info-graphics" => "Info-graphics"
                 ],
-                'label' => false
+                'label' => false,
+                'empty_value' => 'Subcategory'
             ])
             ->add('full_name', 'text', [
                 'label' => false,
@@ -62,7 +63,8 @@ class DesignOrderType extends AbstractType
                     'example1' => 'example 1',
                     'example2' => 'example 2',
                     'example3' => 'example 3',
-                ]
+                ],
+                'empty_value' => 'Color preferences'
             ])
             ->add('comments', 'textarea', [
                 'label' => false,
