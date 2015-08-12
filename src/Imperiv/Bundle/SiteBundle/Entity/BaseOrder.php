@@ -13,7 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({
  *      "design"    = "DesignOrder",
- *      "video"       = "VideoOrder"
+ *      "video"     = "VideoOrder"
+ *      "interior"  = "InteriorOrder",
  * })
  */
 class BaseOrder
