@@ -106,6 +106,7 @@ class InteriorOrderType extends AbstractType
             ])
             ->add('use_feng_shui', 'checkbox')
             ->add('birth_date', 'datetime', [
+                'widget' => 'single_text',
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Birthdate'

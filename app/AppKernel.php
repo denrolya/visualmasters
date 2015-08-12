@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new Imperiv\Bundle\SiteBundle\ImperivSiteBundle(),
             new Imperiv\Bundle\GalleryBundle\ImperivGalleryBundle(),
+            new SC\DatetimepickerBundle\SCDatetimepickerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

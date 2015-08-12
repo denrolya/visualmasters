@@ -8,6 +8,7 @@
     {{ parent() }}
     {% stylesheets
         "bundles/imperivsite/css/bootstrap-switch.css"
+        "bundles/imperivsite/css/datetimepicker.css"
     filter="yui_css, cssrewrite"%}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
@@ -216,6 +217,7 @@
     {{ parent() }}
     {% javascripts
         "bundles/imperivsite/js/bootstrap-switch.js"
+        "bundles/imperivsite/js/datetimepicker.js"
     filter="yui_js" %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
@@ -228,6 +230,7 @@
                 onColor : 'success',
                 offColor : 'warning'
             });
+            $("[type='datetime']").datetimepicker({format:'d.m.Y H:i'});
         });
     </script>
 {% endblock javascripts %}

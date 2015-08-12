@@ -91,7 +91,6 @@ sonata_admin:
                 items:
                     - sonata.admin.category
 
-
 sonata_block:
     default_contexts: [cms]
     blocks:
@@ -121,3 +120,6 @@ sonata_media:
         local:
             directory:  %kernel.root_dir%/../web/uploads/media
             create:     false
+
+sc_datetimepicker:
+    picker: ~
