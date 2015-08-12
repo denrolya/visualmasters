@@ -10,7 +10,21 @@ use Imperiv\Bundle\SiteBundle\Form\Type\DesignOrderType,
     Imperiv\Bundle\SiteBundle\Form\Type\InteriorOrderType;
 
 class DefaultController extends Controller
+{
+
+    /**
+     * @Template()
+     */
+    public function navigationAction()
     {
+        $galleries = $this->getDoctrine()->getRepository('ImperivGalleryBundle:GalleryPage')->createQueryBuilder('g')
+            ->where("g.pageName <> 'home'")
+            ->getQuery()
+            ->getResult();
+
+        return compact('galleries');
+    }
+
     /**
      * @Route("/video", name="video_page")
      * @Template()
