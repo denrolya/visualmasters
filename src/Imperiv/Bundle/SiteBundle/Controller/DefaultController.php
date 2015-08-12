@@ -30,8 +30,8 @@ class DefaultController extends Controller
         $categories = $this->getDoctrine()->getRepository("ImperivSiteBundle:Category")->findAll();
 
         $forms = [
-            $this->createForm(new DesignOrderType())->createView(),
-            $this->createForm(new VideoOrderType())->createView()
+            $this->createForm(new VideoOrderType())->createView(),
+            $this->createForm(new DesignOrderType())->createView()
         ];
 
         return ['categories' => $categories, 'forms' => $forms];

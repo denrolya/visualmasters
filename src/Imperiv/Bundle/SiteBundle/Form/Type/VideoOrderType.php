@@ -16,10 +16,9 @@ class VideoOrderType extends AbstractType
             ->add('address')
             ->add('postal')
             ->add('comments')
-            ->add('use_3d_graphics')
-            ->add('music')
-            ->add('additional_effects')
-            ->add('materials_total_gbs');
+            ->add('max_video_length')
+            ->add('format')
+            ->add('color_preferences');
     }
 
     public function getName()

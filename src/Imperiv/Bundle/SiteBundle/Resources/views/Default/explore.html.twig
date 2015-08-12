@@ -6,6 +6,11 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    {% stylesheets
+        "bundles/imperivsite/css/bootstrap-switch.css"
+    filter="yui_css, cssrewrite"%}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
     <style>
         .tabNav {
             font-family: sans-serif;
@@ -206,3 +211,23 @@
         </div>
     {% endfor %}
 {% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        "bundles/imperivsite/js/bootstrap-switch.js"
+    filter="yui_js" %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function() {
+            $("[type='checkbox']").bootstrapSwitch({
+                size : 'small',
+                onText : 'I',
+                offText : 'O',
+                onColor : 'success',
+                offColor : 'warning'
+            });
+        });
+    </script>
+{% endblock javascripts %}
