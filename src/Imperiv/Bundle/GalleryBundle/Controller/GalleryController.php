@@ -18,16 +18,17 @@ class GalleryController extends Controller
      */
     public function galleryAction($gallery_name)
     {
-    	$em = $this->getDoctrine()->getManager();
         
-        $galleryPage = $em->getRepository('ImperivGalleryBundle:GalleryPage')->findOneByPageName($gallery_name);
+        $galleryPage = $this->getDoctrine()->getRepository('ImperivGalleryBundle:GalleryPage')->findOneByPageName($gallery_name);
                 
         if (!$galleryPage) {
             throw $this->createNotFoundException("Page doesn't exist!");
         }
-        
-        $slides = $em->getRepository('ImperivGalleryBundle:Slide')->findSlidesInGalleryApplyingDisplayOrder($galleryPage);
 
-        return ['gallery' => $galleryPage, 'slides' => $slides];
+        $category = $this->getDoctrine()->getRepository('ImperivSiteBundle:Category')->findOneById(1);
+        
+        $slides = $this->getDoctrine()->getRepository('ImperivGalleryBundle:Slide')->findSlidesInGalleryApplyingDisplayOrder($galleryPage);
+
+        return ['gallery' => $galleryPage, 'slides' => $slides, 'category' => $category];
     }
 }

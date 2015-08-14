@@ -5,6 +5,7 @@ namespace Imperiv\Bundle\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 use Imperiv\Bundle\SiteBundle\Form\Type\DesignOrderType,
     Imperiv\Bundle\SiteBundle\Form\Type\VideoOrderType,
     Imperiv\Bundle\SiteBundle\Form\Type\InteriorOrderType;
@@ -47,9 +48,17 @@ class DefaultController extends Controller
         $forms = [
             $this->createForm(new VideoOrderType())->createView(),
             $this->createForm(new DesignOrderType())->createView(),
-            $this->createForm(new InteriorOrderType())->createView()
+            $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView()
         ];
 
         return ['categories' => $categories, 'forms' => $forms];
+    }
+
+    /**
+     * @Route("/order/interior", name="place_order_interior")
+     */
+    public function interiorOrderAction(Request $request)
+    {
+        var_dump($request->request->all()); die;
     }
 }

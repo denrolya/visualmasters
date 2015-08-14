@@ -122,6 +122,7 @@ class InteriorOrderType extends AbstractType
                     'placeholder' => 'Comments'
                 ]
             ]);
+//            ->add('save', 'submit', ['label' => 'Place an order']);
     }
 
     public function getName()
