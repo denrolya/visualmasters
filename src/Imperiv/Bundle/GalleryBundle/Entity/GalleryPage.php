@@ -36,6 +36,13 @@ class GalleryPage
     /**
      * @var string
      *
+     * @ORM\Column(name="detailed_description", type="text")
+     */
+    private $detailedDescription;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="meta_title", type="string", length=255)
      */
     private $metaTitle;
@@ -62,13 +69,24 @@ class GalleryPage
     private $slidesTimeout;
 
     /**
-     * @ORM\OneToMany(targetEntity="Imperiv\Bundle\GalleryBundle\Entity\Slide", mappedBy="parentGallery", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Slide", mappedBy="parentGallery", orphanRemoval=true)
      */
     protected $slides;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Imperiv\Bundle\SiteBundle\Entity\BaseOrder", mappedBy="category")
+     */
+    private $orders;
+
+    public function __toString()
+    {
+        return $this->pageName;
+    }
 
     public function __construct()
     {
         $this->slides = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -102,6 +120,29 @@ class GalleryPage
     public function getPageName()
     {
         return $this->pageName;
+    }
+
+    /**
+     * Set$detailedDescription
+     *
+     * @param string $detailedDescription
+     * @return GalleryPage
+     */
+    public function setDetailedDescription($detailedDescription)
+    {
+        $this->detailedDescription= $detailedDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get detailedDescription
+     *
+     * @return string
+     */
+    public function getDetailedDescription()
+    {
+        return $this->detailedDescription;
     }
 
     /**
@@ -228,9 +269,37 @@ class GalleryPage
     {
         return $this->slidesTimeout;
     }
-    
-    public function __toString()
+
+    /**
+     * Add orders
+     *
+     * @param \Imperiv\Bundle\SiteBundle\Entity\BaseOrder $orders
+     * @return GalleryPage
+     */
+    public function addOrder(\Imperiv\Bundle\SiteBundle\Entity\BaseOrder $orders)
     {
-        return $this->pageName;
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \Imperiv\Bundle\SiteBundle\Entity\BaseOrder $orders
+     */
+    public function removeOrder(\Imperiv\Bundle\SiteBundle\Entity\BaseOrder $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

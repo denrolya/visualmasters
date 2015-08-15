@@ -15,6 +15,10 @@ class GalleryPageAdmin extends Admin
     {
         $formMapper
                 ->add('pageName')
+                ->add('detailedDescription', 'textarea', [
+                    'required' => false,
+                    'attr' => ['class' => 'tinymce']
+                ])
                 ->add('slidesTimeout', 'text', ['data' => GalleryPage::DEFAUlT_TIMEOUT])
                 ->add('metaTitle', null, ['label' => 'Title'])
                 ->add('metaKeywords', 'text', ['required' => false])

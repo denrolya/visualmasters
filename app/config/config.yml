@@ -87,9 +87,6 @@ sonata_admin:
             Videos:
                 items:
                     - sonata.admin.video
-            Explore more:
-                items:
-                    - sonata.admin.category
 
 sonata_block:
     default_contexts: [cms]

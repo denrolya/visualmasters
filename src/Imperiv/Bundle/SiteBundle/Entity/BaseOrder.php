@@ -71,10 +71,10 @@ class BaseOrder
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="orders")
+     * @ORM\ManyToOne(targetEntity="Imperiv\Bundle\GalleryBundle\Entity\GalleryPage", inversedBy="orders")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      **/
-    private $product;
+    private $category;
 
     /**
      * Get id

@@ -24,11 +24,9 @@ class GalleryController extends Controller
         if (!$galleryPage) {
             throw $this->createNotFoundException("Page doesn't exist!");
         }
-
-        $category = $this->getDoctrine()->getRepository('ImperivSiteBundle:Category')->findOneById(1);
         
         $slides = $this->getDoctrine()->getRepository('ImperivGalleryBundle:Slide')->findSlidesInGalleryApplyingDisplayOrder($galleryPage);
 
-        return ['gallery' => $galleryPage, 'slides' => $slides, 'category' => $category];
+        return ['gallery' => $galleryPage, 'slides' => $slides];
     }
 }

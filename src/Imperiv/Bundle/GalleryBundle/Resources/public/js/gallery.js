@@ -27,6 +27,26 @@ $(document).ready(function() {
     });
 
     jQuery("video,object").maximage('maxcover');
+
+    /**
+     * Gallery ribbons
+     */
+    $(".ribbon-open").on('click', function() {
+        $('.transp-zone').toggleClass('invisible');
+
+        $('.foreground').toggle("slide").toggleClass('invisible');
+        $(".ribbon-open").fadeOut("fast", function() {
+            $(this).toggleClass('invisible');
+        });
+    });
+
+    $(".ribbon-close").on('click', function() {
+        $(".foreground").hide('slide', {direction: 'left'}, 1000, function() {
+            $(this).toggleClass('invisible');
+            $(".ribbon-open").toggleClass('invisible').fadeIn(1600);
+            $(".transp-zone").toggleClass('invisible').fadeIn(1600);
+        });
+    });
         
     $(".transp-zone-vertical .transp-zone-hide").on('click', function(event) {
         transpZone = $(this).parent().parent();

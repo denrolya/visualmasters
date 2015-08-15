@@ -39,15 +39,17 @@
     </div>
     {#-------------- Gallery controls --------------#}
 
-    <div id="ribbon-left" class="ribbon ribbon-open">
-        <span id="content">Know more</span>
-    </div>
-    <div class="foreground description invisible">
-        <div id="ribbon-right" class="ribbon ribbon-close">
-            <span id="content">Know less</span>
+    {% if app.request.get('_route') != 'index_page' and gallery.detailedDescription %}
+        <div id="ribbon-left" class="ribbon ribbon-open">
+            <span id="content">Know more</span>
         </div>
-        {{ category.description|raw }}
-    </div>
+        <div class="foreground invisible">
+            <div id="ribbon-right" class="ribbon ribbon-close">
+                <span id="content">Know less</span>
+            </div>
+            {{ gallery.detailedDescription|raw }}
+        </div>
+    {% endif %}
     <div id="maximage">
         {% for slide in slides %}
             <div class="item">
@@ -102,31 +104,6 @@
     <script type="text/javascript" charset="utf-8">
         var slidesTimeout = {{ gallery.slidesTimeout }},
             onIndexPage = {{ onIndexPage|number_format }};
-        $(function() {
-            $(".ribbon-open").on('click', function() {
-                $('.transp-zone').toggleClass('invisible');
-
-                $('.foreground').toggle("slide").toggleClass('invisible');
-//                $(".foreground").animate({width:'toggle'},350, function() {
-//                    $('.foreground').toggleClass('invisible');
-                    $(".ribbon-open").fadeOut("fast", function() {
-                        $(this).toggleClass('invisible');
-                    });
-//                });
-            });
-
-            $(".ribbon-close").on('click', function() {
-                $(".foreground").hide('slide', {direction: 'left'}, 1000, function() {
-                    $(this).toggleClass('invisible');
-                    $(".ribbon-open").toggleClass('invisible').fadeIn(1600, function() {
-                        $(".transp-zone").toggleClass('invisible').fadeIn(16000);
-                    });
-//                $(".foreground").animate({width:'toggle'},350, function() {
-                });
-//                $('.foreground').toggle("slide");
-//                $(".foreground").toggleClass('invisible');
-            });
-        });
     </script>
     <script type="text/javascript" src="{{ asset("bundles/imperivgallery/js/gallery.js") }}"></script>
 {% endblock javascripts%}
