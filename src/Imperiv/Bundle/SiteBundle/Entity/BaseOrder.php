@@ -230,7 +230,7 @@ class BaseOrder
      * @param \Imperiv\Bundle\GalleryBundle\Entity\GalleryPage $category
      * @return BaseOrder
      */
-    public function setCategory(Category $category = null)
+    public function setCategory(\Imperiv\Bundle\GalleryBundle\Entity\GalleryPage $category = null)
     {
         $this->category = $category;
 
