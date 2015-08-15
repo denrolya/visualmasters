@@ -225,25 +225,25 @@ class BaseOrder
     }
 
     /**
-     * Set product
+     * Set category
      *
-     * @param Category $product
+     * @param \Imperiv\Bundle\GalleryBundle\Entity\GalleryPage $category
      * @return BaseOrder
      */
-    public function setProduct(Category $product = null)
+    public function setCategory(Category $category = null)
     {
-        $this->product = $product;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * Get product
+     * Get category
      *
-     * @return Category
+     * @return \Imperiv\Bundle\GalleryBundle\Entity\GalleryPage
      */
-    public function getProduct()
+    public function getCategory()
     {
-        return $this->product;
+        return $this->category;
     }
 }
