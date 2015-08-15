@@ -9,20 +9,6 @@ use Doctrine\ORM\EntityRepository;
  */
 class SlideRepository extends EntityRepository
 {
-    public function findSlidesInGalleryApplyingDisplayOrder($galleryPage)
-    {
-        $em = $this->getEntityManager();
-        
-        $qb = $em->createQueryBuilder('s')
-                ->select('s')
-                ->from('ImperivGalleryBundle:Slide', 's')
-                ->where('s.parentGallery = :galleryPage')
-                ->setParameter('galleryPage', $galleryPage)
-                ->orderBy('s.displayOrder');
-        
-        return $qb->getQuery()->getResult();
-    }
-    
     public function findNextSlidesIdInProvidedGallery(GalleryPage $galleryPage)
     {
         $em = $this->getEntityManager();

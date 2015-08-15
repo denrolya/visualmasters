@@ -11,8 +11,9 @@
     {% stylesheets
         "bundles/imperivgallery/css/jquery.maximage.min.css"
         "bundles/imperivgallery/css/gallery.css"
-            filter="yui_css"
-    %}
+        "bundles/imperivsite/css/bootstrap-switch.css"
+        "bundles/imperivsite/css/datetimepicker.css"
+    filter="yui_css" %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
 {% endblock stylesheets %}
@@ -39,7 +40,7 @@
     </div>
     {#-------------- Gallery controls --------------#}
 
-    {% if app.request.get('_route') != 'index_page' and gallery.detailedDescription %}
+    {% if gallery.pageName != 'home' and gallery.detailedDescription %}
         <div id="ribbon-left" class="ribbon ribbon-open">
             <span id="content">Know more</span>
         </div>
@@ -47,11 +48,17 @@
             <div id="ribbon-right" class="ribbon ribbon-close">
                 <span id="content">Know less</span>
             </div>
-            {{ gallery.detailedDescription|raw }}
+            <div class="description">
+                {{ gallery.detailedDescription|raw }}
+                <div class="text-center order-button">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#{{ gallery.pageName|slugify }}">Order Now</a>
+                </div>
+            </div>
         </div>
     {% endif %}
+
     <div id="maximage">
-        {% for slide in slides %}
+        {% for slide in gallery.slides %}
             <div class="item">
                 {% media slide.imageContent, 'big' %}
 
@@ -68,7 +75,6 @@
                         {% set transparentZoneStyle =  transparentZoneStyle ~ "height: " ~ transparentZoneParameters.size ~ "px;" ~
                             "top: " ~ transparentZoneParameters.position ~ "%;" %}
                     {% endif %}
-                    {#{% set transparentZoneStyle = transparentZoneStyle ~ (isTransparentZoneVertical ?  : "top: " ) ~ transparentZoneParameters.position ~ "%;" %}#}
 
                     <div class="transp-zone {{ isTransparentZoneVertical ? "transp-zone-vertical" : "transp-zone-horizontal" }}"
                          style="{{ transparentZoneStyle }}" data-size="{{ transparentZoneParameters.size }}" data-position="{{ transparentZoneParameters.position }}">
@@ -88,6 +94,26 @@
             </div>
         {% endfor %}
     </div>
+
+    <div class="modal fade" id="{{ gallery.pageName|slugify }}" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{ gallery.pageName|capitalize }}</h4>
+                    {{ form_start(form) }}
+                </div>
+                <div class="modal-body">
+                    {{ form_rest(form) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
 
 {% block javascripts %}
@@ -96,14 +122,27 @@
         "bundles/imperivgallery/js/jquery.cycle.all.js"
         "bundles/imperivgallery/js/jquery.easing.1.3.js"
         "bundles/imperivgallery/js/jquery.maximage.js"
-        filter="yui_js"
-    %}
+        "bundles/imperivsite/js/bootstrap-switch.js"
+        "bundles/imperivsite/js/datetimepicker.js"
+        "bundles/imperivsite/js/jquery.slimscroll.js"
+    filter="yui_js" %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
 
     <script type="text/javascript" charset="utf-8">
         var slidesTimeout = {{ gallery.slidesTimeout }},
             onIndexPage = {{ onIndexPage|number_format }};
+            $("[type='checkbox']").bootstrapSwitch({
+                size : 'small',
+                onText : 'I',
+                offText : 'O',
+                onColor : 'success',
+                offColor : 'warning'
+            });
+            $("[type='datetime']").datetimepicker({format:'d.m.Y H:i'});
+            $('.modal-body').slimScroll({
+                height: '500px'
+            });
     </script>
     <script type="text/javascript" src="{{ asset("bundles/imperivgallery/js/gallery.js") }}"></script>
 {% endblock javascripts%}

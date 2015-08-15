@@ -70,6 +70,7 @@ class GalleryPage
 
     /**
      * @ORM\OneToMany(targetEntity="Slide", mappedBy="parentGallery", orphanRemoval=true)
+     * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $slides;
 

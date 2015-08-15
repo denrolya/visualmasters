@@ -51,14 +51,6 @@ class DefaultController extends Controller
             $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView()
         ];
 
-        return ['categories' => $categories, 'forms' => $forms];
-    }
-
-    /**
-     * @Route("/order/interior", name="place_order_interior")
-     */
-    public function interiorOrderAction(Request $request)
-    {
-        var_dump($request->request->all()); die;
+        return ['categories' => $categories, 'form' => $form];
     }
 }
