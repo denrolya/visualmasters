@@ -19,6 +19,12 @@
 {% endblock stylesheets %}
 
 {% block content %}
+
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
     
     {#-------------- Gallery controls --------------#}
     <div id="gallery_controls">

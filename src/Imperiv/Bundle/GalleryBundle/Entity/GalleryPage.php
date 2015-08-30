@@ -36,7 +36,7 @@ class GalleryPage
     /**
      * @var string
      *
-     * @ORM\Column(name="detailed_description", type="text")
+     * @ORM\Column(name="detailed_description", type="text", options={"nullable" : true})
      */
     private $detailedDescription;
 

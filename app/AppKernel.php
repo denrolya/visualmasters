@@ -32,6 +32,9 @@ class AppKernel extends Kernel
             new Imperiv\Bundle\SiteBundle\ImperivSiteBundle(),
             new Imperiv\Bundle\GalleryBundle\ImperivGalleryBundle(),
             new SC\DatetimepickerBundle\SCDatetimepickerBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -115,14 +115,13 @@ class InteriorOrderType extends AbstractType
             ->add('use_feng_shui_for_partner', 'checkbox')
             ->add('style_example', 'file')
             ->add('drawing', 'file')
-            ->add('environment_photos', 'file')
+            ->add('environment_photo', 'file')
             ->add('comments', 'textarea', [
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Comments'
                 ]
-            ])
-            ->add('save', 'submit', ['label' => 'Place an order']);
+            ]);
     }
 
     public function getName()

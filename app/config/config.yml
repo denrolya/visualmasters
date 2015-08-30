@@ -65,6 +65,9 @@ doctrine:
                     SonataMediaBundle: ~
                     ApplicationSonataClassificationBundle: ~
                     SonataClassificationBundle: ~
+                    ApplicationSonataUserBundle: ~
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
 
 swiftmailer:
     transport: "%mailer_transport%"
@@ -72,7 +75,7 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-                
+
 sonata_admin:
     title: Imperiumdesign
 #    title_logo: bundles/acmedemo/img/fancy_acme_logo.png
@@ -95,7 +98,7 @@ sonata_block:
             contexts:   [admin]
         sonata.user.block.menu:
         sonata.user.block.account:
-        
+
 sonata_media:
     default_context: default
     db_driver: doctrine_orm
@@ -120,3 +123,26 @@ sonata_media:
 
 sc_datetimepicker:
     picker: ~
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Application\Sonata\UserBundle\Entity\User
+
+    group:
+        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
+
+    service:
+        user_manager: sonata.user.orm.user_manager
+
+sonata_user:
+    security_acl: true
+    manager_type: orm # can be orm or mongodb
+
+sonata_block:
+    blocks:
+        #...
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        sonata.block.service.text: # used to if you plan to use Sonata user routes

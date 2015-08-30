@@ -38,9 +38,9 @@ class InteriorOrder extends BaseOrder
     /**
      * @var string
      *
-     * @ORM\Column(name="light_designs", type="boolean", options={"nullable" : true})
+     * @ORM\Column(name="light_design", type="boolean", options={"nullable" : true})
      */
-    private $lightDesigns;
+    private $lightDesign;
 
     /**
      * @var string
@@ -115,16 +115,24 @@ class InteriorOrder extends BaseOrder
     /**
      * @var string
      *
-     * @ORM\Column(name="use_feng_shui_for_partner", type="datetime", options={"nullable" : true})
+     * @ORM\Column(name="use_feng_shui_for_partner", type="boolean", options={"nullable" : true})
      */
     private $useFengShuiForPartner;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="comments", type="text", options={"nullable" : true})
+     * @ORM\Column(name="style_example", type="string", length=255, options={"nullable" : true})
      */
-    private $comments;
+    private $styleExample;
+
+    /**
+     * @ORM\Column(name="drawing", type="string", length=255, options={"nullable" : true})
+     */
+    private $drawing;
+
+    /**
+     * @ORM\Column(name="environment_photo", type="string", length=255, options={"nullable" : true})
+     */
+    private $environmentPhoto;
 
     /**
      * Get id
@@ -183,26 +191,26 @@ class InteriorOrder extends BaseOrder
     }
 
     /**
-     * Set lightDesigns
+     * Set lightDesign
      *
-     * @param boolean $lightDesigns
+     * @param boolean $lightDesign
      * @return InteriorOrder
      */
-    public function setLightDesigns($lightDesigns)
+    public function setLightDesign($lightDesign)
     {
-        $this->lightDesigns = $lightDesigns;
+        $this->lightDesign = $lightDesign;
 
         return $this;
     }
 
     /**
-     * Get lightDesigns
+     * Get lightDesign
      *
      * @return boolean 
      */
-    public function getLightDesigns()
+    public function getLightDesign()
     {
-        return $this->lightDesigns;
+        return $this->lightDesign;
     }
 
     /**
@@ -459,29 +467,6 @@ class InteriorOrder extends BaseOrder
     }
 
     /**
-     * Set comments
-     *
-     * @param string $comments
-     * @return InteriorOrder
-     */
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
-
-        return $this;
-    }
-
-    /**
-     * Get comments
-     *
-     * @return string 
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    /**
      * Set subcategory
      *
      * @param string $subcategory
@@ -502,5 +487,74 @@ class InteriorOrder extends BaseOrder
     public function getSubcategory()
     {
         return $this->subcategory;
+    }
+
+    /**
+     * Set styleExample
+     *
+     * @param string $styleExample
+     * @return InteriorOrder
+     */
+    public function setStyleExample($styleExample)
+    {
+        $this->styleExample = $styleExample;
+
+        return $this;
+    }
+
+    /**
+     * Get styleExample
+     *
+     * @return string
+     */
+    public function getStyleExample()
+    {
+        return $this->styleExample;
+    }
+
+    /**
+     * Set drawing
+     *
+     * @param string $drawing
+     * @return InteriorOrder
+     */
+    public function setDrawing($drawing)
+    {
+        $this->drawing = $drawing;
+
+        return $this;
+    }
+
+    /**
+     * Get drawing
+     *
+     * @return string
+     */
+    public function getDrawing()
+    {
+        return $this->drawing;
+    }
+
+    /**
+     * Set environmentPhoto
+     *
+     * @param string $environmentPhoto
+     * @return InteriorOrder
+     */
+    public function setEnvironmentPhoto($environmentPhoto)
+    {
+        $this->environmentPhoto = $environmentPhoto;
+
+        return $this;
+    }
+
+    /**
+     * Get environmentPhoto
+     *
+     * @return string
+     */
+    public function getEnvironmentPhoto()
+    {
+        return $this->environmentPhoto;
     }
 }

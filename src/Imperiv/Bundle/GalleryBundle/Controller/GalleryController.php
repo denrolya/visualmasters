@@ -2,6 +2,7 @@
 
 namespace Imperiv\Bundle\GalleryBundle\Controller;
 
+use Imperiv\Bundle\SiteBundle\Entity\Document;
 use Imperiv\Bundle\SiteBundle\Entity\InteriorOrder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
@@ -32,17 +33,17 @@ class GalleryController extends Controller
             throw $this->createNotFoundException("Page doesn't exist!");
         }
             $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
-//            switch ($gallery_name) {
-//                case 'art':
-//                    $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
-//                    break;
-//                case 1:
-//                    echo "i equals 1";
-//                    break;
-//                case 2:
-//                    echo "i equals 2";
-//                    break;
-//            }
+            switch ($gallery_name) {
+                case 'art':
+                    $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
+                    break;
+                case 1:
+                    $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
+                    break;
+                case 2:
+                    $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
+                    break;
+            }
 
         return ($gallery_name != 'home') ? ['gallery' => $galleryPage, 'form' => $form] : ['gallery' => $galleryPage];
     }
@@ -54,12 +55,41 @@ class GalleryController extends Controller
     {
         $entity = new InteriorOrder();
         $form = $this->createForm(new InteriorOrderType(), $entity);
+        $form->handleRequest($request);
 
-        $form->bind($request);
 
         if ($form->isValid())
         {
-            var_dump($form->getData()); die;
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($entity);
+
+            $em->flush();
+
+            foreach(['StyleExample', 'Drawing', 'EnvironmentPhoto'] as $index => $method) {
+                $file = $entity->{"get$method"}();
+
+                if ($file) {
+
+                    // Generate a unique name for the file before saving it
+                    $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+                    $uploadDir = $this->container->getParameter('uploads_dir') . "/" . $entity->getId() . "/";
+
+                    $file->move($uploadDir, $fileName);
+
+                    // Update the 'brochure' property to store the PDF file name
+                    // instead of its contents
+                    $entity->{"set$method"}($fileName);
+                }
+
+                $em->flush();
+            }
         }
+
+        $this->addFlash('success', 'You have successfully placed an order on IMPERIUMDESIGN!');
+
+        return $this->redirectToRoute('gallery_page', ['gallery_name' => 'art']);
     }
 }
