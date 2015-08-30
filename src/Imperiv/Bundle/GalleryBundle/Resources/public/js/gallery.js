@@ -38,9 +38,11 @@ $(document).ready(function() {
         $(".ribbon-open").fadeOut("fast", function() {
             $(this).toggleClass('invisible');
         });
+        $('.description').toggleClass('invisible');
     });
 
     $(".ribbon-close").on('click', function() {
+        $('.description').toggleClass('invisible');
         $(".foreground").hide('slide', {direction: 'left'}, 1000, function() {
             $(this).toggleClass('invisible');
             $(".ribbon-open").toggleClass('invisible').fadeIn(1600);

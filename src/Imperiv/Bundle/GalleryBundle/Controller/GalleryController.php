@@ -2,9 +2,12 @@
 
 namespace Imperiv\Bundle\GalleryBundle\Controller;
 
+use Imperiv\Bundle\SiteBundle\Entity\InteriorOrder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+use Symfony\Component\HttpFoundation\Request;
 
 use Imperiv\Bundle\SiteBundle\Form\Type\InteriorOrderType,
     Imperiv\Bundle\SiteBundle\Form\Type\DesignOrderType,
@@ -49,6 +52,14 @@ class GalleryController extends Controller
      */
     public function interiorOrderAction(Request $request)
     {
-        var_dump($request->request->all()); die;
+        $entity = new InteriorOrder();
+        $form = $this->createForm(new InteriorOrderType(), $entity);
+
+        $form->bind($request);
+
+        if ($form->isValid())
+        {
+            var_dump($form->getData()); die;
+        }
     }
 }

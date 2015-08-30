@@ -48,7 +48,7 @@
             <div id="ribbon-right" class="ribbon ribbon-close">
                 <span id="content">Know less</span>
             </div>
-            <div class="description">
+            <div class="description invisible">
                 {{ gallery.detailedDescription|raw }}
                 <div class="text-center order-button">
                     <a class="btn btn-primary" data-toggle="modal" data-target="#{{ gallery.pageName|slugify }}">Order Now</a>
@@ -102,13 +102,13 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">{{ gallery.pageName|capitalize }}</h4>
-                        {{ form_start(form) }}
                     </div>
                     <div class="modal-body">
+                        {{ form_start(form) }}
                         {{ form_rest(form) }}
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary" onclick="$('form').submit()">Save changes</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         {{ form_end(form) }}
                     </div>

@@ -15,6 +15,13 @@ class InteriorOrder extends BaseOrder
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="subcategory", type="string", length=255, options={"nullable" : false})
+     */
+    private $subcategory;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="designer_consultancy", type="boolean", options={"nullable" : true})
@@ -472,5 +479,28 @@ class InteriorOrder extends BaseOrder
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set subcategory
+     *
+     * @param string $subcategory
+     * @return InteriorOrder
+     */
+    public function setSubcategory($subcategory)
+    {
+        $this->subcategory = $subcategory;
+
+        return $this;
+    }
+
+    /**
+     * Get subcategory
+     *
+     * @return string 
+     */
+    public function getSubcategory()
+    {
+        return $this->subcategory;
     }
 }

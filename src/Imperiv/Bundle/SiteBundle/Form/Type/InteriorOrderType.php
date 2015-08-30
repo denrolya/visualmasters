@@ -121,8 +121,8 @@ class InteriorOrderType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Comments'
                 ]
-            ]);
-//            ->add('save', 'submit', ['label' => 'Place an order']);
+            ])
+            ->add('save', 'submit', ['label' => 'Place an order']);
     }
 
     public function getName()
