@@ -22,6 +22,7 @@ $(document).ready(function() {
         cycleOptions: maximageCycleOptions,
 //        cssTransitions: false,
         onFirstImageLoaded: function(){
+            $('#loading').fadeOut('slow');
             $('#maximage').fadeIn('fast');
         }
     });
