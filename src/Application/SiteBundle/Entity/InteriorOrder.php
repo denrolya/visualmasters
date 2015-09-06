@@ -10,11 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 class InteriorOrder extends BaseOrder
 {
     /**
-     * @var integer
-     */
-    private $id;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="subcategory", type="string", length=255, options={"nullable" : false})
@@ -133,16 +128,6 @@ class InteriorOrder extends BaseOrder
      * @ORM\Column(name="environment_photo", type="string", length=255, options={"nullable" : true})
      */
     private $environmentPhoto;
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set designerConsultancy

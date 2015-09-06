@@ -15,7 +15,6 @@ class InteriorOrderAdmin extends Admin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('video.name');
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -28,7 +27,22 @@ class InteriorOrderAdmin extends Admin
             ->add('address')
             ->add('postal')
             ->add('subcategory')
-            ->add('')
+            ->add('designerConsultancy')
+            ->add('mediaEquipIntegration')
+            ->add('lightDesign')
+            ->add('floorMaterial')
+            ->add('ceilingMaterial')
+            ->add('wallsMaterial')
+            ->add('furniture')
+            ->add('colorPsychology')
+            ->add('classicColoristicsCanon')
+            ->add('dominantColor')
+            ->add('secondaryColor')
+            ->add('birthDate')
+            ->add('useFengShuiForPartner')
+            ->add('styleExample')
+            ->add('drawing')
+            ->add('environmentPhoto')
         ;
     }
 }

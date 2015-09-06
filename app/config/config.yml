@@ -90,6 +90,9 @@ sonata_admin:
             Videos:
                 items:
                     - sonata.admin.video
+            Orders:
+                items:
+                    - sonata.admin.orders.interior
 
 sonata_block:
     default_contexts: [cms]
