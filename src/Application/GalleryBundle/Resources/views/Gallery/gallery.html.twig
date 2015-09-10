@@ -74,7 +74,7 @@
     {% endif %}
 
     <div id="maximage">
-        {% for slide in gallery.slides %}
+        {% for slide in gallery.slides if slide.imageContent%}
             <div class="item">
                 {% media slide.imageContent, 'big' %}
 
