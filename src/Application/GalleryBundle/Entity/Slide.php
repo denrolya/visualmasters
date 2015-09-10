@@ -31,7 +31,7 @@ class Slide
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="image_content", referencedColumnName="id")
+     * @ORM\JoinColumn(name="image_content", referencedColumnName="id", nullable=false)
      */
     private $imageContent;
 

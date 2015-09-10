@@ -14,7 +14,7 @@ class SlideAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->with('Slide')
-            ->add('imageContent', 'sonata_type_model_list', [], ['link_parameters' => [
+            ->add('imageContent', 'sonata_type_model_list', ['required' => true], ['link_parameters' => [
                     'context' => 'default',
                     'provider' => 'sonata.media.provider.image',
                     'required' => false
