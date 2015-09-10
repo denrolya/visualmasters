@@ -20,9 +20,11 @@ use Doctrine\ORM\Mapping as ORM;
 class BaseOrder
 {
     /**
-     * @ORM\Column(type="guid")
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 

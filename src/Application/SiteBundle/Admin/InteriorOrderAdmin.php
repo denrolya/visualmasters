@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper,
     Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class InteriorOrderAdmin extends Admin
 {
@@ -44,5 +45,10 @@ class InteriorOrderAdmin extends Admin
             ->add('drawing')
             ->add('environmentPhoto')
         ;
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['list', 'show']);
     }
 }
