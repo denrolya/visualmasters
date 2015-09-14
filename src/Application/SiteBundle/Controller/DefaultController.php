@@ -27,10 +27,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/video", name="video_page")
+     * @Route("/media", name="media_page")
      * @Template()
      */
-    public function videoAction()
+    public function mediaAction()
     {
         $videos = $this->getDoctrine()->getRepository("ImperivSiteBundle:Video")->findAll();
 
@@ -51,6 +51,6 @@ class DefaultController extends Controller
             $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView()
         ];
 
-        return ['categories' => $categories, 'form' => $form];
+        return ['categories' => $categories, 'form' => $forms];
     }
 }
