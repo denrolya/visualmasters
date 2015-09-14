@@ -4,11 +4,14 @@ namespace Application\SiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Application\SiteBundle\Form\Type\BaseType;
 
-class DesignOrderType extends AbstractType
+class DesignOrderType extends BaseType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
+
         $builder
             ->add('subcategory', 'choice', [
                 'choices' => [
@@ -24,36 +27,6 @@ class DesignOrderType extends AbstractType
                 'label' => false,
                 'empty_value' => 'Subcategory'
             ])
-            ->add('full_name', 'text', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Your name...'
-                ]
-            ])
-            ->add('email', 'email', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'E-mail'
-                ]
-            ])
-            ->add('phone', 'number', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Phonenumber'
-                ]
-            ])
-            ->add('address', 'text', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Address'
-                ]
-            ])
-            ->add('postal', 'text', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Postal code'
-                ]
-            ])
             ->add('use_3d_graphics', 'checkbox')
             ->add('style_example', 'file')
             ->add('color_psychology', 'checkbox')
@@ -65,18 +38,8 @@ class DesignOrderType extends AbstractType
                     'example3' => 'example 3',
                 ],
                 'empty_value' => 'Color preferences'
-            ])
-            ->add('comments', 'textarea', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Comments'
-                ]
             ]);
-//            ->add('save', 'submit', ['label' => 'Place an order']);
     }
 
-    public function getName()
-    {
-        return 'design_order';
-    }
+    public function getName() { return 'design_order'; }
 }

@@ -4,11 +4,14 @@ namespace Application\SiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Application\SiteBundle\Form\Type\BaseType;
 
-class InteriorOrderType extends AbstractType
+class InteriorOrderType extends BaseType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
+
         $builder
             ->add('subcategory', 'choice', [
                 'choices' => [
@@ -22,36 +25,6 @@ class InteriorOrderType extends AbstractType
                 ],
                 'label' => false,
                 'empty_value' => 'Subcategory'
-            ])
-            ->add('full_name', 'text', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Your name...'
-                ]
-            ])
-            ->add('email', 'email', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'E-mail'
-                ]
-            ])
-            ->add('phone', 'number', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Phonenumber'
-                ]
-            ])
-            ->add('address', 'text', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Address'
-                ]
-            ])
-            ->add('postal', 'text', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Postal code'
-                ]
             ])
             ->add('designer_consultancy', 'checkbox')
             ->add('media_equip_integration', 'checkbox')
@@ -115,17 +88,8 @@ class InteriorOrderType extends AbstractType
             ->add('use_feng_shui_for_partner', 'checkbox')
             ->add('style_example', 'file')
             ->add('drawing', 'file')
-            ->add('environment_photo', 'file')
-            ->add('comments', 'textarea', [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Comments'
-                ]
-            ]);
+            ->add('environment_photo', 'file');
     }
 
-    public function getName()
-    {
-        return 'design_order';
-    }
+    public function getName() { return 'interior_order'; }
 }

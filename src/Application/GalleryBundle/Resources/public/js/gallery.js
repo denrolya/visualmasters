@@ -116,9 +116,9 @@ $(document).ready(function() {
     // Left/Right/Up/Down arrow keys to navigate
     $(document).keydown(function(event) {
         switch(event.keyCode) {
-            case 32:
-                $("#toggle_slideshow").click(); event.preventDefault();
-                break;
+            //case 32:
+            //    $("#toggle_slideshow").click(); event.preventDefault();
+            //    break;
             case 37:
                 $('#arrow_left').click(); event.preventDefault();
                 break;

@@ -4,6 +4,8 @@ namespace Application\GalleryBundle\Controller;
 
 use Application\SiteBundle\Entity\Document;
 use Application\SiteBundle\Entity\InteriorOrder;
+use Application\SiteBundle\Entity\SpecialOrder;
+use Application\SiteBundle\Entity\WebOrder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -11,8 +13,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
 use Symfony\Component\HttpFoundation\Request;
 
 use Application\SiteBundle\Form\Type\InteriorOrderType,
-    Application\SiteBundle\Form\Type\DesignOrderType,
-    Application\SiteBundle\Form\Type\VideoOrderType;
+    Application\SiteBundle\Form\Type\WebOrderType,
+    Application\SiteBundle\Form\Type\SpecialOrderType;
 
 class GalleryController extends Controller
 {
@@ -32,16 +34,15 @@ class GalleryController extends Controller
         if (!$galleryPage) {
             throw $this->createNotFoundException("Page doesn't exist!");
         }
-            $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
             switch ($gallery_name) {
-                case 'art':
+                case 'interior':
                     $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
                     break;
-                case 1:
-                    $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
+                case 'special':
+                    $form = $this->createForm(new SpecialOrderType(), null, ['action' => $this->generateUrl('place_order_special')])->createView();
                     break;
-                case 2:
-                    $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
+                case 'web':
+                    $form = $this->createForm(new WebOrderType(), null, ['action' => $this->generateUrl('place_order_web')])->createView();
                     break;
             }
 
@@ -91,5 +92,51 @@ class GalleryController extends Controller
         $this->addFlash('success', 'You have successfully placed an order on IMPERIUMDESIGN!');
 
         return $this->redirectToRoute('gallery_page', ['gallery_name' => 'art']);
+    }
+
+    /**
+     * @Route("/order/web", name="place_order_web")
+     */
+    public function webOrderAction(Request $request)
+    {
+        $entity = new WebOrder();
+        $form = $this->createForm(new WebOrder(), $entity);
+        $form->handleRequest($request);
+
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($entity);
+
+            $em->flush();
+        }
+
+        $this->addFlash('success', 'You have successfully placed an order on IMPERIUMDESIGN!');
+
+        return $this->redirectToRoute('gallery_page', ['gallery_name' => 'web']);
+    }
+
+    /**
+     * @Route("/order/special", name="place_order_special")
+     */
+    public function specialOrderAction(Request $request)
+    {
+        $entity = new SpecialOrder();
+        $form = $this->createForm(new SpecialOrderType(), $entity);
+        $form->handleRequest($request);
+
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($entity);
+
+            $em->flush();
+        }
+
+        $this->addFlash('success', 'You have successfully placed an order on IMPERIUMDESIGN!');
+
+        return $this->redirectToRoute('gallery_page', ['gallery_name' => 'special']);
     }
 }
