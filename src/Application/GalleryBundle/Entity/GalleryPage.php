@@ -69,7 +69,7 @@ class GalleryPage
     private $slidesTimeout;
 
     /**
-     * @ORM\OneToMany(targetEntity="Slide", mappedBy="parentGallery", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Slide", mappedBy="parentGallery", cascade={"persist", "remove"})
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $slides;
