@@ -1350,25 +1350,26 @@
         },
         {
             "name": "knplabs/knp-menu",
-            "version": "v2.0.1",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
-                "reference": "5758d0026d7ed00c8dd4727e413918cf2dc74c1a"
+                "reference": "c6ad49933babd06a27b2f962a3469601ec9038b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/5758d0026d7ed00c8dd4727e413918cf2dc74c1a",
-                "reference": "5758d0026d7ed00c8dd4727e413918cf2dc74c1a",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/c6ad49933babd06a27b2f962a3469601ec9038b8",
+                "reference": "c6ad49933babd06a27b2f962a3469601ec9038b8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "pimple/pimple": "1.0.*",
-                "silex/silex": "1.0.*",
-                "twig/twig": ">=1.2,<2.0-dev"
+                "pimple/pimple": "~1.0",
+                "silex/silex": "~1.0",
+                "symfony/phpunit-bridge": "~2.7",
+                "twig/twig": "~1.16|~2.0"
             },
             "suggest": {
                 "pimple/pimple": "for the built-in implementations of the menu provider and renderer provider",
@@ -1378,12 +1379,12 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Knp\\Menu\\": "src/"
+                "psr-4": {
+                    "Knp\\Menu\\": "src/Knp/Menu"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1396,7 +1397,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -1410,7 +1411,7 @@
                 "menu",
                 "tree"
             ],
-            "time": "2014-08-01 09:50:16"
+            "time": "2015-09-20 08:23:47"
         },
         {
             "name": "knplabs/knp-menu-bundle",
@@ -2079,12 +2080,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "fbd7300558790e1cb40893e9d1606ed8fccc70bf"
+                "reference": "991006ef43743a6de733ce9f2fb157313f37f75e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/fbd7300558790e1cb40893e9d1606ed8fccc70bf",
-                "reference": "fbd7300558790e1cb40893e9d1606ed8fccc70bf",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/991006ef43743a6de733ce9f2fb157313f37f75e",
+                "reference": "991006ef43743a6de733ce9f2fb157313f37f75e",
                 "shasum": ""
             },
             "require": {
@@ -2093,7 +2094,7 @@
                 "knplabs/knp-menu": ">=2.0,<3.0",
                 "knplabs/knp-menu-bundle": ">=2.0,<3.0.0",
                 "sonata-project/block-bundle": "^2.3.8",
-                "sonata-project/core-bundle": "^2.3.6",
+                "sonata-project/core-bundle": "^2.3.9",
                 "sonata-project/exporter": "~1.0",
                 "symfony/class-loader": "~2.3",
                 "symfony/config": "^2.3.9",
@@ -2159,7 +2160,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2015-09-01 13:12:47"
+            "time": "2015-09-22 09:12:17"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -2293,12 +2294,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataClassificationBundle.git",
-                "reference": "3e71fd4aea3fc1606eaca78a6540b7c67731cbc0"
+                "reference": "ddf354c5367380dd4556c3b855cb48d375368c63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataClassificationBundle/zipball/3e71fd4aea3fc1606eaca78a6540b7c67731cbc0",
-                "reference": "3e71fd4aea3fc1606eaca78a6540b7c67731cbc0",
+                "url": "https://api.github.com/repos/sonata-project/SonataClassificationBundle/zipball/ddf354c5367380dd4556c3b855cb48d375368c63",
+                "reference": "ddf354c5367380dd4556c3b855cb48d375368c63",
                 "shasum": ""
             },
             "require": {
@@ -2351,7 +2352,7 @@
                 "tag",
                 "taxonomy"
             ],
-            "time": "2015-08-18 14:41:35"
+            "time": "2015-09-19 10:52:27"
         },
         {
             "name": "sonata-project/core-bundle",
@@ -2359,12 +2360,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "740faff31ceda763a9887bc05141c3040d2ec2cf"
+                "reference": "a14c6f3d6ea3b8c9fe4d4ca40757ac743a6dc8da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/740faff31ceda763a9887bc05141c3040d2ec2cf",
-                "reference": "740faff31ceda763a9887bc05141c3040d2ec2cf",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/a14c6f3d6ea3b8c9fe4d4ca40757ac743a6dc8da",
+                "reference": "a14c6f3d6ea3b8c9fe4d4ca40757ac743a6dc8da",
                 "shasum": ""
             },
             "require": {
@@ -2420,7 +2421,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2015-08-28 08:47:17"
+            "time": "2015-09-20 20:11:01"
         },
         {
             "name": "sonata-project/datagrid-bundle",
@@ -2842,12 +2843,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataMediaBundle.git",
-                "reference": "337fe4ceca35ec0370df14d810fad2dff586632d"
+                "reference": "74562891321543e08ca4d11cac3fc468fe777b1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/337fe4ceca35ec0370df14d810fad2dff586632d",
-                "reference": "337fe4ceca35ec0370df14d810fad2dff586632d",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/74562891321543e08ca4d11cac3fc468fe777b1f",
+                "reference": "74562891321543e08ca4d11cac3fc468fe777b1f",
                 "shasum": ""
             },
             "require": {
@@ -2926,7 +2927,7 @@
                 "vimeo",
                 "youtube"
             ],
-            "time": "2015-09-03 08:12:41"
+            "time": "2015-09-18 16:23:42"
         },
         {
             "name": "sonata-project/notification-bundle",
@@ -3519,16 +3520,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.21.1",
+            "version": "v1.22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "ca8d3aa90b6a01c82e07909fe815d6b443e75a23"
+                "reference": "79249fc8c9ff62e41e217e0c630e2e00bcadda6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ca8d3aa90b6a01c82e07909fe815d6b443e75a23",
-                "reference": "ca8d3aa90b6a01c82e07909fe815d6b443e75a23",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/79249fc8c9ff62e41e217e0c630e2e00bcadda6a",
+                "reference": "79249fc8c9ff62e41e217e0c630e2e00bcadda6a",
                 "shasum": ""
             },
             "require": {
@@ -3541,7 +3542,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.21-dev"
+                    "dev-master": "1.22-dev"
                 }
             },
             "autoload": {
@@ -3576,7 +3577,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-08-26 08:58:31"
+            "time": "2015-09-22 13:59:32"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
