@@ -24,7 +24,7 @@ class Video
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="video_content", referencedColumnName="id")
+     * @ORM\JoinColumn(name="video_content", referencedColumnName="id", onDelete="CASCADE")
      */
     private $video;
 

@@ -8,6 +8,7 @@
     filter="yui_css, cssrewrite"%}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
+    <link href='https://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
     <style>
         .embed-container {
             position: relative;
@@ -22,10 +23,74 @@
             width: 100%;
             height: 100%;
         }
-        img { width: 100%; }
-        body { background-image: url('http://fc07.deviantart.net/fs70/f/2013/174/3/e/recycled_texture_background_by_sandeep_m-d6aeau9.jpg'); }
+        img {
+            width: 100%;
+            display: block;
+            height: auto;
+            max-width: 100%;
+            -webkit-transition: all 300ms;
+            -moz-transition: all 300ms;
+            transition: all 300ms;
+            max-width: 100%;
+        }
+
+        body {
+            background-image: url('{{ asset("bundles/imperivsite/img/stardust.png") }}');
+        }
+
+        .col-xs-9 {
+            margin-top: 20px;
+        }
+
+        figure {
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            padding: 6px 8px 10px 8px; /*size of the frame*/
+            margin:10px 20px; /*space between the images*/
+            /*give the frame's background colour a gradient*/
+            background-image: url('{{ asset("bundles/imperivsite/img/upfeathers.png") }}');
+            /*background: -webkit-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+            /*background: -moz-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+            /*background: -o-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+            /*background: -ms-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+            /*background: linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+            /*give the Polaroids a small drop shadow*/
+            -webkit-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+            -moz-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+            box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+            -webkit-transform:rotate(-1deg);
+            -moz-transform: rotate(-1deg);
+            -o-transform: rotate(-1deg);
+            -ms-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+            -webkit-backface-visibility:hidden; /*prevent rotated text in the caption being jagged in Chrome and Safari*/
+        }
+
+        .image-link figure:nth-child(even) {
+            /*see support section below for more info on nth-child*/
+            -webkit-transform: rotate(15deg);
+            -moz-transform: rotate(2deg);
+            -o-transform: rotate(2deg);
+            -ms-transform: rotate(2deg);
+            transform: rotate(15deg);
+            /*because the image is rotated the opposite way, the drop-shadow needs moving to the other side of the image*/
+            -webkit-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+            -moz-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+            box-shadow: -4px 4px 8px -4px rgba(0, 0, 0, .75);
+        }
+
+        figcaption{
+            text-align: center;
+            font-family: 'Reenie Beanie', cursive; /* Reenie Beanie is available through Google Webfonts */
+            font-size:1.3em;
+            color: #454f40;
+            letter-spacing: 0.09em;
+            color: black;
+        }
     </style>
     <script src="{{ asset("bundles/imperivsite/js/modernizr.js") }}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
 {% endblock stylesheets %}
 
 {% block title %}
@@ -34,29 +99,25 @@
 
 {% block content %}
     <div class="container-fluid">
-        <div class="col-md-9">
-            <table class="table">
-                <tbody>
-                <tr>
-                    {% for video in videos %}
-                        <td class="video embed-container">
-                            <div class="viewport">
-                                <a class="image-link" href="//vimeo.com/{{ video.video.providerReference }}">
-                                    <span class="dark-background">{{ video.video.name }}</span>
-                                    {% thumbnail video.video, 'big' %}
-                                </a>
-                            </div>
-                        </td>
-
-                        {% if loop.index%3 == 0 %}
-                            </tr><tr>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-xs-9">
+            {% for video in videos %}
+                <div class="col-xs-4">
+                    <a class="image-link" href="//vimeo.com/{{ video.video.providerReference }}">
+                        <figure style="transform: rotate({{ random([1,2,3,4,-1,-2,-3,4]) }}deg)">
+                            {% thumbnail video.video, 'big' %}
+                            <figcaption>
+                                <p>{{ video.video.name }}</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
-        <div class="col-md-3"></div>
+        {#<div class="col-xs-3 transp-zone transp-zone-vertical" style="background: #000000; opacity: 0.7; width: 280px;margin-right: -100px;">#}
+                {#<div class="transp-zone-content">#}
+                    {#asdfalsdfasdf#}
+                {#</div>#}
+        {#</div>#}
     </div>
 
 {% endblock content %}
@@ -72,13 +133,6 @@
     <script>
         $(document).ready(function() {
             $('.image-link').magnificPopup({type:'iframe', pattern: 'vimeo'});
-            $('.viewport').mouseenter(function(e) {
-                $(this).children('a').children('img').animate({ height: '299', left: '0', top: '0', width: '450'}, 100);
-                $(this).children('a').children('span').fadeIn(200);
-            }).mouseleave(function(e) {
-                $(this).children('a').children('img').animate({ height: '332', left: '-20', top: '-20', width: '500'}, 100);
-                $(this).children('a').children('span').fadeOut(200);
-            });
         });
     </script>
 {% endblock javascripts %}
