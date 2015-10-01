@@ -114,7 +114,7 @@ body {
 }
 
 .transp-zone {
-  position: absolute; top: 3px;
+  position: absolute; top: 8px;
   height: 100%;
   display: table;
   overflow: hidden;
