@@ -29,17 +29,17 @@ header {
   position: absolute;
 }
 
-.navigator>li:first-child { left: 10%; }
+.navigator>li:first-child { left: 5%; }
 
-.navigator>li:nth-of-type(2) { left: 20%; }
+.navigator>li:nth-of-type(2) { left: 23%; }
 
-.navigator>li:nth-of-type(3) { left: 31%; }
+.navigator>li:nth-of-type(3) { left: 36%; }
 
-.navigator>li:nth-of-type(4) { left: 45%; }
+.navigator>li:nth-of-type(4) { left: 51%; }
 
-.navigator>li:nth-of-type(5) { left: 59%; }
+.navigator>li:nth-of-type(5) { left: 65%; }
 
-.navigator>li:last-child { right: 10%; }
+.navigator>li:last-child { right: 5%; }
 
 .navigator>#penult { left: 70%; }
 
