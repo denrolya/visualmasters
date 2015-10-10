@@ -44,11 +44,11 @@ header {
 .navigator>#penult { left: 70%; }
 
 .navigator li a, .navigator span {
-	font-size: 20px;
+    font-size: 1.4em;
     margin-bottom: 15px;
 	text-decoration: none;
-  color: #333;
-  transition: 0.4s;
+    color: #333;
+    transition: 0.4s;
 }
 
 .navigator li a:hover, .navigator span:hover {
