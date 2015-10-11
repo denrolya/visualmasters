@@ -67,7 +67,7 @@
             <div class="description invisible">
                 {{ gallery.detailedDescription|raw }}
                 <div class="text-center order-button">
-                    <a class="btn btn-primary" data-toggle="modal" data-target="#{{ gallery.pageName|slugify }}">Order Now</a>
+                    <a href="#" class="order biliboard {{ random(['electronic', 'repeating', '', 'radial']) }}" data-toggle="modal" data-target="#{{ gallery.pageName|slugify }}" >Order Now</a>
                 </div>
             </div>
         </div>
