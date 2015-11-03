@@ -43,14 +43,6 @@ class DefaultController extends Controller
      */
     public function exploreAction()
     {
-        $categories = $this->getDoctrine()->getRepository("ImperivSiteBundle:Category")->findAll();
-
-        $forms = [
-            $this->createForm(new VideoOrderType())->createView(),
-            $this->createForm(new DesignOrderType())->createView(),
-            $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView()
-        ];
-
-        return ['categories' => $categories, 'form' => $forms];
+        return [];
     }
 }
