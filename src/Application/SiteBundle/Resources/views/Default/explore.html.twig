@@ -20,63 +20,71 @@
                 <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit landitiis.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat.</p><br>
 
-                <form action="assets/php/sky-forms-pro/demo-contacts-process.php" method="post" id="sky-form3" class="sky-form sky-changes-3" novalidate="novalidate">
+                {{ form_start(form, {'attr': {'class': 'sky-form sky-changes-3'}}) }}
+                {#<form action="assets/php/sky-forms-pro/demo-contacts-process.php" method="post" id="sky-form3" class="sky-form sky-changes-3" novalidate="novalidate">#}
                     <fieldset>
                         <div class="row">
                             <section class="col col-xs-6">
                                 <label class="label">Name</label>
                                 <label class="input">
                                     <i class="icon-append glyphicon glyphicon-user"></i>
-                                    <input type="text" name="name" id="name">
+                                    {{ form_widget(form.full_name) }}
                                 </label>
                             </section>
                             <section class="col col-xs-6">
                                 <label class="label">E-mail</label>
                                 <label class="input">
                                     <i class="icon-append glyphicon glyphicon-envelope"></i>
-                                    <input type="email" name="email" id="email">
+                                    {{ form_widget(form.email) }}
+                                </label>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-xs-4">
+                                <label class="label">Phone number</label>
+                                <label class="input">
+                                    <i class="icon-append glyphicon glyphicon-earphone"></i>
+                                    {{ form_widget(form.phone) }}
+                                </label>
+                            </section>
+
+                            <section class="col col-xs-4">
+                                <label class="label">Address</label>
+                                <label class="input">
+                                    <i class="icon-append glyphicon glyphicon-pushpin"></i>
+                                    {{ form_widget(form.address) }}
+                                </label>
+                            </section>
+
+                            <section class="col col-xs-4">
+                                <label class="label">Postal</label>
+                                <label class="input">
+                                    <i class="icon-append glyphicon glyphicon-send"></i>
+                                    {{ form_widget(form.postal) }}
                                 </label>
                             </section>
                         </div>
 
                         <section>
-                            <label class="label">Subject</label>
-                            <label class="input">
-                                <i class="icon-append glyphicon glyphicon-tag"></i>
-                                <input type="text" name="subject" id="subject">
-                            </label>
-                        </section>
-
-                        <section>
-                            <label class="label">Message</label>
+                            <label class="label">Comments</label>
                             <label class="textarea">
                                 <i class="icon-append glyphicon glyphicon-comment"></i>
-                                <textarea rows="4" name="message" id="message"></textarea>
+                                {{ form_widget(form.comments) }}
                             </label>
                         </section>
 
-                        <section>
-                            <label class="label">Enter characters below:</label>
-                            <label class="input input-captcha">
-                                <img src="assets/plugins/sky-forms-pro/skyforms/captcha/image.php?1446565878" width="100" height="32" alt="Captcha image">
-                                <input type="text" maxlength="6" name="captcha" id="captcha">
-                            </label>
-                        </section>
-
-                        <section>
-                            <label class="checkbox"><input type="checkbox" name="copy"><i></i>Send a copy to my e-mail address</label>
-                        </section>
                     </fieldset>
 
                     <footer>
-                        <button type="submit" class="btn-u">Send message</button>
+                        <button type="submit" class="btn-u">Place an order</button>
                     </footer>
 
                     <div class="message">
                         <i class="rounded-x fa fa-check"></i>
                         <p>Your message was successfully sent!</p>
                     </div>
-                </form>
+                {{ form_rest(form) }}
             </div><!--/col-md-9-->
 
             <div class="col-md-3">
@@ -84,9 +92,9 @@
                 <div class="headline"><h2>Contacts</h2></div>
                 <ul class="list-unstyled who margin-bottom-30">
                     <li><a href="#"><i class="fa fa-home"></i>5B Streat, City 50987 New Town US</a></li>
-                    <li><a href="#"><i class="fa fa-envelope"></i>info@example.com</a></li>
+                    <li><a href="#"><i class="fa fa-envelope"></i>info@visualmasters.com</a></li>
                     <li><a href="#"><i class="fa fa-phone"></i>1(222) 5x86 x97x</a></li>
-                    <li><a href="#"><i class="fa fa-globe"></i>http://www.example.com</a></li>
+                    <li><a href="#"><i class="fa fa-globe"></i>http://visualmasters.com</a></li>
                 </ul>
 
                 <!-- Business Hours -->

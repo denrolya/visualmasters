@@ -1126,7 +1126,7 @@ h3.heading-xs {
     font-weight: 400;
     padding: 6px 13px;
     position: relative;
-    background: #72c02c;
+    background: orange;
     white-space: nowrap;
     display: inline-block;
     text-decoration: none;
@@ -1202,7 +1202,7 @@ a.btn-u-xs {
 .btn-u:active,
 .btn-u.active,
 .open .dropdown-toggle.btn-u {
-    background: #5fb611;
+    background: orange;
 }
 .btn-u-split.dropdown-toggle {
     border-left: solid 1px #5fb611;

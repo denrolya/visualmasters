@@ -8,7 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Application\SiteBundle\Form\Type\DesignOrderType,
     Application\SiteBundle\Form\Type\VideoOrderType,
-    Application\SiteBundle\Form\Type\InteriorOrderType;
+    Application\SiteBundle\Form\Type\InteriorOrderType,
+    Application\SiteBundle\Form\Type\BaseType;
+use Application\SiteBundle\Entity\BaseOrder;
 
 class DefaultController extends Controller
 {
@@ -41,8 +43,31 @@ class DefaultController extends Controller
      * @Route("/explore", name="explore_more_page")
      * @Template()
      */
-    public function exploreAction()
+    public function exploreAction(Request $request)
     {
-        return [];
+        $form = $this->createForm(new BaseType(), null, ['action' => $this->generateUrl('place_base_order')])->createView();
+
+        return compact('form');
+    }
+
+    /**
+     * @Route("/ss", name="place_base_order")
+     */
+    public function placeBaseOrder(Request $request)
+    {
+        $baseOrder = new BaseOrder();
+        $form = $this->createForm(new BaseOrder(), $baseOrder);
+        $form->handleRequest($request);
+
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($baseOrder);
+
+            $em->flush();
+        }
+
+        $this->addFlash('success', 'You have successfully placed an order on IMPERIUMDESIGN!');
     }
 }

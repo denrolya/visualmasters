@@ -24,6 +24,7 @@ set :core_branch,                       "develop"
 
 role :web,                              domain                         # Your HTTP server, Apache/etc
 role :app,                              domain, :primary => true       # This may be the same as your `Web` server
+role :db,                               domain, :primary => true
 
 set :keep_releases,                     5
 
