@@ -14,14 +14,10 @@
         body { background-image: url('{{ asset("bundles/imperivsite/img/stardust.png") }}');}
         figure { background-image: url('{{ asset("bundles/imperivsite/img/upfeathers.png") }}'); }
 
-        html, body, .container-fluid {
-            height: 100%;
-        }
-
         .container-fluid {
             position: absolute;
-            top:0;
-            padding-top: 30px;
+            top:30px;
+            height: calc(100% - 30px);
         }
         .row {
             margin-bottom: -1000px;

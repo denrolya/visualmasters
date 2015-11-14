@@ -4,11 +4,16 @@
 .invisible {
     display: none;
 }
+
+.content-wrapper {
+    height: 100%;
+}
 /*=================================
 =            Navigator            =
 =================================*/
 header {
-    height: 28px;
+    height: 32px;
+    z-index: 100;
 }
 
 .navigator {

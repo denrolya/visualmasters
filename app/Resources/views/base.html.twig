@@ -18,9 +18,11 @@
     </head>
 
     <body>
-        {% render controller('ImperivSiteBundle:Default:navigation') %}
 
+        <div class="content-wrapper">
+            {% render controller('ImperivSiteBundle:Default:navigation') %}
             {% block content %}{% endblock content %}
+        </div>
             
         {% block javascripts %}
             {% javascripts
