@@ -3,6 +3,7 @@
 namespace Application\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * BaseOrder
@@ -16,6 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  *      "web"       = "WebOrder",
  *      "media"     = "MediaOrder",
  *      "interior"  = "InteriorOrder",
+ *      "base"      = "BaseOrder"
  * })
  */
 class BaseOrder
@@ -32,20 +34,22 @@ class BaseOrder
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5)
      * @ORM\Column(name="full_name", type="string", length=255)
      */
     private $fullName;
 
     /**
      * @var string
-     *
+     * @Assert\Email()
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 
     /**
      * @var string
-     *
+     * @Assert\Length(min=10)
      * @ORM\Column(name="phone", type="string", length=255)
      */
     private $phone;
@@ -60,6 +64,7 @@ class BaseOrder
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="postal", type="string", length=255)
      */
     private $postal;
@@ -67,6 +72,7 @@ class BaseOrder
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="comments", type="string")
      */
     private $comments;

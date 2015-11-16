@@ -14,6 +14,11 @@
 
 {% block content %}
     <div class="container content">
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="flash-notice">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
         <div class="row margin-bottom-30">
             <div class="col-md-9 mb-margin-bottom-30">
                 <div class="headline"><h2>Contact Form</h2></div>

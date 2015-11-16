@@ -4,9 +4,9 @@ namespace Application\SiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Application\SiteBundle\Form\Type\BaseType;
+use Application\SiteBundle\Form\Type\BaseOrderType;
 
-class InteriorOrderType extends BaseType
+class InteriorOrderType extends BaseOrderType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Application\SiteBundle\Form\Type\DesignOrderType,
     Application\SiteBundle\Form\Type\VideoOrderType,
     Application\SiteBundle\Form\Type\InteriorOrderType,
-    Application\SiteBundle\Form\Type\BaseType;
+    Application\SiteBundle\Form\Type\BaseOrderType;
 use Application\SiteBundle\Entity\BaseOrder;
 
 class DefaultController extends Controller
@@ -45,7 +45,7 @@ class DefaultController extends Controller
      */
     public function exploreAction(Request $request)
     {
-        $form = $this->createForm(new BaseType(), null, ['action' => $this->generateUrl('place_base_order')])->createView();
+        $form = $this->createForm(new BaseOrderType(), null, ['action' => $this->generateUrl('place_base_order')])->createView();
 
         return compact('form');
     }
@@ -56,7 +56,7 @@ class DefaultController extends Controller
     public function placeBaseOrder(Request $request)
     {
         $baseOrder = new BaseOrder();
-        $form = $this->createForm(new BaseOrder(), $baseOrder);
+        $form = $this->createForm(new BaseOrderType(), $baseOrder);
         $form->handleRequest($request);
 
 
@@ -69,5 +69,7 @@ class DefaultController extends Controller
         }
 
         $this->addFlash('success', 'You have successfully placed an order on IMPERIUMDESIGN!');
+
+        return $this->redirectToRoute('explore_more_page');
     }
 }
