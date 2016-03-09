@@ -1,5 +1,39 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .header-1 {
+            font-weight: bold;
+            font-size: 6em;
+        }
+
+        .header-2 {
+            font-weight: bold;
+            font-size: 7em;
+        }
+
+        section .footer  {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            height: 50px;
+        }
+
+        section .footer .row, section .footer .row .col-xs-3 {
+            height: 100%;
+            margin: 0;
+        }
+
+        section .footer a {
+            display: block;
+            height: 100%;
+            padding-top: 15px;
+        }
+    </style>
+{% endblock stylesheets %}
+
 {% block content %}
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -36,26 +70,82 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <section>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam cum dicta error harum recusandae voluptas! Asperiores culpa cumque dolor eum illum, impedit incidunt laudantium maxime numquam quas, rerum totam!</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll"><span class="glyphicon glyphicon-menu-down"></span></a>
+    <section id="main">
+        <div class="section-content">
+            <div class="section-content-inner">
+                <div class="text-left">
+                    <h1 class="text-uppercase header-1">3D Design</h1>
+                    <h1 class="text-uppercase header-2">That lives</h1>
+                    <h4>Visualmasters provides excellent 3D interior designs of any difficulty</h4>
+                    <h4>We also offer other kinds of 3D visualisation, 3D models creation & even more</h4>
+                </div>
+                {#<a href="#about" class="btn btn-primary btn-xl page-scroll pull-left"><span class="glyphicon glyphicon-menu-down"></span></a>#}
+            </div>
+        </div>
+        <div class="footer">
+            <div class="row">
+                <div class="col-xs-3">
+                    <a href="">3D Interior Design</a>
+                </div>
+                <div class="col-xs-3">
+                    <a href="">3D Exterior Design</a>
+                </div>
+                <div class="col-xs-3">
+                    <a href="">Web development</a>
+                </div>
+                <div class="col-xs-3">
+                    <a href="">Special projects</a>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </section>
 
     <section class="bg-primary" id="about">
         <div class="container">
+            <h1>Who we are</h1>
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
-                    <hr class="light">
-                    <p class="text-faded">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi cupiditate distinctio, expedita fuga hic illum ipsam iure ?</p>
-                    <a href="#" class="btn btn-default btn-xl">Get Started!</a>
+                <div class="col-xs-4">
+                    <h3>VISUALMASTERS</h3>
+                    <p>We are a group of people who are seeking of a chance to make this world better and more beautiful. We provide great design descisions for all types of premises. Our main goal is to visualize your inner space.</p>
                 </div>
+                <div class="col-xs-4">
+                    <h3>Our mission</h3>
+                    <p>Doing our best, VisualMasters team improve your everyday life by making it more comfortable and more beneficial. Remember - your surrounding influences your inner world, your mood and your character.</p>
+                </div>
+                <div class="col-xs-4">
+                    <h3>Professional team</h3>
+                    <p>Our team consists of exclusive professionals you can rely on. For years we've been doing our best in moviemaking, creating an interior and exterior design projects, web development and web design.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <h4>High-tech Soft</h4>
+                    <p>We create high quality product, which helps you to visualize your thoughts and pictures in your mind.</p>
+                </div>
+                <div class="col-xs-3">
+                    <h4>Time economy</h4>
+                    <p>Leave your order online. Consult to our specialists via sSkype, this helps us to understand you in a better way.</p>
+                </div>
+                <div class="col-xs-3">
+                    <h4>Money saving</h4>
+                    <p>We offer competitive prices to our clients. The average price for the project is lower than you may suspect.</p>
+                </div>
+                <div class="col-xs-3">
+                    <h4>Wide range of services</h4>
+                    <p>From interior & exterior design to filmmaking & crafting production - it depends on your needs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="row">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-2"><a href="">3dmax</a></div>
+                <div class="col-xs-2"><a href="">autodesk</a></div>
+                <div class="col-xs-2"><a href="">blender</a></div>
+                <div class="col-xs-2"><a href="">SketchUp</a></div>
+                <div class="col-xs-2"><a href="">Adobe</a></div>
+                <div class="col-xs-1"></div>
             </div>
         </div>
     </section>
@@ -64,41 +154,40 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">At Your Service</h2>
+                    <h2 class="section-heading">Visualize your dreams</h2>
+                    <h2 class="section-heading-dimmed">Before they come true</h2>
                     <hr class="primary">
                 </div>
             </div>
-        </div>
-        <div class="container">
+
             <div class="row">
-                <div class="col-lg-3 col-md-6 text-center">
+                <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
-                        <h3>Sturdy Templates</h3>
-                        <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+                        <h3>Creating 3D Scenes</h3>
+                        <p class="text-muted">We specialize in creating a 3D design of interiors and exteriors</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center">
+                <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Ready to Ship</h3>
-                        <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+                        <h3>Integration to WEB</h3>
+                        <p class="text-muted">IT department set up to deal with any problems with the integration of your 3D products to WEB</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center">
+                <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                        <h3>Up to Date</h3>
-                        <p class="text-muted">We update dependencies to keep things fresh.</p>
+                        <h3>3D to Real Things</h3>
+                        <p class="text-muted">Creation of real things from 3D models. Wood, steel, galss and much more.</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                        <h3>Made with Love</h3>
-                        <p class="text-muted">You have to make your websites with love these days!</p>
-                    </div>
-                </div>
+            </div>
+
+            <div class="row">
+                <h2 class="section-heading-underlined">
+                    What are you interested in?
+                </h2>
             </div>
         </div>
     </section>
