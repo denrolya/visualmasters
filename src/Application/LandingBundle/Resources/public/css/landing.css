@@ -1,6 +1,11 @@
+.bg-grey {
+    background: #EEEEEE;
+}
+
 .section-content {
     position: absolute;
     top: 25%;
+    padding-left: 30px;
 }
 
 .header-1 {
@@ -11,6 +16,24 @@
 .header-2 {
     font-weight: bold;
     font-size: 7em;
+}
+
+.headers h4 {
+    color: #9A9998;
+}
+
+#about h1 {
+    font-size: 5em;
+    font-weight: bolder;
+    color: #77C2E2;
+}
+
+#about .col-xs-4 {
+    color: #0097D6;
+}
+
+#about .col-xs-3 {
+    color: #8F8F8F;
 }
 
 section .footer  {
