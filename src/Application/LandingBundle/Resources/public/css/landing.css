@@ -1,0 +1,75 @@
+.section-content {
+    position: absolute;
+    top: 25%;
+}
+
+.header-1 {
+    font-weight: bold;
+    font-size: 6em;
+}
+
+.header-2 {
+    font-weight: bold;
+    font-size: 7em;
+}
+
+section .footer  {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #40A2C5;
+    height: 75px;
+}
+
+section .footer .row, section .footer .row .col-xs-3, section .footer .row .col-xs-2{
+    height: 100%;
+    margin: 0;
+}
+
+section .footer .col-xs-3, section .footer .col-xs-2 {
+    padding: 0;
+}
+
+section .footer a {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    display: block;
+    height: 100%;
+    padding-top: 25px;
+}
+
+section .footer a:hover {
+    background: white;
+    color: #40A2C5;
+    text-decoration: none;
+}
+
+#mainNav .container-fluid {
+    padding: 20px 100px;
+    background-color: #303030;
+}
+
+#mainNav .navbar-nav a {
+    padding: 10px 30px;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+}
+
+#mainNav .navbar-nav a:not(.order):hover {
+    background: #0083B2;
+}
+
+#mainNav .navbar-nav .order {
+    background: #FBC02D;
+    color: #303030;
+}
+
+.navbar-default .nav > li.active>a,
+.navbar-default .nav>li.active>a:focus {
+    background: #0083B2;
+    color: white;
+}

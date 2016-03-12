@@ -11,6 +11,9 @@
 /bin/
 /composer.phar
 /vendor/
+/web/js/
+/web/css/
+/web/images/
 
 # IDE Files
 /.phpintel/

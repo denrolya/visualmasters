@@ -2,36 +2,12 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <style>
-        .header-1 {
-            font-weight: bold;
-            font-size: 6em;
-        }
-
-        .header-2 {
-            font-weight: bold;
-            font-size: 7em;
-        }
-
-        section .footer  {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: white;
-            height: 50px;
-        }
-
-        section .footer .row, section .footer .row .col-xs-3 {
-            height: 100%;
-            margin: 0;
-        }
-
-        section .footer a {
-            display: block;
-            height: 100%;
-            padding-top: 15px;
-        }
-    </style>
+    {% stylesheets
+        "bundles/applicationlanding/css/landing.css"
+    filter="yui_css, cssrewrite"
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
 {% endblock stylesheets %}
 
 {% block content %}
@@ -55,13 +31,19 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Services</a>
+                        <a class="page-scroll" href="#services">What we do</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <a class="page-scroll" href="#portfolio">Our Works</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#media">Media</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="#" class="order">Order</a>
                     </li>
                 </ul>
             </div>
@@ -73,7 +55,7 @@
     <section id="main">
         <div class="section-content">
             <div class="section-content-inner">
-                <div class="text-left">
+                <div class="headers text-left">
                     <h1 class="text-uppercase header-1">3D Design</h1>
                     <h1 class="text-uppercase header-2">That lives</h1>
                     <h4>Visualmasters provides excellent 3D interior designs of any difficulty</h4>
