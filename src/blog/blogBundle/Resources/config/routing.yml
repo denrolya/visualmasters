@@ -1,0 +1,3 @@
+blogblog_homepage:
+    path:     /hello/Andy
+    defaults: { _controller: blogblogBundle:Default:index }

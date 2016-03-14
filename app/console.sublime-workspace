@@ -1,0 +1,478 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"c",
+				"class	Attr"
+			],
+			[
+				"n",
+				"nav	Tag"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"font-s",
+				"font-style"
+			],
+			[
+				"a",
+				"a	Tag"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"paddin",
+				"padding-top"
+			],
+			[
+				"fon",
+				"font-style"
+			],
+			[
+				"pa",
+				"padding-bottom"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"TEX",
+				"text-align"
+			],
+			[
+				"bac",
+				"background-size"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"paddi",
+				"padding"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"i",
+				"italic"
+			],
+			[
+				"li",
+				"line-height"
+			],
+			[
+				"bor",
+				"border"
+			],
+			[
+				"text-t",
+				"text-transform"
+			],
+			[
+				"le",
+				"letter-spacing"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"marg",
+				"margin-right"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"fl",
+				"float"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"siz",
+				"font-size"
+			],
+			[
+				"h",
+				"height"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"ma",
+				"mr-a	margin-right: auto;"
+			],
+			[
+				"ov",
+				"overflow"
+			],
+			[
+				"s",
+				"sans-serif"
+			],
+			[
+				"ar",
+				"article	Tag"
+			],
+			[
+				"v",
+				"font-variant"
+			],
+			[
+				"t",
+				"text-align"
+			],
+			[
+				"in",
+				"inline"
+			],
+			[
+				"p",
+				"padding-bottom"
+			],
+			[
+				"bo",
+				"body	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 114.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib2,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib2,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/andrey/data/folders/education/Programming/new/practise/lib/css/bootstrap.css",
+		"/home/andrey/data/folders/education/Programming/new/bootstrap lessons/bs/sait-6.html",
+		"/home/andrey/data/folders/education/Programming/new/practise/index.html",
+		"/home/andrey/data/folders/education/Programming/new/bootstrap lessons/bs/sait-7.html",
+		"/home/andrey/data/folders/education/Programming/new/bootstrap lessons/8\\2\\16.html",
+		"/home/andrey/data/folders/education/Programming/new/bootstrap lessons/setka.html",
+		"/home/andrey/data/folders/education/Programming/new/practise/lib/css/bootstrap.min.css",
+		"/var/www/html/index.php",
+		"/home/andrey/Data/Folders/Education/Programming/new/php lessons/indexOOP.php",
+		"/home/andrey/Загрузки/HTML-Layana1.0.0/css/style.css",
+		"/home/andrey/Data/Folders/Education/Programming/new/jquery lessons/lesson 1/index.html",
+		"/home/andrey/data/folders/files/SkySales",
+		"/home/andrey/Рабочий стол/server/server.js",
+		"/var/www/html/untitled.php",
+		"/var/www/html/index.html",
+		"/home/andrey/Загрузки/HTML-Layana1.0.0/index.html",
+		"/home/andrey/Загрузки/HTML-Layana1.0.0/css/animate.min.css",
+		"/home/andrey/Загрузки/HTML-Layana1.0.0/css/bootstrap.min.css",
+		"/home/andrey/Data/Folders/Education/Programming/new/bootstrap lessons/bs/js/bootstrap.min.js",
+		"/home/andrey/Data/Folders/Education/Programming/new/bootstrap lessons/bs/css/bootstrap.css",
+		"/home/andrey/Data/Folders/Education/Programming/new/bootstrap lessons/bs/js/bootstrap.js",
+		"/home/andrey/Data/Folders/Education/Programming/new/bootstrap lessons/bs/sait-7.html",
+		"/home/andrey/Загрузки/startbootstrap-freelancer-1.0.5/mail/contact_me.php",
+		"/var/www/html/wp-content/themes/websiteWordpress/header.php",
+		"/var/www/html/wp-content/themes/websiteWordpress/style.css",
+		"/var/www/html/wp-content/themes/websiteWordpress/index.php",
+		"/usr/wordpress/index.php",
+		"/usr/wordpress/wp-admin/user/user-edit.php",
+		"/usr/wordpress/wp-admin/user/admin.php",
+		"/usr/wordpress/wp-admin/user/index.php",
+		"/usr/wordpress/wp-content/themes/twentythirteen/index.php",
+		"/usr/wordpress/wp-content/themes/twentyfifteen/image.php",
+		"/usr/wordpress/wp-content/themes/twentyfourteen/index.php",
+		"/usr/wordpress/wp-content/plugins/akismet/index.php",
+		"/usr/wordpress/wp-content/themes/index.php",
+		"/usr/wordpress/wp-content/index.php",
+		"/usr/wordpress/wp-content/themes/WebsiteWordpress/style.css",
+		"/usr/wordpress/wp-content/themes/twentyfifteen/index.php",
+		"/usr/wordpress/wp-content/themes/WebsiteWordpress/index.php",
+		"/usr/wordpress/wp-content/plugins/index.php",
+		"/home/andrey/Data/index.html",
+		"/home/andrey/Data/Folders/Education/Programming/new/bootstrap lessons/bs/css/bootstrap.min.css",
+		"/home/andrey/Data/Folders/Education/Programming/new/bootstrap lessons/bs/css/bootstrap-theme.min.css",
+		"/home/andrey/Data/Folders/Education/Programming/new/bootstrap lessons/bs/css/bootstrap.min.css.map",
+		"/home/andrey/Загрузки/startbootstrap-freelancer-1.0.5/js/jquery.js",
+		"/home/andrey/Загрузки/startbootstrap-freelancer-1.0.5/less/variables.less",
+		"/home/andrey/Data/Folders/Education/Programming/new/bs/sait-3.html",
+		"/home/andrey/Data/Folders/Education/Programming/new/bs/sait-6_files/jquery-latest.min.js",
+		"/home/andrey/Data/Folders/Education/Programming/new/bs/sait-6_files/respond.js",
+		"/home/andrey/Data/Folders/Education/Programming/new/setka.html",
+		"/home/andrey/Data/Folders/Education/Programming/old/untitled.html",
+		"/home/andrey/Data/Folders/Education/Programming/new/8\\2\\16.html",
+		"/home/andrey/Data/Folders/Education/Programming/new/bs/css/bootstrap.css",
+		"/home/andrey/Рабочий стол/setka.html",
+		"/home/andrey/Data/Folders/Education/Programming/new/bs/sait.html",
+		"/home/andrey/Data/Folders/Education/Programming/new/8\\2\\16",
+		"/home/andrey/Рабочий стол/С++/сумма 2х чисел.cpp",
+		"/home/andrey/Рабочий стол/newproject/newproject/main.cpp",
+		"/home/andrey/Рабочий стол/С++/#include<iostream>.c",
+		"/home/andrey/.config/sublime-text-3/Packages/User/C++.sublime-build",
+		"/home/andrey/Рабочий стол/С++/сумма 2х чисел.exe",
+		"/var/www/html/wp-content/themes/websiteWordpress/footer.php",
+		"/home/andrey/Рабочий стол/jquery.js",
+		"/home/andrey/Рабочий стол/typed.js",
+		"/home/andrey/Рабочий стол/style.css",
+		"/home/andrey/Рабочий стол/untitled.html",
+		"/home/andrey/Data/Folders/Projects/My first website/ind.html",
+		"/home/andrey/Data/Folders/Projects/My first website/index_sceleton.html",
+		"/home/andrey/Data/Folders/Projects/My first website/Hi.html",
+		"/var/www/html/wp-content/themes/websiteWordpress/functions.php",
+		"/home/andrey/Загрузки/functions.php",
+		"/home/andrey/Загрузки/style.css",
+		"/home/andrey/Data/Folders/Projects/My first website/olga/index.html",
+		"/home/andrey/Data/Folders/Projects/My first website/websiteWordpress/functions.php",
+		"/var/www/html/wp-content/themes/twentythirteen/index.php",
+		"/var/www/html/wp-content/themes/twentythirteen/style.css",
+		"/home/andrey/wordpress/wp-config.php",
+		"/home/andrey/Data/Folders/Projects/My first website/cursor.css",
+		"/home/andrey/Data/Folders/Projects/My first website/typed.js",
+		"/home/andrey/Data/Folders/Projects/My first website/parallax_page.html",
+		"/home/andrey/Data/Folders/Projects/My first website/ccc.css",
+		"/home/andrey/Data/Folders/Projects/My first website/manuel.html",
+		"/home/andrey/Data/Folders/Projects/My first website/1/css/960_12_col.css",
+		"/home/andrey/Data/Folders/Projects/My first website/olga/index_sceleton.html",
+		"/home/andrey/Data/Folders/Projects/My first website/1/css/style.css",
+		"/home/andrey/Data/Folders/Projects/My first website/1/index.html",
+		"/home/andrey/Data/Folders/Projects/My first website/style_icon1.css",
+		"/home/andrey/Data/Folders/Projects/My first website/style_sceleton.css",
+		"/home/andrey/Data/Folders/Projects/My first website/1/css/text.css",
+		"/home/andrey/Data/Folders/Projects/My first website/1/css/reset.css",
+		"/home/andrey/Data/Folders/Projects/My first website/js/practice.js",
+		"/home/andrey/untitled.py",
+		"/home/andrey/Data/Folders/Projects/My first website/olga/css/style.css",
+		"/home/andrey/Data/Folders/Projects/My first website/icon1.html",
+		"/home/andrey/sniff_vk.py",
+		"/home/andrey/untitle.py",
+		"/home/andrey/Рабочий стол/untitled.py",
+		"/home/andrey/Data/Folders/Projects/My first website/grid/index.html",
+		"/home/andrey/Data/Folders/Projects/My first website/grid/css/style.css",
+		"/home/andrey/Data/Folders/Projects/My first website/learning/index.html",
+		"/home/andrey/Data/Folders/Projects/My first website/normalize.css",
+		"/home/andrey/Data/Folders/Projects/My first website/uzhhorod+/css/stylesheet.css",
+		"/home/andrey/Data/Folders/Projects/My first website/uzhhorod+/index.html",
+		"/home/andrey/Data/Folders/Projects/My first website/style_sceleton1.css",
+		"/home/andrey/Data/Folders/Projects/My first website/index3.html",
+		"/home/andrey/Data/Folders/Projects/My first website/css/style_navigation.css",
+		"/home/andrey/Data/Folders/Projects/My first website/example.html",
+		"/home/andrey/Data/Folders/Projects/My first website/css/style.css",
+		"/home/andrey/Data/Folders/Projects/My first website/index.html",
+		"/home/andrey/Рабочий стол/index.html"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"img",
+			"img		",
+			"img	",
+			"fa-",
+			"navbar",
+			"speed",
+			"type",
+			"typeSp",
+			"typespeed",
+			"typed",
+			"type",
+			"logging"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/C++/C.sublime-build",
+	"project": "console.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
