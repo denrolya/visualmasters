@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .bg-grey {
     background: #EEEEEE;
 }
@@ -96,3 +100,63 @@ section .footer a:hover {
     background: #0083B2;
     color: white;
 }
+
+.bg-blue {
+    background: #0083B2;
+}
+
+
+/*=========== SERVICES ===========*/
+#services {
+    color: white;
+}
+
+#services .section-heading {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 5em;
+}
+
+#services .section-heading-dimmed {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3em;
+    color: #389EC3;
+    margin-top: 10px;
+}
+
+#services .section-heading-underlined {
+    position: absolute; left: 0;
+    bottom: 20%;
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3em;
+    color: #389EC3;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+/*=========== END SERVICES ===========*/
+
+
+/*=========== PORTFOLIO ===========*/
+.our-works-heading {
+    color: #363641;
+    font-weight: bold;
+    font-size: 6em;
+}
+
+.portfolio-box {
+    transition: all .2s ease-in-out;
+}
+
+.portfolio-box:hover {
+    z-index: 10000;
+    transform: scale(1.1);
+}
+
+.portfolio-box .portfolio-box-caption {
+    background: rgba(0, 131, 178, 0.8);
+}
+/*=========== END PORTFOLIO ===========*/
