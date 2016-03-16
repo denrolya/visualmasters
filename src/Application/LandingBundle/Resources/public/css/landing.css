@@ -51,6 +51,7 @@ section .footer  {
 section .footer .row, section .footer .row .col-xs-3, section .footer .row .col-xs-2{
     height: 100%;
     margin: 0;
+    transition: 0s;
 }
 
 section .footer .col-xs-3, section .footer .col-xs-2 {
@@ -63,13 +64,54 @@ section .footer a {
     color: white;
     display: block;
     height: 100%;
-    padding-top: 25px;
 }
 
 section .footer a:hover {
     background: white;
     color: #40A2C5;
     text-decoration: none;
+}
+
+section .footer a:after {
+    transition: all .4s;
+    position:absolute; /*or absolute*/
+    z-index:100000; /*a number that's more than the modal box*/
+    top: -45px; right: 152px;
+}
+
+section .footer .col-xs-3:first-child a:after {
+    content: url(../images/interior.png);
+}
+
+section .footer .col-xs-3:first-child a:hover::after {
+    content:url(../images/interior-white.png);
+}
+
+section .footer .col-xs-3:nth-child(2) a:after {
+    top: -60px;
+    content: url(../images/exterior.png);
+}
+
+section .footer .col-xs-3:nth-child(2) a:hover::after {
+    content: url(../images/exterior-white.png);
+}
+
+section .footer .col-xs-3:nth-child(3) a:after {
+    top: -59px;
+    content: url(../images/web.png);
+}
+
+section .footer .col-xs-3:nth-child(3) a:hover::after {
+    content: url(../images/web-white.png);
+}
+
+section .footer .col-xs-3:nth-child(4) a:after {
+    top: -59px;
+    content: url(../images/special.png);
+}
+
+section .footer .col-xs-3:nth-child(4) a:hover::after {
+    content: url(../images/special-white.png);
 }
 
 #mainNav .container-fluid {
@@ -152,7 +194,7 @@ section .footer a:hover {
 }
 
 .portfolio-box:hover {
-    z-index: 10000;
+    z-index: 500;
     transform: scale(1.1);
 }
 
@@ -160,3 +202,17 @@ section .footer a:hover {
     background: rgba(0, 131, 178, 0.8);
 }
 /*=========== END PORTFOLIO ===========*/
+
+/*=========== MEDIA ===========*/
+#media h2 {
+    font-size: 5em;
+    font-weight: bold;
+    color: #BEBEBE;
+}
+
+#media iframe {
+    width: 100%;
+    min-height: 600px;
+    height: 80%;
+}
+/*=========== END MEDIA ===========*/
