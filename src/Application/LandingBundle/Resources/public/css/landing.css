@@ -56,6 +56,11 @@ section .footer a {
     height: 100%;
 }
 
+section .main-footer a {
+    padding-top: 15px;
+    font-size: 2em;
+}
+
 section .main-footer a:hover {
     background: white;
     color: #40A2C5;
@@ -66,10 +71,18 @@ section .main-footer a:after {
     transition: all .4s;
     position:absolute; /*or absolute*/
     z-index: 2; /*a number that's more than the modal box*/
-    top: -45px; right: 152px;
+    top: -45px;
+}
+section .main-footer .col-xs-3 {
+    border-right: 1px solid #0083B2;
+}
+
+section .main-footer .col-xs-3:nth-of-type(4) {
+    border: none;
 }
 
 section .main-footer .col-xs-3:first-child a:after {
+    right: calc(50% - 76px);
     content: url(../images/interior.png);
 }
 
@@ -78,7 +91,7 @@ section .main-footer .col-xs-3:first-child a:hover::after {
 }
 
 section .main-footer .col-xs-3:nth-child(2) a:after {
-    top: -60px;
+    top: -60px; right: calc(50% - 91px);
     content: url(../images/exterior.png);
 }
 
@@ -87,7 +100,7 @@ section .main-footer .col-xs-3:nth-child(2) a:hover::after {
 }
 
 section .main-footer .col-xs-3:nth-child(3) a:after {
-    top: -59px;
+    top: -59px; right: calc(50% - 50px);
     content: url(../images/web.png);
 }
 
@@ -96,7 +109,7 @@ section .main-footer .col-xs-3:nth-child(3) a:hover::after {
 }
 
 section .main-footer .col-xs-3:nth-child(4) a:after {
-    top: -59px;
+    top: -59px; right: calc(50% - 25px);
     content: url(../images/special.png);
 }
 
@@ -215,7 +228,27 @@ section .main-footer .col-xs-3:nth-child(4) a:hover::after {
     margin-top: 10px;
     text-decoration: underline;
 }
+
+.service-box img {
+    display: inline-block;
+    width: 60%;
+    margin-bottom: -40px;
+}
+
+.service-box h3 {
+    font-weight: bold;
+}
 /*=========== END SERVICES ===========*/
+
+/*=========== DESCRIPTIONS ===========*/
+#descriptions {
+    color: #6D6D6D;
+}
+
+#descriptions h2 {
+    text-transform: uppercase;
+}
+/*=========== END DESCRIPTIONS ===========*/
 
 
 /*=========== PORTFOLIO ===========*/
