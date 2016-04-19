@@ -51,14 +51,19 @@
 .icon-wallet:before {
     content: "\e908";
 }
+
+.icon-next-page {
+    display:block;
+    font-size: 3em;
+}
 .icon-next-page .path1:before {
     content: "\e909";
-    color: rgba(255, 255, 255, 0.25);
+    /*color: rgba(255, 255, 255, 0.25);*/
 }
 .icon-next-page .path2:before {
     content: "\e90a";
     margin-left: -1em;
-    color: rgba(255, 255, 255, 0.502);
+    /*color: rgba(255, 255, 255, 0.502);*/
 }
 .icon-flag:before {
     content: "\e90b";

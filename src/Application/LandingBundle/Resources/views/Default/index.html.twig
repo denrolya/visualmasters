@@ -9,6 +9,7 @@
     %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=PT+Sans:400,700'>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans+Narrow" />
 {% endblock stylesheets %}
 
@@ -36,7 +37,7 @@
                         <a class="page-scroll" href="#services">What we do</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Our Works</a>
+                        <a class="page-scroll" href="#descriptions">Our Works</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#media">Media</a>
@@ -220,27 +221,61 @@
             <!-- Tab panes -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="tab-interior">
-                    <div class="row">
-                        <h2>3d <strong>interior</strong> design</h2>
-                        <h4>
-                            Interior design is the first and the one of the most important part in creating your living space. Doing it more comfortable and aesthetic, you can't avoid designing.
-                            Ordering a design project minimises your risks of getting bad results and saves your nerves.
-                        </h4>
+                    <div class="container">
+                        <div class="row row-headers">
+                            <h2>3d <strong>interior</strong> design</h2>
+                            <h4>
+                                Interior design is the first and the one of the most important part in creating your living space. Doing it more comfortable and aesthetic, you can't avoid designing.
+                                Ordering a design project minimises your risks of getting bad results and saves your nerves.
+                            </h4>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img src="{{ asset('bundles/applicationlanding/images/number-one.png')  }}" class="img-header" alt="">
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="{{ asset('bundles/applicationlanding/images/number-two.png')  }}" class="img-header" alt="">
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="{{ asset('bundles/applicationlanding/images/number-three.png')  }}" class="img-header" alt="">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-4 col-text">
+                                <p>
+                                    The first step to bringing a project to life is creating a sketch. We send it to the
+                                    client to confirm and make corrections if necessary.
+                                </p>
+                            </div>
+                            <div class="col-xs-4 col-text">
+                                <p>
+                                    On the next step you'll be given black&white rendering, a net without textures and a list
+                                    of items, which will go in the project. In other words, it's a virtual edition of the
+                                    whole project, a sceleton. This step considers ergonomic issue of space, apartment's
+                                    practiciality.
+                                </p>
+                            </div>
+                            <div class="col-xs-4 col-text">
+                                <p>
+                                    The last step considers all components, accurate detalization, shadows, lights,
+                                    materials. You are getting a finished project in any resolution you need. This will be
+                                    more than enough to any of your furnishing masters.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <img src="{{ asset('bundles/applicationlanding/images/couch.png')  }}" class="img-header" alt="">
+                            <p class="text-center next-page">
+                                <span class="text-uppercase">our works</span>
+                                <span class="icon icon-next-page"><span class="path1"><span class="path2"></span></span></span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-4 text-center">
-                            <img src="{{ asset('bundles/applicationlanding/images/number-one.png')  }}" class="" alt="">
-                            The first step to bringing a project to life is creating a sketch. We send it to the client to confirm and make corrections if necessary.
-                        </div>
-                        <div class="col-xs-4 text-center">
-                            <img src="{{ asset('bundles/applicationlanding/images/number-two.png')  }}" class="" alt="">
-                            On the next step you'll be given black&white rendering, a net without textures and a list of items, which will go in the project. In other words, it's a virtual edition of the whole project, a sceleton. This step considers ergonomic issue of space, apartment's practiciality.
-                        </div>
-                        <div class="col-xs-4 text-center">
-                            <img src="{{ asset('bundles/applicationlanding/images/number-three.png')  }}" class="" alt="">
-                            The last step considers all components, accurate detalization, shadows, lights, materials. You are getting a finished project in any resolution you need. This will be more than enough to any of your furnishing masters.
-                        </div>
-                    </div>
+
+
                 </div>
                 <div role="tabpanel" class="tab-pane" id="tab-exterior">
 
