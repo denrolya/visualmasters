@@ -1,14 +1,8 @@
-body, h1, h2, h3, h4, h5, h6 {
-    font-family: 'PT Sans';
-}
+body, h1, h2, h3, h4, h5, h6 { font-family: 'PT Sans'; }
+body { overflow-x: hidden; }
 
-body {
-    overflow-x: hidden;
-}
-
-.bg-grey {
-    background: #EEEEEE;
-}
+.bg-blue { background: #0083B2; }
+.bg-grey { background: #EEEEEE; }
 
 .section-content {
     position: absolute;
@@ -26,9 +20,7 @@ body {
     font-size: 7em;
 }
 
-.headers h4 {
-    color: #9A9998;
-}
+.headers h4 { color: #9A9998; }
 
 section .footer  {
     position: absolute;
@@ -37,18 +29,14 @@ section .footer  {
     height: 75px;
 }
 
-section .main-footer {
-    background: #40A2C5;
-}
+section .main-footer { background: #40A2C5; }
 
 section .footer .row, section .footer .row .col-md-3, section .footer .row .col-md-2 {
     height: 100%;
     margin: 0;
 }
 
-section .footer .col-md-3, section .footer .col-md-2 {
-    padding: 0;
-}
+section .footer .col-md-3, section .footer .col-md-2 { padding: 0; }
 
 section .footer a {
     text-transform: uppercase;
@@ -76,24 +64,21 @@ section .main-footer a.active {
 
 section .main-footer a:after {
     transition: all .4s;
-    position:absolute; /*or absolute*/
-    z-index: 2; /*a number that's more than the modal box*/
+    position:absolute;
+    z-index: 2;
     top: -45px;
 }
-section .main-footer .col-md-3 {
-    border-right: 1px solid #0083B2;
-}
+section .main-footer .col-md-3 { border-right: 1px solid #0083B2; }
 
-section .main-footer .col-md-3:nth-of-type(4) {
-    border: none;
-}
+section .main-footer .col-md-3:nth-of-type(4) { border: none; }
 
 section .main-footer .col-md-3:first-child a:after {
     right: calc(50% - 76px);
     content: url(../images/interior.png);
 }
 
-section .main-footer .col-md-3:first-child a:hover::after, section .main-footer .col-md-3:first-child a.active::after {
+section .main-footer .col-md-3:first-child a:hover::after,
+section .main-footer .col-md-3:first-child a.active::after {
     content:url(../images/interior-white.png);
 }
 
@@ -102,7 +87,8 @@ section .main-footer .col-md-3:nth-child(2) a:after {
     content: url(../images/exterior.png);
 }
 
-section .main-footer .col-md-3:nth-child(2) a:hover::after, section .main-footer .col-md-3:nth-child(2) a.active::after {
+section .main-footer .col-md-3:nth-child(2) a:hover::after,
+section .main-footer .col-md-3:nth-child(2) a.active::after {
     content: url(../images/exterior-white.png);
 }
 
@@ -111,7 +97,8 @@ section .main-footer .col-md-3:nth-child(3) a:after {
     content: url(../images/web.png);
 }
 
-section .main-footer .col-md-3:nth-child(3) a:hover::after, section .main-footer .col-md-3:nth-child(3) a.active::after {
+section .main-footer .col-md-3:nth-child(3) a:hover::after,
+section .main-footer .col-md-3:nth-child(3) a.active::after {
     content: url(../images/web-white.png);
 }
 
@@ -120,7 +107,8 @@ section .main-footer .col-md-3:nth-child(4) a:after {
     content: url(../images/special.png);
 }
 
-section .main-footer .col-md-3:nth-child(4) a:hover::after, section .main-footer .col-md-3:nth-child(4) a.active::after {
+section .main-footer .col-md-3:nth-child(4) a:hover::after,
+section .main-footer .col-md-3:nth-child(4) a.active::after {
     content: url(../images/special-white.png);
 }
 
@@ -138,9 +126,7 @@ section .main-footer .col-md-3:nth-child(4) a:hover::after, section .main-footer
     transition: .4s;
 }
 
-#mainNav .navbar-nav a:not(.order):hover {
-    background: #0083B2;
-}
+#mainNav .navbar-nav a:not(.order):hover { background: #0083B2; }
 
 #mainNav .navbar-nav .order {
     background: #FBC02D;
@@ -153,10 +139,6 @@ section .main-footer .col-md-3:nth-child(4) a:hover::after, section .main-footer
     color: white;
 }
 
-.bg-blue {
-    background: #0083B2;
-}
-
 /*=========== ABOUT ============*/
 #about h1 {
     font-size: 5em;
@@ -164,34 +146,22 @@ section .main-footer .col-md-3:nth-child(4) a:hover::after, section .main-footer
     color: #77C2E2;
 }
 
-#about h3, #about h4 {
-    text-transform: uppercase;
-}
+#about h3, #about h4 { text-transform: uppercase; }
 
-#about h2 .icon {
-    font-size: 100px;
-}
+#about h2 .icon { font-size: 100px; }
 
 #about .row:nth-of-type(1) {
     margin-bottom: 60px;
 }
 
 
-#about .col-md-4 {
-    color: #0097D6;
-}
+#about .col-md-4 { color: #0097D6; }
 
-#about .col-md-3 .icon {
-    font-size: 35px;
-}
+#about .col-md-3 .icon { font-size: 35px; }
 
-#about .col-md-3 {
-    color: #8F8F8F;
-}
+#about .col-md-3 { color: #8F8F8F; }
 
-#about .footer {
-    background: #C8C8C8;
-}
+#about .footer { background: #C8C8C8; }
 
 #about .footer a {
     color: #969696;
@@ -205,9 +175,7 @@ section .main-footer .col-md-3:nth-child(4) a:hover::after, section .main-footer
 /*=========== END ABOUT ============*/
 
 /*=========== SERVICES ===========*/
-#services {
-    color: white;
-}
+#services { color: white; }
 
 #services .section-heading {
     text-transform: uppercase;
@@ -242,32 +210,22 @@ section .main-footer .col-md-3:nth-child(4) a:hover::after, section .main-footer
     margin-bottom: -40px;
 }
 
-.service-box h3 {
-    font-weight: bold;
-}
+.service-box h3 { font-weight: bold; }
 /*=========== END SERVICES ===========*/
 
 /*=========== DESCRIPTIONS ===========*/
-#descriptions {
-    color: #6D6D6D;
-}
+#descriptions { color: #6D6D6D; }
 
-#descriptions .row-headers {
-    margin-bottom: 50px;
-}
+#descriptions .row-headers { margin-bottom: 50px; }
 
 #descriptions h2 {
     text-transform: uppercase;
     font-size: 5em;
 }
 
-#descriptions .interior-descriptions {
-    color: #9C9C9C;
-}
+#descriptions .interior-descriptions { color: #9C9C9C; }
 
-#descriptions .row:nth-of-type(2) img {
-    margin-bottom: 10px;
-}
+#descriptions .row:nth-of-type(2) img { margin-bottom: 10px;}
 
 .row.vdivide [class*='col-']:not(:last-child) p:after {
     background: #d1d1d3;
@@ -294,18 +252,14 @@ section .main-footer .col-md-3:nth-child(4) a:hover::after, section .main-footer
     font-size: 6em;
 }
 
-.portfolio-box {
-    transition: all .2s ease-in-out;
-}
+.portfolio-box { transition: all .2s ease-in-out; }
 
 .portfolio-box:hover {
     z-index: 500;
     transform: scale(1.1);
 }
 
-.portfolio-box .portfolio-box-caption {
-    background: rgba(0, 131, 178, 0.8);
-}
+.portfolio-box .portfolio-box-caption { background: rgba(0, 131, 178, 0.8); }
 /*=========== END PORTFOLIO ===========*/
 
 /*=========== MEDIA ===========*/
