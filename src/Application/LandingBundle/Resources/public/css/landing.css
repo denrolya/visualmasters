@@ -247,7 +247,7 @@ section .main-footer .col-md-3:nth-child(4) a.active::after {
 
 /*=========== PORTFOLIO ===========*/
 .our-works-heading {
-    color: #363641;
+    color: #6d6d6d;
     font-weight: bold;
     font-size: 6em;
 }
@@ -257,6 +257,9 @@ section .main-footer .col-md-3:nth-child(4) a.active::after {
 .portfolio-box:hover {
     z-index: 500;
     transform: scale(1.1);
+    -webkit-box-shadow: 0px 0px 22px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 22px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 22px -1px rgba(0,0,0,0.75);
 }
 
 .portfolio-box .portfolio-box-caption { background: rgba(0, 131, 178, 0.8); }
@@ -275,3 +278,41 @@ section .main-footer .col-md-3:nth-child(4) a.active::after {
     height: 80%;
 }
 /*=========== END MEDIA ===========*/
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for vh unit */
+    min-height: 30vh; /* You might also want to use
+                        'height' property instead.
+
+                        Note that for percentage values of
+                        'height' or 'min-height' properties,
+                        the 'height' of the parent element
+                        should be specified explicitly.
+
+                        In this case the parent of '.vertical-center'
+                        is the <body> element */
+
+    /* Make it a flex container */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    /* Align the bootstrap's container vertically */
+    -webkit-box-align : center;
+    -webkit-align-items : center;
+    -moz-box-align : center;
+    -ms-flex-align : center;
+    align-items : center;
+
+    /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+       hence the bootstrap's container won't be aligned to the center anymore.
+
+       Therefore, we should use the following declarations to get it centered again */
+    -webkit-box-pack : center;
+    -moz-box-pack : center;
+    -ms-flex-pack : center;
+    -webkit-justify-content : center;
+    justify-content : center;
+}
