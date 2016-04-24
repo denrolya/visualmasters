@@ -316,3 +316,12 @@ section .main-footer .col-md-3:nth-child(4) a.active::after {
     -webkit-justify-content : center;
     justify-content : center;
 }
+
+.carousel-indicators {
+    position: relative;
+    bottom: 0; left:0;
+    text-align: left;
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
