@@ -5,8 +5,8 @@ body { overflow-x: hidden; }
 .bg-grey { background: #EEEEEE; }
 
 .section-content {
-    position: absolute;
-    top: 25%;
+    position: relative;
+    top: 15%;
     padding-left: 30px;
 }
 
@@ -64,7 +64,7 @@ section .main-footer a.active {
 
 section .main-footer a:after {
     transition: all .4s;
-    position:absolute;
+    position: absolute;
     z-index: 2;
     top: -45px;
 }
@@ -138,6 +138,23 @@ section .main-footer .col-md-3:nth-child(4) a.active::after {
     background: #0083B2;
     color: white;
 }
+
+/*=========== MAIN ============*/
+#main {
+    width: 100%;
+    height: 100%;
+}
+
+#main .next-page a {
+    font-size: 20px;
+    color: #9D9C9D;
+}
+
+#main .next-page a:hover, #main .next-page a:focus {
+    text-decoration: none;
+    color: #D5D4D5;
+}
+/*=========== END MAIN ============*/
 
 /*=========== ABOUT ============*/
 #about h1 {
@@ -242,6 +259,11 @@ section .main-footer .col-md-3:nth-child(4) a.active::after {
     color: #0083B2;
     font-size: 1.8em;
 }
+
+#descriptions .next-page:hover, #descriptions .next-page:active {
+    text-decoration: none;
+    color: #000055;
+}
 /*=========== END DESCRIPTIONS ===========*/
 
 
@@ -280,36 +302,21 @@ section .main-footer .col-md-3:nth-child(4) a.active::after {
 /*=========== END MEDIA ===========*/
 
 .vertical-center {
-    min-height: 100%;  /* Fallback for vh unit */
-    min-height: 30vh; /* You might also want to use
-                        'height' property instead.
+    min-height: 100%;
+    min-height: 30vh;
 
-                        Note that for percentage values of
-                        'height' or 'min-height' properties,
-                        the 'height' of the parent element
-                        should be specified explicitly.
-
-                        In this case the parent of '.vertical-center'
-                        is the <body> element */
-
-    /* Make it a flex container */
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
 
-    /* Align the bootstrap's container vertically */
     -webkit-box-align : center;
     -webkit-align-items : center;
     -moz-box-align : center;
     -ms-flex-align : center;
     align-items : center;
 
-    /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
-       hence the bootstrap's container won't be aligned to the center anymore.
-
-       Therefore, we should use the following declarations to get it centered again */
     -webkit-box-pack : center;
     -moz-box-pack : center;
     -ms-flex-pack : center;
