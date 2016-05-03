@@ -332,3 +332,49 @@ section .main-footer .col-md-3:nth-child(4) a.active::after {
     margin: 0;
     padding: 0;
 }
+
+/*=========== CONTACT US ===========*/
+#contact h2 {
+    font-size: 5em;
+    font-weight: bolder;
+    color: #b2b2b2;
+}
+#contact .subheading {
+    color: #777777;
+    font-size: 15px;
+    padding-top: 73px;
+}
+#contact .location-info {
+    color: #0083b2;
+    font-size: 15px;
+}
+
+.location-info img{
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 19px;
+}
+#contact .schedule {
+    color: #777777;
+    font-size: 15px;
+    display: inline;
+}
+
+hr{
+    border: none;
+    background-color: #777777;
+    color: #777777;
+    height: 1px;
+}
+#contact .order {
+    background: #fbc02d;
+    color: #303030;
+
+}
+
+#contact .icon {
+    font-size: 38px;
+    display:block;
+    margin:auto;
+    margin-bottom: 10px;
+}
