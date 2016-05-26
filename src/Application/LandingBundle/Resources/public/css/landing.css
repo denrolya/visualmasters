@@ -223,12 +223,23 @@ hr {
     color: #0097D6;
 }
 
-#about h3, #about h4 {
-    text-transform: uppercase;
+#about h3 .icon {
+    font-size: 100px;
+    display:block;
+    margin-bottom: 15px;
 }
 
-#about h2 .icon {
-    font-size: 100px;
+#about h3 {
+    font-size: 30px;
+}
+
+#about h4 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#about h3, #about h4 {
+    text-transform: uppercase;
 }
 
 #about .row:nth-of-type(1) {
@@ -237,6 +248,8 @@ hr {
 
 #about .about-subheader .icon {
     font-size: 35px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 #about .about-subheader {
@@ -253,7 +266,6 @@ hr {
 }
 
 #about .footer a:hover {
-    color: #ADADAD;
     text-decoration: none;
 }
 /*=========== END ABOUT ============*/
