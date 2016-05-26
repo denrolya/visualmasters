@@ -22,8 +22,8 @@ class GalleryController extends Controller
     
     /**
     /**
-     * @Route("/", name="index_page", defaults={"gallery_name":"home"})
-     * @Route("/{gallery_name}", name="gallery_page", requirements={"gallery_name":"home|interior|web|special|design"})
+     * @Route("/galleries", name="index_page", defaults={"gallery_name":"home"})
+     * @Route("/galleries/{gallery_name}", name="gallery_page", requirements={"gallery_name":"home|interior|web|special|design"})
      * @Template()
      */
     public function galleryAction($gallery_name)
