@@ -320,6 +320,10 @@ hr {
     margin-bottom: 50px;
 }
 
+#descriptions h4 {
+    line-height: 1.5em;
+}
+
 #descriptions h2 {
     text-transform: uppercase;
     font-size: 5em;
@@ -365,7 +369,7 @@ hr {
     margin-right: 15px;
 }
 
-.row.vdivide [class*='col-']:not(:last-child) p:after {
+.row.vdivide [class*='col-']:not(:last-child):after {
     background: #d1d1d3;
     width: 1px;
     content: "";
@@ -376,6 +380,11 @@ hr {
     min-height: 140px;
 }
 
+.web-categories.vdivide [class*='col-']:not(:last-child):after {
+    top: 89px;
+    min-height: 96px;
+}
+
 #descriptions .next-page {
     color: #0083B2;
     font-size: 1.8em;
@@ -384,6 +393,40 @@ hr {
 #descriptions .next-page:hover, #descriptions .next-page:focus {
     text-decoration: none;
     color: #004B66;
+}
+
+#descriptions #tab-web .web-category p, #descriptions #tab-special .special-categories .special-category p {
+    text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
+}
+
+#descriptions #tab-web .row {
+    margin-bottom: 30px;
+}
+
+#descriptions #tab-web .web-categories {
+    margin-bottom: 60px;
+}
+
+#descriptions #tab-web .web-categories .img {
+    height: 59px;
+    margin-bottom: 20px;
+}
+
+.special-categories.vdivide [class*='col-']:not(:last-child):after {
+    top: 197px;
+    min-height: 96px;
+}
+
+#descriptions #tab-special .special-categories .special-category .img {
+    height: 133px;
+    margin-bottom: 10px
+}
+
+#descriptions #tab-special .special-categories .special-category h3 {
+    text-transform: uppercase;
+    font-weight: bold;
 }
 /*=========== END DESCRIPTIONS ===========*/
 
