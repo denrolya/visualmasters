@@ -508,3 +508,41 @@ hr {
     margin:auto;
     margin-bottom: 10px;
 }
+
+#contact .footer {
+    padding-top: 15px;
+    font-size: 14px;
+    height: 50px;
+    background: #2f2f2f;
+    color: #6d6d6d;
+}
+
+#contact .footer a {
+    color: #6d6d6d;
+}
+
+#contact .footer a:hover {
+    color: #b2b2b2;
+}
+
+#contact .footer .icon {
+    font-size: 25px;
+    margin-bottom: 0;
+    display: inline-block;
+    margin-left:30px;
+}
+
+#contact .btn-place-order {
+    border-radius: 0;
+    background: #FBC02D;
+    padding: 10px 40px;
+}
+
+hr.hr-full-width {
+    max-width: 100%;
+}
+
+hr.hr-muted {
+    color: #f3f3f4;
+    background-color: #f3f3f4;
+}
