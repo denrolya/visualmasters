@@ -1,5 +1,6 @@
 body, h1, h2, h3, h4, h5, h6 { font-family: 'PT Sans'; }
 body { overflow-x: hidden; }
+
 hr {
     border: none;
     background-color: #777777;
@@ -545,4 +546,18 @@ hr.hr-full-width {
 hr.hr-muted {
     color: #f3f3f4;
     background-color: #f3f3f4;
+}
+
+/*=================== MODAL ===================*/
+.modal-content {
+    background-color: #FEBD43;
+    border-radius: 10px;
+}
+
+.modal-header-border {
+    width: 80%;
+    margin: auto;
+    height: 2px;
+    background: red;
+    display: block;
 }
