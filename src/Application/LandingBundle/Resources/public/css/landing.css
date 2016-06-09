@@ -402,6 +402,7 @@ hr {
     font-size: 1.5em;
     position: absolute;
     bottom: 25px;
+    left: calc(50% - 57px);
 }
 
 #descriptions .next-page:hover, #descriptions .next-page:focus {
@@ -434,8 +435,12 @@ hr {
 }
 
 #descriptions #tab-special .special-categories .special-category .img {
-    height: 133px;
+    height: 100px;
     margin-bottom: 10px
+}
+
+#descriptions #tab-special .special-categories .special-category .img img {
+    height: 100px;
 }
 
 #descriptions #tab-special .special-categories .special-category h3 {
