@@ -136,7 +136,7 @@ hr {
 
 /*========== NAVBAR ==========*/
 .navbar .container-fluid {
-    padding: 20px 100px;
+    padding: 20px 40px;
     background-color: #303030;
 }
 
@@ -200,6 +200,12 @@ hr {
 #main .main-header h4 {
     color: #9A9998;
     line-height: 2em;
+}
+
+#main .next-page {
+    position: absolute;
+    bottom: 140px;
+    left: calc(50% - 30px);
 }
 
 #main .next-page a {
@@ -290,14 +296,19 @@ hr {
     margin-top: 10px;
 }
 
-#services .section-heading-underlined {
-    text-align: center;
+#services .section-header-underlined {
+    position: absolute;
+    bottom: 140px;
     width: 100%;
+    display: block;
+    text-align: center;
+}
+
+#services .section-header-underlined h2 {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 3em;
     color: #389EC3;
-    margin-top: 10px;
     text-decoration: underline;
 }
 
@@ -388,7 +399,9 @@ hr {
 
 #descriptions .next-page {
     color: #0083B2;
-    font-size: 1.8em;
+    font-size: 1.5em;
+    position: absolute;
+    bottom: 25px;
 }
 
 #descriptions .next-page:hover, #descriptions .next-page:focus {
@@ -428,6 +441,15 @@ hr {
 #descriptions #tab-special .special-categories .special-category h3 {
     text-transform: uppercase;
     font-weight: bold;
+}
+
+#descriptions #tab-special .special-emphasis img {
+    margin-right: 15px;
+}
+
+#descriptions #tab-special .special-emphasis p {
+    font-style: italic;
+    text-align: left;
 }
 /*=========== END DESCRIPTIONS ===========*/
 
