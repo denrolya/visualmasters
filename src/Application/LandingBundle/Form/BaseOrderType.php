@@ -15,12 +15,12 @@ class BaseOrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', ['attr' => ['placeholder' => 'Your Name']])
-            ->add('email', 'email', ['attr' => ['placeholder' => 'some@mail.com']])
-            ->add('phonenumber', 'text', ['attr' => ['placeholder' => 'Phone Number']])
-            ->add('address', 'text', ['attr' => ['placeholder' => 'Address']])
-            ->add('postal', 'text', ['attr' => ['placeholder' => 'Postal Code']])
-            ->add('comments', 'textarea', ['attr' => ['placeholder' => 'Comments']])
+            ->add('name', 'text', ['label' => false, 'attr' => ['placeholder' => 'Your Name']])
+            ->add('email', 'email', ['label' => false, 'attr' => ['placeholder' => 'some@mail.com']])
+            ->add('phonenumber', 'text', ['label' => false, 'attr' => ['placeholder' => 'Phone Number']])
+            ->add('address', 'text', ['label' => false, 'attr' => ['placeholder' => 'Address']])
+            ->add('postal', 'text', ['label' => false, 'attr' => ['placeholder' => 'Postal Code']])
+            ->add('comments', 'textarea', ['label' => false, 'attr' => ['placeholder' => 'Comments']])
         ;
     }
     

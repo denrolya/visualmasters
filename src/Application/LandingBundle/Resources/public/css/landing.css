@@ -576,15 +576,131 @@ hr.hr-muted {
 }
 
 /*=================== MODAL ===================*/
+.modal-dialog {
+    width: 500px;
+}
+
 .modal-content {
     background-color: #FEBD43;
     border-radius: 10px;
 }
 
+.modal-content .text-muted {
+    color: #D99629;
+}
+
+.modal-header {
+    padding-top: 30px;
+    border: none;
+    padding-bottom: 0;
+}
+
+.modal-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
 .modal-header-border {
-    width: 80%;
+    width: 90%;
     margin: auto;
     height: 2px;
-    background: red;
     display: block;
+    border-bottom: 5px dotted #D99629;
+}
+
+.modal-body {
+    padding-top: 0;
+}
+
+.modal-notice {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.modal-body .modal-container {
+    width: 60%;
+    margin: auto;
+}
+
+.modal-body form {
+    margin-top: 30px;
+}
+
+.modal-body form .form-group {
+    margin-bottom: 5px;
+}
+
+.modal-body form .form-group.m-t {
+    margin-top: 30px;
+}
+
+.modal-body form .form-control {
+    background: #FEBD43;
+    border-color: #D99629;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    height: auto;
+    font-size: 20px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.modal-body form .form-control:focus {
+    background: #D99629;
+    border-color: #FED53A;
+}
+
+.modal-body .btn-default {
+    background-color: #febd43;
+    border: 1px solid #d99629;
+    border-radius: 2px;
+    color: #A97721;
+    padding: 10px 20px;
+}
+
+.modal-body .btn-default:hover {
+    background-color: #A97721;
+    color: #febd43;
+    border-color: #FED53A;
+}
+
+.modal-body .btn-primary {
+    background-color: #0083AE;
+    border-radius: 2px;
+    padding: 11px 50px;
+    color: white;
+    border: none;
+}
+
+.modal-body .btn-primary:hover {
+    background-color: #005B7B;
+}
+
+.modal-body form .form-control:focus::-webkit-input-placeholder {
+    color:transparent;
+}
+.modal-body form .form-control:focus::-moz-placeholder {
+    color: transparent;
+}
+
+.modal-body form .form-control:focus::-ms-input-placeholder {
+    color: transparent;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #AC7922;
+    font-weight: bold;
+}
+
+.form-control::-moz-placeholder {
+    color: #AC7922;
+    font-weight: bold;
+}
+
+.form-control::-ms-input-placeholder {
+    color: #AC7922;
+    font-weight: bold;
 }
