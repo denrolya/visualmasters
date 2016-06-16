@@ -15,12 +15,12 @@ class BaseOrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', ['label' => false, 'attr' => ['placeholder' => 'Your Name']])
-            ->add('email', 'email', ['label' => false, 'attr' => ['placeholder' => 'some@mail.com']])
+            ->add('name', 'text', ['label' => false, 'attr' => ['placeholder' => 'Your Name *']])
+            ->add('email', 'email', ['label' => false, 'attr' => ['placeholder' => 'some@mail.com *']])
             ->add('phonenumber', 'text', ['label' => false, 'attr' => ['placeholder' => 'Phone Number']])
             ->add('address', 'text', ['label' => false, 'attr' => ['placeholder' => 'Address']])
             ->add('postal', 'text', ['label' => false, 'attr' => ['placeholder' => 'Postal Code']])
-            ->add('comments', 'textarea', ['label' => false, 'attr' => ['placeholder' => 'Comments']])
+            ->add('comments', 'textarea', ['label' => false, 'attr' => ['placeholder' => 'Comments *']])
         ;
     }
     
@@ -29,9 +29,7 @@ class BaseOrderType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'Application\LandingBundle\Entity\BaseOrder'
-        ));
+        $resolver->setDefaults(['data_class' => 'Application\LandingBundle\Entity\BaseOrder']);
     }
 
     /**

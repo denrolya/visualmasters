@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * BaseOrder
  *
- * @ORM\Table()
+ * @ORM\Table("orders")
  * @ORM\Entity
  */
 class BaseOrder
