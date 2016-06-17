@@ -14,6 +14,7 @@ parameters:
     mailer_user: 38669ce9f270b8c60
     mailer_password: 992fc64344602e
     mailer_auth_mode: cram-md5
+    mailer_port: 2525
 
     locale:            en
 
