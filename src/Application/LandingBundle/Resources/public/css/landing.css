@@ -481,6 +481,11 @@ hr {
 .portfolio-box .portfolio-box-caption {
     background: rgba(0, 131, 178, 0.8);
 }
+
+.portfolio-box img {
+    object-fit: cover;
+    max-height: 268px;
+}
 /*=========== END PORTFOLIO ===========*/
 
 /*=========== MEDIA ===========*/

@@ -2,6 +2,7 @@
 
 namespace Application\LandingBundle\Controller;
 
+use Application\GalleryBundle\Entity\GalleryPage;
 use Application\LandingBundle\Entity\BaseOrder;
 use Application\LandingBundle\Form\BaseOrderType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,7 +21,33 @@ class DefaultController extends Controller
         $order = new BaseOrder();
         $form = $this->createForm(new BaseOrderType(), $order, ['action' => $this->generateUrl('process_order')])->createView();
 
-        return compact('form');
+        $galleries = $this->getDoctrine()->getRepository(GalleryPage::class)->findAll();
+
+        $randomSlides = [];
+
+        /** @var GalleryPage $gallery */
+        foreach($galleries as $index => $gallery) {
+            $gallerySlides = $gallery->getSlides();
+            array_push($randomSlides, $gallerySlides[array_rand($gallerySlides->getKeys())]);
+        }
+
+        return ['form' => $form, 'slides' => $randomSlides];
+    }
+
+    /**
+     * @Route("/galleries/{gallery_name}", name="gallery_page")
+     * @Template()
+     */
+    public function galleryAction($gallery_name)
+    {
+
+        $galleryPage = $this->getDoctrine()->getRepository('ImperivGalleryBundle:GalleryPage')->findOneByPageName($gallery_name);
+
+        if (!$galleryPage) {
+            throw $this->createNotFoundException("Page doesn't exist!");
+        }
+
+        return ['gallery' => $galleryPage];
     }
 
     /**

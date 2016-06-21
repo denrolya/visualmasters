@@ -19,35 +19,6 @@ use Application\SiteBundle\Form\Type\InteriorOrderType,
 class GalleryController extends Controller
 {
     const HOMEPAGE_NAME = "home";
-    
-    /**
-    /**
-     * @Route("/galleries", name="index_page", defaults={"gallery_name":"home"})
-     * @Route("/galleries/{gallery_name}", name="gallery_page", requirements={"gallery_name":"home|interior|web|special|design"})
-     * @Template()
-     */
-    public function galleryAction($gallery_name)
-    {
-        
-        $galleryPage = $this->getDoctrine()->getRepository('ImperivGalleryBundle:GalleryPage')->findOneByPageName($gallery_name);
-                
-        if (!$galleryPage) {
-            throw $this->createNotFoundException("Page doesn't exist!");
-        }
-            switch ($gallery_name) {
-                case 'interior':
-                    $form = $this->createForm(new InteriorOrderType(), null, ['action' => $this->generateUrl('place_order_interior')])->createView();
-                    break;
-                case 'special':
-                    $form = $this->createForm(new SpecialOrderType(), null, ['action' => $this->generateUrl('place_order_special')])->createView();
-                    break;
-                case 'web':
-                    $form = $this->createForm(new WebOrderType(), null, ['action' => $this->generateUrl('place_order_web')])->createView();
-                    break;
-            }
-
-        return ($gallery_name != 'home') ? ['gallery' => $galleryPage, 'form' => $form] : ['gallery' => $galleryPage];
-    }
 
     /**
      * @Route("/order/interior", name="place_order_interior")
