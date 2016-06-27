@@ -21,9 +21,9 @@ header {
   top: 0;
   height: 28px; width: 100%;
   border-bottom: 3px solid #999;
-  background: rgba(255,255,255,0.4);	
+  background: rgba(255,255,255,0.4);
   font-family: sans-serif;
-  letter-spacing: 1px;  
+  letter-spacing: 1px;
   margin: 0 auto;
 }
 
@@ -140,7 +140,7 @@ header {
 
 .foreground {
     position: absolute;
-    top: 28px;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;

@@ -114,7 +114,7 @@ body {
 }
 
 .transp-zone {
-  position: absolute; top: 8px;
+  position: absolute;
   height: 100%;
   display: table;
   overflow: hidden;
@@ -127,7 +127,6 @@ body {
   -webkit-box-shadow: 0px 0px 6px 0px rgba(50, 50, 50, 0.72);
   -moz-box-shadow:    0px 0px 6px 0px rgba(50, 50, 50, 0.72);
   box-shadow:         0px 0px 6px 0px rgba(50, 50, 50, 0.72);
-  margin:20px 0 20px 0;
   padding:20px; 
   z-index: 99;
   transition: 0.2s;
@@ -160,7 +159,6 @@ body {
     position: fixed;
     z-index: 100000;
     margin-top: 0px;
-    top: 28px;
 }
 
 #loading-center{

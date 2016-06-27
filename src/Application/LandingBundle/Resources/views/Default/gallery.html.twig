@@ -2,9 +2,7 @@
 
 {% set onIndexPage = app.request.get('_route') == 'index_page' %}
 
-{% block title %}
-    {{ gallery.metaTitle }}
-{% endblock title %}
+{% block title %}{{ gallery.metaTitle }}{% endblock title %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -12,6 +10,7 @@
         "bundles/imperivgallery/css/jquery.maximage.min.css"
         "bundles/imperivgallery/css/gallery.css"
         "bundles/imperivsite/css/bootstrap-switch.css"
+        "bundles/imperivsite/css/main.css"
         "bundles/imperivsite/css/datetimepicker.css"
     filter="yui_css" %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
