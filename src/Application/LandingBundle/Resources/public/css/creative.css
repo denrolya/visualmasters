@@ -39,7 +39,7 @@ p {
     line-height: 1.5;
 }
 
-@media screen and (max-height: 1100px) {
+@media screen and (max-height: 900px) {
     p {
         font-size: 13px;
     }
@@ -51,6 +51,12 @@ p {
 
 section {
     padding: 150px 0;
+}
+
+@media screen and (max-height: 900px) {
+    section {
+        padding: 100px 0;
+    }
 }
 
 aside {

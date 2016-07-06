@@ -68,7 +68,7 @@ hr {
     height: 100%;
 }
 
-@media screen and (min-height: 768px), screen and (max-height: 1100px) {
+@media screen and (max-height: 900px) {
     .main-footer a {
         padding-top: 20px;
         font-size: 1.7em;
@@ -196,7 +196,7 @@ hr {
     text-transform: uppercase;
 }
 
-@media screen and (max-height: 1100px) {
+@media screen and (max-height: 900px) {
     #main .main-header h1 {
         font-size: 5em;
     }
@@ -297,7 +297,7 @@ hr {
     text-decoration: none;
 }
 
-@media screen and (max-height: 1100px) {
+@media screen and (max-height: 900px) {
     #about h3 {
         font-size: 25px;
     }
@@ -365,7 +365,7 @@ hr {
     font-weight: bold;
 }
 
-@media screen and (max-height: 1100px) {
+@media screen and (max-height: 900px) {
     #services .section-heading {
         font-size: 4em;
     }
@@ -518,7 +518,7 @@ hr {
     text-align: left;
 }
 
-@media screen and (max-height: 1100px) {
+@media screen and (max-height: 900px) {
     #descriptions h2 {
         font-size: 4em;
     }
@@ -594,7 +594,7 @@ hr {
     height: 80%;
 }
 
-@media screen and (max-height: 1100px) {
+@media screen and (max-height: 900px) {
     #media iframe {
         min-height: 500px;
     }
