@@ -68,6 +68,13 @@ hr {
     height: 100%;
 }
 
+@media screen and (min-height: 768px), screen and (max-height: 1100px) {
+    .main-footer a {
+        padding-top: 20px;
+        font-size: 1.7em;
+    }
+}
+
 .main-footer a:hover {
     background: #EEEEEE;
     color: #40A2C5;
@@ -189,6 +196,20 @@ hr {
     text-transform: uppercase;
 }
 
+@media screen and (max-height: 1100px) {
+    #main .main-header h1 {
+        font-size: 5em;
+    }
+
+    #main .main-header h1 span.line-two {
+        font-size: 1.1em;
+    }
+
+    .section-content {
+        top: 10%;
+    }
+}
+
 #main .main-header h1 span, .main-header h4 span {
     display: block;
 }
@@ -275,6 +296,28 @@ hr {
 #about .footer a:hover {
     text-decoration: none;
 }
+
+@media screen and (max-height: 1100px) {
+    #about h3 {
+        font-size: 25px;
+    }
+
+    #about h3 .icon {
+        font-size: 70px;
+    }
+
+    #about p {
+        font-size: 14px;
+    }
+
+    #about .about-subheader .icon {
+        font-size: 35px;
+    }
+
+    #about h4 {
+        font-size: 15px;
+    }
+}
 /*=========== END ABOUT ============*/
 
 /*=========== SERVICES ===========*/
@@ -320,6 +363,24 @@ hr {
 
 #services .service-box h3 {
     font-weight: bold;
+}
+
+@media screen and (max-height: 1100px) {
+    #services .section-heading {
+        font-size: 4em;
+    }
+
+    #services .section-heading-dimmed {
+        font-size: 2.5em
+    }
+
+    #services .service-box img {
+        width: 50%;
+    }
+
+    #services .section-header-underlined h2 {
+        font-size: 2.5em;
+    }
 }
 /*=========== END SERVICES ===========*/
 
@@ -456,6 +517,38 @@ hr {
     font-style: italic;
     text-align: left;
 }
+
+@media screen and (max-height: 1100px) {
+    #descriptions h2 {
+        font-size: 4em;
+    }
+
+    #descriptions h4 {
+        line-height: 1.4em;
+        font-size: 1.3em;
+    }
+
+    #descriptions .row-headers {
+        margin-bottom: 25px;
+    }
+
+    #descriptions #tab-interior .row:nth-of-type(2) img {
+        width: 40px;
+    }
+
+    #descriptions #tab-interior .image-description {
+        width: 75%;
+        margin-top: 20px;
+    }
+
+    #descriptions #tab-exterior .work-step p img {
+        width: 50px;
+    }
+
+    #descriptions #tab-exterior .col-md-8 img {
+        min-height: 345px;
+    }
+}
 /*=========== END DESCRIPTIONS ===========*/
 
 
@@ -499,6 +592,12 @@ hr {
     width: 100%;
     min-height: 600px;
     height: 80%;
+}
+
+@media screen and (max-height: 1100px) {
+    #media iframe {
+        min-height: 500px;
+    }
 }
 /*=========== END MEDIA ===========*/
 
