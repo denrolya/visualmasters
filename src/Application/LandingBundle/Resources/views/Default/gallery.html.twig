@@ -8,23 +8,14 @@
     {{ parent() }}
     {% stylesheets
         "bundles/imperivgallery/css/jquery.maximage.min.css"
-        "bundles/imperivgallery/css/gallery.css"
-        "bundles/imperivsite/css/bootstrap-switch.css"
-        "bundles/imperivsite/css/main.css"
         "bundles/imperivsite/css/datetimepicker.css"
+        "bundles/imperivgallery/css/gallery.css"
     filter="yui_css" %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
 {% endblock stylesheets %}
 
 {% block content %}
-
-    {% for flashMessage in app.session.flashbag.get('success') %}
-        <div class="flash-notice">
-            {{ flashMessage }}
-        </div>
-    {% endfor %}
-
     <div id="loading">
         <div id="loading-center">
             <div id="loading-center-absolute">
@@ -66,7 +57,7 @@
             <div class="description invisible">
                 {{ gallery.detailedDescription|raw }}
                 <div class="text-center order-button">
-                    <a href="#" class="order biliboard {{ random(['electronic', 'repeating', '', 'radial']) }}" data-toggle="modal" data-target="#{{ gallery.pageName|slugify }}" >Order Now</a>
+                    <a href="#" class="btn btn-primary btn-place-order" data-toggle="modal" data-target="#orderModal">MAKE ORDER</a>
                 </div>
             </div>
         </div>
@@ -108,6 +99,33 @@
 
             </div>
         {% endfor %}
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="orderModalLabel">Make Order \ Contact Us</h4>
+                    <span class="modal-header-border"></span>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-container">
+                        <h5 class="modal-notice text-muted">please fill the fields below:</h5>
+                        {{ form_start(form) }}
+                        {{ form_rest(form) }}
+                        <div class="form-group m-t">
+                            <button type="button" class="btn btn-default">Attach file*</button>
+                            <input type="submit" class="btn btn-primary" role="button" value="Send">
+                        </div>
+                        <div class="form-group text-left">
+                            <span class="text-muted">* only zip files allowed</span>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content %}
 

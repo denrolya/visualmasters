@@ -1,6 +1,13 @@
 /*========================================
 =            Gallery controls            =
 ========================================*/
+.invisible {
+    display: none;
+}
+
+.content-wrapper {
+    height: 100%;
+}
 
 body {
     overflow: hidden;
@@ -11,7 +18,7 @@ body {
   cursor: pointer;
   bottom:30px; right:30px;
   width:20px;
-  z-index:1000;
+  z-index: 0;
   transition: 0.2s;
 }
 
@@ -62,6 +69,97 @@ body {
 
 .transp-zone-hide { top: 92%; }
 .transp-zone-reveal { top: 37%; }
+
+/*=========================================
+=            Description block            =
+=========================================*/
+#ribbon-left, #ribbon-right {
+    padding: .34em 1em;
+    margin: 0;
+    margin-top: 10%;
+    position: absolute;
+    color: #ffffff;
+    font: 22px 'Patua One', sans-serif;
+    text-align: center;
+    letter-spacing:0.1em;
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.3);
+    box-shadow: inset 0px 1px 0px rgba(255,255,255,.3),
+    inset 0px 0px 20px rgba(0,0,0,0.1),
+    0px 1px 1px rgba(0,0,0,0.4);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#17a7d2), to(#1eb2df));
+    background: -webkit-linear-gradient(top, #1eb2df, #17a7d2);
+    background: -moz-linear-gradient(top, #1eb2df, #17a7d2);
+    background: -ms-linear-gradient(top, #1eb2df, #17a7d2);
+    background: -o-linear-gradient(top, #1eb2df, #17a7d2);
+    display: inline-block;
+    cursor: pointer;
+}
+
+#ribbon-left { left: 0; }
+#ribbon-right { right: 0; }
+
+#ribbon-right:before, #ribbon-left:after {
+    content: "";
+    width:.2em;
+    bottom:-.5em;
+    position:absolute;
+    display:block;
+    border: .9em solid #1eb2df;
+    box-shadow:0px 1px 0px rgba(0,0,0,0.4);
+    z-index: -2;
+}
+
+#ribbon-right:before {
+    left:-1.10em;
+    border-right-width: .75em;
+    border-left-color:transparent;
+}
+
+#ribbon-left:after {
+    right:-1.10em;
+    border-left-width: .75em;
+    border-right-color:transparent;
+}
+
+#ribbon-left #content:after, #ribbon-right #content:before {
+    content:"";
+    bottom:-.5em;
+    position:absolute;
+    display:block;
+    border-style:solid;
+    border-color: #0675b3 transparent transparent transparent;
+    z-index: -1;
+}
+
+#content:before {
+    left: 0;
+    border-width: .5em 0 0 .5em;
+}
+
+#content:after {
+    right: 0;
+    border-width: .5em .5em 0 0;
+}
+
+.foreground {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, .6);
+    z-index: 0;
+    width: 100%;
+}
+
+.foreground .description {
+    position: fixed;
+    width: 75%;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
 
 /*=========================================
 =            Slides thumbnails            =

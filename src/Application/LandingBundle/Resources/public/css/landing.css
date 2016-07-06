@@ -631,7 +631,6 @@ hr {
 #contact .order {
     background: #fbc02d;
     color: #303030;
-
 }
 
 #contact .icon {
@@ -664,7 +663,7 @@ hr {
     margin-left:30px;
 }
 
-#contact .btn-place-order {
+.btn-place-order {
     border-radius: 0;
     background: #FBC02D;
     padding: 10px 40px;

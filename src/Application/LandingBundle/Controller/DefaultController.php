@@ -18,8 +18,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $order = new BaseOrder();
-        $form = $this->createForm(new BaseOrderType(), $order, ['action' => $this->generateUrl('process_order')])->createView();
+        $form = $this->createForm(new BaseOrderType(), new BaseOrder(), ['action' => $this->generateUrl('process_order')])->createView();
 
         $galleries = $this->getDoctrine()->getRepository(GalleryPage::class)->findAll();
 
@@ -47,7 +46,9 @@ class DefaultController extends Controller
             throw $this->createNotFoundException("Page doesn't exist!");
         }
 
-        return ['gallery' => $galleryPage];
+        $form = $this->createForm(new BaseOrderType(), new BaseOrder(), ['action' => $this->generateUrl('process_order')])->createView();
+
+        return ['gallery' => $galleryPage, 'form' => $form];
     }
 
     /**
