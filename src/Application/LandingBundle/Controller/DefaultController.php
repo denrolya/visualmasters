@@ -27,20 +27,21 @@ class DefaultController extends Controller
         /** @var GalleryPage $gallery */
         foreach($galleries as $index => $gallery) {
             $gallerySlides = $gallery->getSlides();
-            array_push($randomSlides, $gallerySlides[array_rand($gallerySlides->getKeys())]);
+            if  (count($gallerySlides) > 0)
+                array_push($randomSlides, $gallerySlides[array_rand($gallerySlides->getKeys())]);
         }
 
         return ['form' => $form, 'slides' => $randomSlides];
     }
 
     /**
-     * @Route("/galleries/{gallery_name}", name="gallery_page")
+     * @Route("/galleries/{slug}", name="gallery_page")
      * @Template()
      */
-    public function galleryAction($gallery_name)
+    public function galleryAction($slug)
     {
 
-        $galleryPage = $this->getDoctrine()->getRepository('ImperivGalleryBundle:GalleryPage')->findOneByPageName($gallery_name);
+        $galleryPage = $this->getDoctrine()->getRepository('ImperivGalleryBundle:GalleryPage')->findOneBySlug($slug);
 
         if (!$galleryPage) {
             throw $this->createNotFoundException("Page doesn't exist!");

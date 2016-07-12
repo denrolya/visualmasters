@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper,
     Sonata\AdminBundle\Datagrid\DatagridMapper;
 
+use Cocur\Slugify\Slugify;
+
 use Application\GalleryBundle\Entity\GalleryPage;
 
 class GalleryPageAdmin extends Admin
@@ -14,13 +16,12 @@ class GalleryPageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-                ->add('pageName')
+                ->add('title', null, ['label' => 'Title'])
                 ->add('detailedDescription', 'textarea', [
                     'required' => false,
                     'attr' => ['class' => 'tinymce']
                 ])
                 ->add('slidesTimeout', 'text', ['data' => GalleryPage::DEFAUlT_TIMEOUT])
-                ->add('metaTitle', null, ['label' => 'Title'])
                 ->add('metaKeywords', 'text', ['required' => false])
                 ->add('metaDescription', 'text', ['required' => false]);
     }
@@ -28,15 +29,14 @@ class GalleryPageAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-                ->add('pageName')
-                ->add('metaTitle')
+                ->add('title')
                 ->add('slidesTimeout');
     }
     
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-                ->addIdentifier('metaTitle', null, ['label' => 'Title'])
+                ->addIdentifier('title', null, ['label' => 'Title'])
                 ->addIdentifier('pageName', null, [
                     'label' => 'Link',
                     'template' => 'ImperivGalleryBundle:Admin:fields/page_link.html.twig'
@@ -44,5 +44,19 @@ class GalleryPageAdmin extends Admin
                 ->add('slidesTimeout')
                 ->add('metaKeywords')
                 ->add('metaDescription');
+    }
+
+    public function preUdate($galleryPage)
+    {
+        $slugify = new Slugify();
+        $titleSlug = $slugify->slugify($galleryPage->getTitle());
+        $galleryPage->setSlug($titleSlug);
+    }
+
+    public function prePersist($galleryPage)
+    {
+        $slugify = new Slugify();
+        $titleSlug = $slugify->slugify($galleryPage->getTitle());
+        $galleryPage->setSlug($titleSlug);
     }
 }

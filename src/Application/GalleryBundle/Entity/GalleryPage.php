@@ -29,9 +29,16 @@ class GalleryPage
     /**
      * @var string
      *
-     * @ORM\Column(name="page_name", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $pageName;
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
 
     /**
      * @var string
@@ -39,13 +46,6 @@ class GalleryPage
      * @ORM\Column(name="detailed_description", type="text", nullable=true)
      */
     private $detailedDescription;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="meta_title", type="string", length=255)
-     */
-    private $metaTitle;
 
     /**
      * @var string
@@ -81,7 +81,7 @@ class GalleryPage
 
     public function __toString()
     {
-        return $this->pageName;
+        return $this->title;
     }
 
     public function __construct()
@@ -101,26 +101,26 @@ class GalleryPage
     }
 
     /**
-     * Set pageName
+     * Set slug
      *
-     * @param string $pageName
+     * @param string $slug
      * @return Page
      */
-    public function setPageName($pageName)
+    public function setSlug($slug)
     {
-        $this->pageName = $pageName;
+        $this->slug = $slug;
 
         return $this;
     }
 
     /**
-     * Get pageName
+     * Get slug
      *
      * @return string 
      */
-    public function getPageName()
+    public function getSlug()
     {
-        return $this->pageName;
+        return $this->slug;
     }
 
     /**
@@ -147,26 +147,26 @@ class GalleryPage
     }
 
     /**
-     * Set metaTitle
+     * Set title
      *
-     * @param string $metaTitle
+     * @param string $title
      * @return Page
      */
-    public function setMetaTitle($metaTitle)
+    public function setTitle($title)
     {
-        $this->metaTitle = $metaTitle;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get metaTitle
+     * Get title
      *
      * @return string 
      */
-    public function getMetaTitle()
+    public function getTitle()
     {
-        return $this->metaTitle;
+        return $this->title;
     }
 
     /**

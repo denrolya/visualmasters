@@ -2,7 +2,7 @@
 
 {% set onIndexPage = app.request.get('_route') == 'index_page' %}
 
-{% block title %}{{ gallery.metaTitle }}{% endblock title %}
+{% block title %}{{ gallery.title }} - VisualMasters{% endblock title %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -46,7 +46,7 @@
     </div>
     {#-------------- Gallery controls --------------#}
 
-    {% if gallery.pageName != 'home' and gallery.detailedDescription %}
+    {% if gallery.slug != 'home' and gallery.detailedDescription %}
         <div id="ribbon-left" class="ribbon ribbon-open">
             <span id="content">Know more</span>
         </div>

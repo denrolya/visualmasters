@@ -1,6 +1,6 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
 {% block field %}
-    {% set uri = app.request.getSchemeAndHttpHost() ~ '/' ~ object.pageName %}
+    {% set uri = app.request.getSchemeAndHttpHost() ~ '/' ~ object.slug %}
     <a href="{{ uri }}"><small>{{ uri }}</small></a>
 {% endblock field %}
