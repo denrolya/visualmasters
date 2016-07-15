@@ -72,7 +72,7 @@
             $("#order-form form").on('submit', function(e) {
                 $.ajax({
                     method: 'POST',
-                    url: 'http://imp.loc/app_dev.php/order',
+                    url: "{{ path('process_order') }}",
                     data: $("#order-form form").serialize(),
                     success: function(response) {
                         if (response.status == 'ok') {
