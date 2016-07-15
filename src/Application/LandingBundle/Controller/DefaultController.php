@@ -8,7 +8,9 @@ use Application\LandingBundle\Form\BaseOrderType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class DefaultController extends Controller
 {
@@ -54,6 +56,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/order", name="process_order")
+     * @Method({"POST"})
      */
     public function processOrderAction(Request $request)
     {
@@ -80,7 +83,7 @@ class DefaultController extends Controller
 
             $this->get('mailer')->send($message, $failedRecipients);
 
-            return $this->redirectToRoute('index');
+            return new JsonResponse(['status' => 'ok'], 200);
         }
     }
 }

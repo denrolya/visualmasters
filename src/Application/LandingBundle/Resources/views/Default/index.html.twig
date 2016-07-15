@@ -68,6 +68,21 @@
                 e.preventDefault()
                 $(this).tab('show')
             });
+
+            $("#order-form form").on('submit', function(e) {
+                $.ajax({
+                    method: 'POST',
+                    url: 'http://imp.loc/app_dev.php/order',
+                    data: $("#order-form form").serialize(),
+                    success: function(response) {
+                        if (response.status == 'ok') {
+                            $("#order-form").toggleClass('hidden');
+                            $("#order-success-note").toggleClass('hidden');
+                        }
+                    }
+                });
+                return false;
+            });
         })();
     </script>
 
