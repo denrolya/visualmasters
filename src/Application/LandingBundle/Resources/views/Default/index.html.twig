@@ -65,15 +65,17 @@
 
                 var prevTabControl = $(e.target).attr('aria-controls');
                 $(".main-footer a[aria-controls='" + prevTabControl + "']").toggleClass('active');
-                e.preventDefault()
-                $(this).tab('show')
+                e.preventDefault();
+                $(this).tab('show');
             });
 
             $("#order-form form").on('submit', function(e) {
                 $.ajax({
-                    method: 'POST',
+                    type: 'POST',
                     url: "{{ path('process_order') }}",
-                    data: $("#order-form form").serialize(),
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
                     success: function(response) {
                         if (response.status == 'ok') {
                             $("#order-form").toggleClass('hidden');
@@ -82,6 +84,27 @@
                     }
                 });
                 return false;
+            });
+
+            var inputs = $('.inputfile');
+            Array.prototype.forEach.call( inputs, function( input )
+            {
+                var label	 = input.nextElementSibling,
+                        labelVal = label.innerHTML;
+
+                input.addEventListener( 'change', function( e )
+                {
+                    var fileName = e.target.value.split( '\\' ).pop();
+
+                    if( fileName )
+                        label.querySelector( 'span' ).innerHTML = 'Attached...';
+                    else
+                        label.innerHTML = labelVal;
+                });
+
+                // Firefox bug fix
+                input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+                input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
             });
         })();
     </script>

@@ -4,6 +4,7 @@ namespace Application\LandingBundle\Controller;
 
 use Application\GalleryBundle\Entity\GalleryPage;
 use Application\LandingBundle\Entity\BaseOrder;
+use Application\LandingBundle\Entity\File;
 use Application\LandingBundle\Form\BaseOrderType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -70,6 +71,24 @@ class DefaultController extends Controller
             $em->persist($order);
 
             $em->flush();
+
+            if ($file = $request->files->get('zipfile')) {
+
+                $filename = $order->getId() . '-' . md5(uniqid()) . '.' . $file->guessExtension();
+                $file->move($this->container->getParameter('files_dir'), $filename);
+
+                $newFile = (new File())
+                    ->setName($filename)
+                    ->setRelativePath('/uploads/orders/' . $filename)
+                    ->setAbsolutePath($this->container->getParameter('files_dir') . '/' . $filename)
+                    ->setSize($file->getClientSize());
+
+                $order->setFile($newFile);
+
+                $em->persist($newFile);
+
+                $em->flush();
+            }
 
             $this->addFlash('success', 'You have successfully placed an order on VisualMasters!');
 

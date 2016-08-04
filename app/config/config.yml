@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
 #    - { resource: sonata_classification.yml }
 
+
 framework:
     #esi:             ~
     translator:      { fallback: "%locale%" }

@@ -3,6 +3,7 @@
 namespace Application\LandingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * BaseOrder
@@ -62,6 +63,12 @@ class BaseOrder
      * @ORM\Column(name="comments", type="text")
      */
     private $comments;
+
+    /**
+     * @ORM\OneToOne(targetEntity="File", fetch="EAGER")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", unique=true, nullable=true)
+     */
+    private $file;
 
 
     /**
@@ -210,5 +217,25 @@ class BaseOrder
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set file
+     *
+     * @param File $file
+     */
+    public function setFile(File $file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file
+     *
+     * @return File
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }
