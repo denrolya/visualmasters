@@ -90,7 +90,7 @@
             Array.prototype.forEach.call( inputs, function( input )
             {
                 var label	 = input.nextElementSibling,
-                        labelVal = label.innerHTML;
+                    labelVal = label.innerHTML;
 
                 input.addEventListener( 'change', function( e )
                 {
@@ -105,6 +105,12 @@
                 // Firefox bug fix
                 input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
                 input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+            });
+
+            $('#orderModal').on('show.bs.modal', function () {
+                $("form[name='order-form']")[0].reset();
+                $('#order-form').removeClass('hidden');
+                $('#order-success-note').addClass('hidden');
             });
         })();
     </script>
