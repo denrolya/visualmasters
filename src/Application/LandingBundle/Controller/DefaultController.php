@@ -96,7 +96,8 @@ class DefaultController extends Controller
                 ->setSubject('[New] Order was successfully submitted!')
                 ->setFrom('no-reply@visualmasters.co.uk')
                 ->setTo($order->getEmail())
-                ->setBody($order->getComments(), 'text/html');
+                ->setBody($order->getComments(), 'text/html')
+                ->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath()));
 
             $failedRecipients = [];
 
