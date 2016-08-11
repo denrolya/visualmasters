@@ -112,6 +112,19 @@
                 $('#order-form').removeClass('hidden');
                 $('#order-success-note').addClass('hidden');
             });
+
+            var $loader = $('#loader').hide();
+            $(document)
+                    .ajaxStart(function () {
+                        $loader.show();
+                        $('.btn-submit').toggleClass('loader').prop('disabled', true);
+                        $('#btn-submit-text').hide();
+                    })
+                    .ajaxStop(function () {
+                        $loader.hide();
+                        $('.btn-submit').toggleClass('loader').prop('disabled', true);
+                        $('#btn-submit-text').show();
+                    });
         })();
     </script>
 

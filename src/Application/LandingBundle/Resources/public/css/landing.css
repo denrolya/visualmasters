@@ -826,3 +826,7 @@ hr.hr-muted {
     display: inline-block;
     overflow: hidden;
 }
+
+.modal-body .btn-primary.loader {
+    background: #5c96a9;
+}

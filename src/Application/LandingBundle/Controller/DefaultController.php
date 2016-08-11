@@ -93,11 +93,11 @@ class DefaultController extends Controller
             $this->addFlash('success', 'You have successfully placed an order on VisualMasters!');
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('[New] Order was successfully submitted!')
+                ->setSubject('[NEW] Order was successfully submitted!')
                 ->setFrom('no-reply@visualmasters.co.uk')
                 ->setTo($order->getEmail())
-                ->setBody($order->getComments(), 'text/html')
-                ->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath()));
+                ->setBody($order->getComments(), 'text/html');
+//            $message->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath()));
 
             $failedRecipients = [];
 
