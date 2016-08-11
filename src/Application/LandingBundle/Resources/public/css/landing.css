@@ -70,7 +70,7 @@ hr {
     color: white;
     display: block;
     height: 100%;
-    transition: 0;
+    transition: 0s;
 }
 
 @media screen and (max-height: 900px) {
