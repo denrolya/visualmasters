@@ -64,13 +64,13 @@ hr {
 
 .main-footer a {
     padding-top: 15px;
+    transition: 0s;
     font-size: 2em;
     text-transform: uppercase;
     font-weight: bold;
     color: white;
     display: block;
     height: 100%;
-    transition: 0s;
 }
 
 @media screen and (max-height: 900px) {
