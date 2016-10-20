@@ -46,7 +46,7 @@ class GalleryPageAdmin extends Admin
                 ->add('metaDescription');
     }
 
-    public function preUdate($galleryPage)
+    public function preUpdate($galleryPage)
     {
         $slugify = new Slugify();
         $titleSlug = $slugify->slugify($galleryPage->getTitle());

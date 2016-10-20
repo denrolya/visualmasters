@@ -5,12 +5,14 @@ namespace Application\GalleryBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Page
  *
  * @ORM\Table(name="galleries")
  * @ORM\Entity()
+ * @UniqueEntity("slug")
  */
 class GalleryPage
 {

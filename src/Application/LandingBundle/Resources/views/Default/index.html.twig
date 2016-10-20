@@ -118,11 +118,13 @@
                     .ajaxStart(function () {
                         $loader.show();
                         $('.btn-submit').toggleClass('loader').prop('disabled', true);
+                        $('.btn-attach').addClass('disabled');
                         $('#btn-submit-text').hide();
                     })
                     .ajaxStop(function () {
                         $loader.hide();
-                        $('.btn-submit').toggleClass('loader').prop('disabled', true);
+                        $('.btn-submit').toggleClass('loader').prop('disabled', false);
+                        $('.btn-attach').removeClass('disabled');
                         $('#btn-submit-text').show();
                     });
         })();

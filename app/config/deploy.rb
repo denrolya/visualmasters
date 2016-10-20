@@ -16,7 +16,7 @@ set :clear_controllers,                 false
 set :deploy_via,                        :remote_cache
 
 set :model_manager,                     "doctrine"
-
+a
 set :repository,                        "git@github.com:rdenes93/imperiumdesign.git"
 set :scm,                               :git
 set :branch,                            "develop"

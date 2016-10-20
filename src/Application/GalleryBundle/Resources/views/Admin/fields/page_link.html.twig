@@ -1,6 +1,5 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
 {% block field %}
-    {% set uri = app.request.getSchemeAndHttpHost() ~ '/' ~ object.slug %}
-    <a href="{{ uri }}"><small>{{ uri }}</small></a>
+    <a href="{{ path('gallery_page', {'slug' : object.slug }) }}"><small>{{ path('gallery_page', {'slug' : object.slug }) }}</small></a>
 {% endblock field %}
