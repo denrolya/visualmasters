@@ -90,8 +90,121 @@ aside {
   @include tablet {
     width: 170px;
   }
+  @include mobile {
+    border: none;
+    position: absolute;
+    float: none;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    top: 25px;
+  }
 }
-
+.navbar-default {
+  border: none;
+  @include mobile {
+    .navbar-toggle .icon-bar {
+      background-color: #989898;
+      width: 36px;
+      height: 4px;
+      border-radius: 0;
+    }
+    .navbar-toggle {
+      float: left;
+      border: none;
+      border-radius: 0;
+      margin-left: 5px;
+      @media (max-width: 570px) {
+        margin-top: 80px;
+      }
+    }
+    .mobile-order-button {
+      float: right;
+      width: 108px;
+      line-height: 53px;
+      border: 2px solid #fbc02d;
+      border-radius: 4px;
+      font-size: 20px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fbc02d;
+      @media (max-width: 570px) {
+        margin-top: 70px;
+      }
+    }
+    .mobile-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      max-height: none;
+      height: 100vh;
+      border: 0;
+      background: rgba(0, 0, 0, 0.92);
+      .mobile-logo {
+        z-index: 100;
+        max-width: 180px;
+        width: 100%;
+        height: 100px;
+        text-indent: -9999px;
+        background: url(../images/mobile-logo.png) no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: 30px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+      button {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 40px;
+        line-height: 20px;
+        z-index: 100;
+        position: absolute;
+        top: 25px;
+        right: 20px;
+      }
+      .mobile-menu-list {
+        position: absolute;
+        width: 95%;
+        margin: 0;
+        max-height: none;
+        height: 100vh;
+        padding-top: 140px;
+        li {
+          border: none;
+          padding: 0 30px;
+          a {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 68px;
+            background: transparent;
+            &:active,
+            &:hover {
+              color: #00adfe;
+              background: transparent;
+            }
+          }
+        }
+        .page-scroll {
+          color: #fffffe;
+          padding: 0;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+        }
+        .order-button .order {
+          color: #fbc02d;
+          border: none;
+          &:hover {
+            color: #f05f40;
+          }
+        }
+      }
+    }
+  }
+}
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
   color: #eb3812;
@@ -171,7 +284,7 @@ aside {
 section {
   position: relative;
   width: 100%;
-  min-height: auto;
+  min-height: inherit;
   text-align: center;
   color: #fff;
 }

@@ -69,6 +69,107 @@ aside {
   @media (min-width: 768px) and (max-width: 991px) {
     .navbar-default .navbar-header .navbar-brand {
       width: 170px; } }
+  @media (min-width: 0px) and (max-width: 767px) {
+    .navbar-default .navbar-header .navbar-brand {
+      border: none;
+      position: absolute;
+      float: none;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      top: 25px; } }
+
+.navbar-default {
+  border: none; }
+  @media (min-width: 0px) and (max-width: 767px) {
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #989898;
+      width: 36px;
+      height: 4px;
+      border-radius: 0; }
+    .navbar-default .navbar-toggle {
+      float: left;
+      border: none;
+      border-radius: 0;
+      margin-left: 5px; } }
+  @media (min-width: 0px) and (max-width: 767px) and (max-width: 570px) {
+    .navbar-default .navbar-toggle {
+      margin-top: 80px; } }
+  @media (min-width: 0px) and (max-width: 767px) {
+    .navbar-default .mobile-order-button {
+      float: right;
+      width: 108px;
+      line-height: 53px;
+      border: 2px solid #fbc02d;
+      border-radius: 4px;
+      font-size: 20px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fbc02d; } }
+  @media (min-width: 0px) and (max-width: 767px) and (max-width: 570px) {
+    .navbar-default .mobile-order-button {
+      margin-top: 70px; } }
+  @media (min-width: 0px) and (max-width: 767px) {
+    .navbar-default .mobile-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      max-height: none;
+      height: 100vh;
+      border: 0;
+      background: rgba(0, 0, 0, 0.92); }
+      .navbar-default .mobile-menu .mobile-logo {
+        z-index: 100;
+        max-width: 180px;
+        width: 100%;
+        height: 100px;
+        text-indent: -9999px;
+        background: url(../images/mobile-logo.png) no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: 30px;
+        left: 0;
+        right: 0;
+        margin: 0 auto; }
+      .navbar-default .mobile-menu button {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 40px;
+        line-height: 20px;
+        z-index: 100;
+        position: absolute;
+        top: 25px;
+        right: 20px; }
+      .navbar-default .mobile-menu .mobile-menu-list {
+        position: absolute;
+        width: 95%;
+        margin: 0;
+        max-height: none;
+        height: 100vh;
+        padding-top: 140px; }
+        .navbar-default .mobile-menu .mobile-menu-list li {
+          border: none;
+          padding: 0 30px; }
+          .navbar-default .mobile-menu .mobile-menu-list li a {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 68px;
+            background: transparent; }
+            .navbar-default .mobile-menu .mobile-menu-list li a:active, .navbar-default .mobile-menu .mobile-menu-list li a:hover {
+              color: #00adfe;
+              background: transparent; }
+        .navbar-default .mobile-menu .mobile-menu-list .page-scroll {
+          color: #fffffe;
+          padding: 0;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.12); }
+        .navbar-default .mobile-menu .mobile-menu-list .order-button .order {
+          color: #fbc02d;
+          border: none; }
+          .navbar-default .mobile-menu .mobile-menu-list .order-button .order:hover {
+            color: #f05f40; } }
 
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
@@ -134,7 +235,7 @@ aside {
 section {
   position: relative;
   width: 100%;
-  min-height: auto;
+  min-height: inherit;
   text-align: center;
   color: #fff; }
 

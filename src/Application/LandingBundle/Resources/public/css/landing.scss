@@ -45,6 +45,9 @@ hr {
   position: relative;
   top: 15%;
   padding-left: 30px;
+  @include mobile {
+    padding: 0;
+  }
 }
 
 .footer  {
@@ -56,10 +59,16 @@ hr {
     max-height: 175px;
     height: auto;
   }
+  @include mobile {
+    height: auto;
+  }
 }
 #about .footer {
   @include tab-mob {
     max-height: 145px;
+  }
+  @media (max-width: 570px) {
+    max-height: 90px;
   }
 }
 
@@ -67,7 +76,7 @@ hr {
   height: 100%;
   margin: 0;
   padding: 0;
-  @include tablet {
+  @include tab-mob {
     height: auto;
   }
 }
@@ -110,6 +119,14 @@ hr {
 @include tab-mob {
   .main-footer a {
     color: #40A2C5;
+    padding-top: 54px;
+    font-size: 22px;
+    height: 91px;
+    @media (max-width: 570px) {
+      padding-top: 52px;
+      font-size: 12px;
+      height: 77px;
+    }
   }
 }
 
@@ -142,6 +159,20 @@ hr {
   border-right: 1px solid #0083B2;
   @include tablet {
     border-right: 5px solid #303030;
+  }
+  @include mobile {
+    border-right: 12px solid #303030 !important;
+    &:nth-of-type(2),
+    &:nth-of-type(4) {
+      border-right: none!important;
+    }
+  }
+  @media (max-width: 570px) {
+    border: 3px solid #303030!important;
+    &:nth-of-type(2),
+    &:nth-of-type(4) {
+      border-right: none!important;
+    }
   }
 }
 
@@ -318,6 +349,10 @@ hr {
   width: auto;
   margin: 0;
   padding: 0;
+  @include mobile {
+    left: 40px;
+    bottom: -45px;
+  }
 }
 
 #main .main-header {
@@ -346,6 +381,10 @@ hr {
   }
   #main .main-header h1 {
     font-size: 4em;
+    @include mobile {
+      font-size: 2.8em;
+      margin-top: 50px;
+    }
   }
 }
 
@@ -355,14 +394,14 @@ hr {
 
 #main .main-header h1 span.line-two {
   font-size: 1.3em;
-  @include mobile {
-    font-size: 32px;
-  }
 }
 
 #main .main-header h4 {
   color: #9A9998;
   line-height: 2em;
+  @include mobile {
+    line-height: 1.5em;
+  }
 }
 
 #main .next-page {
@@ -387,7 +426,8 @@ hr {
 
 /*=========== ABOUT ============*/
 #about {
-  @include tablet {
+  @include tab-mob {
+    padding-top: 50px;
     padding-bottom: 170px;
   }
 }
@@ -397,6 +437,9 @@ hr {
   color: #77C2E2;
   @include tablet {
     font-size: 4em;
+  }
+  @include mobile {
+    font-size: 3em;
   }
 }
 
@@ -444,6 +487,12 @@ hr {
 #about .footer a {
   color: #969696;
   font-size: 50px;
+  @include mobile {
+    font-size: 50px;
+  }
+  @media (max-width: 570px) {
+    font-size: 34px;
+  }
 }
 
 #about .footer a:hover {
@@ -479,6 +528,10 @@ hr {
   @include tablet {
     padding-bottom: 330px;
   }
+  @include mobile {
+    padding-top: 50px;
+    padding-bottom: 300px;
+  }
 }
 
 #services .section-heading {
@@ -499,6 +552,9 @@ hr {
   @include tablet {
     font-size: 2.5em;
   }
+  @include mobile {
+    font-size: 2em;
+  }
 }
 
 #services .section-header-underlined {
@@ -509,6 +565,9 @@ hr {
   text-align: center;
   @include tablet {
     bottom: 220px;
+  }
+  @include mobile {
+    display: none;
   }
 }
 
@@ -533,10 +592,17 @@ hr {
 @media screen and (max-height: 900px) {
   #services .section-heading {
     font-size: 4em;
+    @include mobile {
+      font-size: 3em;
+    }
+
   }
 
   #services .section-heading-dimmed {
-    font-size: 2.5em
+    font-size: 2.5em;
+    @include mobile {
+      font-size: 2em;
+    }
   }
 
   #services .service-box img {
@@ -552,6 +618,9 @@ hr {
 /*=========== DESCRIPTIONS ===========*/
 #descriptions {
   color: #6D6D6D;
+  @include mobile {
+    padding: 50px 0;
+  }
 }
 
 #descriptions .row-headers {
@@ -565,9 +634,6 @@ hr {
 #descriptions h2 {
   text-transform: uppercase;
   font-size: 5em;
-  @include tablet {
-    font-size: 4em;
-  }
 }
 
 #descriptions .interior-descriptions {
@@ -701,6 +767,12 @@ hr {
 @media screen and (max-height: 900px) {
   #descriptions h2 {
     font-size: 4em;
+    @include tablet {
+      font-size: 4em;
+    }
+    @include mobile {
+      font-size: 3em;
+    }
   }
 
   #descriptions h4 {
@@ -733,10 +805,18 @@ hr {
 
 
 /*=========== PORTFOLIO ===========*/
+#portfolio {
+  @include mobile {
+    padding: 0;
+  }
+}
 .our-works-heading {
   color: #6d6d6d;
   font-weight: bold;
   font-size: 4em;
+  @include mobile {
+    font-size: 3em;
+  }
 }
 
 .portfolio-box {
@@ -762,12 +842,20 @@ hr {
 /*=========== END PORTFOLIO ===========*/
 
 /*=========== MEDIA ===========*/
+#media {
+  @include mobile {
+    padding: 0;
+  }
+}
 #media h2 {
   font-size: 5em;
   font-weight: bold;
   color: #BEBEBE;
   @include tablet {
     font-size: 4em
+  }
+  @include mobile {
+    font-size: 3em;
   }
 }
 
@@ -792,17 +880,26 @@ hr {
   @include tablet {
     font-size: 4em;
   }
+  @include mobile {
+    font-size: 3.5em;
+  }
 }
 #contact .subheading {
   color: #777777;
   font-size: 15px;
   padding-top: 73px;
+  @include mobile {
+    padding-top: 45px;
+  }
 }
 #contact .location-info {
   color: #0083b2;
   font-size: 15px;
   @include tab-mob {
     height: 80px;
+  }
+  @media (max-width: 430px) {
+    font-size: 12px;
   }
 }
 
@@ -835,6 +932,9 @@ hr {
   height: 50px;
   background: #2f2f2f;
   color: #6d6d6d;
+  @include mobile {
+    height: 80px;
+  }
 }
 
 #contact .footer a {
@@ -850,6 +950,10 @@ hr {
   margin-bottom: 0;
   display: inline-block;
   margin-left:30px;
+  @include mobile {
+    margin-left: 18px;
+    margin-top: 13px;
+  }
 }
 
 .btn-place-order {
@@ -870,6 +974,10 @@ hr.hr-muted {
 /*=================== MODAL ===================*/
 .modal-dialog {
   width: 500px;
+  @include mobile {
+    width: 100%;
+    padding-right: 25px;
+  }
 }
 
 .modal-content {
@@ -914,6 +1022,9 @@ hr.hr-muted {
 .modal-body .modal-container {
   width: 60%;
   margin: auto;
+  @media (max-width: 540px) {
+    width: 100%;
+  }
 }
 
 .modal-body form {
