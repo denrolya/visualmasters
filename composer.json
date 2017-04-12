@@ -18,7 +18,8 @@
         "sensio/distribution-bundle": "2.3.*",
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
-        "incenteev/composer-parameter-handler": "~2.0",        
+        "incenteev/composer-parameter-handler": "~2.0",
+
         "sonata-project/core-bundle" : "2.3.*",
         "sonata-project/admin-bundle" : "2.3.*",
         "sonata-project/doctrine-orm-admin-bundle" : "2.3.*",
@@ -29,6 +30,7 @@
         "sonata-project/easy-extends-bundle" : "2.x-dev",
         "sonata-project/block-bundle" : "2.2.*",
         "sonata-project/intl-bundle": "2.2.x-dev",
+
         "cocur/slugify": "2.2",
         "stephanecollot/datetimepicker-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "~1.3"
