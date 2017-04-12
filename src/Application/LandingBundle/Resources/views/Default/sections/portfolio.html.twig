@@ -1,0 +1,22 @@
+<section id="portfolio">
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="col-lg-3 col-sm-6 vertical-center">
+                <h3 class="our-works-heading text-faded">Our Works</h3>
+            </div>
+            {% for slide in slides %}
+                <div class="col-lg-3 col-sm-6">
+                    <a href="{{ path('gallery_page', {'slug' : slide.parentGallery.slug }) }}" class="portfolio-box">
+                        {% thumbnail slide.imageContent, 'big' with {'class': 'img-responsive'} %}
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category">{{ slide.parentGallery.title }}</div>
+                                <div class="project-name">{{ slide.parentGallery.detailedDescription | striptags('p') | raw }}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

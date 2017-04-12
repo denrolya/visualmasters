@@ -1,0 +1,33 @@
+$netbook-width: 1199px;
+$tablet-width: 991px;
+$smartphone-width: 767px;
+$phone: 0px;
+
+
+@mixin notebook {
+  @media (min-width: #{$netbook-width + 1px}) {
+    @content;
+  }
+}
+@mixin netbook {
+  @media (min-width: #{$tablet-width + 1px}) and (max-width: #{$netbook-width}) {
+    @content;
+  }
+}
+@mixin tab-mob {
+  @media (min-width: #{$phone}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$smartphone-width + 1px}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: #{$phone}) and (max-width: #{$smartphone-width}) {
+    @content;
+  }
+}

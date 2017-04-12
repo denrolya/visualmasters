@@ -1,0 +1,5 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <a href="{{ path('gallery_page', {'slug' : object.slug }) }}"><small>{{ path('gallery_page', {'slug' : object.slug }) }}</small></a>
+{% endblock field %}

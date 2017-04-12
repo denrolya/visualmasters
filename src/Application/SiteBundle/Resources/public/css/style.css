@@ -1,0 +1,73 @@
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+.embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+img {
+    width: 100%;
+    display: block;
+    height: auto;
+    max-width: 100%;
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    max-width: 100%;
+}
+
+.col-xs-9 {
+    margin-top: 20px;
+}
+
+figure {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    padding: 6px 8px 10px 8px; /*size of the frame*/
+    margin:10px 20px; /*space between the images*/
+    /*give the frame's background colour a gradient*/
+    /*background: -webkit-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+    /*background: -moz-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+    /*background: -o-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+    /*background: -ms-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+    /*background: linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);*/
+    /*give the Polaroids a small drop shadow*/
+    -webkit-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+    -moz-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+    box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+    -webkit-transform:rotate(-1deg);
+    -moz-transform: rotate(-1deg);
+    -o-transform: rotate(-1deg);
+    -ms-transform: rotate(-1deg);
+    transform: rotate(-1deg);
+    -webkit-backface-visibility:hidden; /*prevent rotated text in the caption being jagged in Chrome and Safari*/
+}
+
+.image-link figure:nth-child(2n) {
+    /*see support section below for more info on nth-child*/
+    -webkit-transform: rotate(15deg);
+    -moz-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    transform: rotate(15deg);
+    /*because the image is rotated the opposite way, the drop-shadow needs moving to the other side of the image*/
+    -webkit-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+    -moz-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+    box-shadow: -4px 4px 8px -4px rgba(0, 0, 0, .75);
+}
+
+figcaption{
+    text-align: center;
+    font-family: 'Reenie Beanie', cursive; /* Reenie Beanie is available through Google Webfonts */
+    font-size:1.3em;
+    color: #454f40;
+    letter-spacing: 0.09em;
+    color: black;
+}

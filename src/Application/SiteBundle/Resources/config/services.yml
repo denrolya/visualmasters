@@ -1,0 +1,6 @@
+services:
+    imperiv.twig_extension:
+        class: Application\SiteBundle\Twig\Extension
+        public: false
+        tags:
+            - { name: twig.extension }

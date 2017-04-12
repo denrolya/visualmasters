@@ -1,0 +1,5 @@
+{% if object.providerName is defined and object.providerName == 'sonata.media.provider.image' %}
+    {% thumbnail object, 'small' with {'class' : 'img-rounded' } %}
+{% else %}
+    {{ description }}
+{% endif %}

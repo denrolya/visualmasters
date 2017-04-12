@@ -1,0 +1,44 @@
+services:
+    sonata.admin.video:
+        class: Application\SiteBundle\Admin\VideoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Videos" }
+        arguments:
+            - ~
+            - Application\SiteBundle\Entity\Video
+            - ~
+
+    sonata.admin.orders.interior:
+        class: Application\SiteBundle\Admin\InteriorOrderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Interior design orders" }
+        arguments:
+            - ~
+            - Application\SiteBundle\Entity\InteriorOrder
+            - ~
+
+    sonata.admin.orders.web:
+        class: Application\SiteBundle\Admin\WebOrderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Web orders" }
+        arguments:
+            - ~
+            - Application\SiteBundle\Entity\WebOrder
+            - ~
+    sonata.admin.orders.media:
+        class: Application\SiteBundle\Admin\MediaOrderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Media orders" }
+        arguments:
+            - ~
+            - Application\SiteBundle\Entity\MediaOrder
+            - ~
+
+    sonata.admin.orders.special:
+        class: Application\SiteBundle\Admin\SpecialOrderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Special orders" }
+        arguments:
+            - ~
+            - Application\SiteBundle\Entity\SpecialOrder
+            - ~

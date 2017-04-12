@@ -1,0 +1,31 @@
+<header>
+    <ul class="navigator">
+        <li>
+            <a href="{{ path('index_page') }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>
+                Home
+            </a>
+        </li>
+
+        {% for gallery in galleries %}
+            <li>
+                <a href="{{ path('gallery_page', {'gallery_name' : gallery.pageName }) }}">{{ gallery.metaTitle }}</a>
+            </li>
+        {% endfor %}
+
+        {#<li>#}
+        {#<a href="{{ path('gallery_page', {'gallery_name' : 'design'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>3D Design</a>#}
+        {#</li>#}
+        {#<li>#}
+        {#<a href="{{ path('gallery_page', {'gallery_name' : 'art'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>Graphic Art</a>#}
+        {#</li>#}
+        {#<li>#}
+        {#<a href="{{ path('gallery_page', {'gallery_name' : 'models'}) }}" {{ (app.request.get('_route') == 'gallery_index') ? "class=\"selected\"" }}>Models</a>#}
+        {#</li>#}
+        <li>
+            <a href="{{ path('media_page') }}">Media</a>
+        </li>
+        <li>
+            <a href="{{ path('explore_more_page') }}" id="explore" >Explore more</a>
+        </li>
+    </ul>
+</header>

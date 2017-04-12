@@ -27,8 +27,15 @@ class AppKernel extends Kernel
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            new Imperiv\Bundle\SiteBundle\ImperivSiteBundle(),
-            new Imperiv\Bundle\GalleryBundle\ImperivGalleryBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
+            new Application\SiteBundle\ImperivSiteBundle(),
+            new Application\GalleryBundle\ImperivGalleryBundle(),
+            new SC\DatetimepickerBundle\SCDatetimepickerBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
+            new Application\LandingBundle\ApplicationLandingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

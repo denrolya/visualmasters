@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
 #    - { resource: sonata_classification.yml }
 
+
 framework:
     #esi:             ~
     translator:      { fallback: "%locale%" }
@@ -24,11 +25,15 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+      resources:
+        - 'bootstrap_3_layout.html.twig'
+        - 'SonataMediaBundle:Form:media_widgets.html.twig'
 
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ImperivSiteBundle, ImperivGalleryBundle, SonataAdminBundle]
+    bundles:        [ImperivSiteBundle, ImperivGalleryBundle, SonataAdminBundle, 'ApplicationLandingBundle']
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -61,25 +66,39 @@ doctrine:
                     SonataMediaBundle: ~
                     ApplicationSonataClassificationBundle: ~
                     SonataClassificationBundle: ~
+                    ApplicationSonataUserBundle: ~
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
 
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
+    auth_mode: "%mailer_auth_mode%"
+    port:      "%mailer_port%"
     spool:     { type: memory }
-                
+
 sonata_admin:
     title: Imperiumdesign
 #    title_logo: bundles/acmedemo/img/fancy_acme_logo.png
-#    templates:
-#        layout:  ::standard_layout.html.twig
+    templates:
+        short_object_description: ::Admin/Helper/short-object-description.html.twig
     dashboard:
         groups:
             Galleries:
-                items: 
+                items:
                     - sonata.admin.gallery_page
                     - sonata.admin.slide
+            Videos:
+                items:
+                    - sonata.admin.video
+            Orders:
+                items:
+                    - sonata.admin.orders.interior
+                    - sonata.admin.orders.special
+                    - sonata.admin.orders.web
+                    - sonata.admin.orders.media
 
 sonata_block:
     default_contexts: [cms]
@@ -88,7 +107,7 @@ sonata_block:
             contexts:   [admin]
         sonata.user.block.menu:
         sonata.user.block.account:
-        
+
 sonata_media:
     default_context: default
     db_driver: doctrine_orm
@@ -96,6 +115,7 @@ sonata_media:
         default:
             providers:
                 - sonata.media.provider.image
+                - sonata.media.provider.vimeo
 
             formats:
                 small: { width: 100 , quality: 100}
@@ -109,3 +129,29 @@ sonata_media:
         local:
             directory:  %kernel.root_dir%/../web/uploads/media
             create:     false
+
+sc_datetimepicker:
+    picker: ~
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Application\Sonata\UserBundle\Entity\User
+
+    group:
+        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
+
+    service:
+        user_manager: sonata.user.orm.user_manager
+
+sonata_user:
+    security_acl: true
+    manager_type: orm # can be orm or mongodb
+
+sonata_block:
+    blocks:
+        #...
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        sonata.block.service.text: # used to if you plan to use Sonata user routes
