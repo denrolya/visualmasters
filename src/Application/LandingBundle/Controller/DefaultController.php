@@ -6,6 +6,7 @@ use Application\GalleryBundle\Entity\GalleryPage;
 use Application\LandingBundle\Entity\BaseOrder;
 use Application\LandingBundle\Entity\File;
 use Application\LandingBundle\Form\BaseOrderType;
+use Application\SiteBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -21,9 +22,11 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $em = $this->getDoctrine()->getManager();
+
         $form = $this->createForm(new BaseOrderType(), new BaseOrder(), ['action' => $this->generateUrl('process_order')])->createView();
 
-        $galleries = $this->getDoctrine()->getRepository(GalleryPage::class)->findAll();
+        $galleries = $em->getRepository(GalleryPage::class)->findAll();
 
         $randomSlides = [];
 
@@ -34,7 +37,9 @@ class DefaultController extends Controller
                 array_push($randomSlides, $gallerySlides[array_rand($gallerySlides->getKeys())]);
         }
 
-        return ['form' => $form, 'slides' => $randomSlides];
+        $video = $em->getRepository(Video::class)->findAll()[0];
+
+        return ['form' => $form, 'slides' => $randomSlides, 'videoObject' => $video];
     }
 
     /**
