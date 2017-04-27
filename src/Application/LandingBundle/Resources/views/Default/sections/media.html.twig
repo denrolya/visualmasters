@@ -1,6 +1,10 @@
 <section id="media">
     <div class="container">
         <h2>Watch Our Showreel</h2>
-        <iframe src="https://player.vimeo.com/video/157667168?color=ffc796&title=0&byline=0&portrait=0&badge=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe
+                id="{{ videoObject.id }}"
+                src="http://player.vimeo.com/video/{{ videoObject.video.providerreference }}"
+                frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+        </iframe>
     </div>
 </section>
