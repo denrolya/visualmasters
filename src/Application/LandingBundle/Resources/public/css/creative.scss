@@ -96,6 +96,9 @@ aside {
     border: none;
     float: left;
     margin-top: 10px;
+    max-height: 40px;
+    padding: 0;
+    height: 45px;
   }
 }
 .navbar-default {
@@ -112,6 +115,9 @@ aside {
       border: none;
       border-radius: 0;
       margin-left: 5px;
+      @include mobile {
+        margin-bottom: 0;
+      }
     }
     .mobile-order-button {
       float: right;
