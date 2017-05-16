@@ -77,7 +77,7 @@ class DefaultController extends Controller
 
             $em->flush();
 
-            if ($file = $request->files->get('zipfile')) {
+            if ($file = $request->files->get('file')) {
 
                 $filename = $order->getId() . '-' . md5(uniqid()) . '.' . $file->guessExtension();
                 $file->move($this->container->getParameter('files_dir'), $filename);
@@ -102,7 +102,9 @@ class DefaultController extends Controller
                 ->setFrom('no-reply@visualmasters.co.uk')
                 ->setTo($order->getEmail())
                 ->setBody($order->getComments(), 'text/html');
-            $message->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath()));
+            $message->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath())
+                ->setFilename($newFile->getName())
+            );
 
             $failedRecipients = [];
 
