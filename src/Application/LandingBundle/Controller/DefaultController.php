@@ -102,7 +102,7 @@ class DefaultController extends Controller
                 ->setFrom('no-reply@visualmasters.co.uk')
                 ->setTo($order->getEmail())
                 ->setBody($order->getComments(), 'text/html');
-//            $message->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath()));
+            $message->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath()));
 
             $failedRecipients = [];
 
