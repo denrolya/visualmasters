@@ -95,10 +95,7 @@ sonata_admin:
                     - sonata.admin.video
             Orders:
                 items:
-                    - sonata.admin.orders.interior
-                    - sonata.admin.orders.special
-                    - sonata.admin.orders.web
-                    - sonata.admin.orders.media
+                    - sonata.admin.orders.base
 
 sonata_block:
     default_contexts: [cms]
