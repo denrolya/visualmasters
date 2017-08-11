@@ -47,6 +47,7 @@ class BaseOrderAdmin extends Admin
             ->add('address')
             ->add('postal')
             ->add('comments')
+            ->add('file')
         ;
     }
 

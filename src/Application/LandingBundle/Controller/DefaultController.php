@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -53,6 +54,35 @@ class DefaultController extends Controller
         $form = $this->createForm(new BaseOrderType(), new BaseOrder(), ['action' => $this->generateUrl('process_order')])->createView();
 
         return ['gallery' => $galleryPage, 'form' => $form];
+    }
+
+
+    /**
+     * @Route("/invoice.html", name="invoice_as_html")
+     * @Method({"GET"})
+     * @template("::invoice.html.twig")
+     */
+    public function invoiceHTMLAction()
+    {
+        return [];
+    }
+
+    /**
+     * @Route("/invoice.pdf")
+     * @Method({"GET"})
+     */
+    public function invoicePDFAction()
+    {
+        $pageUrl = $this->generateUrl('invoice_as_html', [], true); // use absolute path!
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutput($pageUrl),
+            200,
+            [
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="invoice.pdf"'
+            ]
+        );
     }
 
     /**
