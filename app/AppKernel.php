@@ -31,7 +31,6 @@ class AppKernel extends Kernel
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new Application\SiteBundle\ImperivSiteBundle(),
             new Application\GalleryBundle\ImperivGalleryBundle(),
-            new SC\DatetimepickerBundle\SCDatetimepickerBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
