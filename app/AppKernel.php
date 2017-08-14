@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Application\GalleryBundle\ImperivGalleryBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Application\LandingBundle\ApplicationLandingBundle(),
         );

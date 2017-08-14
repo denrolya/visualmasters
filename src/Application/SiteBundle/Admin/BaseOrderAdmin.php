@@ -19,18 +19,6 @@ class BaseOrderAdmin extends Admin
     {
     }
 
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('name')
-            ->add('email')
-            ->add('phonenumber')
-            ->add('address')
-            ->add('postal')
-            ->add('comments')
-            ->add('file');
-    }
-
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -41,6 +29,21 @@ class BaseOrderAdmin extends Admin
             ->add('address')
             ->add('postal')
             ->add('_action', null, ['actions' => ['show' => [], 'delete' => []]])
+        ;
+    }
+
+
+    protected function configureShowFields(ShowMapper $sm)
+    {
+        $sm
+            ->add('id')
+            ->add('name')
+            ->add('email')
+            ->add('phonenumber')
+            ->add('address')
+            ->add('postal')
+            ->add('comments')
+            ->add('file')
         ;
     }
 

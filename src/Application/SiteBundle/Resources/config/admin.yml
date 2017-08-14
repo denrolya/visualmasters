@@ -8,6 +8,15 @@ services:
             - Application\SiteBundle\Entity\Video
             - ~
 
+    sonata.admin.orders.base:
+        class: Application\SiteBundle\Admin\BaseOrderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Orders" }
+        arguments:
+            - ~
+            - Application\LandingBundle\Entity\BaseOrder
+            - ~
+
     sonata.admin.orders.interior:
         class: Application\SiteBundle\Admin\InteriorOrderAdmin
         tags:
