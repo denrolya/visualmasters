@@ -153,8 +153,10 @@ sonata_block:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltopdf
-        options:    []
+        binary:     %kernel.root_dir%/../vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64
+        options:
+            - { name: 'viewport-size', value: ‘1024x768’ }
+            - { name: 'page-size', value: 'A4' }
     image:
         enabled:    true
         binary:     /usr/local/bin/wkhtmltoimage
