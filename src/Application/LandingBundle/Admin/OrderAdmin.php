@@ -36,14 +36,14 @@ class OrderAdmin extends Admin
             ->add('address')
             ->add('postal')
             ->add('price', 'decimal', ['editable' => true])
-            ->add('_action', null, [
+            ->add('invoices', 'actions', [
+                'template' => 'ApplicationLandingBundle:CRUD:list__action_invoices.html.twig'
+            ])
+            ->add('_action', 'actions', [
                 'actions' => [
                     'show'      => [],
                     'edit'      => [],
-                    'delete'    => [],
-                    'invoice'   => [
-                        'template' => '::invoiceAction.html.twig'
-                    ]
+                    'delete'    => []
                 ]
             ])
         ;
@@ -67,7 +67,8 @@ class OrderAdmin extends Admin
 
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('invoice', $this->getRouterIdParameter().'/invoice');
-        $collection->clearExcept(['list', 'show', 'edit', 'delete', 'invoice']);
+        $collection->add('invoice_html', $this->getRouterIdParameter().'/invoice.html');
+        $collection->add('invoice_pdf', $this->getRouterIdParameter().'/invoice.pdf');
+//        $collection->clearExcept(['list', 'show', 'edit', 'delete', 'invoice']);
     }
 }

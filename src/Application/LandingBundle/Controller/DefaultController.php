@@ -65,7 +65,7 @@ class DefaultController extends Controller
     /**
      * @Route("/invoice.html", name="invoice_as_html")
      * @Method({"GET"})
-     * @template("::invoice.html.twig")
+     * @Template("::invoice.html.twig")
      */
     public function invoiceHTMLAction()
     {
