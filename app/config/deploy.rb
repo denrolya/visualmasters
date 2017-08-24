@@ -19,7 +19,7 @@ set :model_manager,                     "doctrine"
 
 set :repository,                        "git@github.com:rdenes93/imperiumdesign.git"
 set :scm,                               :git
-set :branch,                            "mobile"
+set :branch,                            "develop"
 set :core_branch,                       "mobile"
 
 role :web,                              domain                         # Your HTTP server, Apache/etc
