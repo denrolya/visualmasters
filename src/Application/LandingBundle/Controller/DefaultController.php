@@ -3,9 +3,9 @@
 namespace Application\LandingBundle\Controller;
 
 use Application\GalleryBundle\Entity\GalleryPage;
-use Application\LandingBundle\Entity\BaseOrder;
+use Application\LandingBundle\Entity\Order;
 use Application\LandingBundle\Entity\File;
-use Application\LandingBundle\Form\BaseOrderType;
+use Application\LandingBundle\Form\OrderType;
 use Application\SiteBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,7 +25,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(new BaseOrderType(), new BaseOrder(), ['action' => $this->generateUrl('process_order')])->createView();
+        $form = $this->createForm(new OrderType(), new Order(), ['action' => $this->generateUrl('process_order')])->createView();
 
         $galleries = $em->getRepository(GalleryPage::class)->findAll();
 
@@ -56,7 +56,7 @@ class DefaultController extends Controller
             throw $this->createNotFoundException("Page doesn't exist!");
         }
 
-        $form = $this->createForm(new BaseOrderType(), new BaseOrder(), ['action' => $this->generateUrl('process_order')])->createView();
+        $form = $this->createForm(new OrderType(), new Order(), ['action' => $this->generateUrl('process_order')])->createView();
 
         return ['gallery' => $galleryPage, 'form' => $form];
     }
@@ -96,8 +96,8 @@ class DefaultController extends Controller
      */
     public function processOrderAction(Request $request)
     {
-        $order = new BaseOrder();
-        $form = $this->createForm(new BaseOrderType(), $order);
+        $order = new Order();
+        $form = $this->createForm(new OrderType(), $order);
         $form->handleRequest($request);
 
         if ($form->isValid()) {

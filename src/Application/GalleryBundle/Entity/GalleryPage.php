@@ -76,11 +76,6 @@ class GalleryPage
      */
     protected $slides;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Application\SiteBundle\Entity\BaseOrder", mappedBy="category")
-     */
-    private $orders;
-
     public function __toString()
     {
         return $this->title;
@@ -89,7 +84,6 @@ class GalleryPage
     public function __construct()
     {
         $this->slides = new ArrayCollection();
-        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -271,38 +265,5 @@ class GalleryPage
     public function getSlidesTimeout()
     {
         return $this->slidesTimeout;
-    }
-
-    /**
-     * Add orders
-     *
-     * @param \Application\SiteBundle\Entity\BaseOrder $orders
-     * @return GalleryPage
-     */
-    public function addOrder(\Application\SiteBundle\Entity\BaseOrder $orders)
-    {
-        $this->orders[] = $orders;
-
-        return $this;
-    }
-
-    /**
-     * Remove orders
-     *
-     * @param \Application\SiteBundle\Entity\BaseOrder $orders
-     */
-    public function removeOrder(\Application\SiteBundle\Entity\BaseOrder $orders)
-    {
-        $this->orders->removeElement($orders);
-    }
-
-    /**
-     * Get orders
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getOrders()
-    {
-        return $this->orders;
     }
 }

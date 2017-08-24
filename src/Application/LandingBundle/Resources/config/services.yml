@@ -1,0 +1,9 @@
+services:
+    application.admin.order:
+        class: Application\LandingBundle\Admin\OrderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Order, label: Orders }
+        arguments:
+            - null
+            - Application\LandingBundle\Entity\Order
+            - Application\LandingBundle\Controller\AdminController

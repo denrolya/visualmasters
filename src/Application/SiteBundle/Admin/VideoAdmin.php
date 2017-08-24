@@ -19,12 +19,12 @@ class VideoAdmin extends Admin
                 'required' => true
             ]);
     }
-    
+
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('video.name');
     }
-    
+
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('video')

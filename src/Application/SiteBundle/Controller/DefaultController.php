@@ -2,15 +2,11 @@
 
 namespace Application\SiteBundle\Controller;
 
+use Application\GalleryBundle\Entity\GalleryPage;
+use Application\SiteBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
-use Application\SiteBundle\Form\Type\DesignOrderType,
-    Application\SiteBundle\Form\Type\VideoOrderType,
-    Application\SiteBundle\Form\Type\InteriorOrderType,
-    Application\SiteBundle\Form\Type\BaseOrderType;
-use Application\SiteBundle\Entity\BaseOrder;
 
 class DefaultController extends Controller
 {
@@ -20,7 +16,7 @@ class DefaultController extends Controller
      */
     public function navigationAction()
     {
-        $galleries = $this->getDoctrine()->getRepository('ImperivGalleryBundle:GalleryPage')->createQueryBuilder('g')
+        $galleries = $this->getDoctrine()->getRepository(GalleryPage::class)->createQueryBuilder('g')
             ->where("g.pageName <> 'home'")
             ->getQuery()
             ->getResult();
@@ -34,42 +30,8 @@ class DefaultController extends Controller
      */
     public function mediaAction()
     {
-        $videos = $this->getDoctrine()->getRepository("ImperivSiteBundle:Video")->findAll();
+        $videos = $this->getDoctrine()->getRepository(Video::class)->findAll();
 
         return compact('videos');
-    }
-
-    /**
-     * @Route("/explore", name="explore_more_page")
-     * @Template()
-     */
-    public function exploreAction(Request $request)
-    {
-        $form = $this->createForm(new BaseOrderType(), null, ['action' => $this->generateUrl('place_base_order')])->createView();
-
-        return compact('form');
-    }
-
-    /**
-     * @Route("/ss", name="place_base_order")
-     */
-    public function placeBaseOrder(Request $request)
-    {
-        $baseOrder = new BaseOrder();
-        $form = $this->createForm(new BaseOrderType(), $baseOrder);
-        $form->handleRequest($request);
-
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-
-            $em->persist($baseOrder);
-
-            $em->flush();
-        }
-
-        $this->addFlash('success', 'You have successfully placed an order on IMPERIUMDESIGN!');
-
-        return $this->redirectToRoute('explore_more_page');
     }
 }

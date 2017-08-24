@@ -1,26 +1,17 @@
 <?php
 
-namespace Application\SiteBundle\Entity;
+namespace Application\LandingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * BaseOrder
+ * Order
  *
- * @ORM\Table("basic_orders")
+ * @ORM\Table("orders")
  * @ORM\Entity
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({
- *      "special"   = "SpecialOrder",
- *      "web"       = "WebOrder",
- *      "media"     = "MediaOrder",
- *      "interior"  = "InteriorOrder",
- *      "base"      = "BaseOrder"
- * })
  */
-class BaseOrder
+class Order
 {
     /**
      * @var integer
@@ -34,25 +25,23 @@ class BaseOrder
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @Assert\Length(min=5)
-     * @ORM\Column(name="full_name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $fullName;
+    private $name;
 
     /**
      * @var string
-     * @Assert\Email()
+     *
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 
     /**
      * @var string
-     * @Assert\Length(min=10)
-     * @ORM\Column(name="phone", type="string", length=255)
+     *
+     * @ORM\Column(name="phonenumber", type="string", length=255)
      */
-    private $phone;
+    private $phonenumber;
 
     /**
      * @var string
@@ -64,24 +53,29 @@ class BaseOrder
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="postal", type="string", length=255)
+     * @ORM\Column(name="postal", type="string", length=100)
      */
     private $postal;
 
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="comments", type="string")
+     * @ORM\Column(name="comments", type="text")
      */
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\GalleryBundle\Entity\GalleryPage", inversedBy="orders")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     **/
-    private $category;
+     * @ORM\OneToOne(targetEntity="File", fetch="EAGER")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", unique=true, nullable=true)
+     */
+    private $file;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $price;
 
     /**
      * Get id
@@ -94,33 +88,33 @@ class BaseOrder
     }
 
     /**
-     * Set fullName
+     * Set name
      *
-     * @param string $fullName
-     * @return BaseOrder
+     * @param string $name
+     * @return Order
      */
-    public function setFullName($fullName)
+    public function setName($name)
     {
-        $this->fullName = $fullName;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get fullName
+     * Get name
      *
      * @return string 
      */
-    public function getFullName()
+    public function getName()
     {
-        return $this->fullName;
+        return $this->name;
     }
 
     /**
      * Set email
      *
      * @param string $email
-     * @return BaseOrder
+     * @return Order
      */
     public function setEmail($email)
     {
@@ -140,33 +134,33 @@ class BaseOrder
     }
 
     /**
-     * Set phone
+     * Set phonenumber
      *
-     * @param string $phone
-     * @return BaseOrder
+     * @param string $phonenumber
+     * @return Order
      */
-    public function setPhone($phone)
+    public function setPhonenumber($phonenumber)
     {
-        $this->phone = $phone;
+        $this->phonenumber = $phonenumber;
 
         return $this;
     }
 
     /**
-     * Get phone
+     * Get phonenumber
      *
      * @return string 
      */
-    public function getPhone()
+    public function getPhonenumber()
     {
-        return $this->phone;
+        return $this->phonenumber;
     }
 
     /**
      * Set address
      *
      * @param string $address
-     * @return BaseOrder
+     * @return Order
      */
     public function setAddress($address)
     {
@@ -189,7 +183,7 @@ class BaseOrder
      * Set postal
      *
      * @param string $postal
-     * @return BaseOrder
+     * @return Order
      */
     public function setPostal($postal)
     {
@@ -201,7 +195,7 @@ class BaseOrder
     /**
      * Get postal
      *
-     * @return string
+     * @return string 
      */
     public function getPostal()
     {
@@ -212,7 +206,7 @@ class BaseOrder
      * Set comments
      *
      * @param string $comments
-     * @return BaseOrder
+     * @return Order
      */
     public function setComments($comments)
     {
@@ -224,7 +218,7 @@ class BaseOrder
     /**
      * Get comments
      *
-     * @return string
+     * @return string 
      */
     public function getComments()
     {
@@ -232,25 +226,42 @@ class BaseOrder
     }
 
     /**
-     * Set category
+     * Set file
      *
-     * @param \Application\GalleryBundle\Entity\GalleryPage $category
-     * @return BaseOrder
+     * @param File $file
      */
-    public function setCategory(\Application\GalleryBundle\Entity\GalleryPage $category = null)
+    public function setFile(File $file)
     {
-        $this->category = $category;
-
-        return $this;
+        $this->file = $file;
     }
 
     /**
-     * Get category
+     * Get file
      *
-     * @return \Application\GalleryBundle\Entity\GalleryPage
+     * @return File
      */
-    public function getCategory()
+    public function getFile()
     {
-        return $this->category;
+        return $this->file;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }
