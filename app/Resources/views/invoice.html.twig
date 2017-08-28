@@ -1,199 +1,182 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Invoice</title>
+    <meta charset="UTF-8">
+    <title>Invoice from VisualMasters</title>
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,500,700" rel="stylesheet">
 
-    <style>
-        .invoice-box {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-            font-size: 16px;
-            line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-            color: #555;
-        }
+    {% block stylesheets %}
+        {% stylesheets
+        "bundles/imperivsite/css/bootstrap-grid.min.css"
+        "bundles/imperivsite/css/bootstrap.css"
+        "bundles/imperivsite/css/bootstrap-reboot.min.css"
+        "bundles/imperivsite/css/invoice.css"
+        filter="yui_css, cssrewrite" %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+        {% endstylesheets %}
+    {% endblock stylesheets %}
 
-        .invoice-box table {
-            width: 100%;
-            line-height: inherit;
-            text-align: left;
-        }
-
-        .invoice-box table td {
-            padding: 5px;
-            vertical-align: top;
-        }
-
-        .invoice-box table tr td:nth-child(2) {
-            text-align: right;
-        }
-
-        .invoice-box table tr.top table td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.top table td.title {
-            font-size: 45px;
-            line-height: 45px;
-            color: #333;
-        }
-
-        .invoice-box table tr.information table td {
-            padding-bottom: 40px;
-        }
-
-        .invoice-box table tr.heading td {
-            background: #eee;
-            border-bottom: 1px solid #ddd;
-            font-weight: bold;
-        }
-
-        .invoice-box table tr.details td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.item td {
-            border-bottom: 1px solid #eee;
-        }
-
-        .invoice-box table tr.item.last td {
-            border-bottom: none;
-        }
-
-        .invoice-box table tr.total td:nth-child(2) {
-            border-top: 2px solid #eee;
-            font-weight: bold;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-
-            .invoice-box table tr.information table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-        }
-    </style>
 </head>
-
 <body>
-<div class="invoice-box">
-    <table cellpadding="0" cellspacing="0">
-        <tr class="top">
-            <td colspan="2">
-                <table>
-                    <tr>
-                        <td class="title">
-                            <img src="{{ asset('bundles/applicationlanding/images/logo.png') }}">
-                        </td>
 
-                        <td>
-                            Invoice #: 123<br>
-                            Created: January 1, 2015<br>
-                            Due: February 1, 2015
-                        </td>
-                    </tr>
-                </table>
-            </td>
+<section class="invoice-header clearfix">
+    <div class="clearfix">
+        <div class="first-col">
+            <h4>VisualMasters LIMITED</h4>
+            <p> 09798316 <br>
+                4 Windsor Terrace, <br>
+                Hagley Road, Birmingham, <br> England, B16 8UH <br>
+                Tel +447449552179 <br>
+                Email: visualmasters.co.uk@gmail.com <br>
+                Web site : visualmasters.co.uk <br>
+            </p>
+        </div>
+        <img src="{{ asset('bundles/imperivsite/img/invoice-logo.png') }}" alt="invoice-logo.png" class="invoice-logo">
+        <div class="last-col">
+            <h4>INVOICE</h4>
+            <h5>referenc: 10111</h5>
+            <p>Date: April 21 2017 <br> U.I.N 09798316 <br> Bank details: Barclays <br>
+                Account N: 93721973 <br>
+                Sort code: 20-07-84 <br>
+            </p>
+
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="invoice-details">
+        <div class="first-col">
+            <h5>BILL TO</h5>
+            <h6>Customet Name</h6>
+            <h6>Customer’s Company Name</h6>
+            <h6>Street Address</h6>
+            <h6>City, State, Zip Code, Country</h6>
+            <h6>Phone: 111 222 333 4</h6>
+            <h6>Customer ID CUST0054</h6>
+        </div>
+        <div class="last-col">
+            <h5>SHIP TO</h5>
+            <h6>Customet Name</h6>
+            <h6>Customer’s Company Name</h6>
+            <h6>Street Address</h6>
+            <h6>City, State, Zip Code, Country</h6>
+            <h6>Phone: 111 222 333 4</h6>
+            <h6>Customer ID CUST0054</h6>
+        </div>
+    </div>
+</section>
+<section class="invoice-table">
+    <table class="table first-table">
+        <tbody>
+        <tr class="text-uppercase">
+            <td>SALESPERSON</td>
+            <td width="58%">PROJECT</td>
+            <td>TERMS</td>
+            <td>DELIVERY DATE</td>
         </tr>
-
-        <tr class="information">
-            <td colspan="2">
-                <table>
-                    <tr>
-                        <td>
-                            Next Step Webs, Inc.<br>
-                            12345 Sunny Road<br>
-                            Sunnyville, TX 12345
-                        </td>
-
-                        <td>
-                            Acme Corp.<br>
-                            John Doe<br>
-                            john@example.com
-                        </td>
-                    </tr>
-                </table>
-            </td>
+        <tr>
+            <td>Mr. Abcd</td>
+            <td>Project/Product</td>
+            <td>Cash</td>
+            <td>May 15 2018</td>
         </tr>
-
-        <tr class="heading">
-            <td>
-                Payment Method
-            </td>
-
-            <td>
-                Check #
-            </td>
-        </tr>
-
-        <tr class="details">
-            <td>
-                Check
-            </td>
-
-            <td>
-                1000
-            </td>
-        </tr>
-
-        <tr class="heading">
-            <td>
-                Item
-            </td>
-
-            <td>
-                Price
-            </td>
-        </tr>
-
-        <tr class="item">
-            <td>
-                Website design
-            </td>
-
-            <td>
-                $300.00
-            </td>
-        </tr>
-
-        <tr class="item">
-            <td>
-                Hosting (3 months)
-            </td>
-
-            <td>
-                $75.00
-            </td>
-        </tr>
-
-        <tr class="item last">
-            <td>
-                Domain name (1 year)
-            </td>
-
-            <td>
-                $10.00
-            </td>
-        </tr>
-
-        <tr class="total">
-            <td></td>
-
-            <td>
-                Total: $385.00
-            </td>
-        </tr>
+        </tbody>
     </table>
-</div>
+    <table class="table second-table">
+        <thead>
+        <tr>
+            <td width="11.1%">QUANTITY</td>
+            <td width="40%">DESCRIPTION</td>
+            <td width="1%">UNIT PRICE</td>
+            <td width="1%">OFFICE CHARGE</td>
+            <td width="1%">LINE TOTAL</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>3</td>
+            <td>Item description</td>
+            <td>150</td>
+            <td>10%</td>
+            <td>450</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="3" class="border-0"></td>
+            <td >$45</td>
+            <td>$450</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="border-0"></td>
+            <td class="border-0 text-uppercase">SUBTOTAL</td>
+            <td>$450</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="border-0"></td>
+            <td class="border-0 text-uppercase"></td>
+            <td>$450</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="border-0"></td>
+            <td class="total border-0 text-uppercase font-weight-bold">TOTAL</td>
+            <td class="font-weight-bold">$450</td>
+        </tr>
+
+        </tfoot>
+    </table>
+    <div class="line"></div>
+    <p class="thx-you">Make all checks payable to [VisualMasters] <br> THANK YOU FOR YOUR BUSINESS</p>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+{% block javascripts %}
+    {% javascripts
+    "@ImperivSiteBundle/Resources/public/js/jquery_2.1.3.min.js"
+    "bundles/imperivsite/js/bootstrap.js"
+    filter="yui_js" %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock javascripts %}
 </body>
 </html>
