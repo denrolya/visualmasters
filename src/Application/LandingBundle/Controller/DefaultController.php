@@ -61,9 +61,8 @@ class DefaultController extends Controller
         return ['gallery' => $galleryPage, 'form' => $form];
     }
 
-
     /**
-     * @Route("/invoice.html", name="invoice_as_html")
+     * @Route("/order/{id}/invoice.html", name="order_invoice_html")
      * @Method({"GET"})
      * @Template("::invoice.html.twig")
      */
@@ -73,12 +72,14 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/invoice.pdf")
+     * @Route("/order/{id}/invoice.pdf", name="order_invoice_pdf")
      * @Method({"GET"})
      */
-    public function invoicePDFAction()
+    public function invoicePDFAction($id)
     {
-        $pageUrl = $this->generateUrl('invoice_as_html', [], true); // use absolute path!
+        $pageUrl = $this->generateUrl('order_invoice_html', [
+            'id' => $id
+        ], true); // use absolute path!
 
         return new Response(
             $this->get('knp_snappy.pdf')->getOutput($pageUrl),

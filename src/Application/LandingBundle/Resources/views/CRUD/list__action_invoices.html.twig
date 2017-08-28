@@ -3,8 +3,8 @@
 {% block field %}
     {% if object.price %}
         <div class="btn-group">
-            <a class="btn btn-sm btn-default view_link" href="{{ admin.generateObjectUrl('invoice_html', object) }}">HTML</a>
-            <a class="btn btn-sm btn-default view_link" href="{{ admin.generateObjectUrl('invoice_pdf', object) }}">PDF</a>
+            <a class="btn btn-sm btn-default view_link" href="{{ path('order_invoice_html', {'id': object.id}) }}">HTML</a>
+            <a class="btn btn-sm btn-default view_link" href="{{ path('order_invoice_pdf', {'id': object.id}) }}">PDF</a>
         </div>
     {% else %}
         <em>Provide the price first!</em>
