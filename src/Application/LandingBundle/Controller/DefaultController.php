@@ -66,9 +66,11 @@ class DefaultController extends Controller
      * @Method({"GET"})
      * @Template("::invoice.html.twig")
      */
-    public function invoiceHTMLAction()
+    public function invoiceHTMLAction(Order $order)
     {
-        return [];
+        return [
+            'order' => $order
+        ];
     }
 
     /**
