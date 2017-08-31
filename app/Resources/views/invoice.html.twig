@@ -78,6 +78,7 @@
         </tbody>
     </table>
     {% set totalPrice = 0 %}
+    {% set totalCharge = 0 %}
     <table class="table second-table">
         <thead>
         <tr>
@@ -98,28 +99,29 @@
                 <td>{{ item.totalPrice }}</td>
             </tr>
             {% set totalPrice = totalPrice + item.totalPrice %}
+            {% set totalCharge = totalCharge + item.quantity * item.unitPrice * item.officeCharge/100 %}
         {% endfor %}
         </tbody>
         <tfoot>
         <tr>
             <td colspan="3" class="border-0"></td>
-            <td >$1-}</td>
-            <td>$xx</td>
+            <td >${{ totalCharge }}</td>
+            <td>${{ totalPrice }}</td>
         </tr>
         <tr>
             <td colspan="3" class="border-0"></td>
             <td class="border-0 text-uppercase">SUBTOTAL</td>
-            <td>$xx</td>
+            <td>${{ totalPrice }}</td>
         </tr>
         <tr>
             <td colspan="3" class="border-0"></td>
             <td class="border-0 text-uppercase"></td>
-            <td>$xx</td>
+            <td>${{ totalPrice }}</td>
         </tr>
         <tr>
             <td colspan="3" class="border-0"></td>
             <td class="total border-0 text-uppercase font-weight-bold">TOTAL</td>
-            <td class="font-weight-bold">${{ totalPrice }}</td>
+            <td>${{ totalPrice }}</td>
         </tr>
 
         </tfoot>

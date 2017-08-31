@@ -53,7 +53,7 @@ class OrderItem
     /**
      * @var string
      *
-     * @ORM\Column(name="totalPrice", type="decimal")
+     * @ORM\Column(name="totalPrice", type="float")
      */
     private $totalPrice;
 
@@ -74,7 +74,7 @@ class OrderItem
      */
     public function updateTotalPrice()
     {
-        $this->totalPrice = $this->quantity * $this->unitPrice * (1 - ($this->officeCharge/100));
+        $this->totalPrice =  $this->quantity * $this->unitPrice * (1 + $this->officeCharge/100);
     }
 
     /**
