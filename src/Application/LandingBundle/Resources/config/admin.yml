@@ -4,3 +4,9 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Order, label: Orders }
         arguments: [null, Application\LandingBundle\Entity\Order, null]
+
+    sonata.admin.order_items:
+            class: Application\LandingBundle\Admin\OrderItemAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: Order, label: Orders }
+            arguments: [null, Application\LandingBundle\Entity\OrderItem, null]

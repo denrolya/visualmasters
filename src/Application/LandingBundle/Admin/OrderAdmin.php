@@ -13,12 +13,21 @@ class OrderAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name')
-            ->add('email')
-            ->add('phonenumber')
-            ->add('address')
-            ->add('postal')
-            ->add('price')
+        $formMapper
+            ->with('Order information')
+                ->add('name')
+                ->add('email')
+                ->add('phonenumber')
+                ->add('address')
+                ->add('postal')
+            ->end()
+            ->with('Order Items')
+                ->add('items', 'sonata_type_collection', ['by_reference' => false, 'required' => true], [
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable' => 'id'
+                ])
+            ->end()
             ;
     }
 
@@ -35,7 +44,6 @@ class OrderAdmin extends Admin
             ->add('phonenumber')
             ->add('address')
             ->add('postal')
-            ->add('price', 'decimal', ['editable' => true])
             ->add('invoices', 'actions', [
                 'template' => 'ApplicationLandingBundle:CRUD:list__action_invoices.html.twig'
             ])
@@ -58,10 +66,10 @@ class OrderAdmin extends Admin
             ->add('email')
             ->add('phonenumber')
             ->add('address')
-            ->add('price')
             ->add('postal')
             ->add('comments')
             ->add('file')
+            ->add('items')
         ;
     }
 

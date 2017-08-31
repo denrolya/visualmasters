@@ -77,6 +77,7 @@
         </tr>
         </tbody>
     </table>
+    {% set totalPrice = 0 %}
     <table class="table second-table">
         <thead>
         <tr>
@@ -88,34 +89,37 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>3</td>
-            <td>VisualMasters 3D Modeling Services</td>
-            <td>150</td>
-            <td>10%</td>
-            <td>{{ order.price }}</td>
-        </tr>
+        {% for item in order.items %}
+            <tr>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.unitPrice }}</td>
+                <td>{{ item.officeCharge }}%</td>
+                <td>{{ item.totalPrice }}</td>
+            </tr>
+            {% set totalPrice = totalPrice + item.totalPrice %}
+        {% endfor %}
         </tbody>
         <tfoot>
         <tr>
             <td colspan="3" class="border-0"></td>
-            <td >${{ order.price * 0.1 }}</td>
-            <td>${{ order.price }}</td>
+            <td >$1-}</td>
+            <td>$xx</td>
         </tr>
         <tr>
             <td colspan="3" class="border-0"></td>
             <td class="border-0 text-uppercase">SUBTOTAL</td>
-            <td>${{ order.price }}</td>
+            <td>$xx</td>
         </tr>
         <tr>
             <td colspan="3" class="border-0"></td>
             <td class="border-0 text-uppercase"></td>
-            <td>${{ order.price }}</td>
+            <td>$xx</td>
         </tr>
         <tr>
             <td colspan="3" class="border-0"></td>
             <td class="total border-0 text-uppercase font-weight-bold">TOTAL</td>
-            <td class="font-weight-bold">${{ order.price }}</td>
+            <td class="font-weight-bold">${{ totalPrice }}</td>
         </tr>
 
         </tfoot>

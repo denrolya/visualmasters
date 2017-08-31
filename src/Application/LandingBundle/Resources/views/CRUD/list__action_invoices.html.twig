@@ -1,12 +1,12 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
 {% block field %}
-    {% if object.price %}
+    {% if object.items|length > 0 %}
         <div class="btn-group">
             <a class="btn btn-sm btn-default view_link" href="{{ path('order_invoice_html', {'id': object.id}) }}">HTML</a>
             <a class="btn btn-sm btn-default view_link" href="{{ path('order_invoice_pdf', {'id': object.id}) }}">PDF</a>
         </div>
     {% else %}
-        <em>Provide the price first!</em>
+        <em>No items listed!</em>
     {% endif %}
 {% endblock %}

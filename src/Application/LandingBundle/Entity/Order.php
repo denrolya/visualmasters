@@ -2,6 +2,7 @@
 
 namespace Application\LandingBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -71,11 +72,18 @@ class Order
     private $file;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="decimal", precision=7, scale=2, nullable=true)
+     * @ORM\OneToMany(targetEntity="OrderItem", mappedBy="order", cascade={"all"}, orphanRemoval=true))
      */
-    private $price;
+    private $items;
+
+    public function __construct() {
+        $this->items = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return (string)$this->id;
+    }
 
     /**
      * Get id
@@ -246,22 +254,36 @@ class Order
     }
 
     /**
-     * Set price
+     * Add items
      *
-     * @param float $price
+     * @param OrderItem $items
+     * @return Order
      */
-    public function setPrice($price)
+    public function addItem(OrderItem $item)
     {
-        $this->price = $price;
+        $this->items[] = $item;
+        $item->setOrder($this);
+
+        return $this;
     }
 
     /**
-     * Get price
+     * Remove items
      *
-     * @return float
+     * @param OrderItem $items
      */
-    public function getPrice()
+    public function removeItem(OrderItem $items)
     {
-        return $this->price;
+        $this->items->removeElement($items);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getItems()
+    {
+        return $this->items;
     }
 }
