@@ -76,6 +76,35 @@ class Order
      */
     private $items;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sales_person", type="string", length=255)
+     */
+    private $salesPerson;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="project_name", type="string", length=255)
+     */
+    private $projectName;
+
+    /**
+     * @var string
+     *
+     * @Assert\Choice(choices = {"cash", "transfer"})
+     * @ORM\Column(name="terms", type="string", length=50)
+     */
+    private $terms;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="delivery_date", type="datetime", nullable=true)
+     */
+    private $deliveryDate;
+
     public function __construct() {
         $this->items = new ArrayCollection();
     }
@@ -285,5 +314,97 @@ class Order
     public function getItems()
     {
         return $this->items;
+    }
+
+    /**
+     * Set salesPerson
+     *
+     * @param string $salesPerson
+     * @return Order
+     */
+    public function setSalesPerson($salesPerson)
+    {
+        $this->salesPerson = $salesPerson;
+
+        return $this;
+    }
+
+    /**
+     * Get salesPerson
+     *
+     * @return string 
+     */
+    public function getSalesPerson()
+    {
+        return $this->salesPerson;
+    }
+
+    /**
+     * Set projectName
+     *
+     * @param string $projectName
+     * @return Order
+     */
+    public function setProjectName($projectName)
+    {
+        $this->projectName = $projectName;
+
+        return $this;
+    }
+
+    /**
+     * Get projectName
+     *
+     * @return string 
+     */
+    public function getProjectName()
+    {
+        return $this->projectName;
+    }
+
+    /**
+     * Set terms
+     *
+     * @param string $terms
+     * @return Order
+     */
+    public function setTerms($terms)
+    {
+        $this->terms = $terms;
+
+        return $this;
+    }
+
+    /**
+     * Get terms
+     *
+     * @return string 
+     */
+    public function getTerms()
+    {
+        return $this->terms;
+    }
+
+    /**
+     * Set deliveryDate
+     *
+     * @param \DateTime $deliveryDate
+     * @return Order
+     */
+    public function setDeliveryDate($deliveryDate)
+    {
+        $this->deliveryDate = $deliveryDate;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryDate
+     *
+     * @return \DateTime 
+     */
+    public function getDeliveryDate()
+    {
+        return $this->deliveryDate;
     }
 }

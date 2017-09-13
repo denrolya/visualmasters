@@ -34,8 +34,11 @@
         <img src="{{ asset('bundles/imperivsite/img/invoice-logo.png') }}" alt="invoice-logo.png" class="invoice-logo">
         <div class="last-col">
             <h4>INVOICE</h4>
-            <h5>referenc: 10111</h5>
-            <p>Date: April 21 2017 <br> U.I.N 09798316 <br> Bank details: Barclays <br>
+            <h5>reference: {{ order.id }}</h5>
+            <p>
+                Date: {{ order.deliveryDate | date("F j Y") }} <br>
+                U.I.N 09798316 <br>
+                Bank details: Barclays <br>
                 Account N: 93721973 <br>
                 Sort code: 20-07-84 <br>
             </p>
@@ -48,7 +51,6 @@
             <h6>{{ order.name }}</h6>
             <h6>{{ order.address }}</h6>
             <h6>Phone: {{ order.phonenumber }}</h6>
-            <h6>Customer ID CUST{{ order.id }}</h6>
         </div>
         <div class="last-col">
             {#<h5>SHIP TO</h5>#}
@@ -69,10 +71,10 @@
             <td>DELIVERY DATE</td>
         </tr>
         <tr>
-            <td>Mr. Abcd</td>
-            <td>Project/Product</td>
-            <td>Cash</td>
-            <td>May 15 2018</td>
+            <td>{{ order.salesPerson | title }}</td>
+            <td>{{ order.projectName | title }}</td>
+            <td>{{ order.terms | capitalize }}</td>
+            <td>{{ order.deliveryDate | date("F j Y") }}</td>
         </tr>
         </tbody>
     </table>
