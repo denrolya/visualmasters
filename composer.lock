@@ -281,16 +281,16 @@
         },
         {
             "name": "doctrine/common",
-            "version": "v2.8.0",
+            "version": "v2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "ed349f953d443963c590b008b37b864b8a3c4b21"
+                "reference": "f68c297ce6455e8fd794aa8ffaf9fa458f6ade66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/ed349f953d443963c590b008b37b864b8a3c4b21",
-                "reference": "ed349f953d443963c590b008b37b864b8a3c4b21",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/f68c297ce6455e8fd794aa8ffaf9fa458f6ade66",
+                "reference": "f68c297ce6455e8fd794aa8ffaf9fa458f6ade66",
                 "shasum": ""
             },
             "require": {
@@ -350,7 +350,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2017-07-22T09:01:43+00:00"
+            "time": "2017-08-31T08:43:38+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -2628,12 +2628,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDatagridBundle.git",
-                "reference": "b0a5dad5c28530e9de3f5fb738731b077a75a39a"
+                "reference": "66dcb36406ca6be91fb94b916f3f0a9fd5a6ebc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/b0a5dad5c28530e9de3f5fb738731b077a75a39a",
-                "reference": "b0a5dad5c28530e9de3f5fb738731b077a75a39a",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/66dcb36406ca6be91fb94b916f3f0a9fd5a6ebc1",
+                "reference": "66dcb36406ca6be91fb94b916f3f0a9fd5a6ebc1",
                 "shasum": ""
             },
             "require": {
@@ -2681,7 +2681,7 @@
                 "datagrid",
                 "sonata"
             ],
-            "time": "2017-08-26 00:55:08"
+            "time": "2017-08-30T05:28:46+00:00"
         },
         {
             "name": "sonata-project/doctrine-extensions",

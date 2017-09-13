@@ -25,7 +25,7 @@ class OrderAdmin extends Admin
                 ->add('salesPerson')
                 ->add('projectName')
                 ->add('terms', 'choice', ['choices' => ['cash' => 'Cash', 'transfer' => 'Transfer']])
-                ->add('deliveryDate', 'date', ['format' => 'Y-m-d'])
+                ->add('deliveryDate', 'date')
             ->end()
             ->with('Order Items')
                 ->add('items', 'sonata_type_collection', ['by_reference' => false, 'required' => true], [
