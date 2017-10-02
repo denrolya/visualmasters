@@ -74,13 +74,11 @@
                                     {{ form_row(form.postal) }}
                                     {{ form_row(form.comments) }}
                                     <div class="form-group m-t">
-                                        <input type="file" name="zipfile" id="zipfile" class="inputfile" accept=".zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed"/>
-                                        <label for="zipfile" class="btn btn-default btn-attach"><span>Attach file*</span></label>
+                                        <input type="file" name="file" id="file" class="inputfile" accept=".zip"/>
+                                        <label for="file" class="btn btn-default btn-attach"><span>Attach file*</span></label>
                                         <button type="submit" class="btn btn-primary btn-submit">
                                             <span id="btn-submit-text">Send</span>
-                                            <span id="loader">
-                                                <i class="fa fa-circle-o-notch fa-spin"></i>
-                                            </span>
+                                            <span id="loader"><i class="fa fa-circle-o-notch fa-spin"></i></span>
                                         </button>
                                     </div>
                                     <div class="form-group text-left">
