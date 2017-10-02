@@ -314,17 +314,17 @@ hr {
 }
 
 .navbar .navbar-nav a {
-  padding: 10px 30px;
+  padding: 2px 30px;
   -webkit-transition: .4s;
   -moz-transition: .4s;
   -ms-transition: .4s;
   -o-transition: .4s;
   transition: .4s;
   @media(max-width:1040px) {
-    padding: 8px 25px;
+    padding: 2px 25px;
   }
   @include tablet {
-    padding: 6px 16px;
+    padding: 2px 16px;
   }
 }
 
@@ -353,7 +353,7 @@ hr {
 
 #main .carousel-indicators {
   position: relative;
-  bottom: 0; left:0;
+  bottom: -290px; left:0;
   text-align: left;
   width: auto;
   margin: 0;
@@ -384,7 +384,7 @@ hr {
 
 @media screen and (max-height: 900px) {
   .section-content {
-    top: 8%;
+    top: 2%;
     @include mobile {
       top: -2%;
     }

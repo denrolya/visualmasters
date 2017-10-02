@@ -64,9 +64,19 @@ aside {
 
 .navbar-default .navbar-header .navbar-brand {
   width: 226px;
-  background: url("../images/logo.png") no-repeat;
-  text-indent: -9999px;
-  background-size: contain; }
+  height: 35px;
+  background: url("../images/svg_logo_VM_white.svg") no-repeat;
+  background-size: contain;
+  padding-left: 50px;
+  padding-top: 10px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  color: #40a2c5; }
+  .navbar-default .navbar-header .navbar-brand span {
+    color: #fff; }
   @media (min-width: 768px) and (max-width: 991px) {
     .navbar-default .navbar-header .navbar-brand {
       width: 170px; } }
@@ -77,8 +87,10 @@ aside {
       float: left;
       margin-top: 10px;
       max-height: 40px;
-      padding: 0;
-      height: 45px; } }
+      padding: 13px 0;
+      height: 45px;
+      text-align: right;
+      background-size: 38px; } }
 
 .navbar-default {
   border: none; }
@@ -117,18 +129,21 @@ aside {
       border: 0;
       background: rgba(0, 0, 0, 0.92); }
       .navbar-default .mobile-menu .mobile-logo {
-        z-index: 100;
         max-width: 180px;
         width: 100%;
         height: 100px;
-        text-indent: -9999px;
-        background: url(../images/mobile-logo.png) no-repeat;
-        background-size: contain;
+        text-indent: inherit;
+        background: url(../images/svg_logo_VM_white.svg) no-repeat;
+        background-size: 75px;
+        background-position: top center;
         position: absolute;
-        top: 30px;
+        top: 15px;
         left: 0;
         right: 0;
-        margin: 0 auto; }
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 77px;
+        font-size: 20px; }
       .navbar-default .mobile-menu button {
         background: none;
         border: none;
@@ -175,7 +190,7 @@ aside {
 .navbar-default .nav > li > a,
 .navbar-default .nav > li > a:focus {
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   color: #222; }
   @media (min-width: 768px) and (max-width: 991px) {
