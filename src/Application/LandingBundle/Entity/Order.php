@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table("orders")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class Order
 {
@@ -66,6 +67,13 @@ class Order
     private $comments;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
      * @ORM\OneToOne(targetEntity="File", fetch="EAGER")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", unique=true, nullable=true)
      */
@@ -112,6 +120,14 @@ class Order
     public function __toString()
     {
         return (string)$this->id;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function initializeDate()
+    {
+        $this->createdAt = new \DateTime();
     }
 
     /**
@@ -260,6 +276,29 @@ class Order
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Order
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     /**
