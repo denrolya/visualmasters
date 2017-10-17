@@ -79,14 +79,14 @@ class Order
     /**
      * @var string
      *
-     * @ORM\Column(name="sales_person", type="string", length=255)
+     * @ORM\Column(name="sales_person", type="string", length=255, nullable=true)
      */
     private $salesPerson;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="project_name", type="string", length=255)
+     * @ORM\Column(name="project_name", type="string", length=255, nullable=true)
      */
     private $projectName;
 
@@ -94,7 +94,7 @@ class Order
      * @var string
      *
      * @Assert\Choice(choices = {"cash", "transfer"})
-     * @ORM\Column(name="terms", type="string", length=50)
+     * @ORM\Column(name="terms", type="string", length=50, nullable=true)
      */
     private $terms;
 
