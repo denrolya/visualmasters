@@ -286,7 +286,7 @@ hr {
       max-height: 52px; } }
 
 .navbar .navbar-nav a {
-  padding: 10px 30px;
+  padding: 2px 30px;
   -webkit-transition: .4s;
   -moz-transition: .4s;
   -ms-transition: .4s;
@@ -294,10 +294,10 @@ hr {
   transition: .4s; }
   @media (max-width: 1040px) {
     .navbar .navbar-nav a {
-      padding: 8px 25px; } }
+      padding: 2px 25px; } }
   @media (min-width: 768px) and (max-width: 991px) {
     .navbar .navbar-nav a {
-      padding: 6px 16px; } }
+      padding: 2px 16px; } }
 
 .navbar .navbar-nav a:not(.order):hover {
   background: #0083B2; }
@@ -322,7 +322,7 @@ hr {
 
 #main .carousel-indicators {
   position: relative;
-  bottom: 0;
+  bottom: -290px;
   left: 0;
   text-align: left;
   width: auto;
@@ -351,7 +351,7 @@ hr {
 
 @media screen and (max-height: 900px) {
   .section-content {
-    top: 8%; } }
+    top: 2%; } }
   @media screen and (max-height: 900px) and (min-width: 0px) and (max-width: 767px) {
     .section-content {
       top: -2%; } }
