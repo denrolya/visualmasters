@@ -18,4 +18,28 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $urn;
+
+     /**
+     * @param string $urn
+     * @return $this
+     */
+    public function setUrn($urn)
+    {
+        $this->urn = $urn;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrn()
+    {
+        return $this->urn;
+    }
 }
