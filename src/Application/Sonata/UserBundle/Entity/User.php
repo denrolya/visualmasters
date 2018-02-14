@@ -31,6 +31,11 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var string $crn
+     */
+    private $crn;
+
+    /**
      * Get id
      *
      * @return int $id
@@ -38,5 +43,24 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param string $crn
+     * @return $this
+     */
+    public function setCrn($crn)
+    {
+        $this->crn = $crn;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrn()
+    {
+        return $this->crn;
     }
 }

@@ -52,17 +52,12 @@
         h5 {
             font-size: 17px;
             font-weight: 700;
-            position: absolute;
-            left: -25px;
-            top: 25px;
-            transform: rotate(270deg);
         }
         h6 {
             font-size: 14px;
         }
         .first-col, .last-col {
             position: relative;
-            padding-left: 30px;
         }
         .last-col {
             text-align: left;
@@ -70,8 +65,8 @@
     }
 }
 .invoice-table {
-    padding-top: 55px;
-    max-width: 560px;
+    padding-top: 30px;
+    max-width: 540px;
     margin-left: auto;
     margin-right: auto;
     table {

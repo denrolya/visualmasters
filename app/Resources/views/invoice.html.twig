@@ -37,7 +37,7 @@
             <h5>reference: {{ order.id }}</h5>
             <p>
                 Date: {{ order.deliveryDate | date("F j Y") }} <br>
-                U.I.N 09798316 <br>
+                CRN {{ app.user.crn }} <br>
                 Bank details: Barclays <br>
                 Account N: 93721973 <br>
                 Sort code: 20-07-84 <br>
@@ -48,16 +48,11 @@
     <div class="invoice-details">
         <div class="first-col">
             <h5>BILL TO</h5>
+        </div>
+        <div class="last-col">
             <h6>{{ order.name }}</h6>
             <h6>{{ order.address }}</h6>
             <h6>Phone: {{ order.phonenumber }}</h6>
-        </div>
-        <div class="last-col">
-            {#<h5>SHIP TO</h5>#}
-            {#<h6>{{ order.name }}</h6>#}
-            {#<h6>{{ order.address }}</h6>#}
-            {#<h6>Phone: {{ order.phonenumber }}</h6>#}
-            {#<h6>Customer ID CUST{{ order.id }}</h6>#}
         </div>
     </div>
 </section>
