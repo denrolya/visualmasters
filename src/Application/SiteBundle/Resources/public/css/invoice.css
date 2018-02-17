@@ -43,20 +43,17 @@
     .invoice-header .invoice-details h5 {
       font-size: 17px;
       font-weight: 700;
-      position: absolute;
-      left: -25px;
-      top: 25px;
-      transform: rotate(270deg); }
+    }
     .invoice-header .invoice-details h6 {
       font-size: 14px; }
     .invoice-header .invoice-details .first-col, .invoice-header .invoice-details .last-col {
       position: relative;
-      padding-left: 30px; }
+    }
     .invoice-header .invoice-details .last-col {
       text-align: left; }
 
 .invoice-table {
-  padding-top: 55px;
+  padding-top: 30px;
   max-width: 560px;
   margin-left: auto;
   margin-right: auto; }
