@@ -50,7 +50,7 @@
       position: relative;
     }
     .invoice-header .invoice-details .last-col {
-      text-align: left; }
+      text-align: right; }
 
 .invoice-table {
   padding-top: 30px;
