@@ -82,7 +82,7 @@ class DefaultController extends Controller
         $now = new \DateTime();
         $invoiceFilename = "invoice_" . $now->format('Y-m-d_H-i') . '.pdf';
 
-        $invoicesDir = $this->container->getParameter('files_dir') . '/invoices/';
+        $invoicesDir = $this->container->getParameter('files_dir') . '/' . $order->getId() . '/invoices/';
 
         $pdfFile = $this->get('knp_snappy.pdf')->generateFromHtml(
             $this->renderView('::invoice.html.twig', ['order'  => $order]),
@@ -96,27 +96,31 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/order/{id}/invoice.zip", name="order_invoice_zip")
+     * @Route("/order/{id}/order.zip", name="order_zip")
      * @Method({"GET"})
      */
-    public function invoiceZipAction(Order $order)
+    public function downloadOrderFilesAsZipAction(Order $order)
     {
         $em = $this->get('doctrine.orm.entity_manager');
 
         $zip = new \ZipArchive();
-        $zipName = 'invoice-'.time().".zip";
+        $zipName = 'order-'.time().".zip";
         $zip->open($zipName,  \ZipArchive::CREATE);
 
-        foreach ($files as $f) {
-            $zip->addFromString(basename($f),  file_get_contents($f));
+        $finder = new Finder();
+        $finder->files()->in($this->container->getParameter('files_dir') . '/' . $order->getId(). '/invoices');
+
+        foreach ($finder as $file) {
+            /** @var \Symfony\Component\Finder\SplFileInfo $file */
+            if (strtolower($file->getExtension()) !== 'pdf') continue;
+            $zip->addFromString($file->getFilename(), $file->getContents());
         }
 
-        $response = new Response();
-        $response->setContent(readfile("../web/".$zipName));
-        $response->headers->set('Content-Type', 'application/zip');
-        $response->header('Content-disposition: attachment; filename=../web/"'.$zipName.'"');
-        $response->header('Content-Length: ' . filesize("../web/" . $zipName));
-        $response->readfile("../web/" . $zipName);
+        $zip->close();
+
+        $response = new BinaryFileResponse("../web/".$zipName);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
+
         return $response;
     }
 

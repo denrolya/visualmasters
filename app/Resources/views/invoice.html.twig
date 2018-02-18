@@ -36,7 +36,7 @@
             <h4>INVOICE</h4>
             <h5>reference: {{ order.id }}</h5>
             <p>
-                Date: {{ order.deliveryDate | date("F j Y") }} <br>
+                Date: {% if (order.invoiceDate) %}{{ order.invoiceDate | date("F j Y") }}{% else %}{{ "now" | date("F j Y") }}<br>
                 CRN {{ app.user.crn }} <br>
                 Bank details: Barclays <br>
                 Account N: 93721973 <br>

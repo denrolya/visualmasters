@@ -5,6 +5,7 @@
         <div class="btn-group">
             <a class="btn btn-sm btn-default view_link" href="{{ path('order_invoice_html', {'id': object.id}) }}">HTML</a>
             <a class="btn btn-sm btn-default view_link" href="{{ path('order_invoice_pdf', {'id': object.id}) }}">PDF</a>
+            <a class="btn btn-sm btn-default view_link" href="{{ path('order_zip', {'id': object.id}) }}">ZIP</a>
         </div>
     {% else %}
         <em>No items listed!</em>
