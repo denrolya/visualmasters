@@ -29,6 +29,7 @@ twig:
       resources:
         - 'bootstrap_3_layout.html.twig'
         - 'SonataMediaBundle:Form:media_widgets.html.twig'
+        - 'SonataCoreBundle:Form:datepicker.html.twig'
 
 assetic:
     debug:          "%kernel.debug%"

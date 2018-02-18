@@ -77,22 +77,22 @@ class DefaultController extends Controller
      * @Route("/order/{id}/invoice.pdf", name="order_invoice_pdf")
      * @Method({"GET"})
      */
-    public function invoicePDFAction($id)
+    public function invoicePDFAction(Order $order)
     {
-        $pageUrl = $this->generateUrl('order_invoice_html', [
-            'id' => $id
-        ], true); // use absolute path!
-
         $now = new \DateTime();
         $invoiceFilename = "invoice_" . $now->format('Y-m-d_H-i') . '.pdf';
 
-        return new Response(
-            $this->get('knp_snappy.pdf')->getOutput($pageUrl), Response::HTTP_OK,
-            [
-                'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'attachment; filename="' . $invoiceFilename . '"'
-            ]
+        $invoicesDir = $this->container->getParameter('files_dir') . '/invoices/';
+
+        $pdfFile = $this->get('knp_snappy.pdf')->generateFromHtml(
+            $this->renderView('::invoice.html.twig', ['order'  => $order]),
+            $invoicesDir . $invoiceFilename
         );
+
+        return new Response($pdfFile, Response::HTTP_OK, [
+            'Content-Type'          => 'application/pdf',
+            'Content-Disposition'   => 'attachment; filename="' . $invoiceFilename . '"'
+        ]);
     }
 
     /**
@@ -101,24 +101,23 @@ class DefaultController extends Controller
      */
     public function invoiceZipAction(Order $order)
     {
-//        $files = [];
-//        $em = $this->get('doctrine.orm.entity_manager');
-//        $doc = $em->getRepository('AdminDocumentBundle:Document')->findAll();
-//
-//        $zip = new \ZipArchive();
-//        $zipName = 'invoice-'.time().".zip";
-//        $zip->open($zipName,  \ZipArchive::CREATE);
-//        foreach ($files as $f) {
-//            $zip->addFromString(basename($f),  file_get_contents($f));
-//        }
-//
-//        $response = new Response();
-//        $response->setContent(readfile("../web/".$zipName));
-//        $response->headers->set('Content-Type', 'application/zip');
-//        $response->header('Content-disposition: attachment; filename=../web/"'.$zipName.'"');
-//        $response->header('Content-Length: ' . filesize("../web/" . $zipName));
-//        $response->readfile("../web/" . $zipName);
-//        return $response;
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $zip = new \ZipArchive();
+        $zipName = 'invoice-'.time().".zip";
+        $zip->open($zipName,  \ZipArchive::CREATE);
+
+        foreach ($files as $f) {
+            $zip->addFromString(basename($f),  file_get_contents($f));
+        }
+
+        $response = new Response();
+        $response->setContent(readfile("../web/".$zipName));
+        $response->headers->set('Content-Type', 'application/zip');
+        $response->header('Content-disposition: attachment; filename=../web/"'.$zipName.'"');
+        $response->header('Content-Length: ' . filesize("../web/" . $zipName));
+        $response->readfile("../web/" . $zipName);
+        return $response;
     }
 
     /**
@@ -141,12 +140,13 @@ class DefaultController extends Controller
             if ($file = $request->files->get('file')) {
 
                 $filename = $order->getId() . '-' . md5(uniqid()) . '.' . $file->guessExtension();
-                $file->move($this->container->getParameter('files_dir'), $filename);
+                $orderDirAbsolutePath = $this->container->getParameter('files_dir') . '/' . $order->getId();
+                $file->move($orderDirAbsolutePath, $filename);
 
                 $newFile = (new File())
                     ->setName($filename)
-                    ->setRelativePath('/uploads/orders/' . $filename)
-                    ->setAbsolutePath($this->container->getParameter('files_dir') . '/' . $filename)
+                    ->setRelativePath('/uploads/orders/' . $order->getId() . '/' . $filename)
+                    ->setAbsolutePath($orderDirAbsolutePath . '/' . $filename)
                     ->setSize($file->getClientSize());
 
                 $order->setFile($newFile);
@@ -172,7 +172,7 @@ class DefaultController extends Controller
 
             $this->get('mailer')->send($message, $failedRecipients);
 
-            return new JsonResponse(['status' => 'ok'], 200);
+            return new JsonResponse(['status' => 'ok'], Response::HTTP_OK);
         }
     }
 }

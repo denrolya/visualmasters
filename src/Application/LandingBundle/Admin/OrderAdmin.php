@@ -33,6 +33,12 @@ class OrderAdmin extends Admin
                 ->add('terms', 'choice', ['choices' => ['cash' => 'Cash', 'transfer' => 'Transfer']])
                 ->add('deliveryDate', 'date')
             ->end()
+            ->with('Invoice')
+                ->add('invoiceDate', 'sonata_type_datetime_picker', [
+                    'placeholder' => 'Date to be displayed in invoice for this order',
+                    'label' => 'Invoice date'
+                ])
+            ->end()
             ->with('Order Items')
                 ->add('items', 'sonata_type_collection', ['by_reference' => false, 'required' => true], [
                     'edit' => 'inline',

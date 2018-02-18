@@ -74,6 +74,13 @@ class Order
     private $createdAt;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="invoice_date", type="datetime", nullable=true)
+     */
+    private $invoiceDate;
+
+    /**
      * @ORM\OneToOne(targetEntity="File", fetch="EAGER")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", unique=true, nullable=true)
      */
@@ -299,6 +306,29 @@ class Order
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set invoiceDate
+     *
+     * @param \DateTime $invoiceDate
+     * @return Order
+     */
+    public function setInvoiceDate(\DateTime $invoiceDate)
+    {
+        $this->invoiceDate = $invoiceDate;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceDate
+     *
+     * @return string
+     */
+    public function getInvoiceDate()
+    {
+        return $this->invoiceDate;
     }
 
     /**
