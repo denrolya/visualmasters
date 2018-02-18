@@ -10,10 +10,13 @@ use Application\SiteBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class DefaultController extends Controller
 {
@@ -77,17 +80,17 @@ class DefaultController extends Controller
      * @Route("/order/{id}/invoice.pdf", name="order_invoice_pdf")
      * @Method({"GET"})
      */
-    public function invoicePDFAction(Order $order)
+    public function invoicePDFAction($id)
     {
+        $pageUrl = $this->generateUrl('order_invoice_html', [
+            'id' => $id
+        ], true); // use absolute path!
+
         $now = new \DateTime();
         $invoiceFilename = "invoice_" . $now->format('Y-m-d_H-i') . '.pdf';
+        $invoicesDir = $this->container->getParameter('files_dir') . '/' . $id . '/invoices/';
 
-        $invoicesDir = $this->container->getParameter('files_dir') . '/' . $order->getId() . '/invoices/';
-
-        $pdfFile = $this->get('knp_snappy.pdf')->generateFromHtml(
-            $this->renderView('::invoice.html.twig', ['order'  => $order]),
-            $invoicesDir . $invoiceFilename
-        );
+        $pdfFile = $this->get('knp_snappy.pdf')->generate($pageUrl,$invoicesDir . $invoiceFilename);
 
         return new Response($pdfFile, Response::HTTP_OK, [
             'Content-Type'          => 'application/pdf',
