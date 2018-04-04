@@ -80,22 +80,37 @@ class DefaultController extends Controller
      * @Route("/order/{id}/invoice.pdf", name="order_invoice_pdf")
      * @Method({"GET"})
      */
-    public function invoicePDFAction($id)
+    public function invoicePDFAction(Order $order)
     {
         $pageUrl = $this->generateUrl('order_invoice_html', [
-            'id' => $id
+            'id' => $order->getId()
         ], true); // use absolute path!
 
         $now = new \DateTime();
         $invoiceFilename = "invoice_" . $now->format('Y-m-d_H-i') . '.pdf';
-        $invoicesDir = $this->container->getParameter('files_dir') . '/' . $id . '/invoices/';
+        $invoicesDir = $this->container->getParameter('files_dir') . '/' . $order->getId() . '/invoices/';
 
-        $pdfFile = $this->get('knp_snappy.pdf')->generate($pageUrl,$invoicesDir . $invoiceFilename);
+        $pdf = $this
+            ->get('knp_snappy.pdf')
+//            ->generate($pageUrl,$invoicesDir . $invoiceFilename, [], true);
 
-        return new Response($pdfFile, Response::HTTP_OK, [
-            'Content-Type'          => 'application/pdf',
-            'Content-Disposition'   => 'attachment; filename="' . $invoiceFilename . '"'
-        ]);
+//            ->generateFromHtml(
+//                $this->render('::invoice.html.twig', ['order' => $order]),
+//                $invoicesDir . $invoiceFilename
+//            );
+
+            ->getOutput($pageUrl);
+
+        $pdfFile = fopen($invoicesDir . $invoiceFilename, 'w+');
+        fwrite($pdfFile, $pdf);
+        fclose($pdfFile);
+
+        return new Response($pdf,
+            Response::HTTP_OK, [
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="' . $invoiceFilename . '"'
+            ]
+        );
     }
 
     /**
