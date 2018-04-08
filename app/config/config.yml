@@ -154,7 +154,7 @@ sonata_block:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     '%wkhthmltopdf_executable%'
+        binary:     '%wkhtmltopdf_executable%'
         options:
             - { name: 'viewport-size', value: ‘1024x768’ }
             - { name: 'page-size', value: 'A4' }
