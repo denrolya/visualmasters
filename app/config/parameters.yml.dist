@@ -22,3 +22,5 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     files_dir: '%kernel.root_dir%/../web/uploads/orders'
+
+    wkhtmltopdf_executable: '/usr/local/bin/wkhtmltopdf'

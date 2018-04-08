@@ -90,16 +90,7 @@ class DefaultController extends Controller
         $invoiceFilename = "invoice_" . $now->format('Y-m-d_H-i') . '.pdf';
         $invoicesDir = $this->container->getParameter('files_dir') . '/' . $order->getId() . '/invoices/';
 
-        $pdf = $this
-            ->get('knp_snappy.pdf')
-//            ->generate($pageUrl,$invoicesDir . $invoiceFilename, [], true);
-
-//            ->generateFromHtml(
-//                $this->render('::invoice.html.twig', ['order' => $order]),
-//                $invoicesDir . $invoiceFilename
-//            );
-
-            ->getOutput($pageUrl);
+        $pdf = $this->get('knp_snappy.pdf')->getOutput($pageUrl);
 
         $pdfFile = fopen($invoicesDir . $invoiceFilename, 'w+');
         fwrite($pdfFile, $pdf);
