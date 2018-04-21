@@ -1,21 +1,23 @@
 .DS_Store
 
 # Symfony files
-/web/bundles/
-/web/uploads/
-/app/bootstrap.php.cache
-/app/cache/*
+/.web-server-pid
 /app/config/parameters.yml
-/app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
 /build/
-/bin/
-/composer.phar
+/phpunit.xml
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
 /vendor/
-/web/js/
-/web/css/
-/web/images/
+/web/bundles/
 
 # IDE Files
 /.phpintel/
