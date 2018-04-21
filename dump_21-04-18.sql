@@ -16,37 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Document`
+-- Table structure for table `order_item`
 --
 
-DROP TABLE IF EXISTS `Document`;
+DROP TABLE IF EXISTS `order_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Document` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Document`
---
-
-LOCK TABLES `Document` WRITE;
-/*!40000 ALTER TABLE `Document` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Document` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `OrderItem`
---
-
-DROP TABLE IF EXISTS `OrderItem`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `OrderItem` (
+CREATE TABLE `order_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
@@ -61,13 +37,13 @@ CREATE TABLE `OrderItem` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `OrderItem`
+-- Dumping data for table `order_item`
 --
 
-LOCK TABLES `OrderItem` WRITE;
-/*!40000 ALTER TABLE `OrderItem` DISABLE KEYS */;
-INSERT INTO `OrderItem` VALUES (2,2,1,'Olimpic',14,20,16.8),(3,2,20,'sdf',20,100,800),(7,42,8,'Hourly rate15£ / minimum of 8 hours a days',15,0,120),(8,42,8,'Weekend rate 23£ Hour / minimum of 8 hours a days',23,0,184),(9,42,1,'First hour of travel is free of charge from postcode B16.',0,0,0),(10,42,0,'Travel time includes time for return and counts after first hour as day / weekend rate',0,0,0),(11,42,1,'Fuel compensation 2 pounds for 10 miles',2,0,2),(12,43,40,'Data cabling Installation Cat6, (01 to 430) floor 8-9. Day rate charge.',16,0,625),(13,43,16,'Over times.',23,0,375),(14,45,1,'test',11,14,12.54),(15,45,233,'ads',34,1,8001.22);
-/*!40000 ALTER TABLE `OrderItem` ENABLE KEYS */;
+LOCK TABLES `order_item` WRITE;
+/*!40000 ALTER TABLE `order_item` DISABLE KEYS */;
+INSERT INTO `order_item` VALUES (2,2,1,'Olimpic',14,20,16.8),(3,2,20,'sdf',20,100,800),(7,42,8,'Hourly rate15£ / minimum of 8 hours a days',15,0,120),(8,42,8,'Weekend rate 23£ Hour / minimum of 8 hours a days',23,0,184),(9,42,1,'First hour of travel is free of charge from postcode B16.',0,0,0),(10,42,0,'Travel time includes time for return and counts after first hour as day / weekend rate',0,0,0),(11,42,1,'Fuel compensation 2 pounds for 10 miles',2,0,2),(12,43,40,'Data cabling Installation Cat6, (01 to 430) floor 8-9. Day rate charge.',16,0,625),(13,43,16,'Over times.',23,0,375),(14,45,1,'test',11,14,12.54),(15,45,233,'ads',34,1,8001.22);
+/*!40000 ALTER TABLE `order_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -216,56 +192,6 @@ LOCK TABLES `acl_security_identities` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `basic_orders`
---
-
-DROP TABLE IF EXISTS `basic_orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `basic_orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_id` int(11) DEFAULT NULL,
-  `full_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `postal` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `comments` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `discr` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `subcategory` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `designer_consultancy` tinyint(1) DEFAULT NULL,
-  `media_equip_integration` tinyint(1) DEFAULT NULL,
-  `light_design` tinyint(1) DEFAULT NULL,
-  `floor_material` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ceiling_material` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `walls_material` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `furniture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `color_psychology` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `classic_coloristics_canon` tinyint(1) DEFAULT NULL,
-  `dominant_color` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `secondary_color` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `use_feng_shui` tinyint(1) DEFAULT NULL,
-  `birth_date` datetime DEFAULT NULL,
-  `use_feng_shui_for_partner` tinyint(1) DEFAULT NULL,
-  `style_example` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `drawing` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `environment_photo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_1C4C162F12469DE2` (`category_id`),
-  CONSTRAINT `FK_1C4C162F12469DE2` FOREIGN KEY (`category_id`) REFERENCES `galleries` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `basic_orders`
---
-
-LOCK TABLES `basic_orders` WRITE;
-/*!40000 ALTER TABLE `basic_orders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `basic_orders` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `classification__category`
 --
 
@@ -383,29 +309,6 @@ LOCK TABLES `classification__tag` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `fos_user`
---
-
-DROP TABLE IF EXISTS `fos_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fos_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `urn` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fos_user`
---
-
-LOCK TABLES `fos_user` WRITE;
-/*!40000 ALTER TABLE `fos_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fos_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `fos_user_group`
 --
 
@@ -431,13 +334,13 @@ LOCK TABLES `fos_user_group` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `fos_user_user`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `fos_user_user`;
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fos_user_user` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `username_canonical` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -485,50 +388,23 @@ CREATE TABLE `fos_user_user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `fos_user_user`
+-- Dumping data for table `user`
 --
 
-LOCK TABLES `fos_user_user` WRITE;
-/*!40000 ALTER TABLE `fos_user_user` DISABLE KEYS */;
-INSERT INTO `fos_user_user` VALUES (1,'aborisenko','aborisenko','aborisenko@visualmaster.co.uk','aborisenko@visualmaster.co.uk',1,'bakm03k4uw8ooccsgg44w08sw4kosc8','d/vC3B9rzZllMivYpGcsdaGeRauSAljP6tiG7xXAJzKzNBX7oPUABwF+YSwZH4hFBe+17kl1Nssiz8IdDAkakA==','2017-02-17 09:35:27',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2015-08-31 13:10:06','2017-02-17 09:35:27',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,NULL),(2,'vdolya','vdolya','vdolya@visualmaster.co.uk','vdolya@visualmaster.co.uk',1,'beizpgquen4kos00sc0kc84cgc04s4g','q/79bvi5HqEKjzqyZiRDzkbQU4klwqCwp/Ms/FWVEnaZcKlM0ZhHWhEaFaTOAexhpIVJUtkQVEPcfJP33yrSGg==','2015-09-10 15:56:07',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2015-08-31 13:11:07','2016-07-09 14:36:54',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'9798316'),(3,'drolya','drolya','drolya@visualmaster.co.uk','drolya@visualmaster.co.uk',1,'khwr6422yi8ooo400wwgskcg08wkcgs','alMwTFkcUD0Bi1BXrITmtDAT+N9beStpp+LJtYBjL0HqPrQv2dVaGkLfOB8wlc3uzgvAzdWstIi4fcqko8vVPg==','2018-04-08 09:56:51',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2015-08-31 13:12:16','2018-04-08 09:56:51',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,NULL),(4,'vmaksim','vmaksim','vmaksim@visualmasters.co.uk','vmaksim@visualmasters.co.uk',1,'3blkp0woi7msg88gsg80804o08skoc0','QsSJO3k0x7qW9cVwVV9VZH1hsgCS7xIQSh3yaBbLMnRyNJm1GFh4SWBWOiaCU+WqbKALlg2PDrYxcoYrooSGjA==','2015-11-04 12:43:54',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2015-11-02 12:53:06','2015-11-04 12:43:54',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,NULL),(5,'admin','admin','admin@visualmasters.co.uk','admin@visualmasters.co.uk',1,'6q39ln7pavoc0wk88ggss0wg0o4k404','tD75uokK2uO0oP3tRM7fhCrP71XW8wHLbWd529lb+cz1yxUVJ6Ke2y3XftzcVCi6emOHQt6+vdga9N52NKEQdQ==','2018-04-14 06:12:57',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2016-07-09 14:38:48','2018-04-14 06:12:57',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,NULL);
-/*!40000 ALTER TABLE `fos_user_user` ENABLE KEYS */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'aborisenko','aborisenko','aborisenko@visualmaster.co.uk','aborisenko@visualmaster.co.uk',1,'bakm03k4uw8ooccsgg44w08sw4kosc8','d/vC3B9rzZllMivYpGcsdaGeRauSAljP6tiG7xXAJzKzNBX7oPUABwF+YSwZH4hFBe+17kl1Nssiz8IdDAkakA==','2017-02-17 09:35:27',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2015-08-31 13:10:06','2017-02-17 09:35:27',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,NULL),(2,'vdolya','vdolya','vdolya@visualmaster.co.uk','vdolya@visualmaster.co.uk',1,'beizpgquen4kos00sc0kc84cgc04s4g','q/79bvi5HqEKjzqyZiRDzkbQU4klwqCwp/Ms/FWVEnaZcKlM0ZhHWhEaFaTOAexhpIVJUtkQVEPcfJP33yrSGg==','2015-09-10 15:56:07',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2015-08-31 13:11:07','2016-07-09 14:36:54',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'9798316'),(3,'drolya','drolya','drolya@visualmaster.co.uk','drolya@visualmaster.co.uk',1,'khwr6422yi8ooo400wwgskcg08wkcgs','alMwTFkcUD0Bi1BXrITmtDAT+N9beStpp+LJtYBjL0HqPrQv2dVaGkLfOB8wlc3uzgvAzdWstIi4fcqko8vVPg==','2018-04-08 09:56:51',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2015-08-31 13:12:16','2018-04-08 09:56:51',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,NULL),(4,'vmaksim','vmaksim','vmaksim@visualmasters.co.uk','vmaksim@visualmasters.co.uk',1,'3blkp0woi7msg88gsg80804o08skoc0','QsSJO3k0x7qW9cVwVV9VZH1hsgCS7xIQSh3yaBbLMnRyNJm1GFh4SWBWOiaCU+WqbKALlg2PDrYxcoYrooSGjA==','2015-11-04 12:43:54',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2015-11-02 12:53:06','2015-11-04 12:43:54',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,NULL),(5,'admin','admin','admin@visualmasters.co.uk','admin@visualmasters.co.uk',1,'6q39ln7pavoc0wk88ggss0wg0o4k404','tD75uokK2uO0oP3tRM7fhCrP71XW8wHLbWd529lb+cz1yxUVJ6Ke2y3XftzcVCi6emOHQt6+vdga9N52NKEQdQ==','2018-04-14 06:12:57',0,0,NULL,NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'2016-07-09 14:38:48','2018-04-14 06:12:57',NULL,NULL,NULL,NULL,NULL,'u',NULL,NULL,NULL,NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,'null',NULL,NULL,NULL);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `fos_user_user_group`
+-- Table structure for table `gallery`
 --
 
-DROP TABLE IF EXISTS `fos_user_user_group`;
+DROP TABLE IF EXISTS `gallery`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fos_user_user_group` (
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  PRIMARY KEY (`user_id`,`group_id`),
-  KEY `IDX_B3C77447A76ED395` (`user_id`),
-  KEY `IDX_B3C77447FE54D947` (`group_id`),
-  CONSTRAINT `FK_B3C77447A76ED395` FOREIGN KEY (`user_id`) REFERENCES `fos_user_user` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_B3C77447FE54D947` FOREIGN KEY (`group_id`) REFERENCES `fos_user_group` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fos_user_user_group`
---
-
-LOCK TABLES `fos_user_user_group` WRITE;
-/*!40000 ALTER TABLE `fos_user_user_group` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fos_user_user_group` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `galleries`
---
-
-DROP TABLE IF EXISTS `galleries`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `galleries` (
+CREATE TABLE `gallery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `meta_keywords` longtext COLLATE utf8_unicode_ci,
   `meta_description` longtext COLLATE utf8_unicode_ci,
@@ -541,13 +417,13 @@ CREATE TABLE `galleries` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `galleries`
+-- Dumping data for table `gallery`
 --
 
-LOCK TABLES `galleries` WRITE;
-/*!40000 ALTER TABLE `galleries` DISABLE KEYS */;
-INSERT INTO `galleries` VALUES (12,NULL,NULL,18000,NULL,'bedroom-monochrome','Bedroom Monochrome'),(14,NULL,NULL,18000,NULL,'boutique','Boutique'),(15,NULL,NULL,18000,NULL,'lounge','Lounge'),(16,NULL,NULL,18000,NULL,'restaurant','Restaurant'),(17,NULL,NULL,18000,NULL,'studio-flat','Studio flat'),(18,NULL,NULL,18000,NULL,'apartment','Apartment'),(19,NULL,NULL,18000,NULL,'bathroom','Bathroom'),(20,NULL,NULL,18000,NULL,'child-s-room','Child\'s room'),(21,NULL,NULL,18000,NULL,'salon','Salon'),(22,NULL,NULL,18000,NULL,'restaurant','Restaurant'),(23,NULL,NULL,18000,NULL,'stand','Stand'),(24,NULL,NULL,18000,NULL,'office','Office'),(25,NULL,NULL,18000,NULL,'exterior','Exterior'),(26,NULL,NULL,18000,NULL,'house','House');
-/*!40000 ALTER TABLE `galleries` ENABLE KEYS */;
+LOCK TABLES `gallery` WRITE;
+/*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
+INSERT INTO `gallery` VALUES (12,NULL,NULL,18000,NULL,'bedroom-monochrome','Bedroom Monochrome'),(14,NULL,NULL,18000,NULL,'boutique','Boutique'),(15,NULL,NULL,18000,NULL,'lounge','Lounge'),(16,NULL,NULL,18000,NULL,'restaurant','Restaurant'),(17,NULL,NULL,18000,NULL,'studio-flat','Studio flat'),(18,NULL,NULL,18000,NULL,'apartment','Apartment'),(19,NULL,NULL,18000,NULL,'bathroom','Bathroom'),(20,NULL,NULL,18000,NULL,'child-s-room','Child\'s room'),(21,NULL,NULL,18000,NULL,'salon','Salon'),(22,NULL,NULL,18000,NULL,'restaurant','Restaurant'),(23,NULL,NULL,18000,NULL,'stand','Stand'),(24,NULL,NULL,18000,NULL,'office','Office'),(25,NULL,NULL,18000,NULL,'exterior','Exterior'),(26,NULL,NULL,18000,NULL,'house','House');
+/*!40000 ALTER TABLE `gallery` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -677,7 +553,7 @@ CREATE TABLE `orders` (
   `invoice_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_E52FFDEE93CB796C` (`file_id`),
-  CONSTRAINT `FK_E52FFDEE93CB796C` FOREIGN KEY (`file_id`) REFERENCES `orders_files` (`id`)
+  CONSTRAINT `FK_E52FFDEE93CB796C` FOREIGN KEY (`file_id`) REFERENCES `file` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -692,13 +568,13 @@ INSERT INTO `orders` VALUES (2,'Dolyavolodimir@gmail.com','Flat 103, 51 Pinfold 
 UNLOCK TABLES;
 
 --
--- Table structure for table `orders_files`
+-- Table structure for table `file`
 --
 
-DROP TABLE IF EXISTS `orders_files`;
+DROP TABLE IF EXISTS `file`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orders_files` (
+CREATE TABLE `file` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `relative_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `absolute_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -711,23 +587,23 @@ CREATE TABLE `orders_files` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `orders_files`
+-- Dumping data for table `file`
 --
 
-LOCK TABLES `orders_files` WRITE;
-/*!40000 ALTER TABLE `orders_files` DISABLE KEYS */;
-INSERT INTO `orders_files` VALUES (1,'/uploads/orders/7-f0e5bf50e0c05ec9683659c2f9032d4c.zip','/var/www/imperiumdesign.co.uk/releases/20160804164026/app/../web/uploads/orders/7-f0e5bf50e0c05ec9683659c2f9032d4c.zip','7-f0e5bf50e0c05ec9683659c2f9032d4c.zip','80303'),(2,'/uploads/orders/8-dc252b5a3bfd1849bc5197eafcb84890.zip','/var/www/imperiumdesign.co.uk/releases/20160808184547/app/../web/uploads/orders/8-dc252b5a3bfd1849bc5197eafcb84890.zip','8-dc252b5a3bfd1849bc5197eafcb84890.zip','32208770'),(3,'/uploads/orders/9-6a3e5c94ec73bb5fc87795564d6d3fb7.jpeg','/var/www/imperiumdesign.co.uk/releases/20160812085514/app/../web/uploads/orders/9-6a3e5c94ec73bb5fc87795564d6d3fb7.jpeg','9-6a3e5c94ec73bb5fc87795564d6d3fb7.jpeg','1315288'),(4,'/uploads/orders/10-43d6d9bb8671c393171992ec1508d0bc.jpeg','/var/www/imperiumdesign.co.uk/releases/20170424123645/app/../web/uploads/orders/10-43d6d9bb8671c393171992ec1508d0bc.jpeg','10-43d6d9bb8671c393171992ec1508d0bc.jpeg','177426'),(5,'/uploads/orders/16-7fa8c0ae59b9ae3aa1e8377b0edd17f4.zip','/var/www/imperiumdesign.co.uk/releases/20170516082225/app/../web/uploads/orders/16-7fa8c0ae59b9ae3aa1e8377b0edd17f4.zip','16-7fa8c0ae59b9ae3aa1e8377b0edd17f4.zip','24520119'),(6,'/uploads/orders/17-70384d62a2d2d15fb7ecad60528cd0ce.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/17-70384d62a2d2d15fb7ecad60528cd0ce.zip','17-70384d62a2d2d15fb7ecad60528cd0ce.zip','24520119'),(7,'/uploads/orders/18-f33b575c1e86aec7a6af1d820bd65e02.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/18-f33b575c1e86aec7a6af1d820bd65e02.zip','18-f33b575c1e86aec7a6af1d820bd65e02.zip','24520119'),(8,'/uploads/orders/19-0e3684400f1847dfb7a9b8577f9f1901.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/19-0e3684400f1847dfb7a9b8577f9f1901.zip','19-0e3684400f1847dfb7a9b8577f9f1901.zip','24520119'),(9,'/uploads/orders/20-0f6280b7e0d83ac6da1d42b5612eccf2.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/20-0f6280b7e0d83ac6da1d42b5612eccf2.zip','20-0f6280b7e0d83ac6da1d42b5612eccf2.zip','24520119'),(10,'/uploads/orders/21-3c0ae566584188cecd8723c5a2e0c713.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/21-3c0ae566584188cecd8723c5a2e0c713.zip','21-3c0ae566584188cecd8723c5a2e0c713.zip','24520119'),(11,'/uploads/orders/22-df0a2e3014ae5bddd805c1cf6f72dbaa.docx','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/22-df0a2e3014ae5bddd805c1cf6f72dbaa.docx','22-df0a2e3014ae5bddd805c1cf6f72dbaa.docx','229021'),(12,'/uploads/orders/44-716d99c80be4df384173acc96a460734.zip','/var/www/imperiumdesign.co.uk/releases/20180217205016/app/../web/uploads/orders/44-716d99c80be4df384173acc96a460734.zip','44-716d99c80be4df384173acc96a460734.zip','98727'),(13,'/uploads/orders/45/45-eea707e6309ab0288df8d9dc35b2f9ee.zip','/var/www/imperiumdesign.co.uk/releases/20180217205016/app/../web/uploads/orders/45/45-eea707e6309ab0288df8d9dc35b2f9ee.zip','45-eea707e6309ab0288df8d9dc35b2f9ee.zip','98727');
-/*!40000 ALTER TABLE `orders_files` ENABLE KEYS */;
+LOCK TABLES `file` WRITE;
+/*!40000 ALTER TABLE `file` DISABLE KEYS */;
+INSERT INTO `file` VALUES (1,'/uploads/orders/7-f0e5bf50e0c05ec9683659c2f9032d4c.zip','/var/www/imperiumdesign.co.uk/releases/20160804164026/app/../web/uploads/orders/7-f0e5bf50e0c05ec9683659c2f9032d4c.zip','7-f0e5bf50e0c05ec9683659c2f9032d4c.zip','80303'),(2,'/uploads/orders/8-dc252b5a3bfd1849bc5197eafcb84890.zip','/var/www/imperiumdesign.co.uk/releases/20160808184547/app/../web/uploads/orders/8-dc252b5a3bfd1849bc5197eafcb84890.zip','8-dc252b5a3bfd1849bc5197eafcb84890.zip','32208770'),(3,'/uploads/orders/9-6a3e5c94ec73bb5fc87795564d6d3fb7.jpeg','/var/www/imperiumdesign.co.uk/releases/20160812085514/app/../web/uploads/orders/9-6a3e5c94ec73bb5fc87795564d6d3fb7.jpeg','9-6a3e5c94ec73bb5fc87795564d6d3fb7.jpeg','1315288'),(4,'/uploads/orders/10-43d6d9bb8671c393171992ec1508d0bc.jpeg','/var/www/imperiumdesign.co.uk/releases/20170424123645/app/../web/uploads/orders/10-43d6d9bb8671c393171992ec1508d0bc.jpeg','10-43d6d9bb8671c393171992ec1508d0bc.jpeg','177426'),(5,'/uploads/orders/16-7fa8c0ae59b9ae3aa1e8377b0edd17f4.zip','/var/www/imperiumdesign.co.uk/releases/20170516082225/app/../web/uploads/orders/16-7fa8c0ae59b9ae3aa1e8377b0edd17f4.zip','16-7fa8c0ae59b9ae3aa1e8377b0edd17f4.zip','24520119'),(6,'/uploads/orders/17-70384d62a2d2d15fb7ecad60528cd0ce.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/17-70384d62a2d2d15fb7ecad60528cd0ce.zip','17-70384d62a2d2d15fb7ecad60528cd0ce.zip','24520119'),(7,'/uploads/orders/18-f33b575c1e86aec7a6af1d820bd65e02.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/18-f33b575c1e86aec7a6af1d820bd65e02.zip','18-f33b575c1e86aec7a6af1d820bd65e02.zip','24520119'),(8,'/uploads/orders/19-0e3684400f1847dfb7a9b8577f9f1901.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/19-0e3684400f1847dfb7a9b8577f9f1901.zip','19-0e3684400f1847dfb7a9b8577f9f1901.zip','24520119'),(9,'/uploads/orders/20-0f6280b7e0d83ac6da1d42b5612eccf2.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/20-0f6280b7e0d83ac6da1d42b5612eccf2.zip','20-0f6280b7e0d83ac6da1d42b5612eccf2.zip','24520119'),(10,'/uploads/orders/21-3c0ae566584188cecd8723c5a2e0c713.zip','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/21-3c0ae566584188cecd8723c5a2e0c713.zip','21-3c0ae566584188cecd8723c5a2e0c713.zip','24520119'),(11,'/uploads/orders/22-df0a2e3014ae5bddd805c1cf6f72dbaa.docx','/var/www/imperiumdesign.co.uk/releases/20170516090441/app/../web/uploads/orders/22-df0a2e3014ae5bddd805c1cf6f72dbaa.docx','22-df0a2e3014ae5bddd805c1cf6f72dbaa.docx','229021'),(12,'/uploads/orders/44-716d99c80be4df384173acc96a460734.zip','/var/www/imperiumdesign.co.uk/releases/20180217205016/app/../web/uploads/orders/44-716d99c80be4df384173acc96a460734.zip','44-716d99c80be4df384173acc96a460734.zip','98727'),(13,'/uploads/orders/45/45-eea707e6309ab0288df8d9dc35b2f9ee.zip','/var/www/imperiumdesign.co.uk/releases/20180217205016/app/../web/uploads/orders/45/45-eea707e6309ab0288df8d9dc35b2f9ee.zip','45-eea707e6309ab0288df8d9dc35b2f9ee.zip','98727');
+/*!40000 ALTER TABLE `file` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `slides`
+-- Table structure for table `slide`
 --
 
-DROP TABLE IF EXISTS `slides`;
+DROP TABLE IF EXISTS `slide`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `slides` (
+CREATE TABLE `slide` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `image_content` int(11) NOT NULL,
   `gallery_page` int(11) DEFAULT NULL,
@@ -738,28 +614,28 @@ CREATE TABLE `slides` (
   UNIQUE KEY `UNIQ_B8C020916BD56775` (`image_content`),
   KEY `IDX_B8C0209187159EAC` (`gallery_page`),
   CONSTRAINT `FK_B8C020916BD56775` FOREIGN KEY (`image_content`) REFERENCES `media__media` (`id`),
-  CONSTRAINT `FK_B8C0209187159EAC` FOREIGN KEY (`gallery_page`) REFERENCES `galleries` (`id`)
+  CONSTRAINT `FK_B8C0209187159EAC` FOREIGN KEY (`gallery_page`) REFERENCES `gallery` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `slides`
+-- Dumping data for table `slide`
 --
 
-LOCK TABLES `slides` WRITE;
-/*!40000 ALTER TABLE `slides` DISABLE KEYS */;
-INSERT INTO `slides` VALUES (1,142,12,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(2,143,12,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(3,144,12,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(4,145,12,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(5,146,12,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(6,147,14,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(9,152,14,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(10,153,14,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(11,154,14,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(15,158,14,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(17,161,14,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(18,162,14,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(19,163,15,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(20,164,15,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(21,165,15,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(22,166,15,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(23,167,15,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(24,168,15,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(25,169,15,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(26,170,16,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(27,171,16,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(28,172,16,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(29,173,16,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(31,174,16,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(32,175,16,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(33,176,16,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(34,177,16,NULL,'8','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(35,178,16,NULL,'9','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(36,179,17,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(37,180,17,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(38,181,17,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(39,182,17,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(40,183,17,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(41,184,17,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(42,185,17,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(43,186,17,NULL,'8','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(44,188,17,NULL,'9','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(45,189,18,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(46,190,18,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(47,191,18,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(48,192,18,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(49,193,18,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(50,194,18,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(51,195,18,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(52,196,18,NULL,'8','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(53,197,18,NULL,'9','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(54,198,18,NULL,'10','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(55,199,19,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(56,200,19,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(57,201,20,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(58,202,20,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(59,203,21,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(60,204,21,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(61,205,22,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(62,207,22,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(63,208,23,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(64,209,23,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(65,210,23,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(66,211,23,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(67,212,24,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(68,213,24,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(69,214,24,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(70,215,24,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(71,216,24,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(72,217,24,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(73,218,25,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(74,219,25,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(75,220,25,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(76,221,25,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(77,222,25,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(78,223,25,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(79,224,25,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(80,225,26,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(81,226,26,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(82,227,26,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(83,228,26,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(84,229,26,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(85,230,26,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(86,231,26,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(87,232,26,NULL,'8','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(88,233,26,NULL,'9','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(89,234,26,NULL,'10','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(90,235,26,NULL,'11','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(91,236,26,NULL,'12','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(92,237,26,NULL,'13','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(93,238,26,NULL,'14','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(94,239,26,NULL,'15','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(95,240,26,NULL,'16','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(96,241,26,NULL,'17','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(97,242,26,NULL,'18','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(98,243,26,NULL,'19','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(99,244,26,NULL,'20','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(100,245,26,NULL,'21','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(101,246,26,NULL,'22','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}');
-/*!40000 ALTER TABLE `slides` ENABLE KEYS */;
+LOCK TABLES `slide` WRITE;
+/*!40000 ALTER TABLE `slide` DISABLE KEYS */;
+INSERT INTO `slide` VALUES (1,142,12,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(2,143,12,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(3,144,12,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(4,145,12,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(5,146,12,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(6,147,14,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(9,152,14,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(10,153,14,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(11,154,14,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(15,158,14,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(17,161,14,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(18,162,14,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(19,163,15,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(20,164,15,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(21,165,15,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(22,166,15,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(23,167,15,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(24,168,15,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(25,169,15,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(26,170,16,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(27,171,16,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(28,172,16,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(29,173,16,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(31,174,16,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(32,175,16,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(33,176,16,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(34,177,16,NULL,'8','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(35,178,16,NULL,'9','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(36,179,17,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(37,180,17,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(38,181,17,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(39,182,17,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(40,183,17,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(41,184,17,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(42,185,17,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(43,186,17,NULL,'8','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(44,188,17,NULL,'9','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(45,189,18,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(46,190,18,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(47,191,18,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(48,192,18,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(49,193,18,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(50,194,18,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(51,195,18,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(52,196,18,NULL,'8','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(53,197,18,NULL,'9','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(54,198,18,NULL,'10','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(55,199,19,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(56,200,19,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(57,201,20,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(58,202,20,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(59,203,21,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(60,204,21,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(61,205,22,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(62,207,22,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(63,208,23,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(64,209,23,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(65,210,23,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(66,211,23,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(67,212,24,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(68,213,24,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(69,214,24,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(70,215,24,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(71,216,24,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(72,217,24,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(73,218,25,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(74,219,25,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(75,220,25,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(76,221,25,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(77,222,25,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(78,223,25,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(79,224,25,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(80,225,26,NULL,'1','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(81,226,26,NULL,'2','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(82,227,26,NULL,'3','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(83,228,26,NULL,'4','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(84,229,26,NULL,'5','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(85,230,26,NULL,'6','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(86,231,26,NULL,'7','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(87,232,26,NULL,'8','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(88,233,26,NULL,'9','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(89,234,26,NULL,'10','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(90,235,26,NULL,'11','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(91,236,26,NULL,'12','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(92,237,26,NULL,'13','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(93,238,26,NULL,'14','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(94,239,26,NULL,'15','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(95,240,26,NULL,'16','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(96,241,26,NULL,'17','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(97,242,26,NULL,'18','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(98,243,26,NULL,'19','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(99,244,26,NULL,'20','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(100,245,26,NULL,'21','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}'),(101,246,26,NULL,'22','a:6:{s:7:\"opacity\";d:0.7;s:11:\"orientation\";i:1;s:4:\"size\";i:280;s:5:\"color\";s:6:\"000000\";s:8:\"position\";i:20;s:8:\"closable\";b:0;}');
+/*!40000 ALTER TABLE `slide` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `videos`
+-- Table structure for table `video`
 --
 
-DROP TABLE IF EXISTS `videos`;
+DROP TABLE IF EXISTS `video`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `videos` (
+CREATE TABLE `video` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `video_content` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -769,13 +645,13 @@ CREATE TABLE `videos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `videos`
+-- Dumping data for table `video`
 --
 
-LOCK TABLES `videos` WRITE;
-/*!40000 ALTER TABLE `videos` DISABLE KEYS */;
-INSERT INTO `videos` VALUES (12,138);
-/*!40000 ALTER TABLE `videos` ENABLE KEYS */;
+LOCK TABLES `video` WRITE;
+/*!40000 ALTER TABLE `video` DISABLE KEYS */;
+INSERT INTO `video` VALUES (12,138);
+/*!40000 ALTER TABLE `video` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

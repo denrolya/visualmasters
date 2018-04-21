@@ -1,0 +1,159 @@
+{% extends "::base.html.twig" %}
+
+{% set onIndexPage = app.request.get('_route') == 'index_page' %}
+
+{% block title %}{{ gallery.title }} - VisualMasters{% endblock title %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        "bundles/gallery/css/jquery.maximage.min.css"
+        "bundles/site/css/datetimepicker.css"
+        "bundles/gallery/css/gallery.css" %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+    {#<div id="loading">#}
+        {#<div id="loading-center">#}
+            {#<div id="loading-center-absolute">#}
+                {#<div class="object" id="first_object"></div>#}
+                {#<div class="object" id="second_object"></div>#}
+                {#<div class="object" id="third_object"></div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+
+    {#-------------- Gallery controls --------------#}
+    <div id="gallery_controls">
+        <div id="arrow_left" {{ not onIndexPage ? 'class="toggle-follows"' }}>
+            {% image 'bundles/gallery/images/arrow_left.png' %}
+                <img src="{{ asset_url }}" alt="Slide Left" />
+            {% endimage %}
+        </div>
+        <div id="arrow_right">
+            {% image 'bundles/gallery/images/arrow_right.png' %}
+                <img src="{{ asset_url }}" alt="Slide Right" />
+            {% endimage %}
+        </div>
+
+        {% if not onIndexPage %}
+            <div id="nav_slideshow"><ul></ul></div>
+            <div id="toggle_slideshow"><span class="glyphicon glyphicon-pause"></span></div>
+        {% endif %}
+    </div>
+    {#-------------- Gallery controls --------------#}
+
+    {% if gallery.slug != 'home' and gallery.detailedDescription %}
+        <div id="ribbon-left" class="ribbon ribbon-open">
+            <span id="content">Know more</span>
+        </div>
+        <div class="foreground invisible">
+            <div id="ribbon-right" class="ribbon ribbon-close">
+                <span id="content">Know less</span>
+            </div>
+            <div class="description invisible">
+                {{ gallery.detailedDescription|raw }}
+                <div class="text-center order-button">
+                    <a href="#" class="btn btn-primary btn-place-order" data-toggle="modal" data-target="#orderModal">MAKE ORDER</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div id="maximage">
+        {% for slide in gallery.slides %}
+            <div class="item">
+                {% media slide.imageContent, 'big' %}
+
+                {#-------------- In-slide content --------------#}
+                {% if (slide.textContent is not null) %}
+                    {% set transparentZoneParameters = slide.transparentZoneParameters|unserialize %}
+                    {% set isTransparentZoneVertical = transparentZoneParameters.orientation == 1 %}
+                    {% set transparentZoneStyle = "background: #" ~ transparentZoneParameters.color ~ "; opacity: " ~ transparentZoneParameters.opacity ~ "; " %}
+                    {% if isTransparentZoneVertical %}
+                        {% set transparentZoneStyle =  transparentZoneStyle ~ "width: " ~ transparentZoneParameters.size ~ "px;" ~
+                            (loop.last ? "margin-right: -" : "margin-left: -") ~ ((transparentZoneParameters.size/2)-40) ~ "px;" ~
+                            "left: " ~ transparentZoneParameters.position ~ "%;" %}
+                    {% else %}
+                        {% set transparentZoneStyle =  transparentZoneStyle ~ "height: " ~ transparentZoneParameters.size ~ "px;" ~
+                            "top: " ~ transparentZoneParameters.position ~ "%;" %}
+                    {% endif %}
+
+                    <div class="transp-zone {{ isTransparentZoneVertical ? "transp-zone-vertical" : "transp-zone-horizontal" }}"
+                         style="{{ transparentZoneStyle }}" data-size="{{ transparentZoneParameters.size }}" data-position="{{ transparentZoneParameters.position }}">
+                        <div class="transp-zone-content">
+                            {{ slide.textContent | raw }}
+                        </div>
+                        {% if transparentZoneParameters.closable %}
+                            <div class="transp-zone-controls">
+                                <span class="transp-zone-hide  glyphicon glyphicon-chevron-up"></span>
+                                <span class="transp-zone-reveal glyphicon glyphicon-chevron-down invisible"></span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                {#-------------- In-slide content --------------#}
+
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="orderModalLabel">Make Order \ Contact Us</h4>
+                    <span class="modal-header-border"></span>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-container">
+                        <h5 class="modal-notice text-muted">please fill the fields below:</h5>
+                        {{ form_start(form) }}
+                        {{ form_rest(form) }}
+                        <div class="form-group m-t">
+                            <button type="button" class="btn btn-default">Attach file*</button>
+                            <input type="submit" class="btn btn-primary" role="button" value="Send">
+                        </div>
+                        <div class="form-group text-left">
+                            <span class="text-muted">* only zip files allowed</span>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        "bundles/gallery/js/jquery.cycle.all.js"
+        "bundles/gallery/js/jquery.easing.1.3.js"
+        "bundles/gallery/js/jquery.maximage.js"
+        "bundles/site/js/bootstrap-switch.js"
+        "bundles/site/js/datetimepicker.js"
+        "bundles/site/js/jquery.slimscroll.js" %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript" charset="utf-8">
+        var slidesTimeout = {{ gallery.slidesTimeout }},
+            onIndexPage = {{ onIndexPage|number_format }};
+            $("[type='checkbox']").bootstrapSwitch({
+                size : 'small',
+                onText : 'I',
+                offText : 'O',
+                onColor : 'success',
+                offColor : 'warning'
+            });
+            $("[type='datetime']").datetimepicker({format:'d.m.Y H:i'});
+            $('.modal-body').slimScroll({
+                height: '500px'
+            });
+    </script>
+    <script type="text/javascript" src="{{ asset("bundles/gallery/js/gallery.js") }}"></script>
+{% endblock javascripts%}

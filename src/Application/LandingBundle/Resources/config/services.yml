@@ -1,4 +1,0 @@
-services:
-    admin_success_handler:
-        class: Application\LandingBundle\Services\AuthenticationHandler
-        arguments: [ '@service_container' ]

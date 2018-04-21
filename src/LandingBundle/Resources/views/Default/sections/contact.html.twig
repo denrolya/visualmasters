@@ -1,0 +1,108 @@
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Contact Us</h2>
+                <p class="subheading">Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <h3 class="location-info">
+                    <span class="icon icon-location"></span>
+                    <a href=https://goo.gl/maps/gxXVrLMq6iP2"><strong>4 Windsor Terrace Hagley Road Edgbaston <br> Birmingham B16 8UH</strong></a>
+                </h3>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <h3 class="location-info">
+                    <span class="icon icon-email"></span>
+                    <strong><a href="mailto:your-email@your-domain.com">info@visualmasters.co.uk</a></strong>
+                </h3>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <h3 class="location-info">
+                    <span class="icon icon-facebook"></span>
+                    <a href="https://www.facebook.com/VisualMastersUK"><strong>https://www.facebook.com/VisualMastersUK</strong></a>
+                </h3>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <h3 class="location-info">
+                    <span class="icon icon-phone center-block"></span>
+                    <a href="tel:+447449552179"><strong>+447449552179</strong></a>
+                </h3>
+            </div>
+        </div>
+        <hr class="hr-full-width hr-muted">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 col-lg-offset-3 col-md-offset-3">
+                <h4 class="schedule">Mon-Fri: 10am to 8 pm</h4>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                <h4 class="schedule">Sat: 11am to 3pm</h4>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                <h4 class="schedule">Sun: Closed</h4>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+        </div>
+        <hr class="hr-full-width hr-muted">
+
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-5  col-md-offset-5">
+                <a href="#" class="btn btn-primary btn-place-order" data-toggle="modal" data-target="#orderModal">MAKE ORDER</a>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="orderModalLabel">Make Order \ Contact Us</h4>
+                        <span class="modal-header-border"></span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-container">
+                            <div id="order-form">
+                                <h5 class="modal-notice text-muted">please fill the fields below:</h5>
+
+                                {{ form_start(form, {'name': 'order-form'}) }}
+                                    {{ form_row(form.name) }}
+                                    {{ form_row(form.email) }}
+                                    {{ form_row(form.phonenumber) }}
+                                    {{ form_row(form.address) }}
+                                    {{ form_row(form.postal) }}
+                                    {{ form_row(form.comments) }}
+                                    <div class="form-group m-t">
+                                        <input type="file" name="file" id="file" class="inputfile" accept=".zip"/>
+                                        <label for="file" class="btn btn-default btn-attach"><span>Attach file*</span></label>
+                                        <button type="submit" class="btn btn-primary btn-submit">
+                                            <span id="btn-submit-text">Send</span>
+                                            <span id="loader"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                                        </button>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <span class="text-muted">* only zip files allowed</span>
+                                    </div>
+                                    {{ form_rest(form) }}
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="hidden" id="order-success-note">
+                            <h3>Order was successfully placed</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="col-md-4 col-md-offset-4 col-sm-offset-4 col-sm-4 col-xs-12">Copyright (c) VisualMasters 2017</div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <a href="https://www.facebook.com/VisualMastersUK"><span class="icon icon-footer icon-facebook"></span></a>
+            <a href=""><span class="icon icon-footer icon-twitter"></span></a>
+        </div>
+    </div>
+</section>

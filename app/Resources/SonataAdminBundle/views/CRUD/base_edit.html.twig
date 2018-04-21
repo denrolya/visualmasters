@@ -5,7 +5,7 @@
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets
-        "bundles/imperivgallery/css/colpick.css"
+        "bundles/gallery/css/colpick.css"
         filter="yui_css"
     %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
@@ -14,8 +14,8 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset("bundles/imperivgallery/js/colpick.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("bundles/imperivsite/js/tinymce/tinymce.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("bundles/gallery/js/colpick.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("bundles/site/js/tinymce/tinymce.min.js") }}" type="text/javascript"></script>
         
     <script type="text/javascript">
         $(function() {

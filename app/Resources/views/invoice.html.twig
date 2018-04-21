@@ -6,11 +6,11 @@
 
         {% block stylesheets %}
             {% stylesheets
-            "bundles/imperivsite/css/archivo.narrow.font.css"
-            "bundles/imperivsite/css/bootstrap-grid.min.css"
-            "bundles/imperivsite/css/bootstrap.css"
-            "bundles/imperivsite/css/bootstrap-reboot.min.css"
-            "bundles/imperivsite/css/invoice.css"
+            "bundles/site/css/archivo.narrow.font.css"
+            "bundles/site/css/bootstrap-grid.min.css"
+            "bundles/site/css/bootstrap.css"
+            "bundles/site/css/bootstrap-reboot.min.css"
+            "bundles/site/css/invoice.css"
             filter="yui_css, cssrewrite" %}
             <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
             {% endstylesheets %}
@@ -31,7 +31,7 @@
                         Web site : visualmasters.co.uk <br>
                     </p>
                 </div>
-                {#<img src="{{ asset('bundles/imperivsite/img/invoice-logo.png') }}" alt="invoice-logo.png" class="invoice-logo">#}
+                {#<img src="{{ asset('bundles/site/img/invoice-logo.png') }}" alt="invoice-logo.png" class="invoice-logo">#}
                 <div class="last-col">
                     <h4>INVOICE</h4>
                     <h5>reference: {{ order.id }}</h5>
@@ -129,9 +129,9 @@
 
         {% block javascripts %}
             {% javascripts
-            "bundles/imperivsite/js/jquery-3.2.1.slim.min.js"
-            "bundles/imperivsite/js/jquery_2.1.3.min.js"
-            "bundles/imperivsite/js/bootstrap.js"
+            "bundles/site/js/jquery-3.2.1.slim.min.js"
+            "bundles/site/js/jquery_2.1.3.min.js"
+            "bundles/site/js/bootstrap.js"
             filter="yui_js" %}
                 <script src="{{ asset_url }}" type="text/javascript"></script>
             {% endjavascripts %}

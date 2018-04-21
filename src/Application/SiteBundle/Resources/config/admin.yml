@@ -1,9 +1,0 @@
-services:
-    sonata.admin.video:
-        class: Application\SiteBundle\Admin\VideoAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: "Videos" }
-        arguments:
-            - ~
-            - Application\SiteBundle\Entity\Video
-            - ~

@@ -1,0 +1,18 @@
+services:
+    sonata.admin.gallery_page:
+        class: GalleryBundle\Admin\GalleryPageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Gallery pages" }
+        arguments:
+            - ~
+            - GalleryBundle\Entity\GalleryPage
+            - ~
+            
+    sonata.admin.slide:
+        class: GalleryBundle\Admin\SlideAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Gallery page slides" }
+        arguments:
+            - ~
+            - GalleryBundle\Entity\Slide
+            - ~
