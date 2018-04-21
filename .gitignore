@@ -28,5 +28,8 @@
 /todo
 /backups
 
+# Uploads
+/web/uploads
+
 
 *.css.map
