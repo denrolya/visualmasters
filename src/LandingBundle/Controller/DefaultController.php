@@ -44,7 +44,11 @@ class DefaultController extends Controller
 
         $video = $em->getRepository(Video::class)->findAll()[0];
 
-        return ['form' => $form, 'slides' => $randomSlides, 'videoObject' => $video];
+        return [
+            'form' => $form,
+            'slides' => $randomSlides,
+            'videoObject' => $video
+        ];
     }
 
     /**
