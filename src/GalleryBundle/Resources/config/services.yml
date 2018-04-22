@@ -1,6 +1,0 @@
-services:
-    app.gallery.unserialize_filter:
-        class: GalleryBundle\Twig\UnserializeExtension
-        public: false
-        tags:
-            - { name: twig.extension }

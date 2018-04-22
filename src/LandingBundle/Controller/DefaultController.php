@@ -2,7 +2,7 @@
 
 namespace LandingBundle\Controller;
 
-use GalleryBundle\Entity\GalleryPage;
+use SiteBundle\Entity\GalleryPage;
 use LandingBundle\Entity\Order;
 use LandingBundle\Entity\File;
 use LandingBundle\Form\OrderType;
@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends Controller
 {
@@ -62,9 +63,17 @@ class DefaultController extends Controller
             throw $this->createNotFoundException("Page doesn't exist!");
         }
 
-        $form = $this->createForm(new OrderType(), new Order(), ['action' => $this->generateUrl('process_order')])->createView();
+        $form = $this
+            ->createForm(
+                OrderType::class,
+                new Order(),
+                ['action' => $this->generateUrl('process_order')])
+            ->createView();
 
-        return ['gallery' => $galleryPage, 'form' => $form];
+        return [
+            'gallery' => $galleryPage,
+            'form' => $form
+        ];
     }
 
     /**
@@ -87,7 +96,7 @@ class DefaultController extends Controller
     {
         $pageUrl = $this->generateUrl('order_invoice_html', [
             'id' => $order->getId()
-        ], true); // use absolute path!
+        ],UrlGeneratorInterface::ABSOLUTE_URL);
 
         $now = new \DateTime();
         $invoiceFilename = "invoice_" . $now->format('Y-m-d_H-i') . '.pdf';

@@ -7,9 +7,9 @@
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets
-        "bundles/gallery/css/jquery.maximage.min.css"
+        "bundles/site/css/jquery.maximage.min.css"
         "bundles/site/css/datetimepicker.css"
-        "bundles/gallery/css/gallery.css" %}
+        "bundles/site/css/gallery.css" %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
 {% endblock stylesheets %}
@@ -28,14 +28,10 @@
     {#-------------- Gallery controls --------------#}
     <div id="gallery_controls">
         <div id="arrow_left" {{ not onIndexPage ? 'class="toggle-follows"' }}>
-            {% image 'bundles/gallery/images/arrow_left.png' %}
-                <img src="{{ asset_url }}" alt="Slide Left" />
-            {% endimage %}
+            <img src="{{ asset('bundles/site/images/arrow_left.png') }}" alt="Slide Left" />
         </div>
         <div id="arrow_right">
-            {% image 'bundles/gallery/images/arrow_right.png' %}
-                <img src="{{ asset_url }}" alt="Slide Right" />
-            {% endimage %}
+            <img src="{{ asset('bundles/site/images/arrow_right.png') }}" alt="Slide Right" />
         </div>
 
         {% if not onIndexPage %}
@@ -131,9 +127,9 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-        "bundles/gallery/js/jquery.cycle.all.js"
-        "bundles/gallery/js/jquery.easing.1.3.js"
-        "bundles/gallery/js/jquery.maximage.js"
+        "bundles/site/js/jquery.cycle.all.js"
+        "bundles/site/js/jquery.easing.1.3.js"
+        "bundles/site/js/jquery.maximage.js"
         "bundles/site/js/bootstrap-switch.js"
         "bundles/site/js/datetimepicker.js"
         "bundles/site/js/jquery.slimscroll.js" %}
@@ -155,5 +151,5 @@
                 height: '500px'
             });
     </script>
-    <script type="text/javascript" src="{{ asset("bundles/gallery/js/gallery.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/site/js/gallery.js") }}"></script>
 {% endblock javascripts%}

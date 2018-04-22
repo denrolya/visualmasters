@@ -17,4 +17,23 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="crn", type="string", length=255, nullable=true)
+     */
+    private $crn;
+
+    public function setCrn($crn)
+    {
+        $this->crn = $crn;
+
+        return $this;
+    }
+
+    public function getCrn()
+    {
+        return $this->crn;
+    }
 }

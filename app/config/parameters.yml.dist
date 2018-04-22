@@ -25,3 +25,7 @@ parameters:
     router.request_context.host: host.com
     router.request_context.scheme: https
     router.request_context.base_url: my/path
+
+    files_dir: '%kernel.root_dir%/../web/uploads/orders'
+
+    wkhtmltopdf_executable: '/usr/local/bin/wkhtmltopdf'

@@ -1,3 +1,4 @@
+# System
 .DS_Store
 
 # Symfony files
@@ -19,6 +20,10 @@
 /vendor/
 /web/bundles/
 
+# Assets vendors
+/web/assets/vendor/
+/node_modules/
+
 # IDE Files
 /.phpintel/
 /nbproject
@@ -27,6 +32,14 @@
 # Other
 /todo
 /backups
+
+# Compiled assets
+/web/css/
+/web/js/
+/web/build/
+
+# Deployer conf
+deploy.php
 
 # Uploads
 /web/uploads

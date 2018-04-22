@@ -74,7 +74,7 @@ swiftmailer:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [SiteBundle, GalleryBundle, SonataAdminBundle, LandingBundle]
+    bundles:        [SiteBundle, SonataAdminBundle, LandingBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -97,3 +97,11 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     '%wkhtmltopdf_executable%'
+        options:
+            - { name: 'viewport-size', value: ‘1024x768’ }
+            - { name: 'page-size', value: 'A4' }

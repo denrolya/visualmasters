@@ -17,6 +17,7 @@
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AsseticBundle">Symfony\Bundle\AsseticBundle\AsseticBundle</parameter>
+      <parameter key="KnpSnappyBundle">Knp\Bundle\SnappyBundle\KnpSnappyBundle</parameter>
       <parameter key="SonataCoreBundle">Sonata\CoreBundle\SonataCoreBundle</parameter>
       <parameter key="SonataBlockBundle">Sonata\BlockBundle\SonataBlockBundle</parameter>
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
@@ -28,7 +29,6 @@
       <parameter key="ApplicationSonataMediaBundle">Application\Sonata\MediaBundle\ApplicationSonataMediaBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="SonataUserBundle">Sonata\UserBundle\SonataUserBundle</parameter>
-      <parameter key="GalleryBundle">GalleryBundle\GalleryBundle</parameter>
       <parameter key="LandingBundle">LandingBundle\LandingBundle</parameter>
       <parameter key="SiteBundle">SiteBundle\SiteBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
@@ -77,6 +77,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">/Users/drolya/Public/visualmasters/vendor/symfony/assetic-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\AsseticBundle</parameter>
+      </parameter>
+      <parameter key="KnpSnappyBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/Users/drolya/Public/visualmasters/vendor/knplabs/knp-snappy-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\SnappyBundle</parameter>
       </parameter>
       <parameter key="SonataCoreBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -133,11 +138,6 @@
         <parameter key="path">/Users/drolya/Public/visualmasters/vendor/sonata-project/user-bundle/src</parameter>
         <parameter key="namespace">Sonata\UserBundle</parameter>
       </parameter>
-      <parameter key="GalleryBundle" type="collection">
-        <parameter key="parent">null</parameter>
-        <parameter key="path">/Users/drolya/Public/visualmasters/src/GalleryBundle</parameter>
-        <parameter key="namespace">GalleryBundle</parameter>
-      </parameter>
       <parameter key="LandingBundle" type="collection">
         <parameter key="parent">null</parameter>
         <parameter key="path">/Users/drolya/Public/visualmasters/src/LandingBundle</parameter>
@@ -189,9 +189,11 @@
     <parameter key="mailer_password">null</parameter>
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="jms_serializer.camel_case_naming_strategy.class">JMS\Serializer\Naming\IdenticalPropertyNamingStrategy</parameter>
-    <parameter key="router.request_context.host">host.com</parameter>
-    <parameter key="router.request_context.scheme">https</parameter>
+    <parameter key="router.request_context.host">localhost</parameter>
+    <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url">my/path</parameter>
+    <parameter key="files_dir">/Users/drolya/Public/visualmasters/app/../web/uploads/orders</parameter>
+    <parameter key="wkhtmltopdf_executable">/usr/local/bin/wkhtmltopdf</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
@@ -457,7 +459,6 @@
     <parameter key="assetic.cache_dir">/Users/drolya/Public/visualmasters/var/cache/dev/assetic</parameter>
     <parameter key="assetic.bundles" type="collection">
       <parameter>SiteBundle</parameter>
-      <parameter>GalleryBundle</parameter>
       <parameter>SonataAdminBundle</parameter>
       <parameter>LandingBundle</parameter>
     </parameter>
@@ -473,7 +474,7 @@
     <parameter key="assetic.write_to">/Users/drolya/Public/visualmasters/app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
     <parameter key="assetic.java.bin">/usr/bin/java</parameter>
-    <parameter key="assetic.node.bin">/usr/local/bin/node</parameter>
+    <parameter key="assetic.node.bin">/usr/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
     <parameter key="assetic.reactjsx.bin">/usr/bin/jsx</parameter>
@@ -496,6 +497,15 @@
     <parameter key="assetic.filter.yui_js.disable_optimizations">null</parameter>
     <parameter key="assetic.filter.yui_js.linebreak">null</parameter>
     <parameter key="assetic.twig_extension.functions" type="collection"/>
+    <parameter key="knp_snappy.pdf.binary">/usr/local/bin/wkhtmltopdf</parameter>
+    <parameter key="knp_snappy.pdf.options" type="collection">
+      <parameter key="viewport-size">‘1024x768’</parameter>
+      <parameter key="page-size">A4</parameter>
+    </parameter>
+    <parameter key="knp_snappy.pdf.env" type="collection"/>
+    <parameter key="knp_snappy.image.binary">wkhtmltoimage</parameter>
+    <parameter key="knp_snappy.image.options" type="collection"/>
+    <parameter key="knp_snappy.image.env" type="collection"/>
     <parameter key="sonata.core.flashmessage.manager.class">Sonata\CoreBundle\FlashMessage\FlashManager</parameter>
     <parameter key="sonata.core.twig.extension.flashmessage.class">Sonata\CoreBundle\Twig\Extension\FlashMessageExtension</parameter>
     <parameter key="sonata.core.form_type">standard</parameter>
@@ -2230,9 +2240,7 @@
             <argument>/Users/drolya/Public/visualmasters/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fr.yml</argument>
             <argument>/Users/drolya/Public/visualmasters/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fr.yml</argument>
             <argument>/Users/drolya/Public/visualmasters/vendor/sonata-project/user-bundle/src/Resources/translations/SonataUserBundle.fr.xliff</argument>
-            <argument>/Users/drolya/Public/visualmasters/src/GalleryBundle/Resources/translations/messages.fr.xlf</argument>
             <argument>/Users/drolya/Public/visualmasters/src/LandingBundle/Resources/translations/messages.fr.xlf</argument>
-            <argument>/Users/drolya/Public/visualmasters/src/SiteBundle/Resources/translations/messages.fr.xlf</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>/Users/drolya/Public/visualmasters/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.gl.xlf</argument>
@@ -3188,14 +3196,6 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
-        <argument>console.command</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -3596,8 +3596,8 @@
     <service id="router.request_context" class="Symfony\Component\Routing\RequestContext" public="false">
       <argument>my/path</argument>
       <argument>GET</argument>
-      <argument>host.com</argument>
-      <argument>https</argument>
+      <argument>localhost</argument>
+      <argument>http</argument>
       <argument>80</argument>
       <argument>443</argument>
     </service>
@@ -4912,14 +4912,6 @@
         <argument>!SonataUser</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/drolya/Public/visualmasters/src/GalleryBundle/Resources/views</argument>
-        <argument>Gallery</argument>
-      </call>
-      <call method="addPath">
-        <argument>/Users/drolya/Public/visualmasters/src/GalleryBundle/Resources/views</argument>
-        <argument>!Gallery</argument>
-      </call>
-      <call method="addPath">
         <argument>/Users/drolya/Public/visualmasters/src/LandingBundle/Resources/views</argument>
         <argument>Landing</argument>
       </call>
@@ -5181,14 +5173,6 @@
       <call method="addPath">
         <argument>/Users/drolya/Public/visualmasters/vendor/sonata-project/user-bundle/src/Resources/views</argument>
         <argument>!SonataUser</argument>
-      </call>
-      <call method="addPath">
-        <argument>/Users/drolya/Public/visualmasters/src/GalleryBundle/Resources/views</argument>
-        <argument>Gallery</argument>
-      </call>
-      <call method="addPath">
-        <argument>/Users/drolya/Public/visualmasters/src/GalleryBundle/Resources/views</argument>
-        <argument>!Gallery</argument>
       </call>
       <call method="addPath">
         <argument>/Users/drolya/Public/visualmasters/src/LandingBundle/Resources/views</argument>
@@ -5708,7 +5692,6 @@
           <argument key="SonataMediaBundle">Sonata\MediaBundle\Entity</argument>
           <argument key="ApplicationSonataMediaBundle">Application\Sonata\MediaBundle\Entity</argument>
           <argument key="SonataUserBundle">Sonata\UserBundle\Entity</argument>
-          <argument key="GalleryBundle">GalleryBundle\Entity</argument>
           <argument key="LandingBundle">LandingBundle\Entity</argument>
           <argument key="SiteBundle">SiteBundle\Entity</argument>
         </argument>
@@ -5766,7 +5749,6 @@
     <service id="doctrine.orm.default_annotation_metadata_driver" class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
-        <argument>/Users/drolya/Public/visualmasters/src/GalleryBundle/Entity</argument>
         <argument>/Users/drolya/Public/visualmasters/src/LandingBundle/Entity</argument>
         <argument>/Users/drolya/Public/visualmasters/src/SiteBundle/Entity</argument>
       </argument>
@@ -5783,10 +5765,6 @@
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_xml_metadata_driver"/>
         <argument>Sonata\UserBundle\Entity</argument>
-      </call>
-      <call method="addDriver">
-        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
-        <argument>GalleryBundle\Entity</argument>
       </call>
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
@@ -5950,10 +5928,6 @@
         <argument>twig</argument>
       </call>
       <call method="addResource">
-        <argument type="service" id="assetic.twig_directory_resource.GalleryBundle"/>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
         <argument type="service" id="assetic.twig_directory_resource.SonataAdminBundle"/>
         <argument>twig</argument>
       </call>
@@ -6058,6 +6032,24 @@
       </call>
       <call method="setLineBreak">
         <argument>null</argument>
+      </call>
+    </service>
+    <service id="knp_snappy.pdf" class="Knp\Snappy\Pdf" public="true">
+      <tag name="monolog.logger" channel="snappy"/>
+      <argument>/usr/local/bin/wkhtmltopdf</argument>
+      <argument>%knp_snappy.pdf.options%</argument>
+      <argument type="collection"/>
+      <call method="setLogger">
+        <argument type="service" id="monolog.logger.snappy" on-invalid="ignore"/>
+      </call>
+    </service>
+    <service id="knp_snappy.image" class="Knp\Snappy\Image" public="true">
+      <tag name="monolog.logger" channel="snappy"/>
+      <argument>wkhtmltoimage</argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <call method="setLogger">
+        <argument type="service" id="monolog.logger.snappy" on-invalid="ignore"/>
       </call>
     </service>
     <service id="sonata.core.date.moment_format_converter" class="Sonata\CoreBundle\Date\MomentFormatConverter"/>
@@ -6729,11 +6721,11 @@
           <argument>sonata.media.admin.gallery_has_media</argument>
           <argument>sonata.user.admin.user</argument>
           <argument>sonata.user.admin.group</argument>
-          <argument>sonata.admin.gallery_page</argument>
-          <argument>sonata.admin.slide</argument>
           <argument>sonata.admin.orders</argument>
           <argument>sonata.admin.order_items</argument>
           <argument>sonata.admin.video</argument>
+          <argument>sonata.admin.gallery_page</argument>
+          <argument>sonata.admin.slide</argument>
         </argument>
       </call>
       <call method="setAdminGroups">
@@ -6822,12 +6814,6 @@
           <argument key="Sonata\UserBundle\Entity\BaseGroup" type="collection">
             <argument>sonata.user.admin.group</argument>
           </argument>
-          <argument key="GalleryBundle\Entity\GalleryPage" type="collection">
-            <argument>sonata.admin.gallery_page</argument>
-          </argument>
-          <argument key="GalleryBundle\Entity\Slide" type="collection">
-            <argument>sonata.admin.slide</argument>
-          </argument>
           <argument key="LandingBundle\Entity\Order" type="collection">
             <argument>sonata.admin.orders</argument>
           </argument>
@@ -6836,6 +6822,12 @@
           </argument>
           <argument key="SiteBundle\Entity\Video" type="collection">
             <argument>sonata.admin.video</argument>
+          </argument>
+          <argument key="SiteBundle\Entity\GalleryPage" type="collection">
+            <argument>sonata.admin.gallery_page</argument>
+          </argument>
+          <argument key="SiteBundle\Entity\Slide" type="collection">
+            <argument>sonata.admin.slide</argument>
           </argument>
         </argument>
       </call>
@@ -6849,11 +6841,11 @@
         <argument>sonata.media.admin.gallery_has_media</argument>
         <argument>sonata.user.admin.user</argument>
         <argument>sonata.user.admin.group</argument>
-        <argument>sonata.admin.gallery_page</argument>
-        <argument>sonata.admin.slide</argument>
         <argument>sonata.admin.orders</argument>
         <argument>sonata.admin.order_items</argument>
         <argument>sonata.admin.video</argument>
+        <argument>sonata.admin.gallery_page</argument>
+        <argument>sonata.admin.slide</argument>
       </argument>
       <argument type="service" id="service_container"/>
     </service>
@@ -9126,165 +9118,6 @@
       <argument type="service" id="security.acl.permission.map"/>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
     </service>
-    <service id="sonata.admin.gallery_page" class="GalleryBundle\Admin\GalleryPageAdmin" shared="false" public="true">
-      <tag name="sonata.admin" manager_type="orm" label="Gallery pages"/>
-      <argument>sonata.admin.gallery_page</argument>
-      <argument>GalleryBundle\Entity\GalleryPage</argument>
-      <argument>SonataAdminBundle:CRUD</argument>
-      <call method="setFormTheme">
-        <argument type="collection">
-          <argument>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</argument>
-        </argument>
-      </call>
-      <call method="setFilterTheme">
-        <argument type="collection">
-          <argument>@SonataDoctrineORMAdmin/Form/filter_admin_fields.html.twig</argument>
-        </argument>
-      </call>
-      <call method="setManagerType">
-        <argument>orm</argument>
-      </call>
-      <call method="setModelManager">
-        <argument type="service" id="sonata.admin.manager.orm"/>
-      </call>
-      <call method="setFormContractor">
-        <argument type="service" id="sonata.admin.builder.orm_form"/>
-      </call>
-      <call method="setShowBuilder">
-        <argument type="service" id="sonata.admin.builder.orm_show"/>
-      </call>
-      <call method="setListBuilder">
-        <argument type="service" id="sonata.admin.builder.orm_list"/>
-      </call>
-      <call method="setDatagridBuilder">
-        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
-      </call>
-      <call method="setTranslator">
-        <argument type="service" id="translator.data_collector"/>
-        <argument>false</argument>
-      </call>
-      <call method="setConfigurationPool">
-        <argument type="service" id="sonata.admin.pool"/>
-      </call>
-      <call method="setRouteGenerator">
-        <argument type="service" id="sonata.admin.route.default_generator"/>
-      </call>
-      <call method="setValidator">
-        <argument type="service" id="debug.validator"/>
-      </call>
-      <call method="setSecurityHandler">
-        <argument type="service" id="sonata.admin.security.handler.noop"/>
-      </call>
-      <call method="setMenuFactory">
-        <argument type="service" id="knp_menu.factory"/>
-      </call>
-      <call method="setRouteBuilder">
-        <argument type="service" id="sonata.admin.route.path_info"/>
-      </call>
-      <call method="setLabelTranslatorStrategy">
-        <argument type="service" id="sonata.admin.label.strategy.native"/>
-      </call>
-      <call method="setPagerType">
-        <argument>default</argument>
-      </call>
-      <call method="setLabel">
-        <argument>Gallery pages</argument>
-      </call>
-      <call method="showMosaicButton">
-        <argument>true</argument>
-      </call>
-      <call method="setTemplateRegistry">
-        <argument type="service" id="sonata.admin.gallery_page.template_registry"/>
-      </call>
-      <call method="setSecurityInformation">
-        <argument type="collection"/>
-      </call>
-      <call method="initialize"/>
-      <call method="addExtension">
-        <argument type="service" id="sonata.admin.event.extension"/>
-      </call>
-    </service>
-    <service id="sonata.admin.slide" class="GalleryBundle\Admin\SlideAdmin" shared="false" public="true">
-      <tag name="sonata.admin" manager_type="orm" label="Gallery page slides"/>
-      <argument>sonata.admin.slide</argument>
-      <argument>GalleryBundle\Entity\Slide</argument>
-      <argument>SonataAdminBundle:CRUD</argument>
-      <call method="setFormTheme">
-        <argument type="collection">
-          <argument>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</argument>
-        </argument>
-      </call>
-      <call method="setFilterTheme">
-        <argument type="collection">
-          <argument>@SonataDoctrineORMAdmin/Form/filter_admin_fields.html.twig</argument>
-        </argument>
-      </call>
-      <call method="setManagerType">
-        <argument>orm</argument>
-      </call>
-      <call method="setModelManager">
-        <argument type="service" id="sonata.admin.manager.orm"/>
-      </call>
-      <call method="setFormContractor">
-        <argument type="service" id="sonata.admin.builder.orm_form"/>
-      </call>
-      <call method="setShowBuilder">
-        <argument type="service" id="sonata.admin.builder.orm_show"/>
-      </call>
-      <call method="setListBuilder">
-        <argument type="service" id="sonata.admin.builder.orm_list"/>
-      </call>
-      <call method="setDatagridBuilder">
-        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
-      </call>
-      <call method="setTranslator">
-        <argument type="service" id="translator.data_collector"/>
-        <argument>false</argument>
-      </call>
-      <call method="setConfigurationPool">
-        <argument type="service" id="sonata.admin.pool"/>
-      </call>
-      <call method="setRouteGenerator">
-        <argument type="service" id="sonata.admin.route.default_generator"/>
-      </call>
-      <call method="setValidator">
-        <argument type="service" id="debug.validator"/>
-      </call>
-      <call method="setSecurityHandler">
-        <argument type="service" id="sonata.admin.security.handler.noop"/>
-      </call>
-      <call method="setMenuFactory">
-        <argument type="service" id="knp_menu.factory"/>
-      </call>
-      <call method="setRouteBuilder">
-        <argument type="service" id="sonata.admin.route.path_info"/>
-      </call>
-      <call method="setLabelTranslatorStrategy">
-        <argument type="service" id="sonata.admin.label.strategy.native"/>
-      </call>
-      <call method="setPagerType">
-        <argument>default</argument>
-      </call>
-      <call method="setLabel">
-        <argument>Gallery page slides</argument>
-      </call>
-      <call method="showMosaicButton">
-        <argument>true</argument>
-      </call>
-      <call method="setTemplateRegistry">
-        <argument type="service" id="sonata.admin.slide.template_registry"/>
-      </call>
-      <call method="setSecurityInformation">
-        <argument type="collection"/>
-      </call>
-      <call method="initialize"/>
-      <call method="addExtension">
-        <argument type="service" id="sonata.admin.event.extension"/>
-      </call>
-    </service>
-    <service id="app.gallery.unserialize_filter" class="GalleryBundle\Twig\UnserializeExtension" public="false">
-      <tag name="twig.extension"/>
-    </service>
     <service id="sonata.admin.orders" class="LandingBundle\Admin\OrderAdmin" shared="false" public="true">
       <tag name="sonata.admin" manager_type="orm" group="Order" label="Orders"/>
       <argument>sonata.admin.orders</argument>
@@ -9521,6 +9354,165 @@
       <call method="addExtension">
         <argument type="service" id="sonata.admin.event.extension"/>
       </call>
+    </service>
+    <service id="sonata.admin.gallery_page" class="SiteBundle\Admin\GalleryPageAdmin" shared="false" public="true">
+      <tag name="sonata.admin" manager_type="orm" label="Gallery pages"/>
+      <argument>sonata.admin.gallery_page</argument>
+      <argument>SiteBundle\Entity\GalleryPage</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.data_collector"/>
+        <argument>false</argument>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="debug.validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler.noop"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setPagerType">
+        <argument>default</argument>
+      </call>
+      <call method="setLabel">
+        <argument>Gallery pages</argument>
+      </call>
+      <call method="showMosaicButton">
+        <argument>true</argument>
+      </call>
+      <call method="setTemplateRegistry">
+        <argument type="service" id="sonata.admin.gallery_page.template_registry"/>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
+    <service id="sonata.admin.slide" class="SiteBundle\Admin\SlideAdmin" shared="false" public="true">
+      <tag name="sonata.admin" manager_type="orm" label="Gallery page slides"/>
+      <argument>sonata.admin.slide</argument>
+      <argument>SiteBundle\Entity\Slide</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.data_collector"/>
+        <argument>false</argument>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="debug.validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler.noop"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setPagerType">
+        <argument>default</argument>
+      </call>
+      <call method="setLabel">
+        <argument>Gallery page slides</argument>
+      </call>
+      <call method="showMosaicButton">
+        <argument>true</argument>
+      </call>
+      <call method="setTemplateRegistry">
+        <argument type="service" id="sonata.admin.slide.template_registry"/>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
+    <service id="app.gallery.unserialize_filter" class="SiteBundle\Twig\UnserializeExtension" public="false">
+      <tag name="twig.extension"/>
     </service>
     <service id="twig.extension.dump" class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
       <tag name="twig.extension"/>
@@ -10010,6 +10002,21 @@
         <argument type="service" id="monolog.handler.main"/>
       </call>
     </service>
+    <service id="monolog.logger.snappy" class="Symfony\Bridge\Monolog\Logger">
+      <argument>snappy</argument>
+      <call method="pushProcessor">
+        <argument type="service" id="debug.log_processor"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.server_log"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.console"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.main"/>
+      </call>
+    </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
     <service id="assetic.twig_directory_resource.SiteBundle" class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
       <tag name="assetic.templating.twig"/>
@@ -10028,28 +10035,6 @@
             <argument type="service" id="templating.loader.filesystem"/>
             <argument>SiteBundle</argument>
             <argument>/Users/drolya/Public/visualmasters/src/SiteBundle/Resources/views</argument>
-            <argument>/\.[^.]+\.twig$/</argument>
-          </service>
-        </argument>
-      </argument>
-    </service>
-    <service id="assetic.twig_directory_resource.GalleryBundle" class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-      <tag name="assetic.templating.twig"/>
-      <tag name="assetic.formula_resource" loader="twig"/>
-      <argument type="collection">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource" public="false">
-            <argument type="service" id="templating.loader.filesystem"/>
-            <argument>GalleryBundle</argument>
-            <argument>/Users/drolya/Public/visualmasters/app/Resources/GalleryBundle/views</argument>
-            <argument>/\.[^.]+\.twig$/</argument>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource" public="false">
-            <argument type="service" id="templating.loader.filesystem"/>
-            <argument>GalleryBundle</argument>
-            <argument>/Users/drolya/Public/visualmasters/src/GalleryBundle/Resources/views</argument>
             <argument>/\.[^.]+\.twig$/</argument>
           </service>
         </argument>
@@ -10398,14 +10383,6 @@
       <tag name="sonata.admin.template_registry"/>
       <argument>%sonata.admin.configuration.templates%</argument>
     </service>
-    <service id="sonata.admin.gallery_page.template_registry" class="Sonata\AdminBundle\Templating\TemplateRegistry" public="true">
-      <tag name="sonata.admin.template_registry"/>
-      <argument>%sonata.admin.configuration.templates%</argument>
-    </service>
-    <service id="sonata.admin.slide.template_registry" class="Sonata\AdminBundle\Templating\TemplateRegistry" public="true">
-      <tag name="sonata.admin.template_registry"/>
-      <argument>%sonata.admin.configuration.templates%</argument>
-    </service>
     <service id="sonata.admin.orders.template_registry" class="Sonata\AdminBundle\Templating\TemplateRegistry" public="true">
       <tag name="sonata.admin.template_registry"/>
       <argument>%sonata.admin.configuration.templates%</argument>
@@ -10415,6 +10392,14 @@
       <argument>%sonata.admin.configuration.templates%</argument>
     </service>
     <service id="sonata.admin.video.template_registry" class="Sonata\AdminBundle\Templating\TemplateRegistry" public="true">
+      <tag name="sonata.admin.template_registry"/>
+      <argument>%sonata.admin.configuration.templates%</argument>
+    </service>
+    <service id="sonata.admin.gallery_page.template_registry" class="Sonata\AdminBundle\Templating\TemplateRegistry" public="true">
+      <tag name="sonata.admin.template_registry"/>
+      <argument>%sonata.admin.configuration.templates%</argument>
+    </service>
+    <service id="sonata.admin.slide.template_registry" class="Sonata\AdminBundle\Templating\TemplateRegistry" public="true">
       <tag name="sonata.admin.template_registry"/>
       <argument>%sonata.admin.configuration.templates%</argument>
     </service>
@@ -10683,6 +10668,8 @@
     <service id="sensio_framework_extra.converter.doctrine.orm.expression_language" alias="sensio_framework_extra.converter.doctrine.orm.expression_language.default" public="false"/>
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default" public="false"/>
     <service id="assetic.value_supplier" alias="assetic.value_supplier.default" public="false"/>
+    <service id="Knp\Snappy\Pdf" alias="knp_snappy.pdf"/>
+    <service id="Knp\Snappy\Image" alias="knp_snappy.image"/>
     <service id="sonata.block.context_manager" alias="sonata.block.context_manager.default"/>
     <service id="sonata.block.cache.handler" alias="sonata.block.cache.handler.default"/>
     <service id="sonata.block.renderer" alias="sonata.block.renderer.default"/>

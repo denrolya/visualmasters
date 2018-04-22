@@ -3,11 +3,6 @@ app_landing:
     type:     annotation
     prefix:   /
 
-app_gallery:
-    resource: "@GalleryBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 app_site:
     resource: "@SiteBundle/Controller/"
     type:     annotation
