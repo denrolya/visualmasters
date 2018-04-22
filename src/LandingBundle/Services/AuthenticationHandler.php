@@ -24,7 +24,7 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface
         $url = $this
             ->container
             ->get('router')
-            ->generate('admin_landing_orderitem_list');
+            ->generate('admin_landing_order_list');
 
         return new RedirectResponse($url);
     }
