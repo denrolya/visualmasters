@@ -29,7 +29,11 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(OrderType::class, new Order(), ['action' => $this->generateUrl('process_order')])->createView();
+        $form = $this
+            ->createForm(OrderType::class, new Order(), [
+                'action' => $this->generateUrl('process_order')
+            ])
+            ->createView();
 
         $galleries = $em->getRepository(GalleryPage::class)->findAll();
 
@@ -38,8 +42,9 @@ class DefaultController extends Controller
         /** @var GalleryPage $gallery */
         foreach($galleries as $index => $gallery) {
             $gallerySlides = $gallery->getSlides();
-            if  (count($gallerySlides) > 0)
+            if  (count($gallerySlides) > 0) {
                 array_push($randomSlides, $gallerySlides[array_rand($gallerySlides->getKeys())]);
+            }
         }
 
         $video = $em->getRepository(Video::class)->findAll()[0];
@@ -55,23 +60,12 @@ class DefaultController extends Controller
      * @Route("/galleries/{slug}", name="gallery_page")
      * @Template()
      */
-    public function galleryAction($slug)
+    public function galleryAction(GalleryPage $galleryPage)
     {
-
-        $galleryPage = $this
-            ->getDoctrine()
-            ->getRepository(GalleryPage::class)
-            ->findOneBySlug($slug);
-
-        if (!$galleryPage) {
-            throw $this->createNotFoundException("Page doesn't exist!");
-        }
-
         $form = $this
-            ->createForm(
-                OrderType::class,
-                new Order(),
-                ['action' => $this->generateUrl('process_order')])
+            ->createForm(OrderType::class,new Order(), [
+                'action' => $this->generateUrl('process_order')
+            ])
             ->createView();
 
         return [
@@ -126,14 +120,14 @@ class DefaultController extends Controller
      */
     public function downloadOrderFilesAsZipAction(Order $order)
     {
-        $em = $this->get('doctrine.orm.entity_manager');
-
         $zip = new \ZipArchive();
         $zipName = 'order-'.time().".zip";
         $zip->open($zipName,  \ZipArchive::CREATE);
 
         $finder = new Finder();
-        $finder->files()->in($this->container->getParameter('files_dir') . '/' . $order->getId(). '/invoices');
+        $finder
+            ->files()
+            ->in($this->container->getParameter('files_dir') . '/' . $order->getId(). '/invoices');
 
         foreach ($finder as $file) {
             /** @var \Symfony\Component\Finder\SplFileInfo $file */
@@ -160,7 +154,7 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->get('doctrine.orm.entity_manager');
 
             $em->persist($order);
 
