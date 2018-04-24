@@ -311,10 +311,10 @@ class Order
     /**
      * Set invoiceDate
      *
-     * @param \DateTime $invoiceDate
-     * @return Order
+     * @param \DateTime|null $invoiceDate
+     * @return $this
      */
-    public function setInvoiceDate(\DateTime $invoiceDate)
+    public function setInvoiceDate($invoiceDate)
     {
         $this->invoiceDate = $invoiceDate;
 

@@ -8,6 +8,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper,
     Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\CoreBundle\Form\Type\CollectionType;
+use Sonata\CoreBundle\Form\Type\DatePickerType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class OrderAdmin extends Admin
 {
@@ -30,17 +33,26 @@ class OrderAdmin extends Admin
             ->with('Addition information')
                 ->add('salesPerson')
                 ->add('projectName')
-                ->add('terms', 'choice', ['choices' => ['cash' => 'Cash', 'transfer' => 'Transfer']])
-                ->add('deliveryDate', 'date')
+                ->add('terms', ChoiceType::class, [
+                    'choices' => [
+                        'Transfer' => 'transfer',
+                        'Cash' => 'cash'
+                    ]
+                ])
+                ->add('deliveryDate', DatePickerType::class)
             ->end()
             ->with('Invoice')
-                ->add('invoiceDate', 'sonata_type_datetime_picker', [
+                ->add('invoiceDate', DatePickerType::class, [
+                    'required' => false,
                     'placeholder' => 'Date to be displayed in invoice for this order',
                     'label' => 'Invoice date'
                 ])
             ->end()
             ->with('Order Items')
-                ->add('items', 'sonata_type_collection', ['by_reference' => false, 'required' => true], [
+                ->add('items', CollectionType::class, [
+                    'by_reference' => false,
+                    'required' => true
+                ], [
                     'edit' => 'inline',
                     'inline' => 'table',
                     'sortable' => 'id'
