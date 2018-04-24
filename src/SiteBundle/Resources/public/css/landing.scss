@@ -190,10 +190,10 @@ hr {
 
 .main-footer .col-md-3:first-child a:after {
   right: calc(50% - 75px);
-  content: url(../images/interior.png);
+  content: url(../img/interior.png);
   @include tab-mob {
     right: calc(50% - 63px);
-    background-image: url(../images/interior.png);
+    background-image: url(../img/interior.png);
     width: 115px;
     height: 35px;
     content: "";
@@ -202,10 +202,10 @@ hr {
 
 .main-footer .col-md-3:first-child a:hover::after,
 .main-footer .col-md-3:first-child a.active::after {
-  content:url(../images/interior-white.png);
+  content:url(../img/interior-white.png);
   @include tab-mob {
     right: calc(50% - 63px);
-    background-image: url(../images/interior.png);
+    background-image: url(../img/interior.png);
     width: 115px;
     height: 35px;
     content: "";
@@ -214,11 +214,11 @@ hr {
 
 .main-footer .col-md-3:nth-child(2) a:after {
   top: -60px; right: calc(50% - 91px);
-  content: url(../images/exterior.png);
+  content: url(../img/exterior.png);
   @include tab-mob {
     top: 10px;
     right: calc(50% - 63px);
-    background-image: url(../images/exterior.png);
+    background-image: url(../img/exterior.png);
     width: 115px;
     height: 35px;
     content: "";
@@ -227,11 +227,11 @@ hr {
 
 .main-footer .col-md-3:nth-child(2) a:hover::after,
 .main-footer .col-md-3:nth-child(2) a.active::after {
-  content: url(../images/exterior-white.png);
+  content: url(../img/exterior-white.png);
   @include tab-mob {
     top: 10px;
     right: calc(50% - 63px);
-    background-image: url(../images/exterior.png);
+    background-image: url(../img/exterior.png);
     width: 115px;
     height: 35px;
     content: "";
@@ -241,11 +241,11 @@ hr {
 
 .main-footer .col-md-3:nth-child(3) a:after {
   top: -59px; right: calc(50% - 90px);
-  content: url(../images/web.png);
+  content: url(../img/web.png);
   @include tab-mob {
     top: 10px;
     right: calc(50% - 90px);
-    background-image: url(../images/web.png);
+    background-image: url(../img/web.png);
     width: 115px;
     height: 35px;
     content: "";
@@ -253,11 +253,11 @@ hr {
 }
 .main-footer .col-md-3:nth-child(3) a:hover::after,
 .main-footer .col-md-3:nth-child(3) a.active::after {
-  content: url(../images/web-white.png);
+  content: url(../img/web-white.png);
   @include tab-mob {
     top: 10px;
     right: calc(50% - 90px);
-    background-image: url(../images/web.png);
+    background-image: url(../img/web.png);
     width: 115px;
     height: 35px;
     content: "";
@@ -267,11 +267,11 @@ hr {
 
 .main-footer .col-md-3:nth-child(4) a:after {
   top: -59px; right: calc(50% - 25px);
-  content: url(../images/special.png);
+  content: url(../img/special.png);
   @include tab-mob {
     top: 10px;
     right: calc(50% - 95px);
-    background-image: url(../images/special.png);
+    background-image: url(../img/special.png);
     width: 115px;
     height: 35px;
     content: "";
@@ -287,11 +287,11 @@ hr {
 
 .main-footer .col-md-3:nth-child(4) a:hover::after,
 .main-footer .col-md-3:nth-child(4) a.active::after {
-  content: url(../images/special-white.png);
+  content: url(../img/special-white.png);
   @include tab-mob {
     top: 10px;
     right: calc(50% - 95px);
-    background-image: url(../images/special.png);
+    background-image: url(../img/special.png);
     width: 115px;
     height: 35px;
     content: "";

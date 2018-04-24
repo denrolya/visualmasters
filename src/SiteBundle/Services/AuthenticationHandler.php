@@ -1,6 +1,6 @@
 <?php
 
-namespace LandingBundle\Services;
+namespace SiteBundle\Services;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -24,7 +24,7 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface
         $url = $this
             ->container
             ->get('router')
-            ->generate('admin_landing_order_list');
+            ->generate('admin_site_order_list');
 
         return new RedirectResponse($url);
     }

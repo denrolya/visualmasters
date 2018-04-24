@@ -7,16 +7,14 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>{% block title %}No-title Page{% endblock title %}</title>
+        <title>{% block title %}VisualMasters{% endblock title %}</title>
 
         {% block stylesheets %}
-
             {% stylesheets
                 "bundles/site/css/bootstrap.css"
-                "bundles/landing/css/creative.css"
-                "bundles/landing/css/landing.css"
-                "bundles/landing/css/icomoon.css"
-                "bundles/landing/css/font-awesome.css"
+                "bundles/site/css/creative.css"
+                "bundles/site/css/icomoon.css"
+                "bundles/site/css/font-awesome.css"
             filter="yui_css, cssrewrite" %}
             <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
             {% endstylesheets %}
@@ -36,7 +34,6 @@
                 "bundles/site/js/jquery_2.1.3.min.js"
                 "bundles/site/js/jquery-ui.js"
                 "bundles/site/js/bootstrap.js"
-                "bundles/landing/js/*"
             filter="yui_js" %}
                 <script src="{{ asset_url }}" type="text/javascript"></script>
             {% endjavascripts %}

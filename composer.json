@@ -4,7 +4,6 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "LandingBundle\\": "src/LandingBundle",
             "SiteBundle\\": "src/SiteBundle",
             "Application\\Sonata\\MediaBundle\\": "src/Application/Sonata/MediaBundle"
         },

@@ -4,3 +4,8 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+
+    admin_success_handler:
+        public: true
+        class: SiteBundle\Services\AuthenticationHandler
+        arguments: [ '@service_container' ]

@@ -1,10 +1,11 @@
 <?php
 
-namespace LandingBundle\Form;
+namespace SiteBundle\Form;
 
+use SiteBundle\Entity\Order;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class OrderType extends AbstractType
 {
@@ -25,11 +26,14 @@ class OrderType extends AbstractType
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(['data_class' => 'LandingBundle\Entity\Order']);
+        $resolver
+            ->setDefaults([
+                'data_class' => Order::class
+            ]);
     }
 
     /**
@@ -37,6 +41,6 @@ class OrderType extends AbstractType
      */
     public function getName()
     {
-        return 'application_landingbundle_baseorder';
+        return 'order';
     }
 }

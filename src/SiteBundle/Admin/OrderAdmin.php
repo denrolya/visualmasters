@@ -1,6 +1,6 @@
 <?php
 
-namespace LandingBundle\Admin;
+namespace SiteBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -76,7 +76,7 @@ class OrderAdmin extends Admin
             ->add('postal')
             ->add('createdAt')
             ->add('invoices', 'actions', [
-                'template' => 'LandingBundle:CRUD:list__action_invoices.html.twig'
+                'template' => 'SiteBundle:CRUD:list__action_invoices.html.twig'
             ])
             ->add('_action', 'actions', [
                 'actions' => [

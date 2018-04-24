@@ -1,5 +1,16 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}Home | VisualMasters{% endblock title %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        "bundles/site/css/landing.css"
+    filter="yui_css, cssrewrite" %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock stylesheets %}
+
 {% block content %}
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -40,24 +51,31 @@
         </div>
     </nav>
 
-    {{ include('LandingBundle:default/sections:main.html.twig') }}
+    {{ include('SiteBundle:default/sections:main.html.twig') }}
 
-    {{ include('LandingBundle:default/sections:about.html.twig') }}
+    {{ include('SiteBundle:default/sections:about.html.twig') }}
 
-    {{ include('LandingBundle:default/sections:services.html.twig') }}
+    {{ include('SiteBundle:default/sections:services.html.twig') }}
 
-    {{ include('LandingBundle:default/sections:descriptions.html.twig') }}
+    {{ include('SiteBundle:default/sections:descriptions.html.twig') }}
 
-    {{ include('LandingBundle:default/sections:portfolio.html.twig') }}
+    {{ include('SiteBundle:default/sections:portfolio.html.twig') }}
 
-    {{ include('LandingBundle:default/sections:media.html.twig') }}
+    {{ include('SiteBundle:default/sections:media.html.twig') }}
 
-    {{ include('LandingBundle:default/sections:contact.html.twig') }}
+    {{ include('SiteBundle:default/sections:contact.html.twig') }}
 
 {% endblock content %}
 
 {% block javascripts %}
     {{ parent() }}
+
+    {% javascripts
+        "bundles/site/js/creative.js"
+    filter="yui_js" %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+
     <script type="text/javascript">
         (function (){
             'use strict';

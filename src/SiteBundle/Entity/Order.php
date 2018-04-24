@@ -1,6 +1,6 @@
 <?php
 
-namespace LandingBundle\Entity;
+namespace SiteBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;

@@ -39,6 +39,7 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes:
+        - 'bootstrap_3_layout.html.twig'
         - '@SonataCore/Form/datepicker.html.twig'
 
 # Doctrine Configuration
@@ -76,7 +77,7 @@ swiftmailer:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [SiteBundle, SonataAdminBundle, LandingBundle]
+    bundles:        [SiteBundle, SonataAdminBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

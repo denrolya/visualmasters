@@ -1,8 +1,3 @@
-app_landing:
-    resource: "@LandingBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 app_site:
     resource: "@SiteBundle/Controller/"
     type:     annotation
