@@ -11,7 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table("orders")
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks()
  */
 class Order
 {
@@ -122,19 +121,12 @@ class Order
 
     public function __construct() {
         $this->items = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function __toString()
     {
         return (string)$this->id;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function initializeDate()
-    {
-        $this->createdAt = new \DateTime();
     }
 
     /**
