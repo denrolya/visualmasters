@@ -44,5 +44,5 @@ deploy.php
 # Uploads
 /web/uploads
 
-.sql
+*.sql
 *.css.map
