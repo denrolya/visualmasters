@@ -21,19 +21,19 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="crn", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $crn;
+    private $uniqueTaxReference;
 
-    public function setCrn($crn)
+    public function setUniqueTaxReference($uniqueTaxReference)
     {
-        $this->crn = $crn;
+        $this->uniqueTaxReference = $uniqueTaxReference;
 
         return $this;
     }
 
-    public function getCrn()
+    public function getUniqueTaxReference()
     {
-        return $this->crn;
+        return $this->uniqueTaxReference;
     }
 }

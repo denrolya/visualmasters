@@ -27,16 +27,22 @@
                         4 Windsor Terrace, <br>
                         Hagley Road, Birmingham, <br> England, B16 8UH <br>
                         Tel +447449552179 <br>
-                        Email: visualmasters.co.uk@gmail.com <br>
-                        Web site : visualmasters.co.uk <br>
+                        Email: info@visualmasters.co.uk <br>
+                        Web site: visualmasters.co.uk <br>
                     </p>
                 </div>
                 <div class="last-col">
                     <h4>INVOICE</h4>
                     <h5>reference: {{ order.id }}</h5>
                     <p>
-                        Date: {% if (order.invoiceDate) %}{{ order.invoiceDate | date("F j Y") }}{% else %}{{ "now" | date("F j Y") }}{% endif %}<br>
-                        {% if app.user and app.user.crn %}CRN {{ app.user.crn }} <br><{% endif %}
+                        {% if app.user and app.user.uniqueTaxReference is not null %}
+                            UTR: {{ app.user.uniqueTaxReference }} <br>
+                        {% endif %}
+                        Date: {% if (order.invoiceDate) %}
+                            {{ order.invoiceDate | date("d.m.Y") }} <br>
+                        {% else %}
+                            {{ "now" | date("d.m.Y") }} <br>
+                        {% endif %}
                         Bank details: Barclays <br>
                         Account N: 93721973 <br>
                         Sort code: 20-07-84 <br>
@@ -68,7 +74,7 @@
                         <td>{{ order.salesPerson | title }}</td>
                         <td>{{ order.projectName | title }}</td>
                         <td>{{ order.terms | capitalize }}</td>
-                        <td>{{ order.deliveryDate | date("F j Y") }}</td>
+                        <td>{{ order.deliveryDate | date("d.m.Y") }}</td>
                     </tr>
                 </tbody>
             </table>
