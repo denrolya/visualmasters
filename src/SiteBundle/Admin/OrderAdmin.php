@@ -29,6 +29,7 @@ class OrderAdmin extends Admin
                 ->add('phonenumber')
                 ->add('address')
                 ->add('postal')
+                ->add('comments')
             ->end()
             ->with('Addition information')
                 ->add('salesPerson')
