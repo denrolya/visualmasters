@@ -40,11 +40,14 @@ class OrderAdmin extends Admin
                         'Cash' => 'cash'
                     ]
                 ])
-                ->add('deliveryDate', DatePickerType::class)
+                ->add('deliveryDate', DatePickerType::class, [
+                    'dp_use_current' => false
+                ])
             ->end()
             ->with('Invoice')
                 ->add('invoiceDate', DatePickerType::class, [
                     'required' => false,
+                    'dp_use_current' => false,
                     'placeholder' => 'Date to be displayed in invoice for this order',
                     'label' => 'Invoice date'
                 ])
