@@ -24,45 +24,46 @@ class OrderAdmin extends Admin
     {
         $formMapper
             ->with('Order information')
-                ->add('name')
-                ->add('email')
-                ->add('phonenumber')
-                ->add('address')
-                ->add('postal')
-                ->add('comments')
+            ->add('name')
+            ->add('email')
+            ->add('phonenumber')
+            ->add('address')
+            ->add('postal')
+            ->add('comments')
             ->end()
             ->with('Addition information')
-                ->add('salesPerson')
-                ->add('projectName')
-                ->add('terms', ChoiceType::class, [
-                    'choices' => [
-                        'Transfer' => 'transfer',
-                        'Cash' => 'cash'
-                    ]
-                ])
-                ->add('deliveryDate', DatePickerType::class, [
-                    'dp_use_current' => false
-                ])
+            ->add('salesPerson')
+            ->add('projectName')
+            ->add('terms', ChoiceType::class, [
+                'choices' => [
+                    'Transfer' => 'transfer',
+                    'Cash' => 'cash'
+                ]
+            ])
+            ->add('deliveryDate', DatePickerType::class, [
+                'dp_use_current' => false,
+                'format' => 'dd.MM.yyyy'
+            ])
             ->end()
             ->with('Invoice')
-                ->add('invoiceDate', DatePickerType::class, [
-                    'required' => false,
-                    'dp_use_current' => false,
-                    'placeholder' => 'Date to be displayed in invoice for this order',
-                    'label' => 'Invoice date'
-                ])
+            ->add('invoiceDate', DatePickerType::class, [
+                'required' => false,
+                'dp_use_current' => false,
+                'format' => 'dd.MM.yyyy',
+                'placeholder' => 'Date to be displayed in invoice for this order',
+                'label' => 'Invoice date'
+            ])
             ->end()
             ->with('Order Items')
-                ->add('items', CollectionType::class, [
-                    'by_reference' => false,
-                    'required' => true
-                ], [
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable' => 'id'
-                ])
-            ->end()
-            ;
+            ->add('items', CollectionType::class, [
+                'by_reference' => false,
+                'required' => true
+            ], [
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable' => 'id'
+            ])
+            ->end();
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -84,12 +85,11 @@ class OrderAdmin extends Admin
             ])
             ->add('_action', 'actions', [
                 'actions' => [
-                    'show'      => [],
-                    'edit'      => [],
-                    'delete'    => []
+                    'show' => [],
+                    'edit' => [],
+                    'delete' => []
                 ]
-            ])
-        ;
+            ]);
     }
 
 
@@ -104,14 +104,13 @@ class OrderAdmin extends Admin
             ->add('postal')
             ->add('comments')
             ->add('file')
-            ->add('items')
-        ;
+            ->add('items');
     }
 
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('invoice_html', $this->getRouterIdParameter().'/invoice.html');
-        $collection->add('invoice_pdf', $this->getRouterIdParameter().'/invoice.pdf');
+        $collection->add('invoice_html', $this->getRouterIdParameter() . '/invoice.html');
+        $collection->add('invoice_pdf', $this->getRouterIdParameter() . '/invoice.pdf');
 //        $collection->clearExcept(['list', 'show', 'edit', 'delete', 'invoice']);
     }
 }
