@@ -42,19 +42,17 @@
     padding-top: 20px; }
     .invoice-header .invoice-details h5 {
       font-size: 17px;
-      font-weight: 700;
-    }
+      font-weight: 700; }
     .invoice-header .invoice-details h6 {
       font-size: 14px; }
     .invoice-header .invoice-details .first-col, .invoice-header .invoice-details .last-col {
-      position: relative;
-    }
+      position: relative; }
     .invoice-header .invoice-details .last-col {
-      text-align: right; }
+      text-align: left; }
 
 .invoice-table {
   padding-top: 30px;
-  max-width: 560px;
+  max-width: 540px;
   margin-left: auto;
   margin-right: auto; }
   .invoice-table table {
@@ -86,51 +84,4 @@
     display: block;
     text-align: center; }
 
-.border          { border: 1px solid $gray-200 !important; }
-.border-0        { border: 0 !important; }
-.border-top-0    { border-top: 0 !important; }
-.border-right-0  { border-right: 0 !important; }
-.border-bottom-0 { border-bottom: 0 !important; }
-.border-left-0   { border-left: 0 !important; }
-
-@each $color, $value in $theme-colors {
-  .border-#{$color} {
-    border-color: $value !important;
-  }
-}
-
-.border-white {
-  border-color: $white !important;
-}
-
-//
-// Border-radius
-//
-
-.rounded {
-  border-radius: $border-radius !important;
-}
-.rounded-top {
-  border-top-left-radius: $border-radius !important;
-  border-top-right-radius: $border-radius !important;
-}
-.rounded-right {
-  border-top-right-radius: $border-radius !important;
-  border-bottom-right-radius: $border-radius !important;
-}
-.rounded-bottom {
-  border-bottom-right-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
-}
-.rounded-left {
-  border-top-left-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
-}
-
-.rounded-circle {
-  border-radius: 50%;
-}
-
-.rounded-0 {
-  border-radius: 0;
-}
+/*# sourceMappingURL=invoice.css.map */

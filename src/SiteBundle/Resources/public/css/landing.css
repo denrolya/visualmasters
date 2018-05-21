@@ -50,7 +50,7 @@ hr {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 75px; }
+  height: 55px; }
   @media (min-width: 768px) and (max-width: 991px) {
     .footer {
       max-height: 195px;
@@ -99,7 +99,7 @@ hr {
 
 @media screen and (max-height: 900px) {
   .main-footer a {
-    padding-top: 20px;
+    padding-top: 15px;
     font-size: 1.7em; } }
 @media (min-width: 768px) and (max-width: 991px) {
   .main-footer a {
@@ -274,11 +274,11 @@ hr {
 /*======== END MAIN FOOTER =========*/
 /*========== NAVBAR ==========*/
 .navbar .container-fluid {
-  padding: 9px 40px 0 40px;
+  padding: 0 40px 0 40px;
   background-color: #303030; }
   @media (min-width: 768px) and (max-width: 991px) {
     .navbar .container-fluid {
-      padding: 9px 30px 0 30px;
+      padding: 0 30px 0 30px;
       max-height: 50px; } }
   @media (min-width: 0px) and (max-width: 767px) {
     .navbar .container-fluid {
@@ -298,6 +298,12 @@ hr {
   @media (min-width: 768px) and (max-width: 991px) {
     .navbar .navbar-nav a {
       padding: 2px 16px; } }
+
+.navbar-nav.navbar-right {
+  padding-top: 14px; }
+  @media (min-width: 0px) and (max-width: 767px) {
+    .navbar-nav.navbar-right {
+      padding-top: 0; } }
 
 .navbar .navbar-nav a:not(.order):hover {
   background: #0083B2; }
@@ -469,7 +475,9 @@ hr {
 
 #about .footer a {
   color: #969696;
-  font-size: 50px; }
+  font-size: 45px;
+  height: 100%;
+  display: block; }
   @media (min-width: 0px) and (max-width: 767px) {
     #about .footer a {
       font-size: 50px; } }
@@ -880,6 +888,8 @@ hr {
   display: block;
   margin: auto;
   margin-bottom: 10px; }
+  #contact .icon.icon-facebook {
+    display: block !important; }
 
 #contact .footer {
   padding-top: 15px;
