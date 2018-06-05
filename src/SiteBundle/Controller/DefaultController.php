@@ -150,7 +150,7 @@ class DefaultController extends Controller
     public function processOrderAction(Request $request)
     {
         $order = new Order();
-        $form = $this->createForm(new OrderType(), $order);
+        $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
