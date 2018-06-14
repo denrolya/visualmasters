@@ -1,0 +1,108 @@
+<?php
+
+namespace Deployer;
+
+require __DIR__ . '/vendor/deployer/deployer/recipe/symfony3.php';
+
+set('application', 'visualmasters'); // Project name
+set('http_user', 'www-data');
+set('db', [
+    'local' => [
+        'name' => 'visualmasters',
+        'username' => '-USERNAME-',
+                'password' => '-PASSWORD-'
+    ],
+    'production' => [
+        'host' => '46.101.57.96',
+        'name' => 'visualmasters',
+        'username' => '-USERNAME-',
+        'password' => '-PASSWORD-'
+    ]
+]);
+set('local_project_folder', '/path/to/visualmasters'); // In order to use database:copy:to_local
+
+// Hosts
+host('production')
+    ->hostname(get('db')['production']['host'])
+    ->stage('production')
+    ->user('-USERNAME-')
+    ->identityFile('~/.ssh/id_rsa')
+    ->multiplexing(true)
+    ->set('repository', 'https://github.com/denrolya/visualmasters.git')
+    ->set('branch', 'develop')
+    ->set('clear_paths', [])
+    ->set('symfony_env', 'dev')
+    ->set('composer_options', 'install --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader')
+    ->set('deploy_path', '/var/www/{{application}}')
+    ->set('writable_mode', 'acl')
+    ->set('shared_dirs', ['web/uploads', 'var/logs', 'var/jwt', 'var/sessions']);
+
+task('database:copy:to_local', function() {
+    $dumpFilename = 'dump-' . time() . '.sql';
+    $remoteDb = get('db')[input()->getArgument('stage')];
+    $localDb = get('db')['local'];
+
+    writeln('<info>Dumping database from remote host.</info>');
+    runLocally("mysqldump -h {$remoteDb['host']} -u {$remoteDb['username']} -p{$remoteDb['password']} {$remoteDb['name']} > ./$dumpFilename");
+
+    writeln('<info>Dump success. Exporting dump into local database.</info>');
+    runLocally("mysql -u {$localDb['username']} -p{$localDb['password']} {$localDb['name']} < ./$dumpFilename");
+    writeln('<info>Successfully exported! Removing leftover files...</info>');
+    runLocally("rm ./$dumpFilename");
+
+    writeln('<info>Database migration finished...</info>');
+    if (askConfirmation('Do you want to fetch all the uploads from [' . $stage . ']?')) {
+        run('media:to_local'); // TODO
+    }
+})->desc('Copy database from remote stage to local environment');
+
+task('database:copy:to_remote', function() {
+    $stage = input()->getArgument('stage');
+    if (!askConfirmation('You sure you want to upload your local DB to [' . $stage . ']?')) {
+        writeln('<info>Aborted by user!</info>'); die;
+    }
+
+    $dumpFilename = 'dump-' . time() . '.sql';
+    $remoteDb = get('db')[$stage];
+    $localDb = get('db')['local'];
+
+    writeln('<info>Dumping database locally.</info>');
+    runLocally("mysqldump -u {$localDb['username']} -p{$localDb['password']} {$localDb['name']} > ./$dumpFilename");
+
+    writeln('<info>Dump complete. Exporting dump into remote database.</info>');
+    runLocally("mysql -h {$remoteDb['host']} -u {$remoteDb['username']} -p{$remoteDb['password']} {$remoteDb['name']} < ./$dumpFilename");
+
+    writeln('<info>Successfully exported! Removing leftover files...</info>');
+    runLocally("rm ./$dumpFilename");
+
+    writeln('<info>Done</info>');
+})->desc('Copy local database to remote stage');
+
+task('media:to_local', function() {
+    download('{{release_path}}/web/uploads/', './web/uploads');
+    writeln('<info>Done</info>');
+})->desc('Download media uploads from remote to local');
+
+task('deploy', [
+    'deploy:info',
+    'deploy:prepare',
+    'deploy:lock',
+    'deploy:release',
+    'deploy:update_code',
+    'deploy:clear_paths',
+    'deploy:create_cache_dir',
+    'deploy:shared',
+    'deploy:assets',
+    'deploy:vendors',
+    'deploy:assets:install',
+    'deploy:assetic:dump',
+    'deploy:cache:clear',
+    'deploy:cache:warmup',
+    'deploy:writable',
+    'deploy:symlink',
+    'deploy:unlock',
+    'cleanup',
+])->desc('Deploy backend application');
+
+after('deploy:failed', 'deploy:unlock');
+after('deploy', 'success');
