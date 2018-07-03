@@ -24,6 +24,11 @@
 /web/assets/vendor/
 /node_modules/
 
+# Compiled assets
+/web/js/*
+/web/css/*
+/web/images/*
+
 # IDE Files
 /.phpintel/
 /nbproject

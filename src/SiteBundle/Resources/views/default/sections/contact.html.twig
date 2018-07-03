@@ -10,13 +10,13 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                 <h3 class="location-info">
                     <span class="icon icon-location"></span>
-                    <a href=https://goo.gl/maps/gxXVrLMq6iP2"><strong>4 Windsor Terrace Hagley Road Edgbaston <br> Birmingham B16 8UH</strong></a>
+                    <a href="https://goo.gl/maps/gxXVrLMq6iP2"><strong>4 Windsor Terrace Hagley Road Edgbaston <br> Birmingham B16 8UH</strong></a>
                 </h3>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                 <h3 class="location-info">
                     <span class="icon icon-email"></span>
-                    <strong><a href="mailto:your-email@your-domain.com">info@visualmasters.co.uk</a></strong>
+                    <strong><a href="mailto:info@visualmasters.co.uk">info@visualmasters.co.uk</a></strong>
                 </h3>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
@@ -67,24 +67,24 @@
                                 <h5 class="modal-notice text-muted">please fill the fields below:</h5>
 
                                 {{ form_start(form, {'name': 'order-form'}) }}
-                                    {{ form_row(form.name) }}
-                                    {{ form_row(form.email) }}
-                                    {{ form_row(form.phonenumber) }}
-                                    {{ form_row(form.address) }}
-                                    {{ form_row(form.postal) }}
-                                    {{ form_row(form.comments) }}
-                                    <div class="form-group m-t">
-                                        <input type="file" name="file" id="file" class="inputfile" accept=".zip"/>
-                                        <label for="file" class="btn btn-default btn-attach"><span>Attach file*</span></label>
-                                        <button type="submit" class="btn btn-primary btn-submit">
-                                            <span id="btn-submit-text">Send</span>
-                                            <span id="loader"><i class="fa fa-circle-o-notch fa-spin"></i></span>
-                                        </button>
-                                    </div>
-                                    <div class="form-group text-left">
-                                        <span class="text-muted">* only zip files allowed</span>
-                                    </div>
-                                    {{ form_rest(form) }}
+                                {{ form_row(form.name) }}
+                                {{ form_row(form.email) }}
+                                {{ form_row(form.phonenumber) }}
+                                {{ form_row(form.address) }}
+                                {{ form_row(form.postal) }}
+                                {{ form_row(form.comments) }}
+                                <div class="form-group m-t">
+                                    <input type="file" name="file" id="file" class="inputfile" accept=".zip"/>
+                                    <label for="file" class="btn btn-default btn-attach"><span>Attach file*</span></label>
+                                    <button type="submit" class="btn btn-primary btn-submit">
+                                        <span id="btn-submit-text">Send</span>
+                                        <span id="loader"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                                    </button>
+                                </div>
+                                <div class="form-group text-left">
+                                    <span class="text-muted">* only zip files allowed</span>
+                                </div>
+                                {{ form_rest(form) }}
                                 </form>
                             </div>
                         </div>

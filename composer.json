@@ -25,6 +25,7 @@
         "deployer/deployer": "^6.2",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "fairlane/cookie-consent-bundle": "^1.0",
         "friendsofsymfony/user-bundle": "^2.1",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-snappy-bundle": "^1.5",
