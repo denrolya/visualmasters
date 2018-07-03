@@ -24,23 +24,6 @@
         $(this).tab('show');
     });
 
-    $("#order-form form").on('submit', function (e) {
-        $.ajax({
-            type:        'POST',
-            url:         "{{ path('process_order') }}",
-            data:        new FormData(this),
-            processData: false,
-            contentType: false,
-            success:     function (response) {
-                if (response.status == 'ok') {
-                    $("#order-form").toggleClass('hidden');
-                    $("#order-success-note").toggleClass('hidden');
-                }
-            }
-        });
-        return false;
-    });
-
     var inputs = $('.inputfile');
     Array.prototype.forEach.call(inputs, function (input) {
         var label = input.nextElementSibling, labelVal = label.innerHTML;

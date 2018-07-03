@@ -82,4 +82,25 @@
         filter="yui_js" %}
     <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
+
+    <script type="text/javascript">
+        (function () {
+            $("#order-form form").on('submit', function (e) {
+                $.ajax({
+                    type:        'POST',
+                    url:         "{{ path('process_order') }}",
+                    data:        new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success:     function (response) {
+                        if (response.status == 'ok') {
+                            $("#order-form").toggleClass('hidden');
+                            $("#order-success-note").toggleClass('hidden');
+                        }
+                    }
+                });
+                return false;
+            });
+        })();
+    </script>
 {% endblock javascripts %}
