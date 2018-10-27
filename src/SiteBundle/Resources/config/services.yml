@@ -1,4 +1,8 @@
 services:
+    SiteBundle\Controller\CRUDController:
+        public: true
+        autoconfigure: true
+
     app.gallery.unserialize_filter:
         class: SiteBundle\Twig\UnserializeExtension
         public: false

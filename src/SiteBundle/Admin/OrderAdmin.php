@@ -2,6 +2,7 @@
 
 namespace SiteBundle\Admin;
 
+use SiteBundle\Entity\Order;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper,
@@ -42,14 +43,14 @@ class OrderAdmin extends Admin
             ])
             ->add('deliveryDate', DatePickerType::class, [
                 'dp_use_current' => false,
-                'format' => 'dd.MM.yyyy'
+                'format' => Order::DATE_FORMAT
             ])
             ->end()
             ->with('Invoice')
             ->add('invoiceDate', DatePickerType::class, [
                 'required' => false,
                 'dp_use_current' => false,
-                'format' => 'dd.MM.yyyy',
+                'format' => Order::DATE_FORMAT,
                 'placeholder' => 'Date to be displayed in invoice for this order',
                 'label' => 'Invoice date'
             ])
@@ -85,6 +86,9 @@ class OrderAdmin extends Admin
             ])
             ->add('_action', 'actions', [
                 'actions' => [
+                    'clone_order_details' => [
+                        'template' => 'SiteBundle:CRUD:list__action_clone_order_details.html.twig'
+                    ],
                     'show' => [],
                     'edit' => [],
                     'delete' => []
@@ -109,6 +113,7 @@ class OrderAdmin extends Admin
 
     protected function configureRoutes(RouteCollection $collection)
     {
+        $collection->add('clone_order_details', $this->getRouterIdParameter().'/clone');
         $collection->add('invoice_html', $this->getRouterIdParameter() . '/invoice.html');
         $collection->add('invoice_pdf', $this->getRouterIdParameter() . '/invoice.pdf');
 //        $collection->clearExcept(['list', 'show', 'edit', 'delete', 'invoice']);

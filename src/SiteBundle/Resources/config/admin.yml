@@ -1,7 +1,7 @@
 services:
     sonata.admin.orders:
         class: SiteBundle\Admin\OrderAdmin
-        arguments: [null, SiteBundle\Entity\Order, null]
+        arguments: [null, SiteBundle\Entity\Order, SiteBundle\Controller\CRUDController]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Order, label: Orders }
         public: true

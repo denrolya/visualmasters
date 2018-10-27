@@ -39,7 +39,7 @@ class OrderItem
     /**
      * @var string
      *
-     * @ORM\Column(name="unitPrice", type="decimal")
+     * @ORM\Column(name="unitPrice", type="float")
      */
     private $unitPrice;
 

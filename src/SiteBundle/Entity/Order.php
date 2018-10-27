@@ -14,6 +14,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Order
 {
+    const DATE_FORMAT = 'dd.MM.yyyy';
+
     /**
      * @var integer
      *

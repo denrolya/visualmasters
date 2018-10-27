@@ -4,9 +4,6 @@ namespace SiteBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper,
-    Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 class OrderItemAdmin extends Admin
@@ -16,7 +13,7 @@ class OrderItemAdmin extends Admin
         $formMapper
             ->add('quantity')
             ->add('description')
-            ->add('unitPrice')
+            ->add('unitPrice', 'number', ['scale' => 2])
             ->add('officeCharge', 'integer', ['attr' => ['min' => 0, 'max' => 100]])
             ;
     }

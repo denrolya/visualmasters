@@ -9,52 +9,12 @@
         "bundles/site/css/landing.css"
         "bundles/site/css/cookieconsent.min.css"
         filter="yui_css, cssrewrite" %}
-    <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
     {% endstylesheets %}
 {% endblock stylesheets %}
 
 {% block content %}
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Visual<span>Masters</span></a>
-            </div>
-
-            <div class="collapse navbar-collapse mobile-menu" id="bs-example-navbar-collapse-1">
-                <a class="visible-xs mobile-logo" href="#page-top">Visual<span>Masters</span></a>
-                <button type="button" class="visible-xs" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">&times;
-                </button>
-                <ul class="nav navbar-nav navbar-right mobile-menu-list">
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">What we do</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Our Works</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#media">Media</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact Us</a>
-                    </li>
-                    <li class="order-button">
-                        <a href="#" data-toggle="modal" data-target="#orderModal" class="order">Order</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {{ include('SiteBundle:default/sections:header.html.twig') }}
 
     {{ include('SiteBundle:default/sections:main.html.twig') }}
 
@@ -70,6 +30,8 @@
 
     {{ include('SiteBundle:default/sections:contact.html.twig') }}
 
+    {{ include('SiteBundle:default/sections:order.modal.html.twig') }}
+
 {% endblock content %}
 
 {% block javascripts %}
@@ -80,7 +42,7 @@
         "bundles/site/js/cookieconsent.min.js"
         "bundles/site/js/index.js"
         filter="yui_js" %}
-    <script src="{{ asset_url }}" type="text/javascript"></script>
+        <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
 
     <script type="text/javascript">

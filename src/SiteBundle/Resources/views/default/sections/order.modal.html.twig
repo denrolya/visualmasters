@@ -1,0 +1,42 @@
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="orderModalLabel">Make Order \ Contact Us</h4>
+                <span class="modal-header-border"></span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-container">
+                    <div id="order-form">
+                        <h5 class="modal-notice text-muted">please fill the fields below:</h5>
+
+                        {{ form_start(form, {'name': 'order-form'}) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.phonenumber) }}
+                        {{ form_row(form.address) }}
+                        {{ form_row(form.postal) }}
+                        {{ form_row(form.comments) }}
+                        <div class="form-group m-t">
+                            <input type="file" name="file" id="file" class="inputfile" accept=".zip"/>
+                            <label for="file" class="btn btn-default btn-attach"><span>Attach file*</span></label>
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <span id="btn-submit-text">Send</span>
+                                <span id="loader"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                            </button>
+                        </div>
+                        <div class="form-group text-left">
+                            <span class="text-muted">* only zip files allowed</span>
+                        </div>
+                        {{ form_rest(form) }}
+                        </form>
+                    </div>
+                </div>
+
+                <div class="hidden" id="order-success-note">
+                    <h3>Order was successfully placed</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
