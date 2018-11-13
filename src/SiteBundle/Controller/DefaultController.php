@@ -7,6 +7,7 @@ use SiteBundle\Entity\Order;
 use SiteBundle\Entity\File;
 use SiteBundle\Form\OrderType;
 use SiteBundle\Entity\Video;
+use SiteBundle\Services\ReCaptchaService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -153,7 +154,10 @@ class DefaultController extends Controller
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        $rc2Response = $request->request->get('g-recaptcha-response');
+        $rc2Verification = $this->get(ReCaptchaService::class)->verify($rc2Response);
+
+        if ($form->isValid() && $rc2Verification) {
             $em = $this->get('doctrine.orm.entity_manager');
 
             $em->persist($order);

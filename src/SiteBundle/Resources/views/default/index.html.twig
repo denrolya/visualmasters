@@ -46,21 +46,44 @@
     {% endjavascripts %}
 
     <script type="text/javascript">
+        var RC2KEY = '{{ google_recaptcha_site_key }}', doSubmit = false;
+
+        function reCaptchaVerify(response) {
+            if (response === document.querySelector('.g-recaptcha-response').value) {
+                doSubmit = true;
+            }
+        }
+
+        function reCaptchaExpired() {
+            /* do something when it expires */
+        }
+
+        function reCaptchaCallback() {
+            /* this must be in the global scope for google to get access */
+            grecaptcha.render('rc2-input', {
+                'sitekey':          RC2KEY,
+                'callback':         reCaptchaVerify,
+                'expired-callback': reCaptchaExpired
+            });
+        }
+
         (function () {
             $("#order-form form").on('submit', function (e) {
-                $.ajax({
-                    type:        'POST',
-                    url:         "{{ path('process_order') }}",
-                    data:        new FormData(this),
-                    processData: false,
-                    contentType: false,
-                    success:     function (response) {
-                        if (response.status == 'ok') {
-                            $("#order-form").toggleClass('hidden');
-                            $("#order-success-note").toggleClass('hidden');
+                if (doSubmit) {
+                    $.ajax({
+                        type:        'POST',
+                        url:         "{{ path('process_order') }}",
+                        data:        new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        success:     function (response) {
+                            if (response.status == 'ok') {
+                                $("#order-form").toggleClass('hidden');
+                                $("#order-success-note").toggleClass('hidden');
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 return false;
             });
         })();

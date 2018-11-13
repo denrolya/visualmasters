@@ -1,15 +1,20 @@
 services:
     SiteBundle\Controller\CRUDController:
-        public: true
-        autoconfigure: true
+      public: true
+      autoconfigure: true
 
     app.gallery.unserialize_filter:
-        class: SiteBundle\Twig\UnserializeExtension
-        public: false
-        tags:
-            - { name: twig.extension }
+      class: SiteBundle\Twig\UnserializeExtension
+      public: false
+      tags:
+        - { name: twig.extension }
 
     admin_success_handler:
-        public: true
-        class: SiteBundle\Services\AuthenticationHandler
-        arguments: [ '@service_container' ]
+      public: true
+      class: SiteBundle\Services\AuthenticationHandler
+      arguments: [ '@service_container' ]
+
+    SiteBundle\Services\ReCaptchaService:
+      public: true
+      autoconfigure: true
+      arguments: ['%google_recaptcha_secret_key%']

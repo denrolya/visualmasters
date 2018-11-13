@@ -18,9 +18,6 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
 
-    # Use camelCase instead of snake_case when serializing entities
-    jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
-
     # Router configuration. Is necessary to generate URL's from commands
     router.request_context.host: host.com
     router.request_context.scheme: https
@@ -29,3 +26,7 @@ parameters:
     files_dir: '%kernel.root_dir%/../web/uploads/orders'
 
     wkhtmltopdf_executable: '/usr/local/bin/wkhtmltopdf'
+
+    # Google ReCaptcha V2 Configuration
+    google_recaptcha_site_key: ''
+    google_recaptcha_secret_key: ''

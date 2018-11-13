@@ -29,7 +29,7 @@ host('production')
     ->identityFile('~/.ssh/id_rsa')
     ->multiplexing(true)
     ->set('repository', 'https://github.com/denrolya/visualmasters.git')
-    ->set('branch', 'develop')
+    ->set('branch', 'master')
     ->set('clear_paths', [])
     ->set('symfony_env', 'dev')
     ->set('composer_options', 'install --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader')
@@ -39,7 +39,8 @@ host('production')
 
 task('database:copy:to_local', function() {
     $dumpFilename = 'dump-' . time() . '.sql';
-    $remoteDb = get('db')[input()->getArgument('stage')];
+    $stage = input()->getArgument('stage');
+    $remoteDb = get('db')[$stage];
     $localDb = get('db')['local'];
 
     writeln('<info>Dumping database from remote host.</info>');

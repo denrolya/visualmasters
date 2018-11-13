@@ -28,6 +28,9 @@
                         <div class="form-group text-left">
                             <span class="text-muted">* only zip files allowed</span>
                         </div>
+
+                        <div class="g-recaptcha" id="rc2-input" data-sitekey="{{ google_recaptcha_site_key }}"></div>
+
                         {{ form_rest(form) }}
                         </form>
                     </div>

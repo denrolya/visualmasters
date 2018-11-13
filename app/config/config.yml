@@ -8,6 +8,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    # Use camelCase instead of snake_case when serializing entities
+    jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
 
 framework:
     #esi: ~
@@ -41,6 +43,8 @@ twig:
     form_themes:
         - 'bootstrap_3_layout.html.twig'
         - '@SonataCore/Form/datepicker.html.twig'
+    globals:
+        google_recaptcha_site_key: '%google_recaptcha_site_key%'
 
 # Doctrine Configuration
 doctrine:
