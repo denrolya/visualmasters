@@ -1,18 +1,23 @@
 (function($) {
     "use strict";
 
-    $('a.page-scroll').bind('click', function(event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: ($($anchor.attr('href')).offset().top)
-        }, 1250, 'easeInOutExpo');
+    // TODO: Fix scrolling to divs here
+    $('.page-scroll').on('click', function(event) {
         event.preventDefault();
+        var position = coordinates[$(this).attr('href').substr(1)];
+
+        $('html, body').stop().animate({
+            scrollTop: position - 70
+        }, 500, 'linear');
     });
 
-    $('a.page-scroll.scroll-to-tabs').bind('click', function(event) {
+    // TODO: Fix scrolling to divs here
+    $('.page-scroll.scroll-to-tabs').on('click', function(event) {
+        event.preventDefault();
+
         $('html, body').stop().animate({
-            scrollTop: ($("section#descriptions").offset().top)
-        }, 1250, 'easeInOutExpo');
+            scrollTop: coordinates.descriptions
+        }, 1000, 'easeInOutExpo');
     })
 
     $('body').scrollspy({

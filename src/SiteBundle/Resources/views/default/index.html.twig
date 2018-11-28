@@ -47,6 +47,14 @@
 
     <script type="text/javascript">
         var RC2KEY = '{{ google_recaptcha_site_key }}', doSubmit = false;
+        var coordinates = {
+            about: $("#about").position().top,
+            services: $("#services").position().top,
+            portfolio: $("#portfolio").position().top,
+            media: $("#media").position().top,
+            contact: $("#contact").position().top,
+            descriptions: $("#descriptions").position().top
+        }
 
         function reCaptchaVerify(response) {
             if (response === document.querySelector('.g-recaptcha-response').value) {
