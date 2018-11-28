@@ -1,7 +1,6 @@
 (function($) {
     "use strict";
 
-    // TODO: Fix scrolling to divs here
     $('.page-scroll').on('click', function(event) {
         event.preventDefault();
         var position = coordinates[$(this).attr('href').substr(1)];
@@ -11,7 +10,6 @@
         }, 500, 'linear');
     });
 
-    // TODO: Fix scrolling to divs here
     $('.page-scroll.scroll-to-tabs').on('click', function(event) {
         event.preventDefault();
 
