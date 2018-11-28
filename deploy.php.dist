@@ -35,6 +35,7 @@ host('production')
     ->set('composer_options', 'install --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader')
     ->set('deploy_path', '/var/www/{{application}}')
     ->set('writable_mode', 'acl')
+    ->set('dump_assets', true)
     ->set('shared_dirs', ['web/uploads', 'var/logs', 'var/jwt', 'var/sessions']);
 
 task('database:copy:to_local', function() {
@@ -53,7 +54,8 @@ task('database:copy:to_local', function() {
 
     writeln('<info>Database migration finished...</info>');
     if (askConfirmation('Do you want to fetch all the uploads from [' . $stage . ']?')) {
-        run('media:to_local'); // TODO
+        download('{{release_path}}/web/uploads/', './web/uploads');
+        writeln('<info>Uploads fetched successfully!</info>');
     }
 })->desc('Copy database from remote stage to local environment');
 
