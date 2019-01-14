@@ -185,19 +185,35 @@ class DefaultController extends Controller
 
             $this->addFlash('success', 'You have successfully placed an order on VisualMasters!');
 
-            $message = \Swift_Message::newInstance()
+            $mailer = $this->get('mailer');
+
+            $clientMessage = \Swift_Message::newInstance()
                 ->setSubject('[NEW] Order was successfully submitted!')
                 ->setFrom('no-reply@visualmasters.co.uk')
                 ->setTo($order->getEmail())
                 ->setBody($order->getComments(), 'text/html');
 
             if (isset($newFile)) {
-                $message->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath())->setFilename($newFile->getName()));
+                $clientMessage->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath())->setFilename($newFile->getName()));
             }
 
             $failedRecipients = [];
 
-            $this->get('mailer')->send($message, $failedRecipients);
+            $mailer->send($clientMessage, $failedRecipients);
+
+            $adminMessage = \Swift_Message::newInstance()
+                ->setSubject('[NEW] Order was successfully submitted!')
+                ->setFrom('no-reply@visualmasters.co.uk')
+                ->setTo('info@visualmasters.co.uk')
+                ->setBody(
+                    $this->renderView(
+                        '::order_success.email.html.twig',
+                        ['order' => $order]
+                    ),
+                    'text/html'
+                );
+
+            $mailer->send($adminMessage);
 
             return new JsonResponse(['status' => 'ok'], Response::HTTP_OK);
         }

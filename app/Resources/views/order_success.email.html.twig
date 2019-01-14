@@ -1,0 +1,30 @@
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <h4>
+            New order was created {{ order.createdAt | date }}. If there is any attachment you can check it in the admin panel.
+        </h4>
+        <dl>
+            <dt>Name: </dt>
+            <dd>{{ order.name }}</dd>
+
+            <dt>E-mail: </dt>
+            <dd>{{ order.email }}</dd>
+
+            <dt>Phonenumber: </dt>
+            <dd>{{ order.phonenumber }}</dd>
+
+            <dt>Address: </dt>
+            <dd>{{ order.address }}</dd>
+
+            <dt>Postal: </dt>
+            <dd>{{ order.postal }}</dd>
+
+            <dt>Comments: </dt>
+            <dd>{{ order.comments }}</dd>
+        </dl>
+    </body>
+</html>
