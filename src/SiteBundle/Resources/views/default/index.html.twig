@@ -47,7 +47,6 @@
 
     <script type="text/javascript">
         var RC2KEY = '{{ google_recaptcha_site_key }}', doSubmit = false;
-        var coordinates = {};
 
         function reCaptchaVerify(response) {
             if (response === document.querySelector('.g-recaptcha-response').value) {

@@ -1,40 +1,42 @@
 (function ($) {
-    'use strict';
 
-    setTimeout(function() {
-        coordinates = {
-            about:        $("#about").position().top,
-            services:     $("#services").position().top,
-            portfolio:    $("#portfolio").position().top,
-            media:        $("#media").position().top,
-            contact:      $("#contact").position().top,
-            descriptions: $("#descriptions").position().top
+    $(document).ready(function () {
+        'use strict';
+
+        var coordinates = {
+            about:        $("#about").offset().top,
+            services:     $("#services").offset().top,
+            portfolio:    $("#portfolio").offset().top,
+            media:        $("#media").offset().top,
+            contact:      $("#contact").offset().top,
+            descriptions: $("#descriptions").offset().top
         };
-    }, 500);
 
-    $('.page-scroll').on('click', function (event) {
-        event.preventDefault();
-        var position = coordinates[$(this).attr('href').substr(1)];
+        $('.page-scroll').on('click', function (event) {
+            event.preventDefault();
+            var position = coordinates[$(this).attr('href').substr(1)];
 
-        $('html, body').stop().animate({
-            scrollTop: position - 70
-        }, 500, 'linear');
+            $('html, body').stop().animate({
+                scrollTop: position - 70
+            }, 500, 'linear');
+        });
+
+        $('.page-scroll.scroll-to-tabs').on('click', function (event) {
+            event.preventDefault();
+
+            $('html, body').stop().animate({
+                scrollTop: coordinates.descriptions
+            }, 1000, 'easeInOutExpo');
+        });
+
+        $('body').scrollspy({
+            target: '.navbar-fixed-top',
+            offset: 51
+        });
+
+        $('.navbar-collapse ul li a').click(function () {
+            $('.navbar-toggle:visible').click();
+        });
     });
 
-    $('.page-scroll.scroll-to-tabs').on('click', function (event) {
-        event.preventDefault();
-
-        $('html, body').stop().animate({
-            scrollTop: coordinates.descriptions
-        }, 1000, 'easeInOutExpo');
-    });
-
-    $('body').scrollspy({
-        target: '.navbar-fixed-top',
-        offset: 51
-    });
-
-    $('.navbar-collapse ul li a').click(function () {
-        $('.navbar-toggle:visible').click();
-    });
-})(jQuery); // End of use strict
+}(jQuery));
