@@ -12,22 +12,22 @@
             descriptions: $("#descriptions").offset().top
         };
 
-        $('.page-scroll').on('click', function (event) {
-            event.preventDefault();
-            var position = coordinates[$(this).attr('href').substr(1)];
-
-            $('html, body').stop().animate({
-                scrollTop: position - 70
-            }, 500, 'linear');
-        });
-
-        $('.page-scroll.scroll-to-tabs').on('click', function (event) {
-            event.preventDefault();
-
-            $('html, body').stop().animate({
-                scrollTop: coordinates.descriptions
-            }, 1000, 'easeInOutExpo');
-        });
+        // $('.page-scroll').on('click', function (event) {
+        //     event.preventDefault();
+        //     var position = coordinates[$(this).attr('href').substr(1)];
+        //
+        //     $('html, body').stop().animate({
+        //         scrollTop: position - 70
+        //     }, 500, 'linear');
+        // });
+        //
+        // $('.page-scroll.scroll-to-tabs').on('click', function (event) {
+        //     event.preventDefault();
+        //
+        //     $('html, body').stop().animate({
+        //         scrollTop: coordinates.descriptions
+        //     }, 1000, 'easeInOutExpo');
+        // });
 
         $('body').scrollspy({
             target: '.navbar-fixed-top',
