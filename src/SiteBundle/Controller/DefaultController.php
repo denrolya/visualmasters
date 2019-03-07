@@ -196,7 +196,7 @@ class DefaultController extends Controller
             $mailer->sendMail(
                     'info@visualmasters.co.uk',
                     '[NEW] Order was successfully created!',
-                    $this->renderView(
+                    $this->container->get('templating')->render(
                         '::order_success.email.html.twig',
                         ['order' => $order]
                     )
