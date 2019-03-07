@@ -25,7 +25,7 @@ class MailgunService
     public function sendMail($to, $subject, $body)
     {
         $this->mailer->messages()->send($this->domain, [
-            'from'    => $this->from,
+            'from'    => 'Volodimir Dolya info@visualmasters.co.uk',
             'to'      => $to,
             'subject' => $subject,
             'html'    => $body

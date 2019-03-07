@@ -187,16 +187,14 @@ class DefaultController extends Controller
 
             $mailer = $this->get('app.mailgun_service');
 
-            $mailer
-                ->sendMail(
+            $mailer->sendMail(
                     $order->getEmail(),
                     '[NEW] Order was successfully submitted!',
                     'Your order to VisualMasters was successfully created.'
                 );
 
-            $mailer
-                ->sendMail(
-                    $this->getParameter('mailer_user'),
+            $mailer->sendMail(
+                    'info@visualmasters.co.uk',
                     '[NEW] Order was successfully created!',
                     $this->renderView(
                         '::order_success.email.html.twig',
