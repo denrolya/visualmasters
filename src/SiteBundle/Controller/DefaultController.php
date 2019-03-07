@@ -2,20 +2,20 @@
 
 namespace SiteBundle\Controller;
 
-use SiteBundle\Entity\GalleryPage;
-use SiteBundle\Entity\Order;
-use SiteBundle\Entity\File;
-use SiteBundle\Form\OrderType;
-use SiteBundle\Entity\Video;
-use SiteBundle\Services\ReCaptchaService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use SiteBundle\Entity\File;
+use SiteBundle\Entity\GalleryPage;
+use SiteBundle\Entity\Order;
+use SiteBundle\Entity\Video;
+use SiteBundle\Form\OrderType;
+use SiteBundle\Services\ReCaptchaService;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -41,9 +41,9 @@ class DefaultController extends Controller
         $randomSlides = [];
 
         /** @var GalleryPage $gallery */
-        foreach($galleries as $index => $gallery) {
+        foreach ($galleries as $index => $gallery) {
             $gallerySlides = $gallery->getSlides();
-            if  (count($gallerySlides) > 0) {
+            if (count($gallerySlides) > 0) {
                 array_push($randomSlides, $gallerySlides[array_rand($gallerySlides->getKeys())]);
             }
         }
@@ -64,7 +64,7 @@ class DefaultController extends Controller
     public function galleryAction(GalleryPage $galleryPage)
     {
         $form = $this
-            ->createForm(OrderType::class,new Order(), [
+            ->createForm(OrderType::class, new Order(), [
                 'action' => $this->generateUrl('process_order')
             ])
             ->createView();
@@ -95,7 +95,7 @@ class DefaultController extends Controller
     {
         $pageUrl = $this->generateUrl('order_invoice_html', [
             'id' => $order->getId()
-        ],UrlGeneratorInterface::ABSOLUTE_URL);
+        ], UrlGeneratorInterface::ABSOLUTE_URL);
 
         $now = new \DateTime();
         $invoiceFilename = "invoice_" . $now->format('Y-m-d_H-i') . '.pdf';
@@ -109,8 +109,8 @@ class DefaultController extends Controller
 
         return new Response($pdf,
             Response::HTTP_OK, [
-                'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'attachment; filename="' . $invoiceFilename . '"'
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="' . $invoiceFilename . '"'
             ]
         );
     }
@@ -122,13 +122,13 @@ class DefaultController extends Controller
     public function downloadOrderFilesAsZipAction(Order $order)
     {
         $zip = new \ZipArchive();
-        $zipName = 'order-'.time().".zip";
-        $zip->open($zipName,  \ZipArchive::CREATE);
+        $zipName = 'order-' . time() . ".zip";
+        $zip->open($zipName, \ZipArchive::CREATE);
 
         $finder = new Finder();
         $finder
             ->files()
-            ->in($this->container->getParameter('files_dir') . '/' . $order->getId(). '/invoices');
+            ->in($this->container->getParameter('files_dir') . '/' . $order->getId() . '/invoices');
 
         foreach ($finder as $file) {
             /** @var \Symfony\Component\Finder\SplFileInfo $file */
@@ -138,7 +138,7 @@ class DefaultController extends Controller
 
         $zip->close();
 
-        $response = new BinaryFileResponse("../web/".$zipName);
+        $response = new BinaryFileResponse("../web/" . $zipName);
         $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
 
         return $response;
@@ -185,35 +185,24 @@ class DefaultController extends Controller
 
             $this->addFlash('success', 'You have successfully placed an order on VisualMasters!');
 
-            $mailer = $this->get('mailer');
+            $mailer = $this->get('app.mailgun_service');
 
-            $clientMessage = \Swift_Message::newInstance()
-                ->setSubject('[NEW] Order was successfully submitted!')
-                ->setFrom('no-reply@visualmasters.co.uk')
-                ->setTo($order->getEmail())
-                ->setBody($order->getComments(), 'text/html');
+            $mailer
+                ->sendMail(
+                    $order->getEmail(),
+                    '[NEW] Order was successfully submitted!',
+                    'Your order to VisualMasters was successfully created.'
+                );
 
-            if (isset($newFile)) {
-                $clientMessage->attach(\Swift_Attachment::fromPath($newFile->getAbsolutePath())->setFilename($newFile->getName()));
-            }
-
-            $failedRecipients = [];
-
-            $mailer->send($clientMessage, $failedRecipients);
-
-            $adminMessage = \Swift_Message::newInstance()
-                ->setSubject('[NEW] Order was successfully submitted!')
-                ->setFrom('no-reply@visualmasters.co.uk')
-                ->setTo('info@visualmasters.co.uk')
-                ->setBody(
+            $mailer
+                ->sendMail(
+                    $this->getParameter('mailer_user'),
+                    '[NEW] Order was successfully created!',
                     $this->renderView(
                         '::order_success.email.html.twig',
                         ['order' => $order]
-                    ),
-                    'text/html'
+                    )
                 );
-
-            $mailer->send($adminMessage);
 
             return new JsonResponse(['status' => 'ok'], Response::HTTP_OK);
         }

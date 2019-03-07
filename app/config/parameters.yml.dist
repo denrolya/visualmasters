@@ -30,3 +30,8 @@ parameters:
     # Google ReCaptcha V2 Configuration
     google_recaptcha_site_key: ''
     google_recaptcha_secret_key: ''
+
+    # Mailgun configuration
+    mailgun.domain: visualmasters.co.uk
+    mailgun.key: SECRET_API_KEY
+    mailgun.endpoint: https://api.eu.mailgun.net
