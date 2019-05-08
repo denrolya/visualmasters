@@ -21,13 +21,13 @@
         //     }, 500, 'linear');
         // });
         //
-        // $('.page-scroll.scroll-to-tabs').on('click', function (event) {
-        //     event.preventDefault();
-        //
-        //     $('html, body').stop().animate({
-        //         scrollTop: coordinates.descriptions
-        //     }, 1000, 'easeInOutExpo');
-        // });
+        $('.page-scroll.scroll-to-tabs').on('click', function (event) {
+            event.preventDefault();
+
+            $('html, body').stop().animate({
+                scrollTop: coordinates.descriptions
+            }, 1000, 'easeInOutExpo');
+        });
 
         $('body').scrollspy({
             target: '.navbar-fixed-top',
